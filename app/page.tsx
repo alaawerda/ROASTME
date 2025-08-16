@@ -108,41 +108,41 @@ export default function Home() {
   if (!translations) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
       </div>
     )
   }
 
   return (
-    <div className="flex flex-col h-screen">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-primary to-secondary text-white p-4 shadow-lg">
+    <div className="flex flex-col h-screen bg-light">
+      {/* Header - More compact */}
+      <header className="bg-gradient-to-r from-primary to-secondary text-white p-3 shadow-md">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Flame className="w-8 h-8 text-yellow-300" />
-            <h1 className="text-2xl font-bold">{translations.title}</h1>
+          <div className="flex items-center space-x-2">
+            <Flame className="w-6 h-6 text-yellow-300" />
+            <h1 className="text-xl font-bold">{translations.title}</h1>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <LanguageSelector 
               currentLanguage={currentLanguage} 
               onLanguageChange={changeLanguage} 
             />
-            <div className="flex items-center space-x-2 text-sm">
-              <Zap className="w-4 h-4" />
+            <div className="hidden sm:flex items-center space-x-2 text-xs">
+              <Zap className="w-3 h-3" />
               <span>{translations.poweredBy}</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Chat Container */}
-      <div className="flex-1 overflow-y-auto p-4 max-w-4xl mx-auto w-full">
-        <div className="space-y-4">
+      {/* Chat Container - More compact spacing */}
+      <div className="flex-1 overflow-y-auto p-3 max-w-4xl mx-auto w-full">
+        <div className="space-y-3">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} timeFormat={translations.timeFormat} />
           ))}
           {isLoading && (
-            <div className="flex items-center space-x-2 text-gray-500">
+            <div className="flex items-center space-x-2 text-gray-500 text-sm">
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
               <span>{translations.preparingRoast}</span>
             </div>
@@ -151,29 +151,29 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Input Form */}
-      <div className="border-t bg-white p-4">
+      {/* Input Form - More compact */}
+      <div className="border-t bg-white p-3">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-          <div className="flex space-x-4">
+          <div className="flex space-x-3">
             <div className="flex-1 relative">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={translations.inputPlaceholder}
-                className="w-full p-3 pr-12 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                className="w-full p-2.5 pr-10 border border-gray-300 rounded-lg focus:border-primary focus:outline-none transition-colors text-sm"
                 disabled={isLoading}
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-primary hover:text-primary/80 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-primary hover:text-primary/80 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4" />
               </button>
             </div>
           </div>
-          <p className="text-xs text-gray-500 mt-2 text-center">
+          <p className="text-xs text-gray-500 mt-1.5 text-center">
             {translations.warningMessage}
           </p>
         </form>

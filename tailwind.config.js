@@ -13,6 +13,13 @@ module.exports = {
         dark: '#2C3E50',
         light: '#F7F9FC',
       },
+      screens: {
+        'xs': '475px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
     },
   },
   plugins: [],
