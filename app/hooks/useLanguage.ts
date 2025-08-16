@@ -41,8 +41,16 @@ export function useLanguage() {
   const [translations, setTranslations] = useState<Translations>(en)
 
   // Détecter la langue du navigateur
-  const detectLanguage = () => {
+  const detectLanguage = (): void => {
     console.log('🔍 Détection de langue...')
+    
+    // Vérifier si on est côté client
+    if (typeof window === 'undefined') {
+      console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
+      setCurrentLanguage('en')
+      setTranslations(allTranslations['en'])
+      return
+    }
     
     // Détecter la langue du navigateur en premier
     const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
@@ -78,23 +86,27 @@ export function useLanguage() {
     localStorage.setItem('roastme-language', 'fr')
   }
 
-  useEffect(() => {
-    detectLanguage()
-  }, [])
-
-  const changeLanguage = (languageCode: string) => {
+  const changeLanguage = (languageCode: string): void => {
     if (allTranslations[languageCode]) {
       setCurrentLanguage(languageCode)
       setTranslations(allTranslations[languageCode])
-      localStorage.setItem('roastme-language', languageCode)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('roastme-language', languageCode)
+      }
     }
   }
 
-  const resetToBrowserLanguage = () => {
+  const resetToBrowserLanguage = (): void => {
     console.log('🔄 Reset vers la langue du navigateur')
-    localStorage.removeItem('roastme-language')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('roastme-language')
+    }
     detectLanguage()
   }
+
+  useEffect(() => {
+    detectLanguage()
+  }, [])
 
   return {
     currentLanguage,
