@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+
+
 // Configuration OpenRouter
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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'
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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'
 const SITE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
 
 export async function POST(request: NextRequest) {
@@ -98,7 +100,7 @@ IMPORTANT:
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "model": "openai/gpt-oss-20b:free", // Modèle gratuit d'OpenRouter
+        "model": "deepseek/deepseek-chat-v3-0324:free", // Modèle gratuit d'OpenRouter
         "messages": messages,
         "max_tokens": 300,
         "temperature": 0.8

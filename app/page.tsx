@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Bot, User, Zap, Flame } from 'lucide-react'
+import { Send, Zap, Flame } from 'lucide-react'
 import ChatMessage from './components/ChatMessage'
 import { Message } from './types'
 import { useLanguage } from './hooks/useLanguage'
@@ -48,7 +48,7 @@ export default function Home() {
         ])
       }
     }
-  }, [translations, messages.length])
+  }, [translations, messages.length, messages])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

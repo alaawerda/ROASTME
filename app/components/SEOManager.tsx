@@ -87,7 +87,7 @@ export default function SEOManager() {
       }
       
       // Mettre à jour les liens alternatifs
-      Object.entries(seoMetadata).forEach(([lang, langSeo]) => {
+      Object.entries(seoMetadata).forEach(([lang]) => {
         const alternate = document.querySelector(`link[hreflang="${lang}"]`)
         if (alternate) {
           const url = lang === 'fr' 
