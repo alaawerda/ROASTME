@@ -36,55 +36,52 @@ export const supportedLanguages = [
   { code: 'ar', name: 'العربية', flag: '🇸🇦' }
 ]
 
+// Détecter la langue du navigateur
+const detectLanguage = (): { languageCode: string; translations: Translations } => {
+  console.log('🔍 Détection de langue...')
+  
+  // Vérifier si on est côté client
+  if (typeof window === 'undefined') {
+    console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
+    return { languageCode: 'en', translations: allTranslations['en'] }
+  }
+  
+  // Détecter la langue du navigateur en premier
+  const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
+  const languageCode = browserLanguage.split('-')[0].toLowerCase()
+  
+  console.log('🌐 Langue du navigateur:', browserLanguage)
+  console.log('🔤 Code de langue:', languageCode)
+  
+  // Vérifier si la langue du navigateur est supportée
+  if (allTranslations[languageCode]) {
+    console.log('✅ Langue supportée:', languageCode)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('roastme-language', languageCode)
+    }
+    return { languageCode, translations: allTranslations[languageCode] }
+  }
+  
+  // Essayer de récupérer la langue depuis localStorage
+  const savedLanguage = localStorage.getItem('roastme-language')
+  console.log('💾 Langue sauvegardée:', savedLanguage)
+  
+  if (savedLanguage && allTranslations[savedLanguage]) {
+    console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
+    return { languageCode: savedLanguage, translations: allTranslations[savedLanguage] }
+  }
+
+  // Fallback vers le français (au lieu de l'anglais)
+  console.log('🔄 Fallback vers le français')
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('roastme-language', 'fr')
+  }
+  return { languageCode: 'fr', translations: allTranslations['fr'] }
+}
+
 export function useLanguage() {
   const [currentLanguage, setCurrentLanguage] = useState<string>('en')
   const [translations, setTranslations] = useState<Translations>(en)
-
-  // Détecter la langue du navigateur
-  const detectLanguage = (): void => {
-    console.log('🔍 Détection de langue...')
-    
-    // Vérifier si on est côté client
-    if (typeof window === 'undefined') {
-      console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
-      setCurrentLanguage('en')
-      setTranslations(allTranslations['en'])
-      return
-    }
-    
-    // Détecter la langue du navigateur en premier
-    const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
-    const languageCode = browserLanguage.split('-')[0].toLowerCase()
-    
-    console.log('🌐 Langue du navigateur:', browserLanguage)
-    console.log('🔤 Code de langue:', languageCode)
-    
-    // Vérifier si la langue du navigateur est supportée
-    if (allTranslations[languageCode]) {
-      console.log('✅ Langue supportée:', languageCode)
-      setCurrentLanguage(languageCode)
-      setTranslations(allTranslations[languageCode])
-      localStorage.setItem('roastme-language', languageCode)
-      return
-    }
-    
-    // Essayer de récupérer la langue depuis localStorage
-    const savedLanguage = localStorage.getItem('roastme-language')
-    console.log('💾 Langue sauvegardée:', savedLanguage)
-    
-    if (savedLanguage && allTranslations[savedLanguage]) {
-      console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
-      setCurrentLanguage(savedLanguage)
-      setTranslations(allTranslations[savedLanguage])
-      return
-    }
-
-    // Fallback vers le français (au lieu de l'anglais)
-    console.log('🔄 Fallback vers le français')
-    setCurrentLanguage('fr')
-    setTranslations(allTranslations['fr'])
-    localStorage.setItem('roastme-language', 'fr')
-  }
 
   const changeLanguage = (languageCode: string): void => {
     if (allTranslations[languageCode]) {
@@ -101,11 +98,15 @@ export function useLanguage() {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('roastme-language')
     }
-    detectLanguage()
+    const { languageCode, translations: newTranslations } = detectLanguage()
+    setCurrentLanguage(languageCode)
+    setTranslations(newTranslations)
   }
 
   useEffect(() => {
-    detectLanguage()
+    const { languageCode, translations: newTranslations } = detectLanguage()
+    setCurrentLanguage(languageCode)
+    setTranslations(newTranslations)
   }, [])
 
   return {
