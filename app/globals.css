@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light text-dark;
+  }
+}
+
+@layer components {
+  .chat-bubble {
+    @apply rounded-lg p-4 max-w-[80%] break-words;
+  }
+  
+  .user-bubble {
+    @apply bg-primary text-white ml-auto;
+  }
+  
+  .ai-bubble {
+    @apply bg-white border-2 border-secondary text-dark;
+  }
+  
+  .roast-effect {
+    @apply animate-pulse text-red-500 font-bold;
+  }
+}
