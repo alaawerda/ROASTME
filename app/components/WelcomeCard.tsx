@@ -16,7 +16,7 @@ const WelcomeCard: React.FC = () => {
             Bienvenue sur RoastMe Chat ! 🔥
           </h2>
           <p className="compact-text text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Prêt à être roaster par l'IA la plus cinglante ? 
+            Prêt à être roaster par l&apos;IA la plus cinglante ? 
             Découvre une expérience unique de chat avec des réponses créatives et hilarantes !
           </p>
         </div>
@@ -71,7 +71,7 @@ const WelcomeCard: React.FC = () => {
             <div className="flex items-center space-x-2 group">
               <div className="w-7 h-7 bg-gradient-to-r from-flame-orange to-flame-orange-light text-white rounded-full flex items-center justify-center text-sm font-bold group-hover:scale-110 transition-transform duration-200">2</div>
               <div>
-                <span className="font-semibold text-gray-800 compact-text">L'IA prépare ton roast</span>
+                <span className="font-semibold text-gray-800 compact-text">L&apos;IA prépare ton roast</span>
                 <p className="ultra-compact-text text-gray-600">Notre IA génère une réponse personnalisée</p>
               </div>
             </div>
@@ -102,7 +102,7 @@ const WelcomeCard: React.FC = () => {
             </div>
             <div className="text-left">
               <p className="compact-text font-medium text-yellow-800 mb-1">
-                <strong>Attention :</strong> Ce chat est conçu pour le divertissement et l'humour
+                <strong>Attention :</strong> Ce chat est conçu pour le divertissement et l&apos;humour
               </p>
               <p className="ultra-compact-text text-yellow-700 leading-relaxed">
                 Les réponses sont générées par IA et peuvent contenir du contenu humoristique. 
