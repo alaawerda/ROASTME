@@ -3,28 +3,363 @@ import { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
+      // Règles générales pour tous les robots
       {
         userAgent: '*',
-        allow: '/',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl',
+          '/about',
+          '/features',
+          '/languages',
+          '/privacy',
+          '/terms',
+          '/contact',
+          '/roast-examples',
+          '/funny-insults',
+          '/ai-humor',
+          '/chatbot-fun',
+          '/blog/*',
+          '/sitemap.xml',
+          '/robots.txt'
+        ],
         disallow: [
           '/api/',
           '/_next/',
           '/admin/',
           '/private/',
+          '/temp/',
+          '/cache/',
+          '/logs/',
+          '/.env',
+          '/.git',
+          '/node_modules/',
+          '/vendor/',
+          '/config/',
+          '/database/',
+          '/storage/',
+          '/uploads/',
+          '/backup/',
+          '/test/',
+          '/debug/',
+          '/error/',
+          '/404',
+          '/500'
         ],
+        crawlDelay: 1
       },
+      
+      // Règles spécifiques pour Googlebot
       {
         userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/'],
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl',
+          '/about',
+          '/features',
+          '/languages',
+          '/privacy',
+          '/terms',
+          '/contact',
+          '/roast-examples',
+          '/funny-insults',
+          '/ai-humor',
+          '/chatbot-fun',
+          '/blog/*',
+          '/sitemap.xml'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ],
+        crawlDelay: 1
       },
+      
+      // Règles spécifiques pour Bingbot
       {
         userAgent: 'Bingbot',
-        allow: '/',
-        disallow: ['/api/'],
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl',
+          '/about',
+          '/features',
+          '/languages',
+          '/privacy',
+          '/terms',
+          '/contact',
+          '/roast-examples',
+          '/funny-insults',
+          '/ai-humor',
+          '/chatbot-fun',
+          '/blog/*',
+          '/sitemap.xml'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ],
+        crawlDelay: 1
       },
+      
+      // Règles pour les autres moteurs de recherche populaires
+      {
+        userAgent: 'YandexBot',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl',
+          '/about',
+          '/features',
+          '/languages',
+          '/privacy',
+          '/terms',
+          '/contact',
+          '/roast-examples',
+          '/funny-insults',
+          '/ai-humor',
+          '/chatbot-fun',
+          '/blog/*',
+          '/sitemap.xml'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ],
+        crawlDelay: 2
+      },
+      
+      {
+        userAgent: 'DuckDuckBot',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl',
+          '/about',
+          '/features',
+          '/languages',
+          '/privacy',
+          '/terms',
+          '/contact',
+          '/roast-examples',
+          '/funny-insults',
+          '/ai-humor',
+          '/chatbot-fun',
+          '/blog/*',
+          '/sitemap.xml'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ],
+        crawlDelay: 1
+      },
+      
+      // Règles pour les robots de médias sociaux
+      {
+        userAgent: 'facebookexternalhit',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ]
+      },
+      
+      {
+        userAgent: 'Twitterbot',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ]
+      },
+      
+      {
+        userAgent: 'LinkedInBot',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ]
+      },
+      
+      // Règles pour les robots d'analyse et de performance
+      {
+        userAgent: 'Lighthouse',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ]
+      },
+      
+      {
+        userAgent: 'PageSpeed',
+        allow: [
+          '/',
+          '/en',
+          '/es',
+          '/de',
+          '/it',
+          '/pt',
+          '/ru',
+          '/ja',
+          '/ko',
+          '/zh',
+          '/ar',
+          '/nl'
+        ],
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/'
+        ]
+      }
     ],
+    
+    // Sitemap principal
     sitemap: 'https://roastme.chat/sitemap.xml',
+    
+    // Sitemaps spécifiques par langue
+    sitemaps: [
+      'https://roastme.chat/sitemap.xml',
+      'https://roastme.chat/sitemap-fr.xml',
+      'https://roastme.chat/sitemap-en.xml',
+      'https://roastme.chat/sitemap-es.xml',
+      'https://roastme.chat/sitemap-de.xml',
+      'https://roastme.chat/sitemap-it.xml',
+      'https://roastme.chat/sitemap-pt.xml',
+      'https://roastme.chat/sitemap-ru.xml',
+      'https://roastme.chat/sitemap-ja.xml',
+      'https://roastme.chat/sitemap-ko.xml',
+      'https://roastme.chat/sitemap-zh.xml',
+      'https://roastme.chat/sitemap-ar.xml',
+      'https://roastme.chat/sitemap-nl.xml'
+    ],
+    
+    // Host principal
     host: 'https://roastme.chat',
+    
+    // Informations supplémentaires pour les robots
+    additionalSitemaps: [
+      'https://roastme.chat/sitemap-blog.xml',
+      'https://roastme.chat/sitemap-pages.xml'
+    ]
   }
 }

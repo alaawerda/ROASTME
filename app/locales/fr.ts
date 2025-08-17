@@ -14,6 +14,19 @@ export const fr = {
   inputPlaceholder: 'Dis-moi quelque chose et je vais te roaster ! 🔥',
   warningMessage: '⚠️ Attention : Ce chat est conçu pour être amusant et créatif, pas pour être méchant !',
   
+  // Footer
+  home: 'Accueil',
+  about: 'À propos',
+  contact: 'Contact',
+  secure: 'Sécurisé',
+  fast: 'Rapide',
+  
+  // Statistics
+  activeUsers: 'Utilisateurs actifs',
+  messagesGenerated: 'Messages générés',
+  averageRating: 'Note moyenne',
+  languagesSupported: 'Langues supportées',
+  
   // Time format
   timeFormat: 'fr-FR',
   

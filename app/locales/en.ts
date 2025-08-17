@@ -14,6 +14,19 @@ export const en = {
   inputPlaceholder: 'Tell me something and I\'ll roast you! 🔥',
   warningMessage: '⚠️ Warning: This chat is designed to be fun and creative, not mean!',
   
+  // Footer
+  home: 'Home',
+  about: 'About',
+  contact: 'Contact',
+  secure: 'Secure',
+  fast: 'Fast',
+  
+  // Statistics
+  activeUsers: 'Active Users',
+  messagesGenerated: 'Messages Generated',
+  averageRating: 'Average Rating',
+  languagesSupported: 'Languages Supported',
+  
   // Time format
   timeFormat: 'en-US',
   

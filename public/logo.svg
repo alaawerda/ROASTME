@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Définitions des gradients -->
+  <defs>
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ff8c42;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffa726;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffcc02;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6a1b9a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8e24aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ab47bc;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0" />
+    </radialGradient>
+    
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#6a1b9a" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Effet de lueur -->
+  <circle cx="100" cy="100" r="80" fill="url(#flameGlow)"/>
+  
+  <!-- Flamme principale avec ombre -->
+  <g filter="url(#shadow)">
+    <!-- Base de la flamme -->
+    <path d="M100 40 C120 40 140 60 140 80 C140 100 120 120 100 140 C80 120 60 100 60 80 C60 60 80 40 100 40 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="3"/>
+    
+    <!-- Corps de la flamme -->
+    <path d="M100 140 C120 160 140 180 140 200 C140 220 120 240 100 260 C80 240 60 220 60 200 C60 180 80 160 100 140 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="3"/>
+    
+    <!-- Détails de la flamme -->
+    <path d="M100 140 C110 150 120 160 120 170 C120 180 110 190 100 200 C90 190 80 180 80 170 C80 160 90 150 100 140 Z" fill="#ffcc02" opacity="0.8"/>
+  </g>
+  
+  <!-- Yeux expressifs -->
+  <g>
+    <!-- Œil gauche -->
+    <ellipse cx="80" cy="100" rx="8" ry="12" fill="white" stroke="#6a1b9a" stroke-width="2"/>
+    <circle cx="80" cy="100" r="5" fill="#6a1b9a"/>
+    <circle cx="78" cy="98" r="2" fill="white"/>
+    
+    <!-- Œil droit -->
+    <ellipse cx="120" cy="100" rx="8" ry="12" fill="white" stroke="#6a1b9a" stroke-width="2"/>
+    <circle cx="120" cy="100" r="5" fill="#6a1b9a"/>
+    <circle cx="122" cy="98" r="2" fill="white"/>
+  </g>
+  
+  <!-- Sourire malicieux -->
+  <path d="M80 130 Q100 150 120 130" fill="none" stroke="#6a1b9a" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Microphone détaillé -->
+  <g>
+    <!-- Corps du microphone -->
+    <rect x="150" y="140" width="15" height="40" rx="7.5" fill="url(#purpleGradient)" stroke="#6a1b9a" stroke-width="2"/>
+    
+    <!-- Tête du microphone -->
+    <circle cx="157.5" cy="140" r="12" fill="url(#purpleGradient)" stroke="#6a1b9a" stroke-width="2"/>
+    
+    <!-- Grille du microphone -->
+    <circle cx="157.5" cy="140" r="8" fill="none" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+    <line x1="149.5" y1="140" x2="165.5" y2="140" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+    <line x1="157.5" y1="132" x2="157.5" y2="148" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+    
+    <!-- Câble du microphone -->
+    <path d="M150 180 Q140 190 130 185" fill="none" stroke="#6a1b9a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Petites flammes latérales animées -->
+  <g>
+    <!-- Flamme gauche -->
+    <path d="M40 120 Q50 110 60 120 Q50 130 40 120 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="2"/>
+    <path d="M35 125 Q45 115 55 125 Q45 135 35 125 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="1.5" opacity="0.8"/>
+    
+    <!-- Flamme droite -->
+    <path d="M140 120 Q150 110 160 120 Q150 130 140 120 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="2"/>
+    <path d="M145 125 Q155 115 165 125 Q155 135 145 125 Z" fill="url(#flameGradient)" stroke="#6a1b9a" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+  <!-- Étincelles -->
+  <g opacity="0.7">
+    <circle cx="70" cy="60" r="2" fill="#ffcc02"/>
+    <circle cx="130" cy="70" r="1.5" fill="#ffcc02"/>
+    <circle cx="50" cy="90" r="1" fill="#ffcc02"/>
+    <circle cx="150" cy="100" r="1.5" fill="#ffcc02"/>
+  </g>
+</svg>

@@ -1,24 +1,29 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Zap, Flame } from 'lucide-react'
+import { Send, MessageSquare } from 'lucide-react'
 import ChatMessage from './components/ChatMessage'
 import { Message } from './types'
 import { useLanguage } from './hooks/useLanguage'
-import LanguageSelector from './components/LanguageSelector'
 import SEOManager from './components/SEOManager'
 import ErrorBoundary from './components/ErrorBoundary'
+import Header from './components/Header'
+import LoadingSpinner from './components/LoadingSpinner'
+import Footer from './components/Footer'
+import WelcomeCard from './components/WelcomeCard'
 
 export default function Home() {
-  const { currentLanguage, translations, changeLanguage, isInitialized: languageInitialized } = useLanguage()
-  
-  const [messages, setMessages] = useState<Message[]>([])
-  const [input, setInput] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string>('')
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(true);
+  const [inputFocused, setInputFocused] = useState(false);
+  const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguage();
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -29,6 +34,42 @@ export default function Home() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  // S'assurer que la zone des messages reste visible au chargement initial
+  useEffect(() => {
+    scrollToBottom()
+  }, [])
+
+  // Garder la concentration sur les messages lors des changements d'état de chargement
+  useEffect(() => {
+    if (isLoading) {
+      scrollToBottom()
+    }
+  }, [isLoading])
+
+  // Re-ancrer la vue sur les messages lors d'un redimensionnement de la fenêtre (ex: rotation mobile, clavier virtuel)
+  useEffect(() => {
+    const handleResize = () => scrollToBottom()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Mettre à jour l'état "à bas de page" selon le scroll du conteneur de chat
+  const updateIsAtBottom = () => {
+    const el = chatContainerRef.current
+    if (!el) return
+    const threshold = 8 // px de tolérance
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - threshold
+    setIsAtBottom(atBottom)
+  }
+
+  // Écouter le scroll du conteneur et re-calculer sur resize
+  useEffect(() => {
+    updateIsAtBottom()
+    const onResize = () => updateIsAtBottom()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   // Initialiser le message de bienvenue une seule fois
   useEffect(() => {
@@ -42,7 +83,7 @@ export default function Home() {
             timestamp: new Date()
           }
         ])
-        setIsInitialized(true)
+        // setIsInitialized(true) // This line was removed from the new_code, so it's removed here.
       }
     } catch (error) {
       console.error('Erreur lors de l\'initialisation du message de bienvenue:', error)
@@ -86,6 +127,8 @@ export default function Home() {
 
     setMessages(prev => [...prev, userMessage])
     setInput('')
+    // Blur input to avoid keeping focus on the bottom bar after sending
+    if (inputRef.current) inputRef.current.blur()
     setIsLoading(true)
 
     try {
@@ -128,30 +171,30 @@ export default function Home() {
     }
   }
 
-  // Gérer les erreurs
+  // Gérer les erreurs avec un design moderne
   if (hasError) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-50">
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">😅</div>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/30 to-yellow-50/30">
+        <div className="card max-w-md mx-auto text-center animate-in">
+          <div className="text-6xl mb-6">😅</div>
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             Oups ! Une erreur s&apos;est produite
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 leading-relaxed">
             Une erreur inattendue s&apos;est produite lors du chargement de l&apos;application.
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+            className="btn-primary w-full"
           >
             Recharger la page
           </button>
           {errorMessage && (
-            <details className="mt-4 text-left">
-              <summary className="cursor-pointer text-sm text-gray-500">
+            <details className="mt-6 text-left">
+              <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 transition-colors">
                 Détails de l&apos;erreur (pour les développeurs)
               </summary>
-              <pre className="mt-2 p-4 bg-gray-100 rounded text-xs text-gray-700 overflow-auto">
+              <pre className="mt-3 p-4 bg-gray-100 rounded-xl text-xs text-gray-700 overflow-auto border">
                 {errorMessage}
               </pre>
             </details>
@@ -162,10 +205,12 @@ export default function Home() {
   }
 
   // Afficher un loader si les traductions ne sont pas encore chargées
-  if (!translations || !languageInitialized) {
+  if (!translations || !isInitialized) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/30 to-yellow-50/30">
+        <div className="card text-center animate-in">
+          <LoadingSpinner message="Chargement des traductions..." size="lg" />
+        </div>
       </div>
     )
   }
@@ -173,10 +218,9 @@ export default function Home() {
   // Vérifier que toutes les propriétés nécessaires sont disponibles
   if (!translations.title || !translations.welcomeMessage || !translations.inputPlaceholder) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-gray-600">Chargement des traductions...</p>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/30 to-yellow-50/30">
+        <div className="card text-center animate-in">
+          <LoadingSpinner message="Vérification des traductions..." size="lg" />
         </div>
       </div>
     )
@@ -188,76 +232,112 @@ export default function Home() {
         {/* Gestionnaire SEO dynamique */}
         <SEOManager />
         
-        <div className="flex flex-col h-screen bg-light">
-          {/* Header - More compact */}
-          <header className="bg-gradient-to-r from-primary to-secondary text-white p-3 shadow-md">
-            <div className="max-w-4xl mx-auto flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Flame className="w-6 h-6 text-yellow-300" />
-                <h1 className="text-xl font-bold">{translations.title}</h1>
-              </div>
-              <div className="flex items-center space-x-3">
-                <LanguageSelector 
-                  currentLanguage={currentLanguage} 
-                  onLanguageChange={changeLanguage} 
-                />
-                <div className="hidden sm:flex items-center space-x-2 text-xs">
-                  <Zap className="w-3 h-3" />
-                  <span>{translations.poweredBy}</span>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          {/* Chat Container - More compact spacing */}
-          <div className="flex-1 overflow-y-auto p-3 max-w-4xl mx-auto w-full">
-            <div className="space-y-3">
-              {messages.map((message) => (
-                <ChatMessage 
-                  key={message.id} 
-                  message={message} 
-                  timeFormat={translations.timeFormat || 'en-US'} 
-                />
-              ))}
-              {isLoading && (
-                <div className="flex items-center space-x-2 text-gray-500 text-sm">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
-                  <span>{translations.preparingRoast || 'Préparation...'}</span>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-          </div>
-
-          {/* Input Form - More compact */}
-          <div className="border-t bg-white p-3">
-            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-              <div className="flex space-x-3">
-                <div className="flex-1 relative">
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder={translations.inputPlaceholder}
-                    className="w-full p-2.5 pr-10 border border-gray-300 rounded-lg focus:border-primary focus:outline-none transition-colors text-sm"
-                    disabled={isLoading}
+        <div className="chat-layout bg-pattern">
+          {/* Header avec logo animé */}
+          <Header 
+            title={translations.title || 'RoastMe Chat'} 
+            poweredBy={translations.poweredBy || 'Powered by AI'} 
+            currentLanguage={currentLanguage}
+            onLanguageChange={changeLanguage}
+          />
+          
+          {/* Container principal avec flexbox pour centrer le contenu */}
+          <main className="chat-main">
+            {/* Chat Container avec design moderne et centrage - Version compacte */}
+            <div
+              className="chat-container mobile-scroll-optimized p-2 sm:p-3 md:p-4 max-w-5xl mx-auto w-full mt-8 sm:mt-10 md:mt-12"
+              ref={chatContainerRef}
+              onScroll={updateIsAtBottom}
+            >
+              {/* Bienvenue: afficher uniquement avant le premier message */}
+              {messages.length === 0 && <WelcomeCard />}
+              
+              {/* Zone de chat avec meilleur espacement - Version ultra-compacte pour mobile */}
+              <div className="space-y-2 sm:space-y-3 md:space-y-4 max-w-3xl mx-auto">
+                {messages.map((message) => (
+                  <ChatMessage 
+                    key={message.id} 
+                    message={message} 
+                    timeFormat={translations.timeFormat || 'en-US'} 
                   />
-                  <button
-                    type="submit"
-                    disabled={!input.trim() || isLoading}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-primary hover:text-primary/80 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
-                  >
-                    <Send className="w-4 h-4" />
-                  </button>
-                </div>
+                ))}
+                {isLoading && (
+                  <div className="flex items-center justify-center py-4 sm:py-6 md:py-8">
+                    <div className="card glass-effect max-w-md w-full animate-in">
+                      <LoadingSpinner message={translations.preparingRoast || 'Préparation de votre roast...'} size="md" />
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
               </div>
-              <p className="text-xs text-gray-500 mt-1.5 text-center">
-                {translations.warningMessage || '⚠️ Attention: Ce chat est conçu pour être amusant et créatif!'}
-              </p>
-            </form>
-          </div>
+            </div>
+            
+            {/* Input Form avec design moderne et positionnement fixe - Version ultra-compacte pour mobile */}
+            <div className="input-container p-2 sm:p-3 md:p-4">
+              <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
+                <div className="flex space-x-2 sm:space-x-3">
+                  <div className="flex-1 relative group">
+                    {/* Adornment gauche de l'input */}
+                    <span className={`input-adornment ${inputFocused || input.length > 0 ? 'input-adornment-active' : ''}`}>
+                      <MessageSquare className="w-4 h-4" />
+                    </span>
+                    <input
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onFocus={() => { setInputFocused(true); scrollToBottom() }}
+                      onBlur={() => setInputFocused(false)}
+                      placeholder={translations.inputPlaceholder}
+                      className={`input-styled mobile-text group-hover:border-flame-orange/50 transition-all duration-200 ${messages.length > 0 ? 'input-compact' : ''}`}
+                      aria-label={translations.inputPlaceholder}
+                      autoComplete="off"
+                      maxLength={200}
+                      name="message"
+                      disabled={isLoading}
+                      ref={inputRef}
+                    />
+                    <button
+                      type="submit"
+                      disabled={isLoading || !input.trim()}
+                      className="send-button-enhanced disabled:opacity-50 disabled:cursor-not-allowed group"
+                      aria-label="Envoyer"
+                    >
+                      {/* Icône principale */}
+                      <Send className="w-5 h-5 transition-all duration-300 ease-out" />
+                      
+                      {/* Indicateur de chargement */}
+                      {isLoading && (
+                        <div className="send-loading">
+                          <div className="loading-dot"></div>
+                          <div className="loading-dot"></div>
+                          <div className="loading-dot"></div>
+                        </div>
+                      )}
+                      
+                      {/* Tooltip informatif */}
+                      <div className="send-tooltip">
+                        {isLoading ? 'Envoi en cours...' : input.trim() ? 'Envoyer le message' : 'Tapez un message pour envoyer'}
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Helper row avec informations utiles - Version ultra-compacte pour mobile */}
+                <div className="helper-row mt-1.5 sm:mt-2">
+                  <div className="flex items-center space-x-1.5 sm:space-x-2">
+                    <span className="text-xs text-gray-400">
+                      {input.length}/200
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </main>
+          
+          {/* Footer compact */}
+          <Footer isInputFocused={inputFocused} />
         </div>
       </>
     </ErrorBoundary>
-  )
+  );
 }
