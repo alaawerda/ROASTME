@@ -1,21 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Configuration OpenRouter
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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'
+// Configuration Gemini API
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyCjJOmJsLa5RDzogaNYEEAxZl9OhKyqGEk'
 const SITE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
 
 export async function POST(request: NextRequest) {
   try {
     // Vérifier que la clé API est disponible
-    if (!OPENROUTER_API_KEY) {
-      console.error('OPENROUTER_API_KEY manquante')
+    if (!GEMINI_API_KEY) {
+      console.error('GEMINI_API_KEY manquante')
       return NextResponse.json(
         { error: 'Configuration API manquante' },
         { status: 500 }
       )
     }
 
-    console.log('Clé API trouvée:', OPENROUTER_API_KEY.substring(0, 20) + '...')
+    console.log('Clé API trouvée:', GEMINI_API_KEY.substring(0, 20) + '...')
     console.log('URL du site:', SITE_URL)
 
     const { message, history } = await request.json()
@@ -38,8 +38,10 @@ Drop hard truths like punches, wrapped in jokes that hit just as hard.
 
 Exploit the ridiculousness or absurdity of human behavior as your main ammo.
 
-No “sorry,” no “maybe” — just straight talk.
+No "sorry," no "maybe" — just straight talk.
 You mix dry humor, sarcasm, and verbal brutality to shock people into awareness while making them laugh.
+
+CRITICAL LANGUAGE RULE: You MUST ALWAYS respond in the exact same language that the user used in their message. If they write in French, respond in French. If they write in Spanish, respond in Spanish. If they write in English, respond in English. This is non-negotiable and must be followed for every single response.
 
 ROAST STYLE FORMAT:
 - Start with a brutal opening line that sets the tone
@@ -69,50 +71,60 @@ IMPORTANT:
     // Construire l'historique des messages
     const isFirstMessage = !history || history.length === 0
     
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      ...history.map((msg: any) => ({
-        role: msg.role,
-        content: msg.content
-      })),
-      { role: 'user', content: message }
-    ]
+    // Construire le prompt complet avec l'historique
+    let fullPrompt = systemPrompt + "\n\n"
+    
+    if (history && history.length > 0) {
+      history.forEach((msg: any) => {
+        if (msg.role === 'user') {
+          fullPrompt += `User: ${msg.content}\n`
+        } else if (msg.role === 'assistant') {
+          fullPrompt += `Assistant: ${msg.content}\n`
+        }
+      })
+    }
+    
+    fullPrompt += `User: ${message}\n\nAssistant:`
 
     // Ajouter un contexte supplémentaire pour le premier message
     if (isFirstMessage) {
-      messages.unshift({
-        role: 'system', 
-        content: 'This is the user\'s first message. Respond with this exact message in English: "Salut ! Je suis ton AI roaster personnel ! 🔥 Prêt à te faire descendre en flammes ? Dis-moi quelque chose et je vais te roaster de manière créative et amusante ! 😈\n\nDonne-moi des infos concrètes, sinon je ne peux pas te roaster. Faites-moi un profil réel : âge, taille, poids, trait de caractère… Sans c\'est juste un vide."'
-      })
+      fullPrompt = 'This is the user\'s first message. Respond with this exact message in English: "Salut ! Je suis ton AI roaster personnel ! 🔥 Prêt à te faire descendre en flammes ? Dis-moi quelque chose et je vais te roaster de manière créative et amusante ! 😈\n\nDonne-moi des infos concrètes, sinon je ne peux pas te roaster. Faites-moi un profil réel : âge, taille, poids, trait de caractère… Sans c\'est juste un vide."'
     }
 
-    console.log('Envoi à OpenRouter avec messages:', messages)
+    console.log('Envoi à Gemini avec prompt:', fullPrompt)
     
-    // Appel direct à l'API OpenRouter
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    // Appel à l'API Gemini
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "HTTP-Referer": SITE_URL,
-        "X-Title": "RoastMe Chat",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "X-goog-api-key": GEMINI_API_KEY
       },
       body: JSON.stringify({
-        "model": "openai/gpt-oss-20b:free", // Modèle gratuit d'OpenRouter
-        "messages": messages,
-        "max_tokens": 300,
-        "temperature": 0.8
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": fullPrompt
+              }
+            ]
+          }
+        ],
+        "generationConfig": {
+          "maxOutputTokens": 300,
+          "temperature": 0.8
+        }
       })
     })
 
-    console.log('Réponse OpenRouter status:', response.status)
+    console.log('Réponse Gemini status:', response.status)
 
     if (!response.ok) {
-      throw new Error(`Erreur API OpenRouter: ${response.status}`)
+      throw new Error(`Erreur API Gemini: ${response.status}`)
     }
 
     const completion = await response.json()
-    const aiResponse = completion.choices?.[0]?.message?.content || "Désolé, je n'ai pas pu préparer ton roast ! 😅"
+    const aiResponse = completion.candidates?.[0]?.content?.parts?.[0]?.text || "Désolé, je n'ai pas pu préparer ton roast ! 😅"
 
     return NextResponse.json({ message: aiResponse })
 
