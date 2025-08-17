@@ -259,7 +259,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
 }
 
 export function generateMetadata(lang: string = 'fr'): Metadata {
-  const seo = seoMetadata[lang] || seoMetadata.fr
+  const seo = seoMetadata[lang] || seoMetadata.fr!
   
   return {
     title: seo.title,

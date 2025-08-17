@@ -21,6 +21,7 @@ export default function Home() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  // @ts-ignore
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [inputFocused, setInputFocused] = useState(false);
   const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguage();

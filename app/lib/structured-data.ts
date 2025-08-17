@@ -60,7 +60,7 @@ export const structuredDataConfigs: Record<string, StructuredData> = {
     },
     keywords: ["roast", "humour", "IA", "chat", "divertissement", "comédie", "insultes créatives", "roaster", "blagues"],
     datePublished: "2024-01-01",
-    dateModified: new Date().toISOString().split('T')[0]
+    dateModified: new Date().toISOString().split('T')[0] || new Date().toISOString()
   },
   en: {
     "@context": "https://schema.org",
@@ -91,7 +91,7 @@ export const structuredDataConfigs: Record<string, StructuredData> = {
     },
     keywords: ["roast", "humor", "AI", "chat", "entertainment", "comedy", "creative insults", "roaster", "jokes"],
     datePublished: "2024-01-01",
-    dateModified: new Date().toISOString().split('T')[0]
+    dateModified: new Date().toISOString().split('T')[0] || new Date().toISOString()
   },
   es: {
     "@context": "https://schema.org",
@@ -122,12 +122,12 @@ export const structuredDataConfigs: Record<string, StructuredData> = {
     },
     keywords: ["roast", "humor", "IA", "chat", "entretenimiento", "comedia", "insultos creativos", "roaster", "chistes"],
     datePublished: "2024-01-01",
-    dateModified: new Date().toISOString().split('T')[0]
+    dateModified: new Date().toISOString().split('T')[0] || new Date().toISOString()
   }
 }
 
 export function getStructuredData(lang: string = 'fr'): StructuredData {
-  return structuredDataConfigs[lang] || structuredDataConfigs.fr
+  return structuredDataConfigs[lang] || structuredDataConfigs.fr!
 }
 
 export function generateStructuredDataScript(lang: string = 'fr'): string {

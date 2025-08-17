@@ -201,7 +201,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
     }
   }
 
-  return configs[lang] || configs.fr
+  return configs[lang] || configs.fr!
 }
 
 // Fonction pour générer toutes les balises Open Graph

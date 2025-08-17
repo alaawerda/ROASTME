@@ -43,13 +43,13 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
   // Vérifier si on est côté client
   if (typeof window === 'undefined') {
     console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
-    return { languageCode: 'en', translations: allTranslations['en'] }
+    return { languageCode: 'en', translations: allTranslations['en']! }
   }
   
   try {
     // Détecter la langue du navigateur en premier
     const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
-    const languageCode = browserLanguage.split('-')[0].toLowerCase()
+    const languageCode = browserLanguage.split('-')[0]?.toLowerCase() || 'en'
     
     console.log('🌐 Langue du navigateur:', browserLanguage)
     console.log('🔤 Code de langue:', languageCode)
@@ -79,7 +79,7 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
     
     if (savedLanguage && allTranslations[savedLanguage]) {
       console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
-      return { languageCode: savedLanguage, translations: allTranslations[savedLanguage] }
+      return { languageCode: savedLanguage, translations: allTranslations[savedLanguage]! }
     }
 
     // Fallback vers le français (au lieu de l'anglais)
@@ -91,11 +91,11 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
         console.warn('Impossible de sauvegarder la langue par défaut:', error)
       }
     }
-    return { languageCode: 'fr', translations: allTranslations['fr'] }
+    return { languageCode: 'fr', translations: allTranslations['fr']! }
   } catch (error) {
     console.error('Erreur lors de la détection de langue:', error)
     // Fallback sécurisé
-    return { languageCode: 'en', translations: allTranslations['en'] }
+    return { languageCode: 'en', translations: allTranslations['en']! }
   }
 }
 
@@ -142,13 +142,13 @@ export function useLanguage() {
       console.error('Erreur lors de l\'initialisation de la langue:', error)
       // Fallback sécurisé
       setCurrentLanguage('en')
-      setTranslations(allTranslations['en'])
+      setTranslations(allTranslations['en']!)
       setIsInitialized(true)
     }
   }, [])
 
   // Vérifier que les valeurs retournées sont valides
-  const safeTranslations = translations || allTranslations['en']
+  const safeTranslations = translations || allTranslations['en']!
   const safeCurrentLanguage = currentLanguage || 'en'
 
   return {

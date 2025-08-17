@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Zap, Shield, Users, MessageSquare, Star, Globe, ArrowUpRight, Flame, Coffee } from 'lucide-react';
+import { Heart, Zap, Shield, Users, MessageSquare, Globe, ArrowUpRight, Flame, Coffee } from 'lucide-react';
 import Logo from './Logo';
 import { useLanguage } from '../hooks/useLanguage';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Sparkles, Globe, Coffee } from 'lucide-react';
+import { Zap, Sparkles, Coffee } from 'lucide-react';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 

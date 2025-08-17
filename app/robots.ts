@@ -336,30 +336,7 @@ export default function robots(): MetadataRoute.Robots {
     // Sitemap principal
     sitemap: 'https://roastme.chat/sitemap.xml',
     
-    // Sitemaps spécifiques par langue
-    sitemaps: [
-      'https://roastme.chat/sitemap.xml',
-      'https://roastme.chat/sitemap-fr.xml',
-      'https://roastme.chat/sitemap-en.xml',
-      'https://roastme.chat/sitemap-es.xml',
-      'https://roastme.chat/sitemap-de.xml',
-      'https://roastme.chat/sitemap-it.xml',
-      'https://roastme.chat/sitemap-pt.xml',
-      'https://roastme.chat/sitemap-ru.xml',
-      'https://roastme.chat/sitemap-ja.xml',
-      'https://roastme.chat/sitemap-ko.xml',
-      'https://roastme.chat/sitemap-zh.xml',
-      'https://roastme.chat/sitemap-ar.xml',
-      'https://roastme.chat/sitemap-nl.xml'
-    ],
-    
     // Host principal
-    host: 'https://roastme.chat',
-    
-    // Informations supplémentaires pour les robots
-    additionalSitemaps: [
-      'https://roastme.chat/sitemap-blog.xml',
-      'https://roastme.chat/sitemap-pages.xml'
-    ]
+    host: 'https://roastme.chat'
   }
 }

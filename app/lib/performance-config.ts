@@ -448,8 +448,12 @@ export const COMPONENT_CONFIG = {
 };
 
 // Fonction utilitaire pour appliquer les classes compactes
-export function getCompactClasses(type: keyof typeof COMPACT_CLASSES, size: keyof typeof COMPACT_CLASSES.spacing) {
-  return COMPACT_CLASSES[type][size];
+export function getCompactClasses(type: keyof typeof COMPACT_CLASSES, size: string) {
+  const config = COMPACT_CLASSES[type];
+  if (config && typeof config === 'object' && size in config) {
+    return (config as any)[size];
+  }
+  return '';
 }
 
 // Fonction utilitaire pour obtenir la configuration d'un composant
