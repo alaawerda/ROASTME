@@ -46,49 +46,74 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
     return { languageCode: 'en', translations: allTranslations['en'] }
   }
   
-  // Détecter la langue du navigateur en premier
-  const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
-  const languageCode = browserLanguage.split('-')[0].toLowerCase()
-  
-  console.log('🌐 Langue du navigateur:', browserLanguage)
-  console.log('🔤 Code de langue:', languageCode)
-  
-  // Vérifier si la langue du navigateur est supportée
-  if (allTranslations[languageCode]) {
-    console.log('✅ Langue supportée:', languageCode)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('roastme-language', languageCode)
+  try {
+    // Détecter la langue du navigateur en premier
+    const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
+    const languageCode = browserLanguage.split('-')[0].toLowerCase()
+    
+    console.log('🌐 Langue du navigateur:', browserLanguage)
+    console.log('🔤 Code de langue:', languageCode)
+    
+    // Vérifier si la langue du navigateur est supportée
+    if (allTranslations[languageCode]) {
+      console.log('✅ Langue supportée:', languageCode)
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('roastme-language', languageCode)
+        } catch (error) {
+          console.warn('Impossible de sauvegarder la langue dans localStorage:', error)
+        }
+      }
+      return { languageCode, translations: allTranslations[languageCode] }
     }
-    return { languageCode, translations: allTranslations[languageCode] }
-  }
-  
-  // Essayer de récupérer la langue depuis localStorage
-  const savedLanguage = localStorage.getItem('roastme-language')
-  console.log('💾 Langue sauvegardée:', savedLanguage)
-  
-  if (savedLanguage && allTranslations[savedLanguage]) {
-    console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
-    return { languageCode: savedLanguage, translations: allTranslations[savedLanguage] }
-  }
+    
+    // Essayer de récupérer la langue depuis localStorage
+    let savedLanguage = null
+    try {
+      savedLanguage = localStorage.getItem('roastme-language')
+    } catch (error) {
+      console.warn('Impossible de récupérer la langue depuis localStorage:', error)
+    }
+    
+    console.log('💾 Langue sauvegardée:', savedLanguage)
+    
+    if (savedLanguage && allTranslations[savedLanguage]) {
+      console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
+      return { languageCode: savedLanguage, translations: allTranslations[savedLanguage] }
+    }
 
-  // Fallback vers le français (au lieu de l'anglais)
-  console.log('🔄 Fallback vers le français')
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('roastme-language', 'fr')
+    // Fallback vers le français (au lieu de l'anglais)
+    console.log('🔄 Fallback vers le français')
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('roastme-language', 'fr')
+      } catch (error) {
+        console.warn('Impossible de sauvegarder la langue par défaut:', error)
+      }
+    }
+    return { languageCode: 'fr', translations: allTranslations['fr'] }
+  } catch (error) {
+    console.error('Erreur lors de la détection de langue:', error)
+    // Fallback sécurisé
+    return { languageCode: 'en', translations: allTranslations['en'] }
   }
-  return { languageCode: 'fr', translations: allTranslations['fr'] }
 }
 
 export function useLanguage() {
   const [currentLanguage, setCurrentLanguage] = useState<string>('en')
   const [translations, setTranslations] = useState<Translations>(en)
+  const [isInitialized, setIsInitialized] = useState(false)
 
   const changeLanguage = (languageCode: string): void => {
     if (allTranslations[languageCode]) {
       setCurrentLanguage(languageCode)
       setTranslations(allTranslations[languageCode])
       if (typeof window !== 'undefined') {
-        localStorage.setItem('roastme-language', languageCode)
+        try {
+          localStorage.setItem('roastme-language', languageCode)
+        } catch (error) {
+          console.error('Erreur lors de la sauvegarde de la langue:', error)
+        }
       }
     }
   }
@@ -96,7 +121,11 @@ export function useLanguage() {
   const resetToBrowserLanguage = (): void => {
     console.log('🔄 Reset vers la langue du navigateur')
     if (typeof window !== 'undefined') {
-      localStorage.removeItem('roastme-language')
+      try {
+        localStorage.removeItem('roastme-language')
+      } catch (error) {
+        console.error('Erreur lors de la suppression de la langue:', error)
+      }
     }
     const { languageCode, translations: newTranslations } = detectLanguage()
     setCurrentLanguage(languageCode)
@@ -104,16 +133,30 @@ export function useLanguage() {
   }
 
   useEffect(() => {
-    const { languageCode, translations: newTranslations } = detectLanguage()
-    setCurrentLanguage(languageCode)
-    setTranslations(newTranslations)
+    try {
+      const { languageCode, translations: newTranslations } = detectLanguage()
+      setCurrentLanguage(languageCode)
+      setTranslations(newTranslations)
+      setIsInitialized(true)
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation de la langue:', error)
+      // Fallback sécurisé
+      setCurrentLanguage('en')
+      setTranslations(allTranslations['en'])
+      setIsInitialized(true)
+    }
   }, [])
 
+  // Vérifier que les valeurs retournées sont valides
+  const safeTranslations = translations || allTranslations['en']
+  const safeCurrentLanguage = currentLanguage || 'en'
+
   return {
-    currentLanguage,
-    translations,
+    currentLanguage: safeCurrentLanguage,
+    translations: safeTranslations,
     changeLanguage,
     supportedLanguages,
-    resetToBrowserLanguage
+    resetToBrowserLanguage,
+    isInitialized
   }
 }

@@ -11,8 +11,6 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const currentLang = supportedLanguages.find(lang => lang.code === currentLanguage) || supportedLanguages[0]
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -24,8 +22,30 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Vérifier que les props sont valides
+  if (!currentLanguage || !onLanguageChange) {
+    return (
+      <div className="px-2.5 py-1.5 text-sm text-white/70">
+        <Globe className="w-4 h-4" />
+      </div>
+    )
+  }
+
+  const currentLang = supportedLanguages.find(lang => lang.code === currentLanguage) || supportedLanguages[0]
+
+  // Vérifier que la langue actuelle est valide
+  if (!currentLang) {
+    return (
+      <div className="px-2.5 py-1.5 text-sm text-white/70">
+        <Globe className="w-4 h-4" />
+      </div>
+    )
+  }
+
   const handleLanguageSelect = (languageCode: string) => {
-    onLanguageChange(languageCode)
+    if (onLanguageChange && typeof onLanguageChange === 'function') {
+      onLanguageChange(languageCode)
+    }
     setIsOpen(false)
   }
 

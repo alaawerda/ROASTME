@@ -7,7 +7,19 @@ interface ChatMessageProps {
 }
 
 export default function ChatMessage({ message, timeFormat }: ChatMessageProps) {
+  // Vérifier que le message est valide
+  if (!message || !message.role || !message.content) {
+    return (
+      <div className="flex justify-center">
+        <div className="text-gray-500 text-sm">Message invalide</div>
+      </div>
+    )
+  }
+
   const isUser = message.role === 'user'
+  
+  // Vérifier que le timestamp est valide
+  const timestamp = message.timestamp instanceof Date ? message.timestamp : new Date()
   
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
@@ -27,7 +39,7 @@ export default function ChatMessage({ message, timeFormat }: ChatMessageProps) {
             {message.content}
           </div>
           <div className={`text-xs mt-1.5 ${isUser ? 'text-white/70' : 'text-gray-500'}`}>
-            {message.timestamp.toLocaleTimeString(timeFormat, { 
+            {timestamp.toLocaleTimeString(timeFormat || 'en-US', { 
               hour: '2-digit', 
               minute: '2-digit' 
             })}

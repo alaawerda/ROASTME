@@ -2,7 +2,7 @@
 const nextConfig = {
   // Configuration moderne pour Next.js 14
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    // Suppression des optimisations expérimentales qui peuvent causer des problèmes
   },
   
   // Optimisation des images
@@ -105,21 +105,6 @@ const nextConfig = {
   
   // Configuration pour le build
   output: 'standalone',
-  
-  // Optimisation des bundles
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      }
-    }
-    return config
-  },
 }
 
 module.exports = nextConfig
