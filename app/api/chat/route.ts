@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 // Configuration Gemini API
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyCjJOmJsLa5RDzogaNYEEAxZl9OhKyqGEk'
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY 
 const SITE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
 
 export async function POST(request: NextRequest) {

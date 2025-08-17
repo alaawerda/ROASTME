@@ -1,0 +1,14 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+
+# Allow all friendly crawlers
+User-agent: *
+Allow: /
+
+# Disallow Next.js internal paths
+Disallow: /_next/
+
+# Disallow API routes from being crawled if they don't serve public content
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://roastme.chat/sitemap.xml
