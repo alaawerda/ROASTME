@@ -1,4 +1,4 @@
-import { Bot, User, Flame, Sparkles, Clock } from 'lucide-react'
+import { Bot, User, Sparkles, Clock } from 'lucide-react'
 import { Message } from '../types'
 
 interface ChatMessageProps {
