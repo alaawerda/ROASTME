@@ -26,7 +26,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'fr_FR',
       type: 'website',
-      image: `${baseUrl}/og-image-fr.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - L\'IA qui te Roaste ! Chat IA Humoristique Gratuit',
@@ -41,7 +41,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'en_US',
       type: 'website',
-      image: `${baseUrl}/og-image-en.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - The AI that Roasts You! Free AI Humor Chat',
@@ -56,7 +56,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'es_ES',
       type: 'website',
-      image: `${baseUrl}/og-image-es.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - ¡La IA que te Asa! Chat de IA Humorístico Gratis',
@@ -71,7 +71,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'de_DE',
       type: 'website',
-      image: `${baseUrl}/og-image-de.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - Die KI, die dich Roastet! Kostenloser KI-Humor-Chat',
@@ -86,7 +86,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'it_IT',
       type: 'website',
-      image: `${baseUrl}/og-image-it.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - L\'IA che ti Arrostisce! Chat IA Umoristico Gratuito',
@@ -101,7 +101,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'pt_BR',
       type: 'website',
-      image: `${baseUrl}/og-image-pt.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - A IA que te Assa! Chat de IA Humorístico Grátis',
@@ -116,7 +116,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'ru_RU',
       type: 'website',
-      image: `${baseUrl}/og-image-ru.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - ИИ, который тебя Прожарит! Бесплатный ИИ-юмор чат',
@@ -131,7 +131,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'ja_JP',
       type: 'website',
-      image: `${baseUrl}/og-image-ja.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - あなたをローストするAI！無料AIユーモアチャット',
@@ -146,7 +146,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'ko_KR',
       type: 'website',
-      image: `${baseUrl}/og-image-ko.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - 당신을 로스트하는 AI! 무료AI 유머 채팅',
@@ -161,7 +161,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'zh_CN',
       type: 'website',
-      image: `${baseUrl}/og-image-zh.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - 烤你的AI！免费AI幽默聊天',
@@ -176,7 +176,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'ar_SA',
       type: 'website',
-      image: `${baseUrl}/og-image-ar.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! دردشة ذكاء اصطناعي فكاهية مجانية',
@@ -191,7 +191,7 @@ export function getOGConfig(lang: string = 'fr'): OGConfig {
       siteName: 'RoastMe Chat',
       locale: 'nl_NL',
       type: 'website',
-      image: `${baseUrl}/og-image-nl.jpg`,
+      image: `${baseUrl}/og-image.jpg`,
       imageWidth: 1200,
       imageHeight: 630,
       imageAlt: 'RoastMe Chat - De AI die je Roast! Gratis AI Humor Chat',
@@ -274,12 +274,6 @@ export function generateAlternateLanguageTags(): string {
 // Fonction pour générer les balises de préchargement des images Open Graph
 export function generateOGImagePreloadTags(): string {
   const baseUrl = 'https://roastme.chat'
-  const languages = ['fr', 'en', 'es', 'de', 'it', 'pt', 'ru', 'ja', 'ko', 'zh', 'ar', 'nl']
-  
-  const tags = languages.map(lang => {
-    const imageUrl = `${baseUrl}/og-image-${lang}.jpg`
-    return `<link rel="preload" as="image" href="${imageUrl}" />`
-  })
-  
-  return tags.join('\n  ')
+  const imageUrl = `${baseUrl}/og-image.jpg`
+  return `<link rel="preload" as="image" href="${imageUrl}" />`
 }

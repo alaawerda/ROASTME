@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('Clé API trouvée:', GEMINI_API_KEY.substring(0, 20) + '...')
-    console.log('URL du site:', SITE_URL)
+    // Ne pas logger la clé API pour des raisons de sécurité
+    console.log('API configurée. URL du site:', SITE_URL)
 
     const { message, history } = await request.json()
 

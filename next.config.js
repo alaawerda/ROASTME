@@ -14,6 +14,12 @@ const nextConfig = {
   },
 
   async headers() {
+    // CSP conditionnelle : unsafe-eval seulement en développement
+    const isDev = process.env.NODE_ENV === 'development'
+    const scriptSrc = isDev 
+      ? "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com"
+      : "'self' 'unsafe-inline' https://www.googletagmanager.com"
+    
     return [
       {
         source: '/(.*)',
@@ -27,12 +33,20 @@ const nextConfig = {
             value: 'DENY'
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          },
-          {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: `default-src 'self'; img-src 'self' https: data:; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com https://vitals.vercel-insights.com https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';`
           }
         ]
       }

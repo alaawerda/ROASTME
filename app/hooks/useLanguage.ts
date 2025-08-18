@@ -1,8 +1,33 @@
 import { useState, useEffect } from 'react'
 import { fr, en, es, de, it, pt, nl, ru, ja, ko, zh, ar } from '../locales'
 
-// Type pour toutes les traductions
-type Translations = typeof fr
+// Type pour toutes les traductions avec propriétés optionnelles pour la compatibilité
+type Translations = {
+  title: string;
+  poweredBy: string;
+  welcomeMessage: string;
+  preparingRoast: string;
+  networkError: string;
+  inputPlaceholder: string;
+  warningMessage: string;
+  home: string;
+  about: string;
+  contact: string;
+  secure: string;
+  fast: string;
+  activeUsers: string;
+  messagesGenerated: string;
+  averageRating: string;
+  languagesSupported: string;
+  timeFormat: string;
+  languageName: string;
+  languageCode: string;
+  // Propriétés optionnelles pour les dons
+  donateModalTitle?: string;
+  donateModalDescription?: string;
+  donateCta?: string;
+  donateClose?: string;
+}
 
 // Mapping des codes de langue vers les traductions
 const allTranslations: Record<string, Translations> = {
@@ -43,13 +68,13 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
   // Vérifier si on est côté client
   if (typeof window === 'undefined') {
     console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
-    return { languageCode: 'en', translations: allTranslations['en']! }
+    return { languageCode: 'fr', translations: allTranslations['fr']! }
   }
   
   try {
     // Détecter la langue du navigateur en premier
-    const browserLanguage = navigator.language || navigator.languages?.[0] || 'en'
-    const languageCode = browserLanguage.split('-')[0]?.toLowerCase() || 'en'
+    const browserLanguage = navigator.language || navigator.languages?.[0] || 'fr'
+    const languageCode = browserLanguage.split('-')[0]?.toLowerCase() || 'fr'
     
     console.log('🌐 Langue du navigateur:', browserLanguage)
     console.log('🔤 Code de langue:', languageCode)
@@ -82,7 +107,7 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
       return { languageCode: savedLanguage, translations: allTranslations[savedLanguage]! }
     }
 
-    // Fallback vers le français (au lieu de l'anglais)
+    // Fallback vers le français (langue par défaut)
     console.log('🔄 Fallback vers le français')
     if (typeof window !== 'undefined') {
       try {
@@ -94,8 +119,8 @@ const detectLanguage = (): { languageCode: string; translations: Translations } 
     return { languageCode: 'fr', translations: allTranslations['fr']! }
   } catch (error) {
     console.error('Erreur lors de la détection de langue:', error)
-    // Fallback sécurisé
-    return { languageCode: 'en', translations: allTranslations['en']! }
+    // Fallback sécurisé vers le français
+    return { languageCode: 'fr', translations: allTranslations['fr']! }
   }
 }
 
@@ -133,18 +158,39 @@ export function useLanguage() {
   }
 
   useEffect(() => {
-    try {
-      const { languageCode, translations: newTranslations } = detectLanguage()
-      setCurrentLanguage(languageCode)
-      setTranslations(newTranslations)
-      setIsInitialized(true)
-    } catch (error) {
-      console.error('Erreur lors de l\'initialisation de la langue:', error)
-      // Fallback sécurisé
-      setCurrentLanguage('en')
-      setTranslations(allTranslations['en']!)
-      setIsInitialized(true)
+    // Initialisation immédiate avec fallback sécurisé
+    const initializeLanguage = () => {
+      try {
+        console.log('🚀 Initialisation de la langue...')
+        const { languageCode, translations: newTranslations } = detectLanguage()
+        setCurrentLanguage(languageCode)
+        setTranslations(newTranslations)
+        setIsInitialized(true)
+        console.log('✅ Langue initialisée:', languageCode)
+      } catch (error) {
+        console.error('❌ Erreur lors de l\'initialisation de la langue:', error)
+        // Fallback immédiat vers le français
+        console.log('🔄 Fallback vers le français')
+        setCurrentLanguage('fr')
+        setTranslations(allTranslations['fr']!)
+        setIsInitialized(true)
+      }
     }
+    
+    // Initialisation immédiate
+    initializeLanguage()
+    
+    // Timeout de sécurité - forcer l'initialisation après 3 secondes
+    const safetyTimeout = setTimeout(() => {
+      if (!isInitialized) {
+        console.log('⏰ Timeout de sécurité - forcer l\'initialisation')
+        setCurrentLanguage('fr')
+        setTranslations(allTranslations['fr']!)
+        setIsInitialized(true)
+      }
+    }, 3000)
+    
+    return () => clearTimeout(safetyTimeout)
   }, [])
 
   // Vérifier que les valeurs retournées sont valides

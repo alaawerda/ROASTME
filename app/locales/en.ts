@@ -14,6 +14,12 @@ export const en = {
   inputPlaceholder: 'Tell me something and I\'ll roast you! 🔥',
   warningMessage: '⚠️ Warning: This chat is designed to be fun and creative, not mean!',
   
+  // Donation modal
+  donateModalTitle: 'Enjoying the roast? ☕',
+  donateModalDescription: "If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.",
+  donateCta: 'Buy me a coffee',
+  donateClose: 'Close',
+  
   // Footer
   home: 'Home',
   about: 'About',

@@ -9,8 +9,10 @@ import SEOManager from './components/SEOManager'
 import ErrorBoundary from './components/ErrorBoundary'
 import Header from './components/Header'
 import LoadingSpinner from './components/LoadingSpinner'
+import EmergencyLoader from './components/EmergencyLoader'
 import Footer from './components/Footer'
 import WelcomeCard from './components/WelcomeCard'
+import MobileModal from './components/MobileModal'
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -18,6 +20,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showEmergencyReload, setShowEmergencyReload] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -25,6 +28,7 @@ export default function Home() {
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [inputFocused, setInputFocused] = useState(false);
   const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguage();
+  const [isDonateOpen, setIsDonateOpen] = useState(false);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -40,6 +44,17 @@ export default function Home() {
   useEffect(() => {
     scrollToBottom()
   }, [])
+
+  // Afficher le bouton d'urgence après 8 secondes si les traductions ne sont pas chargées
+  useEffect(() => {
+    if (!isInitialized) {
+      const emergencyTimer = setTimeout(() => {
+        setShowEmergencyReload(true)
+      }, 8000)
+      
+      return () => clearTimeout(emergencyTimer)
+    }
+  }, [isInitialized])
 
   // Garder la concentration sur les messages lors des changements d'état de chargement
   useEffect(() => {
@@ -127,6 +142,17 @@ export default function Home() {
     }
 
     setMessages(prev => [...prev, userMessage])
+    // Vérifier l'ouverture du modal après le 3e message utilisateur
+    try {
+      if (typeof window !== 'undefined') {
+        const userCount = messages.filter(m => m.role === 'user').length + 1
+        const alreadyShown = localStorage.getItem('donatePromptShown') === '1'
+        if (userCount >= 3 && !alreadyShown) {
+          setIsDonateOpen(true)
+          localStorage.setItem('donatePromptShown', '1')
+        }
+      }
+    } catch {}
     setInput('')
     // Blur input to avoid keeping focus on the bottom bar after sending
     if (inputRef.current) inputRef.current.blur()
@@ -207,10 +233,30 @@ export default function Home() {
 
   // Afficher un loader si les traductions ne sont pas encore chargées
   if (!translations || !isInitialized) {
+    // Si le chargement d'urgence est activé, utiliser le composant d'urgence
+    if (showEmergencyReload) {
+      return <EmergencyLoader />
+    }
+    
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/30 to-yellow-50/30">
         <div className="card text-center animate-in">
           <LoadingSpinner message="Chargement des traductions..." size="lg" />
+          
+          {/* Bouton de rechargement de sécurité */}
+          <div className="mt-6 space-y-3">
+            <button
+              onClick={() => window.location.reload()}
+              className="btn-secondary text-sm"
+            >
+              🔄 Recharger la page
+            </button>
+            
+            {/* Message d'aide */}
+            <p className="text-xs text-gray-500">
+              Si le chargement prend trop de temps, cliquez sur le bouton ci-dessus
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -276,58 +322,56 @@ export default function Home() {
             {/* Input Form avec design moderne et positionnement fixe - Version ultra-compacte pour mobile */}
             <div className="input-container p-2 sm:p-3 md:p-4">
               <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
-                <div className="flex space-x-2 sm:space-x-3">
-                  <div className="flex-1 relative group">
-                    {/* Adornment gauche de l'input */}
-                    <span className={`input-adornment ${inputFocused || input.length > 0 ? 'input-adornment-active' : ''}`}>
-                      <MessageSquare className="w-4 h-4" />
-                    </span>
-                    <input
-                      type="text"
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onFocus={() => { setInputFocused(true); scrollToBottom() }}
-                      onBlur={() => setInputFocused(false)}
-                      placeholder={translations.inputPlaceholder}
-                      className={`input-styled mobile-text group-hover:border-flame-orange/50 transition-all duration-200 ${messages.length > 0 ? 'input-compact' : ''}`}
-                      aria-label={translations.inputPlaceholder}
-                      autoComplete="off"
-                      maxLength={200}
-                      name="message"
-                      disabled={isLoading}
-                      ref={inputRef}
-                    />
-                    <button
-                      type="submit"
-                      disabled={isLoading || !input.trim()}
-                      className="send-button-enhanced disabled:opacity-50 disabled:cursor-not-allowed group"
-                      aria-label="Envoyer"
-                    >
-                      {/* Icône principale */}
-                      <Send className="w-5 h-5 transition-all duration-300 ease-out" />
-                      
-                      {/* Indicateur de chargement */}
-                      {isLoading && (
-                        <div className="send-loading">
-                          <div className="loading-dot"></div>
-                          <div className="loading-dot"></div>
-                          <div className="loading-dot"></div>
-                        </div>
-                      )}
-                      
-                      {/* Tooltip informatif */}
-                      <div className="send-tooltip">
-                        {isLoading ? 'Envoi en cours...' : input.trim() ? 'Envoyer le message' : 'Tapez un message pour envoyer'}
+                <div className="input-group">
+                  {/* Adornment gauche de l'input */}
+                  <span className={`input-adornment ${inputFocused || input.length > 0 ? 'input-adornment-active' : ''}`}>
+                    <MessageSquare className="w-4 h-4" />
+                  </span>
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onFocus={() => { setInputFocused(true); scrollToBottom() }}
+                    onBlur={() => setInputFocused(false)}
+                    placeholder={translations.inputPlaceholder}
+                    className={`input-styled mobile-text group-hover:border-flame-orange/50 transition-all duration-200 ${messages.length > 0 ? 'input-compact' : ''}`}
+                    aria-label={translations.inputPlaceholder}
+                    autoComplete="off"
+                                          maxLength={500}
+                    name="message"
+                    disabled={isLoading}
+                    ref={inputRef}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading || !input.trim()}
+                    className="send-button-enhanced disabled:opacity-50 disabled:cursor-not-allowed group"
+                    aria-label="Envoyer"
+                  >
+                    {/* Icône principale */}
+                    <Send className="w-5 h-5 transition-all duration-300 ease-out" />
+                    
+                    {/* Indicateur de chargement */}
+                    {isLoading && (
+                      <div className="send-loading">
+                        <div className="loading-dot"></div>
+                        <div className="loading-dot"></div>
+                        <div className="loading-dot"></div>
                       </div>
-                    </button>
-                  </div>
+                    )}
+                    
+                    {/* Tooltip informatif */}
+                    <div className="send-tooltip">
+                      {isLoading ? 'Envoi en cours...' : input.trim() ? 'Envoyer le message' : 'Tapez un message pour envoyer'}
+                    </div>
+                  </button>
                 </div>
                 
                 {/* Helper row avec informations utiles - Version ultra-compacte pour mobile */}
                 <div className="helper-row mt-1.5 sm:mt-2">
-                  <div className="flex items-center space-x-1.5 sm:space-x-2">
+                  <div className="flex items-center justify-end w-full">
                     <span className="text-xs text-gray-400">
-                      {input.length}/200
+                      {input.length}/500
                     </span>
                   </div>
                 </div>
@@ -337,6 +381,27 @@ export default function Home() {
           
           {/* Footer compact */}
           <Footer isInputFocused={inputFocused} />
+          {/* Donation Modal */}
+          <MobileModal
+            isOpen={isDonateOpen}
+            onClose={() => setIsDonateOpen(false)}
+            title={translations.donateModalTitle || 'Enjoying the roast? ☕'}
+            closeLabel={translations.donateClose || 'Close'}
+          >
+            <div className="space-y-4">
+              <p className="text-gray-700 leading-relaxed">
+                {translations.donateModalDescription || 'If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.'}
+              </p>
+              <a
+                href={(process.env.NEXT_PUBLIC_BMC_URL as string) || 'https://www.buymeacoffee.com/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full text-center"
+              >
+                {translations.donateCta || 'Buy me a coffee'}
+              </a>
+            </div>
+          </MobileModal>
         </div>
       </>
     </ErrorBoundary>

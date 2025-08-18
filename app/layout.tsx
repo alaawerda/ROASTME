@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante ! Prêt à être descendu en flammes ? 🔥',
     images: [
       {
-        url: '/og-image-fr.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'RoastMe Chat - L\'IA qui te Roaste !',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥',
     description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante !',
-    images: ['/og-image-fr.jpg'],
+    images: ['/og-image.jpg'],
     creator: '@roastmechat',
     site: '@roastmechat',
   },
@@ -103,6 +103,7 @@ export default function RootLayout({
   return (
     <html lang="fr" dir="ltr">
       <head>
+        
         {/* Favicons et icônes */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
@@ -133,7 +134,7 @@ export default function RootLayout({
         
         {/* Preload des ressources critiques */}
         <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/og-image-fr.jpg" as="image" />
+        <link rel="preload" href="/og-image.jpg" as="image" />
         
         {/* Métadonnées d'accessibilité */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -215,14 +216,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               "name": "RoastMe Chat",
-              "description": "L'IA la plus cinglante qui va te roaster de manière hilarante !",
+              "description": "RoastMe Chat is a fun web application where users get roasted with humor and without filters.",
               "url": "https://roastme.chat",
               "applicationCategory": "EntertainmentApplication",
               "operatingSystem": "Web Browser",
               "offers": {
                 "@type": "Offer",
                 "price": "0",
-                "priceCurrency": "EUR"
+                "priceCurrency": "USD"
               },
               "author": {
                 "@type": "Organization",
@@ -240,7 +241,7 @@ export default function RootLayout({
               },
               "keywords": ["roast", "humour", "IA", "chat", "divertissement", "comédie", "insultes créatives", "roaster", "blagues"],
               "datePublished": "2024-01-01",
-              "dateModified": new Date().toISOString().split('T')[0]
+              "dateModified": "2024-01-01"
             })
           }}
         />

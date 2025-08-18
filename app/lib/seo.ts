@@ -274,7 +274,7 @@ export function generateMetadata(lang: string = 'fr'): Metadata {
       siteName: 'RoastMe Chat',
       images: [
         {
-          url: `/og-image-${lang}.jpg`,
+          url: `/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: seo.title,
@@ -285,7 +285,7 @@ export function generateMetadata(lang: string = 'fr'): Metadata {
       card: 'summary_large_image',
       title: seo.twitter.title,
       description: seo.twitter.description,
-      images: [`/og-image-${lang}.jpg`],
+      images: [`/og-image.jpg`],
       creator: '@roastmechat',
       site: '@roastmechat',
     },

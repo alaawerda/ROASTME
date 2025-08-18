@@ -6,9 +6,10 @@ interface MobileModalProps {
   onClose: () => void
   title: string
   children: React.ReactNode
+  closeLabel?: string
 }
 
-export default function MobileModal({ isOpen, onClose, title, children }: MobileModalProps) {
+export default function MobileModal({ isOpen, onClose, title, children, closeLabel = 'Close' }: MobileModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -64,7 +65,7 @@ export default function MobileModal({ isOpen, onClose, title, children }: Mobile
             className="w-full py-3 px-4 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-medium rounded-xl hover:from-gray-200 hover:to-gray-300 transition-all duration-200 ease-out hover:scale-[1.02] flex items-center justify-center space-x-2"
           >
             <ChevronDown className="w-4 h-4" />
-            <span>Fermer</span>
+            <span>{closeLabel}</span>
           </button>
         </div>
       </div>

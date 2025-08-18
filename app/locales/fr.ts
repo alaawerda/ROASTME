@@ -14,6 +14,12 @@ export const fr = {
   inputPlaceholder: 'Dis-moi quelque chose et je vais te roaster ! 🔥',
   warningMessage: '⚠️ Attention : Ce chat est conçu pour être amusant et créatif, pas pour être méchant !',
   
+  // Donation modal
+  donateModalTitle: 'Apprécies-tu le roast ? ☕',
+  donateModalDescription: "Si tu kiffes le service, offre-moi un café pour soutenir le projet. Pas d'obligation – juste de l'amour et de la caféine.",
+  donateCta: 'Offrir un café',
+  donateClose: 'Fermer',
+  
   // Footer
   home: 'Accueil',
   about: 'À propos',

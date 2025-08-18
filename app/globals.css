@@ -215,6 +215,9 @@
     font-size: 1rem;
     padding-right: 56px; /* Espace pour le bouton d'envoi */
     min-height: 56px; /* Hauteur minimale pour une meilleure ergonomie */
+    /* Assurer que le bouton reste fixe */
+    position: relative;
+    overflow: visible;
   }
   
   .input-styled:focus {
@@ -395,25 +398,33 @@
     @apply border-t border-gray-200/50 bg-white/95 backdrop-blur-md shadow-lg sticky bottom-0 z-30;
     flex-shrink: 0;
     padding-bottom: env(safe-area-inset-bottom);
+    /* Assurer que le bouton d'envoi reste fixe */
+    position: relative;
+    overflow: visible;
   }
 
-  /* Bouton d'envoi amélioré avec excellent UX/UI - Parfaitement intégré */
+  /* Bouton d'envoi amélioré avec excellent UX/UI - Parfaitement intégré et fixe */
   .send-button-enhanced {
-    @apply absolute right-2.5 top-1/2 -translate-y-1/2 p-3 text-flame-orange disabled:text-gray-400 disabled:cursor-not-allowed transition-all duration-300 ease-out bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 border border-gray-200/50 backdrop-blur-sm;
+    @apply absolute right-2.5 top-1/2 -translate-y-1/2 p-3 text-flame-orange disabled:text-gray-400 disabled:cursor-not-allowed transition-all duration-300 ease-out bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg hover:shadow-xl active:scale-95 border border-gray-200/50 backdrop-blur-sm;
     width: 44px;
     height: 44px;
     position: absolute;
     overflow: hidden;
-    z-index: 10;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: translateY(-50%);
+    /* Fixer le bouton dans la zone d'input */
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
   .send-button-enhanced:not(:disabled):hover {
     @apply from-flame-orange to-flame-orange-light text-white border-flame-orange/30;
-    transform: translateY(-1px) scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 107, 53, 0.25);
   }
 
@@ -424,7 +435,6 @@
 
   .send-button-enhanced:focus-visible {
     @apply ring-4 ring-flame-orange/30 outline-none;
-    transform: scale(1.05);
   }
 
   .send-button-enhanced:disabled {
@@ -657,6 +667,25 @@
   }
   50% {
     box-shadow: 0 8px 25px rgba(138, 36, 170, 0.5);
+  }
+}
+
+/* Animations personnalisées pour le LoadingSpinner */
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
   }
 }
 
@@ -966,6 +995,59 @@
   @apply transform translate-x-0.5;
 }
 
+/* Styles pour fixer le bouton d'envoi dans la zone d'input */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-group .input-styled {
+  position: relative;
+  z-index: 1;
+}
+
+.input-group .send-button-enhanced {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  pointer-events: auto;
+  /* Assurer que le bouton reste fixe */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Assurer que le bouton reste visible sur tous les appareils */
+@media (max-width: 640px) {
+  .input-group .send-button-enhanced {
+    right: 0.25rem;
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+  }
+  
+  .input-group .input-styled {
+    padding-right: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .input-group .send-button-enhanced {
+    right: 0.25rem;
+    width: 36px;
+    height: 36px;
+    padding: 0.375rem;
+  }
+  
+  .input-group .input-styled {
+    padding-right: 44px;
+  }
+}
+
 /* Animation flottante pour les particules */
 @keyframes floatGentle {
   0%, 100% {
@@ -974,6 +1056,15 @@
   50% {
     transform: translateY(-20px) rotate(180deg);
   }
+}
+
+/* Classes d'animation personnalisées pour le LoadingSpinner */
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 1.5s ease-in-out infinite;
 }
 
 /* Responsive design pour la footer moderne */
