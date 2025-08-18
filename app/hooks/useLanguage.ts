@@ -24,9 +24,11 @@ type Translations = {
   languageCode: string;
   // Propriétés optionnelles pour les dons
   donateModalTitle?: string;
+  donateModalSubtitle?: string;
   donateModalDescription?: string;
   donateCta?: string;
   donateClose?: string;
+  donateGratitude?: string;
 }
 
 // Mapping des codes de langue vers les traductions
@@ -158,39 +160,34 @@ export function useLanguage() {
   }
 
   useEffect(() => {
-    // Initialisation immédiate avec fallback sécurisé
-    const initializeLanguage = () => {
-      try {
-        console.log('🚀 Initialisation de la langue...')
-        const { languageCode, translations: newTranslations } = detectLanguage()
+    let cancelled = false
+    // Filet de sécurité: initialiser l'UI même si quelque chose bloque
+    const safetyTimer = setTimeout(() => {
+      if (!cancelled) setIsInitialized(true)
+    }, 3000)
+
+    try {
+      const { languageCode, translations: newTranslations } = detectLanguage()
+      if (!cancelled) {
         setCurrentLanguage(languageCode)
         setTranslations(newTranslations)
-        setIsInitialized(true)
-        console.log('✅ Langue initialisée:', languageCode)
-      } catch (error) {
-        console.error('❌ Erreur lors de l\'initialisation de la langue:', error)
-        // Fallback immédiat vers le français
-        console.log('🔄 Fallback vers le français')
-        setCurrentLanguage('fr')
-        setTranslations(allTranslations['fr']!)
-        setIsInitialized(true)
       }
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation de la langue:', error)
+      // Fallback sécurisé
+      if (!cancelled) {
+        setCurrentLanguage('en')
+        setTranslations(allTranslations['en']!)
+      }
+    } finally {
+      if (!cancelled) setIsInitialized(true)
+      clearTimeout(safetyTimer)
     }
-    
-    // Initialisation immédiate
-    initializeLanguage()
-    
-    // Timeout de sécurité - forcer l'initialisation après 3 secondes
-    const safetyTimeout = setTimeout(() => {
-      if (!isInitialized) {
-        console.log('⏰ Timeout de sécurité - forcer l\'initialisation')
-        setCurrentLanguage('fr')
-        setTranslations(allTranslations['fr']!)
-        setIsInitialized(true)
-      }
-    }, 3000)
-    
-    return () => clearTimeout(safetyTimeout)
+
+    return () => {
+      cancelled = true
+      clearTimeout(safetyTimer)
+    }
   }, [])
 
   // Vérifier que les valeurs retournées sont valides

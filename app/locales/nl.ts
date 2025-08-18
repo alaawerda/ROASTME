@@ -14,6 +14,14 @@ export const nl = {
   inputPlaceholder: 'Vertel me iets en ik ga je roasten! 🔥',
   warningMessage: '⚠️ Waarschuwing: Deze chat is ontworpen om leuk en creatief te zijn, niet gemeen!',
   
+  // Donation modal
+  donateModalTitle: 'Geniet je van de roast? ☕',
+  donateModalSubtitle: 'Steun de Roast! 🔥',
+  donateModalDescription: "Als je de service leuk vindt, koop me een koffie om het project te ondersteunen. Geen druk – alleen liefde en cafeïne.",
+  donateCta: 'Koop me een koffie',
+  donateClose: 'Sluiten',
+  donateGratitude: 'Elke koffie helpt de roasts gaande te houden! 💪',
+  
   // Footer
   home: 'Home',
   about: 'Over ons',

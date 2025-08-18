@@ -16,9 +16,11 @@ export const fr = {
   
   // Donation modal
   donateModalTitle: 'Apprécies-tu le roast ? ☕',
+  donateModalSubtitle: 'Soutiens le Roast ! 🔥',
   donateModalDescription: "Si tu kiffes le service, offre-moi un café pour soutenir le projet. Pas d'obligation – juste de l'amour et de la caféine.",
   donateCta: 'Offrir un café',
   donateClose: 'Fermer',
+  donateGratitude: 'Chaque café aide à maintenir les roasts ! 💪',
   
   // Footer
   home: 'Accueil',

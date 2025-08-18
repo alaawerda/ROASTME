@@ -14,6 +14,14 @@ export const de = {
   inputPlaceholder: 'Sag mir etwas und ich roaste dich! 🔥',
   warningMessage: '⚠️ Warnung: Dieser Chat ist dafür gedacht, lustig und kreativ zu sein, nicht böse!',
   
+  // Donation modal
+  donateModalTitle: 'Gefällt dir der Roast? ☕',
+  donateModalSubtitle: 'Unterstütze den Roast! 🔥',
+  donateModalDescription: "Wenn dir der Service gefällt, kauf mir einen Kaffee, um das Projekt zu unterstützen. Kein Druck – nur Liebe und Koffein.",
+  donateCta: 'Kauf mir einen Kaffee',
+  donateClose: 'Schließen',
+  donateGratitude: 'Jeder Kaffee hilft, die Roasts am Laufen zu halten! 💪',
+  
   // Footer
   home: 'Startseite',
   about: 'Über uns',

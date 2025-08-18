@@ -14,6 +14,14 @@ export const it = {
   inputPlaceholder: 'Dimmi qualcosa e ti roasterò! 🔥',
   warningMessage: '⚠️ Attenzione: Questa chat è progettata per essere divertente e creativa, non cattiva!',
   
+  // Donation modal
+  donateModalTitle: 'Ti piace il roast? ☕',
+  donateModalSubtitle: 'Supporta il Roast! 🔥',
+  donateModalDescription: "Se ti piace il servizio, comprami un caffè per supportare il progetto. Nessuna pressione – solo amore e caffeina.",
+  donateCta: 'Comprami un caffè',
+  donateClose: 'Chiudi',
+  donateGratitude: 'Ogni caffè aiuta a mantenere i roast! 💪',
+  
   // Footer
   home: 'Home',
   about: 'Chi siamo',

@@ -16,9 +16,11 @@ export const en = {
   
   // Donation modal
   donateModalTitle: 'Enjoying the roast? ☕',
+  donateModalSubtitle: 'Support the Roast! 🔥',
   donateModalDescription: "If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.",
   donateCta: 'Buy me a coffee',
   donateClose: 'Close',
+  donateGratitude: 'Every coffee helps keep the roasts coming! 💪',
   
   // Footer
   home: 'Home',

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, MessageSquare } from 'lucide-react'
+import { Send, MessageSquare, Coffee, Heart, Star } from 'lucide-react'
 import ChatMessage from './components/ChatMessage'
 import { Message } from './types'
 import { useLanguage } from './hooks/useLanguage'
@@ -13,6 +13,8 @@ import EmergencyLoader from './components/EmergencyLoader'
 import Footer from './components/Footer'
 import WelcomeCard from './components/WelcomeCard'
 import MobileModal from './components/MobileModal'
+import DonationModal from './components/DonationModal'
+import { getDonationUrl, getGratitudeMessage } from './lib/donation-config'
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -29,6 +31,7 @@ export default function Home() {
   const [inputFocused, setInputFocused] = useState(false);
   const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguage();
   const [isDonateOpen, setIsDonateOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -43,6 +46,11 @@ export default function Home() {
   // S'assurer que la zone des messages reste visible au chargement initial
   useEffect(() => {
     scrollToBottom()
+  }, [])
+
+  // Marquer le montage client pour éviter les problèmes d'hydratation
+  useEffect(() => {
+    setMounted(true)
   }, [])
 
   // Afficher le bouton d'urgence après 8 secondes si les traductions ne sont pas chargées
@@ -233,7 +241,7 @@ export default function Home() {
   }
 
   // Afficher un loader si les traductions ne sont pas encore chargées
-  if (!translations || !isInitialized) {
+  if (!mounted || !translations || !isInitialized) {
     // Si le chargement d'urgence est activé, utiliser le composant d'urgence
     if (showEmergencyReload) {
       return <EmergencyLoader />
@@ -383,26 +391,12 @@ export default function Home() {
           {/* Footer compact */}
           <Footer isInputFocused={inputFocused} />
           {/* Donation Modal */}
-          <MobileModal
+          <DonationModal
             isOpen={isDonateOpen}
             onClose={() => setIsDonateOpen(false)}
-            title={translations.donateModalTitle || 'Enjoying the roast? ☕'}
-            closeLabel={translations.donateClose || 'Close'}
-          >
-            <div className="space-y-4">
-              <p className="text-gray-700 leading-relaxed">
-                {translations.donateModalDescription || 'If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.'}
-              </p>
-              <a
-                href={(process.env.NEXT_PUBLIC_BMC_URL as string) || 'https://www.buymeacoffee.com/'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full text-center"
-              >
-                {translations.donateCta || 'Buy me a coffee'}
-              </a>
-            </div>
-          </MobileModal>
+            currentLanguage={currentLanguage}
+            translations={translations}
+          />
         </div>
       </>
     </ErrorBoundary>

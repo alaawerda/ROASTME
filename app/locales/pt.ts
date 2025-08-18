@@ -12,7 +12,15 @@ export const pt = {
   
   // Input form
   inputPlaceholder: 'Me diga algo e eu vou te roastar! 🔥',
-  warningMessage: '⚠️ Aviso: Este chat é projetado para ser divertido e criativo, não malvado!',
+  warningMessage: '⚠️ Aviso: Este chat é projetado para ser divertido e criatif, não malvado!',
+  
+  // Donation modal
+  donateModalTitle: 'Gostando do roast? ☕',
+  donateModalSubtitle: 'Apoie o Roast! 🔥',
+  donateModalDescription: "Se você gosta do serviço, compre-me um café para apoiar o projeto. Sem pressão – apenas amor e cafeína.",
+  donateCta: 'Compre-me um café',
+  donateClose: 'Fechar',
+  donateGratitude: 'Cada café ajuda a manter os roasts! 💪',
   
   // Footer
   home: 'Início',
