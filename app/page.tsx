@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, MessageSquare, Coffee, Heart, Star } from 'lucide-react'
+import { Send, MessageSquare } from 'lucide-react'
 import ChatMessage from './components/ChatMessage'
 import { Message } from './types'
 import { useLanguage } from './hooks/useLanguage'
@@ -12,9 +12,7 @@ import LoadingSpinner from './components/LoadingSpinner'
 import EmergencyLoader from './components/EmergencyLoader'
 import Footer from './components/Footer'
 import WelcomeCard from './components/WelcomeCard'
-import MobileModal from './components/MobileModal'
 import DonationModal from './components/DonationModal'
-import { getDonationUrl, getGratitudeMessage } from './lib/donation-config'
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
