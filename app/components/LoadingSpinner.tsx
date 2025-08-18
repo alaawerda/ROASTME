@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from './Logo';
-import { Flame, Sparkles, Zap } from 'lucide-react';
 
 interface LoadingSpinnerProps {
   message?: string;

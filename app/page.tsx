@@ -54,6 +54,7 @@ export default function Home() {
       
       return () => clearTimeout(emergencyTimer)
     }
+    return undefined
   }, [isInitialized])
 
   // Garder la concentration sur les messages lors des changements d'état de chargement
