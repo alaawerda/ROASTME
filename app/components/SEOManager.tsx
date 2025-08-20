@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useLanguage } from '../hooks/useLanguage'
+import { useLanguageApp } from '../hooks/useLanguage'
 import { seoMetadata } from '../lib/seo'
 import { getOGConfig } from '../lib/og-config'
 import { generateStructuredDataScript } from '../lib/structured-data'
 
 export default function SEOManager() {
-  const { currentLanguage } = useLanguage()
+  const { currentLanguage } = useLanguageApp()
 
   useEffect(() => {
     try {

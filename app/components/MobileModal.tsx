@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from 'react'
 import { X, ChevronDown } from 'lucide-react'
 

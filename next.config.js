@@ -17,8 +17,8 @@ const nextConfig = {
     // CSP conditionnelle : unsafe-eval seulement en développement
     const isDev = process.env.NODE_ENV === 'development'
     const scriptSrc = isDev 
-      ? "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com"
-      : "'self' 'unsafe-inline' https://www.googletagmanager.com"
+      ? "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com"
+      : "'self' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com"
     
     return [
       {
@@ -46,7 +46,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: `default-src 'self'; img-src 'self' https: data:; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com https://vitals.vercel-insights.com https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';`
+            value: `default-src 'self'; img-src 'self' https: data:; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com https://vitals.vercel-insights.com https://www.google-analytics.com https://va.vercel-scripts.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';`
           }
         ]
       }

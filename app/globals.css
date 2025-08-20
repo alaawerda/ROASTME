@@ -1085,3 +1085,209 @@
     @apply px-1.5 py-0.5 text-xs;
   }
 }
+
+/* Styles spécifiques pour le header mobile amélioré */
+@media (max-width: 1024px) {
+  .header-gradient {
+    background: linear-gradient(135deg, var(--flame-orange) 0%, var(--flame-orange-light) 50%, var(--purple-medium) 100%);
+  }
+  
+  /* Optimisation de l'espace sur mobile */
+  .header-gradient .max-w-7xl {
+    @apply px-3;
+  }
+  
+  /* Ajustement de la taille du logo sur mobile */
+  .flame-glow {
+    @apply scale-90;
+  }
+  
+  /* Optimisation du titre sur mobile */
+  .header-gradient h1 {
+    @apply text-base md:text-lg;
+  }
+  
+  /* Optimisation des indicateurs de statut sur mobile */
+  .status-indicator-compact {
+    @apply text-xs;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header ultra-compact sur mobile */
+  .header-gradient {
+    @apply py-2;
+  }
+  
+  .header-gradient .max-w-7xl {
+    @apply px-2;
+  }
+  
+  /* Espacement optimisé entre les éléments */
+  .header-gradient .flex {
+    @apply gap-2;
+  }
+  
+  /* Taille du logo réduite sur très petit écran */
+  .flame-glow {
+    @apply scale-75;
+  }
+  
+  /* Titre plus compact sur mobile */
+  .header-gradient h1 {
+    @apply text-sm leading-tight;
+  }
+  
+  /* Indicateurs de statut ultra-compacts */
+  .status-indicator-compact {
+    @apply px-1 py-0.5 text-xs;
+  }
+  
+  .status-indicator-compact .w-3 {
+    @apply w-2.5 h-2.5;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header ultra-compact sur très petit écran */
+  .header-gradient {
+    @apply py-1.5;
+  }
+  
+  .header-gradient .max-w-7xl {
+    @apply px-1.5;
+  }
+  
+  /* Espacement minimal sur très petit écran */
+  .header-gradient .flex {
+    @apply gap-1.5;
+  }
+  
+  /* Logo encore plus petit */
+  .flame-glow {
+    @apply scale-75;
+  }
+  
+  /* Titre ultra-compact */
+  .header-gradient h1 {
+    @apply text-xs leading-tight;
+  }
+  
+  /* Indicateurs de statut invisibles sur très petit écran pour économiser l'espace */
+  .status-indicator-compact {
+    @apply hidden;
+  }
+}
+
+/* Amélioration de l'accessibilité mobile */
+@media (max-width: 768px) {
+  /* Boutons tactiles optimisés */
+  .header-gradient button,
+  .header-gradient a {
+    @apply min-w-[44px] min-h-[44px];
+  }
+  
+  /* Espacement tactile optimal */
+  .header-gradient .flex > * + * {
+    @apply ml-2;
+  }
+}
+
+/* Animation d'entrée pour le menu mobile - Version ultra-rapide */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation ultra-rapide pour le menu mobile */
+@keyframes slideInFromTopFast {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation pour les items du menu mobile - Version ultra-rapide */
+@keyframes slideInFromTopStaggered {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Effet de flou pour le backdrop du menu mobile */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Animation des items du menu mobile - Version ultra-rapide */
+.mobile-menu-item {
+  animation: slideInFromTopStaggered 0.25s ease-out both;
+}
+
+/* Amélioration de l'animation du menu mobile - Version ultra-rapide */
+.animate-slideInFromTop {
+  animation: slideInFromTop 0.4s ease-out;
+}
+
+.animate-slideInFromTopFast {
+  animation: slideInFromTopFast 0.2s ease-out;
+}
+
+/* Hover effects améliorés pour mobile - Version ultra-rapide */
+.mobile-menu-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Transitions ultra-rapides pour mobile */
+.mobile-menu-item * {
+  transition: all 0.15s ease-out;
+}
+
+.mobile-menu-item:hover * {
+  transition: all 0.1s ease-out;
+}
+
+/* Animation du bouton de fermeture - Version ultra-rapide */
+.mobile-close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+/* Transitions ultra-rapides pour le bouton de fermeture */
+.mobile-close-button {
+  transition: all 0.15s ease-out;
+}
+
+.mobile-close-button:hover {
+  transition: all 0.1s ease-out;
+}
+
+/* Optimisation des transitions sur mobile */
+@media (max-width: 768px) {
+  .header-gradient * {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  /* Désactiver les animations complexes sur mobile pour de meilleures performances */
+  .particles-bg,
+  .animate-pulse {
+    @apply hidden;
+  }
+}

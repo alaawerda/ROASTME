@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Send, MessageSquare } from 'lucide-react'
 import ChatMessage from './components/ChatMessage'
 import { Message } from './types'
-import { useLanguage } from './hooks/useLanguage'
+import { useLanguageApp } from './hooks/useLanguage'
 import SEOManager from './components/SEOManager'
 import ErrorBoundary from './components/ErrorBoundary'
 import Header from './components/Header'
@@ -12,6 +12,7 @@ import LoadingSpinner from './components/LoadingSpinner'
 import EmergencyLoader from './components/EmergencyLoader'
 import Footer from './components/Footer'
 import WelcomeCard from './components/WelcomeCard'
+
 import DonationModal from './components/DonationModal'
 
 export default function Home() {
@@ -21,13 +22,14 @@ export default function Home() {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [showEmergencyReload, setShowEmergencyReload] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   // @ts-ignore
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [inputFocused, setInputFocused] = useState(false);
-  const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguage();
+  const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguageApp();
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -50,6 +52,18 @@ export default function Home() {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // Afficher le chat automatiquement après 2 secondes
+  useEffect(() => {
+    if (mounted && isInitialized) {
+      const chatTimer = setTimeout(() => {
+        setShowChat(true)
+      }, 2000)
+      
+      return () => clearTimeout(chatTimer)
+    }
+    return undefined
+  }, [mounted, isInitialized])
 
   // Afficher le bouton d'urgence après 8 secondes si les traductions ne sont pas chargées
   useEffect(() => {
@@ -94,10 +108,10 @@ export default function Home() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Initialiser le message de bienvenue une seule fois
+  // Initialiser le message de bienvenue quand le chat s'ouvre
   useEffect(() => {
     try {
-      if (translations?.welcomeMessage && !isInitialized) {
+      if (translations?.welcomeMessage && showChat && messages.length === 0) {
         setMessages([
           {
             id: '1',
@@ -106,19 +120,18 @@ export default function Home() {
             timestamp: new Date()
           }
         ])
-        // setIsInitialized(true) // This line was removed from the new_code, so it's removed here.
       }
     } catch (error) {
       console.error('Erreur lors de l\'initialisation du message de bienvenue:', error)
       setHasError(true)
       setErrorMessage('Erreur lors de l\'initialisation')
     }
-  }, [translations, isInitialized])
+  }, [translations, showChat, messages.length])
 
   // Mettre à jour le message de bienvenue quand la langue change
   useEffect(() => {
     try {
-      if (translations?.welcomeMessage && isInitialized && messages.length > 0) {
+      if (translations?.welcomeMessage && showChat && messages.length > 0) {
         setMessages(prev => {
           if (prev[0]?.role === 'assistant') {
             return [
@@ -135,7 +148,7 @@ export default function Home() {
     } catch (error) {
       console.error('Erreur lors de la mise à jour du message de bienvenue:', error)
     }
-  }, [translations, isInitialized, messages.length])
+  }, [translations, showChat, messages.length])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -299,12 +312,16 @@ export default function Home() {
           <main className="chat-main">
             {/* Chat Container avec design moderne et centrage - Version compacte */}
             <div
-              className="chat-container mobile-scroll-optimized p-2 sm:p-3 md:p-4 max-w-5xl mx-auto w-full mt-8 sm:mt-10 md:mt-12"
+              className={`chat-container mobile-scroll-optimized p-2 sm:p-3 md:p-4 max-w-5xl mx-auto w-full mt-8 sm:mt-10 md:mt-12 transition-all duration-1000 ease-in-out ${
+                showChat ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
+              }`}
               ref={chatContainerRef}
               onScroll={updateIsAtBottom}
             >
-              {/* Bienvenue: afficher uniquement avant le premier message */}
-              {messages.length === 0 && <WelcomeCard />}
+              {/* Bienvenue: afficher uniquement temporairement avant l'ouverture du chat */}
+              {!showChat && messages.length === 0 && (
+                <WelcomeCard onChatOpen={() => setShowChat(true)} />
+              )}
               
               {/* Zone de chat avec meilleur espacement - Version ultra-compacte pour mobile */}
               <div className="space-y-2 sm:space-y-3 md:space-y-4 max-w-3xl mx-auto">
@@ -327,7 +344,9 @@ export default function Home() {
             </div>
             
             {/* Input Form avec design moderne et positionnement fixe - Version ultra-compacte pour mobile */}
-            <div className="input-container p-2 sm:p-3 md:p-4">
+            <div className={`input-container p-2 sm:p-3 md:p-4 transition-all duration-1000 ease-in-out ${
+              showChat ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
+            }`}>
               <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
                 <div className="input-group">
                   {/* Adornment gauche de l'input */}
@@ -386,15 +405,16 @@ export default function Home() {
             </div>
           </main>
           
+
+          
           {/* Footer compact */}
           <Footer isInputFocused={inputFocused} />
           {/* Donation Modal */}
-          <DonationModal
-            isOpen={isDonateOpen}
-            onClose={() => setIsDonateOpen(false)}
-            currentLanguage={currentLanguage}
-            translations={translations}
-          />
+                      <DonationModal
+              isOpen={isDonateOpen}
+              onClose={() => setIsDonateOpen(false)}
+              currentLanguage={currentLanguage}
+            />
         </div>
       </>
     </ErrorBoundary>

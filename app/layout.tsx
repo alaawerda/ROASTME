@@ -89,7 +89,6 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'RoastMe Chat',
     'mobile-web-app-capable': 'yes',
     'application-name': 'RoastMe Chat',
-    'msapplication-config': '/browserconfig.xml',
     'format-detection': 'telephone=no',
     'viewport-fit': 'cover',
   }
@@ -108,8 +107,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
         {/* Métadonnées de performance */}
@@ -120,7 +117,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="RoastMe Chat" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="RoastMe Chat" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport-fit" content="cover" />
         
@@ -133,7 +129,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         
         {/* Preload des ressources critiques */}
-        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/og-image.jpg" as="image" />
         
         {/* Métadonnées d'accessibilité */}

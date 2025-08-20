@@ -1,44 +1,303 @@
 export const nl = {
+  // Navigation
+  nav: {
+    home: 'Home',
+    blog: 'Blog',
+    chat: 'AI Chat',
+    about: 'Over ons',
+    contact: 'Contact',
+    language: 'Taal',
+    menu: 'Menu',
+    close: 'Sluiten',
+    open: 'Openen'
+  },
+
+  // Algemene knoppen
+  buttons: {
+    explore: 'Verkennen',
+    try: 'Proberen',
+    discover: 'Ontdekken',
+    learn: 'Leren',
+    read: 'Lezen',
+    share: 'Delen',
+    donate: 'Doneren',
+    subscribe: 'Abonneren',
+    contact: 'Contact opnemen',
+    back: 'Terug',
+    next: 'Volgende',
+    previous: 'Vorige',
+    close: 'Sluiten',
+    open: 'Openen',
+    save: 'Opslaan',
+    cancel: 'Annuleren',
+    confirm: 'Bevestigen',
+    delete: 'Verwijderen',
+    edit: 'Bewerken',
+    add: 'Toevoegen',
+    search: 'Zoeken',
+    filter: 'Filteren',
+    sort: 'Sorteren',
+    loadMore: 'Meer laden',
+    viewAll: 'Alles bekijken',
+    showMore: 'Meer tonen',
+    showLess: 'Minder tonen'
+  },
+
+
+
+  // Blog
+  blog: {
+    title: 'RoastMe Blog',
+    subtitle: 'Ontdek onze gidsen en tips',
+    description: 'De beste content over humor en roasts',
+    readMore: 'Lees meer',
+    readArticle: 'Lees volledig artikel',
+    readMoreButton: 'Lees meer',
+    readTime: 'min leestijd',
+    publishedOn: 'Gepubliceerd op',
+    author: 'Door',
+    category: 'Categorie',
+    tags: 'Tags',
+    relatedPosts: 'Gerelateerde Berichten',
+    allPosts: 'Alle Berichten',
+    featured: 'Uitgelichte Bericht',
+    featuredLabel: 'Uitgelichte Bericht',
+    searchPosts: 'Berichten Zoeken',
+    filterByCategory: 'Filteren op Categorie',
+    sortBy: 'Sorteren op',
+    sortOptions: {
+      newest: 'Nieuwste',
+      oldest: 'Oudste',
+      popular: 'Meest Populair',
+      title: 'Titel'
+    },
+    categories: {
+      all: 'Alle Categorieën',
+      guides: 'Gidsen',
+      tips: 'Tips',
+      humor: 'Humor',
+      trends: 'Trends',
+      community: 'Community'
+    },
+    pagination: {
+      page: 'Pagina',
+      of: 'van',
+      showing: 'Toon',
+      to: 'tot',
+      ofTotal: 'van',
+      results: 'resultaten'
+    }
+  },
+
   // Header
-  title: 'RoastMe Chat',
-  poweredBy: 'Aangedreven door AI',
-  
-  // Welcome message
-  welcomeMessage: "Luister goed, jij absolute dwaas! 🔥 Ik ben je AI roaster en ik heb geen tijd te verspillen aan mensen die zichzelf serieus nemen. Je wilt dat ik je tot op de grond toe roast? Geef me dan iets concreets, geen onzin!\n\nIk heb echte details nodig: leeftijd, lengte, gewicht, je duidelijke gebreken, je dagelijkse mislukkingen. Zonder dat ben je gewoon een lege huls die het niet eens verdient om geroast te worden. Dus spreek, en snel!",
-  
-  // Loading states
-  preparingRoast: 'Je roast voorbereiden... 🔥',
-  networkError: "Oeps! Ik had een technisch probleem. Maar maak je geen zorgen, ik roast je later! 😅",
-  
-  // Input form
-  inputPlaceholder: 'Vertel me iets en ik ga je roasten! 🔥',
-  warningMessage: '⚠️ Waarschuwing: Deze chat is ontworpen om leuk en creatief te zijn, niet gemeen!',
-  
-  // Donation modal
-  donateModalTitle: 'Geniet je van de roast? ☕',
-  donateModalSubtitle: 'Steun de Roast! 🔥',
-  donateModalDescription: "Als je de service leuk vindt, koop me een koffie om het project te ondersteunen. Geen druk – alleen liefde en cafeïne.",
-  donateCta: 'Koop me een koffie',
-  donateClose: 'Sluiten',
-  donateGratitude: 'Elke koffie helpt de roasts gaande te houden! 💪',
-  
+  header: {
+    logo: 'RoastMe - AI Humor Platform',
+    navigation: 'Hoofdnavigatie',
+    mobileMenu: 'Mobiel Menu',
+    searchPlaceholder: 'Zoeken...',
+    userMenu: 'Gebruikersmenu',
+    notifications: 'Meldingen',
+    profile: 'Profiel',
+    settings: 'Instellingen',
+    logout: 'Uitloggen'
+  },
+
   // Footer
-  home: 'Home',
-  about: 'Over ons',
-  contact: 'Contact',
-  secure: 'Veilig',
-  fast: 'Snel',
-  
-  // Statistics
-  activeUsers: 'Actieve gebruikers',
-  messagesGenerated: 'Gegenereerde berichten',
-  averageRating: 'Gemiddelde beoordeling',
-  languagesSupported: 'Ondersteunde talen',
-  
-  // Time format
-  timeFormat: 'nl-NL',
-  
-  // Language names
-  languageName: 'Nederlands',
-  languageCode: 'nl'
-}
+  footer: {
+    description: 'Het beste AI-humorplatform voor het maken van creatieve en leuke roasts',
+    quickLinks: 'Snelle Links',
+    socialMedia: 'Sociale Media',
+    newsletter: 'Nieuwsbrief',
+    newsletterDescription: 'Blijf op de hoogte van het laatste nieuws en tips',
+    subscribe: 'Abonneren',
+    emailPlaceholder: 'Je e-mail',
+    copyright: '© 2024 RoastMe. Alle rechten voorbehouden.',
+    privacyPolicy: 'Privacybeleid',
+    termsOfService: 'Gebruiksvoorwaarden',
+    contactUs: 'Neem Contact Op'
+  },
+
+  // WelcomeCard
+  welcome: {
+    title: 'Welkom bij RoastMe',
+    subtitle: 'Het ultieme AI-humorplatform',
+    description: 'Ontdek hoe je creatieve en leuke roasts maakt met behulp van kunstmatige intelligentie',
+    getStarted: 'Aan de slag',
+    learnMore: 'Meer weten',
+    features: {
+      aiPowered: 'AI-aangedreven',
+      creative: 'Creatief',
+      fun: 'Leuk',
+      easy: 'Gebruiksvriendelijk'
+    }
+  },
+
+  // DonationModal
+  donation: {
+    title: 'Steun RoastMe',
+    description: 'Je donatie helpt ons het platform te onderhouden en te verbeteren',
+    amount: 'Bedrag',
+    customAmount: 'Aangepast Bedrag',
+    currency: 'EUR',
+    paymentMethods: 'Betaalmethoden',
+    securePayment: 'Veilige Betaling',
+    thankYou: 'Bedankt voor je steun!',
+    donationSuccessful: 'Donatie succesvol',
+    close: 'Sluiten'
+  },
+
+  // ErrorBoundary
+  error: {
+    title: 'Oeps! Er is iets misgegaan',
+    description: 'Er is een onverwachte fout opgetreden. Probeer het opnieuw.',
+    retry: 'Opnieuw proberen',
+    goHome: 'Ga naar Home',
+    reportIssue: 'Probleem Melden'
+  },
+
+  // Loading
+  loading: {
+    title: 'Laden...',
+    description: 'Even geduld terwijl we de content laden',
+    pleaseWait: 'Even geduld'
+  },
+
+  // EmergencyLoader
+  emergency: {
+    title: 'Noodladen',
+    description: 'Gegevens herstellen...',
+    retry: 'Opnieuw proberen',
+    contactSupport: 'Contact Opnemen met Ondersteuning'
+  },
+
+  // MobileModal
+  mobile: {
+    title: 'Mobiel Menu',
+    close: 'Menu Sluiten',
+    navigation: 'Navigatie'
+  },
+
+  // SocialShare
+  social: {
+    title: 'Delen',
+    description: 'Deel dit artikel op je sociale netwerken',
+    copyLink: 'Link Kopiëren',
+    linkCopied: 'Link gekopieerd!',
+    shareOn: 'Delen op'
+  },
+
+  // LanguageSelector
+  language: {
+    title: 'Taal Selecteren',
+    current: 'Huidige Taal',
+    change: 'Taal Wijzigen',
+    available: 'Beschikbare Talen'
+  },
+
+  // Chat
+  chat: {
+    title: 'RoastMe AI Chat',
+    subtitle: 'Chat met onze AI om roasts te maken',
+    placeholder: 'Typ je bericht...',
+    send: 'Versturen',
+    thinking: 'AI denkt na...',
+    newChat: 'Nieuw Gesprek',
+    clearChat: 'Gesprek Wissen',
+    copyResponse: 'Antwoord Kopiëren',
+    responseCopied: 'Antwoord gekopieerd!'
+  },
+
+  // Common
+  common: {
+    loading: 'Laden...',
+    error: 'Fout',
+    success: 'Succes',
+    warning: 'Waarschuwing',
+    info: 'Informatie',
+    yes: 'Ja',
+    no: 'Nee',
+    ok: 'OK',
+    cancel: 'Annuleren',
+    save: 'Opslaan',
+    edit: 'Bewerken',
+    delete: 'Verwijderen',
+    add: 'Toevoegen',
+    search: 'Zoeken',
+    filter: 'Filteren',
+    sort: 'Sorteren',
+    view: 'Bekijken',
+    hide: 'Verbergen',
+    show: 'Tonen',
+    more: 'Meer',
+    less: 'Minder',
+    all: 'Alles',
+    none: 'Geen',
+    select: 'Selecteren',
+    choose: 'Kiezen',
+    upload: 'Uploaden',
+    download: 'Downloaden',
+    print: 'Afdrukken',
+    share: 'Delen',
+    like: 'Vind ik leuk',
+    dislike: 'Vind ik niet leuk',
+    favorite: 'Favoriet',
+    bookmark: 'Bladwijzer',
+    follow: 'Volgen',
+    unfollow: 'Niet meer volgen',
+    subscribe: 'Abonneren',
+    unsubscribe: 'Afmelden',
+    join: 'Lid worden',
+    leave: 'Vertrekken',
+    start: 'Starten',
+    stop: 'Stoppen',
+    pause: 'Pauzeren',
+    resume: 'Hervatten',
+    play: 'Afspelen',
+    record: 'Opnemen',
+    live: 'Live',
+    offline: 'Offline',
+    online: 'Online',
+    active: 'Actief',
+    inactive: 'Inactief',
+    enabled: 'Ingeschakeld',
+    disabled: 'Uitgeschakeld',
+    visible: 'Zichtbaar',
+    hidden: 'Verborgen',
+    public: 'Openbaar',
+    private: 'Privé',
+    open: 'Open',
+    closed: 'Gesloten',
+    available: 'Beschikbaar',
+    unavailable: 'Niet beschikbaar',
+    free: 'Gratis',
+    paid: 'Betaald',
+    new: 'Nieuw',
+    old: 'Oud',
+    hot: 'Populair',
+    trending: 'Trending',
+    featured: 'Uitgelicht',
+    recommended: 'Aanbevolen',
+    popular: 'Populair',
+    recent: 'Recent',
+    latest: 'Nieuwste',
+    first: 'Eerste',
+    last: 'Laatste',
+    next: 'Volgende',
+    previous: 'Vorige',
+    current: 'Huidig',
+    future: 'Toekomst',
+    past: 'Verleden',
+    today: 'Vandaag',
+    yesterday: 'Gisteren',
+    tomorrow: 'Morgen',
+    thisWeek: 'Deze week',
+    lastWeek: 'Vorige week',
+    nextWeek: 'Volgende week',
+    thisMonth: 'Deze maand',
+    lastMonth: 'Vorige maand',
+    nextMonth: 'Volgende maand',
+    thisYear: 'Dit jaar',
+    lastYear: 'Vorig jaar',
+    nextYear: 'Volgend jaar'
+  }
+};

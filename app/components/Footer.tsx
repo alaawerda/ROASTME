@@ -1,14 +1,16 @@
+"use client"
+
 import React from 'react';
 import { Heart, Zap, Shield, Users, MessageSquare, Globe, ArrowUpRight, Flame, Coffee } from 'lucide-react';
 import Logo from './Logo';
-import { useLanguage } from '../hooks/useLanguage';
+
 
 interface FooterProps {
   isInputFocused?: boolean;
 }
 
 const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
-  const { translations } = useLanguage();
+
   
   return (
     <footer className={`relative overflow-hidden transition-all duration-300 ease-out ${
@@ -59,11 +61,11 @@ const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
                 <Shield className="w-3 h-3 text-green-300" />
-                <span className="text-white text-xs">{translations.secure}</span>
+                <span className="text-white text-xs">Sécurisé</span>
               </div>
               <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
                 <Zap className="w-3 h-3 text-yellow-300" />
-                <span className="text-white text-xs">{translations.fast}</span>
+                <span className="text-white text-xs">Rapide</span>
               </div>
             </div>
             
@@ -83,11 +85,11 @@ const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
               {/* Liens rapides */}
               <div className="hidden sm:flex items-center space-x-2">
                 <a href="#" className="footer-link-compact group">
-                  <span className="text-xs">{translations.home}</span>
+                  <span className="text-xs">Accueil</span>
                   <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
                 </a>
                 <a href="#" className="footer-link-compact group">
-                  <span className="text-xs">{translations.about}</span>
+                  <span className="text-xs">À propos</span>
                   <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
                 </a>
               </div>

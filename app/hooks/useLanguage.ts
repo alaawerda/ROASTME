@@ -1,205 +1,136 @@
-import { useState, useEffect } from 'react'
-import { fr, en, es, de, it, pt, nl, ru, ja, ko, zh, ar } from '../locales'
+'use client';
 
-// Type pour toutes les traductions avec propriétés optionnelles pour la compatibilité
-type Translations = {
-  title: string;
-  poweredBy: string;
-  welcomeMessage: string;
-  preparingRoast: string;
-  networkError: string;
-  inputPlaceholder: string;
-  warningMessage: string;
-  home: string;
-  about: string;
-  contact: string;
-  secure: string;
-  fast: string;
-  activeUsers: string;
-  messagesGenerated: string;
-  averageRating: string;
-  languagesSupported: string;
-  timeFormat: string;
+import { useState, useEffect, useCallback } from 'react';
+import { 
+  LocaleKey, 
+  Locale, 
+  getLocale, 
+  getTranslation, 
+  getBrowserLocale, 
+  getDefaultLocale,
+  isSupportedLocale,
+  languageNames,
+  nativeLanguageNames
+} from '../locales';
+
+interface UseLanguageReturn {
+  locale: LocaleKey;
+  setLocale: (locale: LocaleKey) => void;
+  t: (key: string) => string;
+  localeData: Locale;
   languageName: string;
-  languageCode: string;
-  // Propriétés optionnelles pour les dons
-  donateModalTitle?: string;
-  donateModalSubtitle?: string;
-  donateModalDescription?: string;
-  donateCta?: string;
-  donateClose?: string;
-  donateGratitude?: string;
+  nativeLanguageName: string;
+  supportedLocales: LocaleKey[];
+  isRTL: boolean;
 }
 
-// Mapping des codes de langue vers les traductions
-const allTranslations: Record<string, Translations> = {
-  'fr': fr,
-  'en': en,
-  'es': es,
-  'de': de,
-  'it': it,
-  'pt': pt,
-  'nl': nl,
-  'ru': ru,
-  'ja': ja,
-  'ko': ko,
-  'zh': zh,
-  'ar': ar
-}
+export function useLanguage(): UseLanguageReturn {
+  const [locale, setLocaleState] = useState<LocaleKey>(getDefaultLocale());
 
-// Langues supportées
-export const supportedLanguages = [
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'pt', name: 'Português', flag: '🇵🇹' },
-  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' }
-]
-
-// Détecter la langue du navigateur
-const detectLanguage = (): { languageCode: string; translations: Translations } => {
-  console.log('🔍 Détection de langue...')
-  
-  // Vérifier si on est côté client
-  if (typeof window === 'undefined') {
-    console.log('🖥️ Côté serveur, utilisation de la langue par défaut')
-    return { languageCode: 'fr', translations: allTranslations['fr']! }
-  }
-  
-  try {
-    // Détecter la langue du navigateur en premier
-    const browserLanguage = navigator.language || navigator.languages?.[0] || 'fr'
-    const languageCode = browserLanguage.split('-')[0]?.toLowerCase() || 'fr'
-    
-    console.log('🌐 Langue du navigateur:', browserLanguage)
-    console.log('🔤 Code de langue:', languageCode)
-    
-    // Vérifier si la langue du navigateur est supportée
-    if (allTranslations[languageCode]) {
-      console.log('✅ Langue supportée:', languageCode)
-      if (typeof window !== 'undefined') {
-        try {
-          localStorage.setItem('roastme-language', languageCode)
-        } catch (error) {
-          console.warn('Impossible de sauvegarder la langue dans localStorage:', error)
-        }
-      }
-      return { languageCode, translations: allTranslations[languageCode] }
-    }
-    
-    // Essayer de récupérer la langue depuis localStorage
-    let savedLanguage = null
-    try {
-      savedLanguage = localStorage.getItem('roastme-language')
-    } catch (error) {
-      console.warn('Impossible de récupérer la langue depuis localStorage:', error)
-    }
-    
-    console.log('💾 Langue sauvegardée:', savedLanguage)
-    
-    if (savedLanguage && allTranslations[savedLanguage]) {
-      console.log('✅ Utilisation de la langue sauvegardée:', savedLanguage)
-      return { languageCode: savedLanguage, translations: allTranslations[savedLanguage]! }
-    }
-
-    // Fallback vers le français (langue par défaut)
-    console.log('🔄 Fallback vers le français')
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('roastme-language', 'fr')
-      } catch (error) {
-        console.warn('Impossible de sauvegarder la langue par défaut:', error)
-      }
-    }
-    return { languageCode: 'fr', translations: allTranslations['fr']! }
-  } catch (error) {
-    console.error('Erreur lors de la détection de langue:', error)
-    // Fallback sécurisé vers le français
-    return { languageCode: 'fr', translations: allTranslations['fr']! }
-  }
-}
-
-export function useLanguage() {
-  const [currentLanguage, setCurrentLanguage] = useState<string>('en')
-  const [translations, setTranslations] = useState<Translations>(en)
-  const [isInitialized, setIsInitialized] = useState(false)
-
-  const changeLanguage = (languageCode: string): void => {
-    if (allTranslations[languageCode]) {
-      setCurrentLanguage(languageCode)
-      setTranslations(allTranslations[languageCode])
-      if (typeof window !== 'undefined') {
-        try {
-          localStorage.setItem('roastme-language', languageCode)
-        } catch (error) {
-          console.error('Erreur lors de la sauvegarde de la langue:', error)
-        }
-      }
-    }
-  }
-
-  const resetToBrowserLanguage = (): void => {
-    console.log('🔄 Reset vers la langue du navigateur')
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.removeItem('roastme-language')
-      } catch (error) {
-        console.error('Erreur lors de la suppression de la langue:', error)
-      }
-    }
-    const { languageCode, translations: newTranslations } = detectLanguage()
-    setCurrentLanguage(languageCode)
-    setTranslations(newTranslations)
-  }
-
+  // Initialiser la langue depuis le localStorage ou le navigateur
   useEffect(() => {
-    let cancelled = false
-    // Filet de sécurité: initialiser l'UI même si quelque chose bloque
-    const safetyTimer = setTimeout(() => {
-      if (!cancelled) setIsInitialized(true)
-    }, 3000)
-
-    try {
-      const { languageCode, translations: newTranslations } = detectLanguage()
-      if (!cancelled) {
-        setCurrentLanguage(languageCode)
-        setTranslations(newTranslations)
+    if (typeof window !== 'undefined') {
+      const savedLocale = localStorage.getItem('locale');
+      if (savedLocale && isSupportedLocale(savedLocale)) {
+        setLocaleState(savedLocale);
+      } else {
+        const browserLocale = getBrowserLocale();
+        setLocaleState(browserLocale);
+        localStorage.setItem('locale', browserLocale);
       }
-    } catch (error) {
-      console.error('Erreur lors de l\'initialisation de la langue:', error)
-      // Fallback sécurisé
-      if (!cancelled) {
-        setCurrentLanguage('en')
-        setTranslations(allTranslations['en']!)
+    }
+  }, []);
+
+  // Mettre à jour la langue
+  const setLocale = useCallback((newLocale: LocaleKey) => {
+    if (isSupportedLocale(newLocale)) {
+      setLocaleState(newLocale);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('locale', newLocale);
+        // Mettre à jour l'attribut lang du document
+        document.documentElement.lang = newLocale;
+        // Mettre à jour la direction du texte pour les langues RTL
+        document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr';
       }
-    } finally {
-      if (!cancelled) setIsInitialized(true)
-      clearTimeout(safetyTimer)
     }
+  }, []);
 
-    return () => {
-      cancelled = true
-      clearTimeout(safetyTimer)
+  // Fonction de traduction
+  const t = useCallback((key: string): string => {
+    return getTranslation(locale, key);
+  }, [locale]);
+
+  // Obtenir les données de la locale
+  const localeData = getLocale(locale);
+
+  // Obtenir le nom de la langue
+  const languageName = languageNames[locale];
+  const nativeLanguageName = nativeLanguageNames[locale];
+
+  // Langues supportées
+  const supportedLocales: LocaleKey[] = [
+    'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ru', 'ja', 'ko', 'ar', 'zh'
+  ];
+
+  // Vérifier si la langue est RTL
+  const isRTL = locale === 'ar';
+
+  // Mettre à jour l'attribut lang et dir du document quand la locale change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.lang = locale;
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     }
-  }, [])
-
-  // Vérifier que les valeurs retournées sont valides
-  const safeTranslations = translations || allTranslations['en']!
-  const safeCurrentLanguage = currentLanguage || 'en'
+  }, [locale, isRTL]);
 
   return {
-    currentLanguage: safeCurrentLanguage,
-    translations: safeTranslations,
-    changeLanguage,
-    supportedLanguages,
-    resetToBrowserLanguage,
+    locale,
+    setLocale,
+    t,
+    localeData,
+    languageName,
+    nativeLanguageName,
+    supportedLocales,
+    isRTL
+  };
+}
+
+// Hook utilitaire pour obtenir une traduction spécifique
+export function useTranslation(key: string): string {
+  const { t } = useLanguage();
+  return t(key);
+}
+
+// Hook utilitaire pour obtenir les données d'une locale spécifique
+export function useLocaleData(): Locale {
+  const { localeData } = useLanguage();
+  return localeData;
+}
+
+// Hook utilitaire pour vérifier si la langue actuelle est RTL
+export function useRTL(): boolean {
+  const { isRTL } = useLanguage();
+  return isRTL;
+}
+
+// Hook principal pour l'application - retourne les propriétés attendues par page.tsx
+export function useLanguageApp() {
+  const { locale, setLocale, localeData, t } = useLanguage();
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialiser l'état une fois que la langue est chargée
+  useEffect(() => {
+    if (locale && localeData) {
+      setIsInitialized(true);
+    }
+  }, [locale, localeData]);
+
+  // Retourner les propriétés attendues par le composant
+  return {
+    currentLanguage: locale,
+    translations: localeData,
+    changeLanguage: setLocale,
+    t,
     isInitialized
-  }
+  };
 }

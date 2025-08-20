@@ -5,20 +5,12 @@ interface DonationModalProps {
   isOpen: boolean
   onClose: () => void
   currentLanguage: string
-  translations: {
-    donateModalTitle?: string
-    donateModalSubtitle?: string
-    donateModalDescription?: string
-    donateCta?: string
-    donateClose?: string
-  }
 }
 
 export default function DonationModal({ 
   isOpen, 
   onClose, 
-  currentLanguage, 
-  translations 
+  currentLanguage 
 }: DonationModalProps) {
   if (!isOpen) return null
 
@@ -64,7 +56,7 @@ export default function DonationModal({
               {/* Titre avec ombre portée */}
               <div className="space-y-1">
                 <h3 className="text-lg font-bold text-white drop-shadow-lg">
-                  {translations.donateModalTitle || 'Enjoying the roast? ☕'}
+                  Enjoying the roast? ☕
                 </h3>
                 <div className="w-12 h-0.5 bg-white/60 rounded-full"></div>
               </div>
@@ -99,10 +91,10 @@ export default function DonationModal({
                 </div>
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-gray-900">
-                  {translations.donateModalSubtitle || 'Support the Roast! 🔥'}
+                  Support the Roast! 🔥
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm">
-                  {translations.donateModalDescription || 'If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.'}
+                                      If you like the service, buy me a coffee to support the project. No pressure – just love and caffeine.
                 </p>
               </div>
             </div>
@@ -115,7 +107,7 @@ export default function DonationModal({
                 className="group relative w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out"
               >
                 <Coffee className="w-4 h-4 mr-2" />
-                <span className="text-base">{translations.donateCta || 'Buy me a coffee'}</span>
+                                  <span className="text-base">Buy me a coffee</span>
                 <span className="ml-2 text-sm opacity-80 group-hover:translate-x-1 transition-transform duration-200">→</span>
               </button>
 
@@ -134,7 +126,7 @@ export default function DonationModal({
                 onClick={onClose}
                 className="w-full py-2.5 px-4 text-gray-500 hover:text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-all duration-200 ease-out"
               >
-                {translations.donateClose || 'Close'}
+                Close
               </button>
             </div>
 
@@ -153,7 +145,7 @@ export default function DonationModal({
             onClick={onClose}
             className="w-full py-2.5 px-4 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-medium rounded-xl hover:from-gray-200 hover:to-gray-300 transition-all duration-200 ease-out hover:scale-[1.02] flex items-center justify-center space-x-2 group"
           >
-            <span className="text-sm">{translations.donateClose || 'Close'}</span>
+                              <span className="text-sm">Close</span>
           </button>
         </div>
       </div>
