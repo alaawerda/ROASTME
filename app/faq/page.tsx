@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import SEOManager from '../components/SEOManager'
 
 export default function FAQPage() {
-  const { currentLanguage, translations, changeLanguage } = useLanguageApp()
+  const { currentLanguage, changeLanguage } = useLanguageApp()
 
   const faqData = [
     {

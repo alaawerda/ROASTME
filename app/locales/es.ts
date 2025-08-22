@@ -253,6 +253,7 @@ export const es = {
     stats: {
       languages: 'Idiomas Soportados',
       free: 'Gratis',
+      available: 'Disponible 24/7',
     },
     cta: {
       title: '🚀 ¿Listo para ser Roasteado? 🚀',

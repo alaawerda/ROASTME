@@ -2,6 +2,7 @@
 
 import { useLanguageApp } from '../hooks/useLanguage'
 import { useState } from 'react'
+import type { LocaleKey } from '../locales'
 
 export default function LanguageTestPage() {
   const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguageApp()
@@ -18,7 +19,7 @@ export default function LanguageTestPage() {
     )
   }
 
-  const supportedLanguages = [
+  const supportedLanguages: LocaleKey[] = [
     'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ru', 'ja', 'ko', 'ar', 'zh'
   ]
 

@@ -139,6 +139,14 @@ export const performanceConfig = {
       'zh': 'https://roastme.chat/zh',
       'nl': 'https://roastme.chat/nl'
     }
+  },
+
+  // Configuration des Core Web Vitals
+  webVitals: {
+    lcp: { target: 2.5, warning: 4.0 },
+    fid: { target: 100, warning: 300 },
+    cls: { target: 0.1, warning: 0.25 },
+    ttfb: { target: 800, warning: 1800 }
   }
 }
 
@@ -154,7 +162,12 @@ export const getAllPerformanceConfigs = () => {
 
 // Fonction pour générer les headers de performance
 export function generatePerformanceHeaders(): Record<string, string> {
-  return performanceConfig.headers
+  return {
+    'X-Content-Type-Options': performanceConfig.security.xContentTypeOptions,
+    'X-Frame-Options': performanceConfig.security.xFrameOptions,
+    'Referrer-Policy': performanceConfig.security.referrerPolicy,
+    'Permissions-Policy': performanceConfig.security.permissionsPolicy
+  }
 }
 
 // Fonction pour vérifier les Core Web Vitals

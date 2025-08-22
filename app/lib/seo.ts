@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import type { LocaleKey } from '../locales'
 
 export interface SEOMetadata {
   title: string
@@ -461,7 +462,7 @@ export const seoMetadata = {
   }
 }
 
-export function generateMetadata(lang: string = 'fr'): Metadata {
+export function generateMetadata(lang: LocaleKey = 'fr'): Metadata {
   const seo = seoMetadata[lang] || seoMetadata.fr!
   
   return {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { Globe, ChevronDown, Check, X } from 'lucide-react'
 import type { LocaleKey } from '../locales'
@@ -50,79 +50,18 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Gérer le clic en dehors du dropdown (pointerdown + touchstart pour une meilleure compatibilité)
-  useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-
-    const handleClickOutside = (event: MouseEvent | PointerEvent | TouchEvent) => {
-      if (!isOpen) return
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && 
-          buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
-        closeDropdown()
-      }
-    }
-
-    // Gérer la touche Escape
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeDropdown()
-      }
-    }
-
-    // Gérer le scroll de la page: recalculer la position au lieu de fermer
-    const handleScroll = () => {
-      if (isOpen && !isMobile) {
-        calculateDropdownPosition()
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('pointerdown', handleClickOutside as EventListener)
-    document.addEventListener('touchstart', handleClickOutside as EventListener, { passive: true })
-    document.addEventListener('keydown', handleEscape)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleResize, { passive: true })
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('pointerdown', handleClickOutside as EventListener)
-      document.removeEventListener('touchstart', handleClickOutside as EventListener)
-      document.removeEventListener('keydown', handleEscape)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [isOpen, isMobile])
-
-  // Verrouiller le scroll de la page quand le sélecteur est ouvert (desktop et mobile)
-  useEffect(() => {
-    if (isOpen) {
-      const originalOverflow = document.body.style.overflow
-      document.body.style.overflow = 'hidden'
-      return () => {
-        document.body.style.overflow = originalOverflow
-      }
-    }
-  }, [isOpen])
-
   // Calculer la position du dropdown de manière optimisée
-  useEffect(() => {
-    if (isOpen && buttonRef.current && !isMobile) {
-      calculateDropdownPosition()
-    }
-  }, [isOpen, isMobile])
-
-  const calculateDropdownPosition = () => {
+  const calculateDropdownPosition = useCallback(() => {
     if (!buttonRef.current) return
 
     const buttonRect = buttonRef.current.getBoundingClientRect()
     const viewportWidth = window.innerWidth
     const viewportHeight = window.innerHeight
+    
     // Largeur adaptative pour s'aligner mieux avec le header et éviter les débordements
     const idealWidth = Math.max(240, Math.min(320, Math.ceil(buttonRect.width) + 120))
     const dropdownWidth = Math.min(idealWidth, viewportWidth - 32)
-    const dropdownHeight = Math.min(400, viewportHeight - 32) // Hauteur estimée mais limitée par le viewport
+    const dropdownHeight = Math.min(400, viewportHeight - 32)
 
     // Calculer la position optimale
     let left = buttonRect.right - dropdownWidth
@@ -148,19 +87,84 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
       top = 16
     }
 
-    // Element is fixed-positioned; coordinates must be viewport-relative (no scroll offsets)
     setDropdownPosition({
       top: top,
       left: left,
       width: dropdownWidth
     })
-  }
+  }, [])
 
-  const handleResize = () => {
+  // Gérer le redimensionnement de la fenêtre
+  const handleResize = useCallback(() => {
     if (isOpen && !isMobile) {
       calculateDropdownPosition()
     }
-  }
+  }, [isOpen, isMobile, calculateDropdownPosition])
+
+  // Gérer le clic en dehors du dropdown
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleClickOutside = (event: MouseEvent | PointerEvent | TouchEvent) => {
+      if (!isOpen) return
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && 
+          buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
+        closeDropdown()
+      }
+    }
+
+    // Gérer la touche Escape
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeDropdown()
+      }
+    }
+
+    // Gérer le scroll de la page
+    const handleScroll = () => {
+      if (isOpen && !isMobile) {
+        calculateDropdownPosition()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('pointerdown', handleClickOutside as EventListener)
+    document.addEventListener('touchstart', handleClickOutside as EventListener, { passive: true })
+    document.addEventListener('keydown', handleEscape)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleResize, { passive: true })
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('pointerdown', handleClickOutside as EventListener)
+      document.removeEventListener('touchstart', handleClickOutside as EventListener)
+      document.removeEventListener('keydown', handleEscape)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isOpen, calculateDropdownPosition, handleResize])
+
+  // Verrouiller le scroll de la page quand le sélecteur est ouvert
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = originalOverflow
+      }
+    }
+    return () => {}
+  }, [isOpen])
+
+  // Calculer la position quand le dropdown s'ouvre
+  useEffect(() => {
+    if (isOpen && !isMobile) {
+      // Délai pour s'assurer que le DOM est mis à jour
+      setTimeout(() => {
+        calculateDropdownPosition()
+      }, 0)
+    }
+  }, [isOpen, isMobile, calculateDropdownPosition])
 
   const openDropdown = () => {
     setIsOpen(true)

@@ -103,7 +103,7 @@ export default function DonationModal({
             <div className="space-y-2.5">
               {/* Bouton principal Buy Me a Coffee */}
               <button
-                onClick={() => handleDonationClick(getDonationUrl(currentLanguage))}
+                onClick={() => handleDonationClick(getDonationUrl(5, currentLanguage))}
                 className="group relative w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out"
               >
                 <Coffee className="w-4 h-4 mr-2" />
@@ -133,7 +133,7 @@ export default function DonationModal({
             {/* Message de gratitude personnalisé selon la langue */}
             <div className="text-center">
               <p className="text-xs text-gray-400">
-                {getGratitudeMessage(currentLanguage)}
+                {getGratitudeMessage(currentLanguage).message}
               </p>
             </div>
           </div>

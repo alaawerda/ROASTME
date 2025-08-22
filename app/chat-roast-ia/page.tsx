@@ -13,7 +13,7 @@ import FAQ from './faq'
 import TranslationDemo from './translation-demo'
 
 export default function ChatRoastIAPage() {
-  const { isInitialized, currentLocale, t } = useLanguageApp()
+  const { isInitialized, currentLanguage, t } = useLanguageApp()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -25,13 +25,13 @@ export default function ChatRoastIAPage() {
     console.log('=== PAGE DEBUG ===')
     console.log('mounted:', mounted)
     console.log('isInitialized:', isInitialized)
-    console.log('currentLocale:', currentLocale)
+    console.log('currentLanguage:', currentLanguage)
     if (isInitialized) {
       console.log('Hero title translation:', t('chatRoastIA.heroTitle'))
       console.log('Hero subtitle translation:', t('chatRoastIA.heroSubtitle'))
     }
     console.log('==================')
-  }, [mounted, isInitialized, currentLocale, t])
+  }, [mounted, isInitialized, currentLanguage, t])
 
   if (!mounted || !isInitialized) {
     return <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/20 to-yellow-50/20 flex items-center justify-center">
@@ -124,7 +124,7 @@ export default function ChatRoastIAPage() {
                       window.location.reload();
                     }}
                     className={`px-3 py-1 rounded text-sm font-medium ${
-                      currentLocale === lang
+                      currentLanguage === lang
                         ? 'bg-flame-orange text-white'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
@@ -134,7 +134,7 @@ export default function ChatRoastIAPage() {
                 ))}
               </div>
               <p className="text-sm text-gray-600 mt-2">
-                Current language: <strong>{currentLocale}</strong> | 
+                Current language: <strong>{currentLanguage}</strong> | 
                 Browser language: <strong>{typeof window !== 'undefined' ? navigator.language : 'N/A'}</strong>
               </p>
               

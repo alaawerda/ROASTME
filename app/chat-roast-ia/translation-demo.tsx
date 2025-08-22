@@ -5,8 +5,8 @@ import { useLanguageApp } from '../hooks/useLanguage'
 import { LocaleKey } from '../locales'
 
 export default function TranslationDemo() {
-  const { currentLocale, setLanguage, t } = useLanguageApp()
-  const [selectedLocale, setSelectedLocale] = useState<LocaleKey>(currentLocale)
+  const { currentLanguage, setLanguage, t } = useLanguageApp()
+  const [selectedLocale, setSelectedLocale] = useState<LocaleKey>(currentLanguage)
 
 
 

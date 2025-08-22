@@ -261,6 +261,7 @@ export const fr = {
     stats: {
       languages: 'Langues Supportées',
       free: 'Gratuit',
+      available: 'Disponible 24/7',
     },
     cta: {
       title: '🚀 Prêt à Être Roasté ? 🚀',
