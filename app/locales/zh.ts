@@ -207,6 +207,55 @@ export const zh = {
     responseCopied: '回复已复制！'
   },
 
+  // Chat Roast IA - SEO优化文本
+  chatRoastIA: {
+    heroTitle: '免费聊天吐槽AI - 用火焰吐槽你的AI！🔥',
+    heroSubtitle: '发现最犀利的AI，无需过滤就能让你笑翻天的吐槽。现在免费试用！',
+    liveChatTitle: '💬 实时聊天吐槽AI 🔥',
+    liveChatSubtitle: '现在试用我们犀利的AI！',
+    features: {
+      roastWithoutFilters: '无过滤吐槽',
+      roastWithoutFiltersDesc: '最犀利的AI，无需任何审查就能让你笑翻天的吐槽。每个回复都是犀利幽默的杰作！',
+      realTimeChat: '实时聊天',
+      realTimeChatDesc: '流畅的对话和即时回复，感谢我们先进的人工智能。让你对速度和质量感到惊讶！',
+      multilingualSupport: '多语言支持',
+      multilingualSupportDesc: '支持12种语言，用你的母语提供个性化吐槽。幽默无国界！'
+    },
+    advantages: {
+      freeTitle: '100%免费',
+      freeDesc: '无限制访问所有功能，无隐藏费用。现在享受完整体验！',
+      personalizedTitle: '个性化吐槽',
+      personalizedDesc: '每个吐槽都是独特的，根据你的消息量身定制，实现最大幽默效果。AI分析你的风格并适应你的个性！'
+    },
+    howToUse: {
+      title: '如何使用聊天吐槽AI？📱',
+      subtitle: '3个简单步骤，发现我们犀利AI的力量',
+      step1: {
+        title: '写你的消息',
+        description: '在聊天区域输入你想要的内容。你提供的上下文越多，吐槽就越犀利和个性化！'
+      },
+      step2: {
+        title: '点击发送',
+        description: '我们的AI将分析并准备你的吐槽。几秒钟内，你将收到一个让你笑到流泪的回复！'
+      },
+      step3: {
+        title: '接收你的吐槽',
+        description: '享受我们AI的犀利幽默！每个吐槽都翻译成你的语言，提供完美个性化的体验。'
+      }
+    },
+    stats: {
+      languages: '支持语言',
+      free: '免费',
+      available: '可用'
+    },
+    cta: {
+      title: '🚀 准备好被吐槽了吗？🚀',
+      subtitle: '加入已经发现我们犀利AI力量的数千名用户！',
+      startNow: '🔥 现在开始',
+      seeRankings: '查看排名'
+    }
+  },
+
   // Common
   common: {
     loading: '加载中...',

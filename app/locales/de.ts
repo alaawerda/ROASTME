@@ -1,4 +1,7 @@
 export const de = {
+  // Sprachinformationen
+  languageName: 'Deutsch',
+  
   // Navigation
   nav: {
     home: 'Startseite',
@@ -205,6 +208,59 @@ export const de = {
     clearChat: 'Unterhaltung löschen',
     copyResponse: 'Antwort kopieren',
     responseCopied: 'Antwort kopiert!'
+  },
+
+  // Chat Roast IA - SEO-optimierte Texte
+  chatRoastIA: {
+    heroTitle: 'Kostenloser Chat Roast KI - Die KI, die dich in Flammen roastet! 🔥',
+    heroSubtitle: 'Entdecke die schärfste künstliche Intelligenz, die dich auf humorvolle Weise ohne Filter roastet. Teste sie jetzt kostenlos!',
+    liveChatTitle: '💬 Live Chat Roast KI 🔥',
+    liveChatSubtitle: 'Teste jetzt unsere scharfe KI!',
+    features: {
+      title: 'Warum unseren Chat Roast KI wählen? 🤖',
+      subtitle: 'Entdecke die fortschrittlichste und lustigste Roast-Erfahrung, die je geschaffen wurde',
+      roastWithoutFilters: 'Roast ohne Filter',
+      roastWithoutFiltersDesc: 'Die schärfste KI, die dich auf humorvolle Weise ohne jede Zensur roastet. Jede Antwort ist ein Meisterwerk des scharfen Humors!',
+      realTimeChat: 'Echtzeit-Chat',
+      realTimeChatDesc: 'Flüssige Gespräche und sofortige Antworten dank unserer fortschrittlichen künstlichen Intelligenz. Lass dich von der Geschwindigkeit und Qualität überraschen!',
+      multilingualSupport: 'Mehrsprachige Unterstützung',
+      multilingualSupportDesc: 'Verfügbar in 12 Sprachen für einen personalisierten Roast in deiner Muttersprache. Humor kennt keine Grenzen!'
+    },
+    advantages: {
+      title: 'Vorteile des kostenlosen Chat Roast KI ✨',
+      subtitle: 'Alles was du für lustige Roasts brauchst, ohne Kosten',
+      freeTitle: '100% Kostenlos',
+      freeDesc: 'Unbegrenzter Zugang zu allen Funktionen ohne versteckte Kosten. Genieße die komplette Erfahrung jetzt!',
+      personalizedTitle: 'Personalisierten Roast',
+      personalizedDesc: 'Jeder Roast ist einzigartig und an deine Nachrichten angepasst für maximalen Humor. Die KI analysiert deinen Stil und passt sich deiner Persönlichkeit an!'
+    },
+    howToUse: {
+      title: 'Wie benutzt man Chat Roast KI? 📱',
+      subtitle: 'In 3 einfachen Schritten entdecke die Kraft unserer scharfen KI',
+      step1: {
+        title: 'Schreibe deine Nachricht',
+        description: 'Tippe was du willst in den Chat-Bereich. Je mehr Kontext du gibst, desto schärfer und personalisierter wird der Roast!'
+      },
+      step2: {
+        title: 'Klicke auf Senden',
+        description: 'Unsere KI wird analysieren und deinen Roast vorbereiten. In wenigen Sekunden erhältst du eine Antwort, die dich zu Tränen lachen lässt!'
+      },
+      step3: {
+        title: 'Erhalte deinen Roast',
+        description: 'Genieße den scharfen Humor unserer KI! Jeder Roast wird in deine Sprache übersetzt für eine perfekt personalisierte Erfahrung.'
+      }
+    },
+    stats: {
+      languages: 'Unterstützte Sprachen',
+      free: 'Kostenlos',
+      available: 'Verfügbar'
+    },
+    cta: {
+      title: '🚀 Bereit geroastet zu werden? 🚀',
+      subtitle: 'Schließe dich Tausenden von Nutzern an, die bereits die Kraft unserer scharfen KI entdeckt haben!',
+      startNow: '🔥 Jetzt starten',
+      seeRankings: 'Ranglisten anzeigen'
+    }
   },
 
   // Hauptanwendungseigenschaften

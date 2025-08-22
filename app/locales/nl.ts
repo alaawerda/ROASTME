@@ -207,6 +207,55 @@ export const nl = {
     responseCopied: 'Antwoord gekopieerd!'
   },
 
+  // Chat Roast IA - SEO-geoptimaliseerde teksten
+  chatRoastIA: {
+    heroTitle: 'Gratis Chat Roast AI - De AI die je in Vlammen Roast! 🔥',
+    heroSubtitle: 'Ontdek de meest bijtende kunstmatige intelligentie die je op hilarische wijze zal roasten zonder filters. Test het nu gratis!',
+    liveChatTitle: '💬 Live Chat Roast AI 🔥',
+    liveChatSubtitle: 'Test nu onze bijtende AI!',
+    features: {
+      roastWithoutFilters: 'Roast Zonder Filters',
+      roastWithoutFiltersDesc: 'De meest bijtende AI die je op hilarische wijze zal roasten zonder enige censuur. Elk antwoord is een meesterwerk van bijtende humor!',
+      realTimeChat: 'Real-time Chat',
+      realTimeChatDesc: 'Vloeiende gesprekken en directe antwoorden dankzij onze geavanceerde kunstmatige intelligentie. Laat je verrassen door de snelheid en kwaliteit!',
+      multilingualSupport: 'Meertalige Ondersteuning',
+      multilingualSupportDesc: 'Beschikbaar in 12 talen voor een gepersonaliseerde roast in jouw moedertaal. Humor kent geen grenzen!'
+    },
+    advantages: {
+      freeTitle: '100% Gratis',
+      freeDesc: 'Onbeperkte toegang tot alle functies zonder verborgen kosten. Geniet nu van de complete ervaring!',
+      personalizedTitle: 'Gepersonaliseerde Roast',
+      personalizedDesc: 'Elke roast is uniek en aangepast aan jouw berichten voor maximale humor. De AI analyseert jouw stijl en past zich aan jouw persoonlijkheid aan!'
+    },
+    howToUse: {
+      title: 'Hoe Chat Roast AI te Gebruiken? 📱',
+      subtitle: 'In 3 eenvoudige stappen ontdek je de kracht van onze bijtende AI',
+      step1: {
+        title: 'Schrijf je bericht',
+        description: 'Typ wat je wilt in het chatgebied. Hoe meer context je geeft, hoe bijtender en gepersonaliseerder de roast zal zijn!'
+      },
+      step2: {
+        title: 'Klik op Versturen',
+        description: 'Onze AI zal analyseren en jouw roast voorbereiden. Binnen enkele seconden ontvang je een antwoord dat je tot tranen toe zal laten lachen!'
+      },
+      step3: {
+        title: 'Ontvang je roast',
+        description: 'Geniet van de bijtende humor van onze AI! Elke roast wordt vertaald naar jouw taal voor een perfect gepersonaliseerde ervaring.'
+      }
+    },
+    stats: {
+      languages: 'Ondersteunde Talen',
+      free: 'Gratis',
+      available: 'Beschikbaar'
+    },
+    cta: {
+      title: '🚀 Klaar om Geroast te Worden? 🚀',
+      subtitle: 'Sluit je aan bij duizenden gebruikers die al de kracht van onze bijtende AI hebben ontdekt!',
+      startNow: '🔥 Nu Beginnen',
+      seeRankings: 'Ranglijsten Bekijken'
+    }
+  },
+
   // Common
   common: {
     loading: 'Laden...',

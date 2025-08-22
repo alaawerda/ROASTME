@@ -207,6 +207,55 @@ export const ja = {
     responseCopied: '応答がコピーされました！'
   },
 
+  // Chat Roast IA - SEO最適化テキスト
+  chatRoastIA: {
+    heroTitle: '無料チャットローストAI - 炎でローストするAI！🔥',
+    heroSubtitle: 'フィルターなしで面白おかしくローストする最も辛辣な人工知能を発見しましょう。今すぐ無料で試してみてください！',
+    liveChatTitle: '💬 ライブチャットローストAI 🔥',
+    liveChatSubtitle: '今すぐ私たちの辛辣なAIを試してみてください！',
+    features: {
+      roastWithoutFilters: 'フィルターなしロースト',
+      roastWithoutFiltersDesc: '検閲なしで面白おかしくローストする最も辛辣なAI。各応答は辛辣なユーモアの傑作です！',
+      realTimeChat: 'リアルタイムチャット',
+      realTimeChatDesc: '私たちの高度な人工知能により、スムーズな会話と即座の応答。速度と品質に驚かされることでしょう！',
+      multilingualSupport: '多言語サポート',
+      multilingualSupportDesc: '12言語で利用可能で、母国語でのパーソナライズされたローストを提供。ユーモアに国境はありません！'
+    },
+    advantages: {
+      freeTitle: '100%無料',
+      freeDesc: '隠れたコストなしで全機能に無制限アクセス。今すぐ完全な体験をお楽しみください！',
+      personalizedTitle: 'パーソナライズされたロースト',
+      personalizedDesc: '各ローストはユニークで、最大のユーモアのためにあなたのメッセージに適応されます。AIはあなたのスタイルを分析し、あなたの個性に適応します！'
+    },
+    howToUse: {
+      title: 'チャットローストAIの使い方？📱',
+      subtitle: '3つの簡単なステップで、私たちの辛辣なAIの力を発見しましょう',
+      step1: {
+        title: 'メッセージを書く',
+        description: 'チャットエリアに何でも書いてください。より多くのコンテキストを提供すれば、より辛辣でパーソナライズされたローストになります！'
+      },
+      step2: {
+        title: '送信をクリック',
+        description: '私たちのAIが分析し、あなたのローストを準備します。数秒で、涙が出るほど笑える応答を受け取るでしょう！'
+      },
+      step3: {
+        title: 'ローストを受け取る',
+        description: '私たちのAIの辛辣なユーモアをお楽しみください！各ローストはあなたの言語に翻訳され、完璧にパーソナライズされた体験を提供します。'
+      }
+    },
+    stats: {
+      languages: 'サポート言語',
+      free: '無料',
+      available: '利用可能'
+    },
+    cta: {
+      title: '🚀 ローストされる準備はできましたか？🚀',
+      subtitle: 'すでに私たちの辛辣なAIの力を発見した何千人ものユーザーに参加しましょう！',
+      startNow: '🔥 今すぐ始める',
+      seeRankings: 'ランキングを見る'
+    }
+  },
+
   // Common
   common: {
     loading: '読み込み中...',

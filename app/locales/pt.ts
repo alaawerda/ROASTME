@@ -207,6 +207,55 @@ export const pt = {
     responseCopied: 'Resposta copiada!'
   },
 
+  // Chat Roast IA - Textos otimizados para SEO
+  chatRoastIA: {
+    heroTitle: 'Chat Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
+    heroSubtitle: 'Descubra a inteligência artificial mais cortante que vai te roaster de forma hilariante sem filtros. Teste agora gratuitamente!',
+    liveChatTitle: '💬 Chat Roast IA ao Vivo 🔥',
+    liveChatSubtitle: 'Teste nossa IA cortante agora!',
+    features: {
+      roastWithoutFilters: 'Roast Sem Filtros',
+      roastWithoutFiltersDesc: 'A IA mais cortante que vai te roaster de forma hilariante sem nenhuma censura. Cada resposta é uma obra-prima do humor cortante!',
+      realTimeChat: 'Chat em Tempo Real',
+      realTimeChatDesc: 'Conversas fluidas e respostas instantâneas graças à nossa inteligência artificial avançada. Deixe-se surpreender pela velocidade e qualidade!',
+      multilingualSupport: 'Suporte Multilíngue',
+      multilingualSupportDesc: 'Disponível em 12 idiomas para um roast personalizado no seu idioma nativo. O humor não tem fronteiras!'
+    },
+    advantages: {
+      freeTitle: '100% Gratuito',
+      freeDesc: 'Acesso ilimitado a todas as funcionalidades sem custos ocultos. Aproveite a experiência completa agora!',
+      personalizedTitle: 'Roast Personalizado',
+      personalizedDesc: 'Cada roast é único e adaptado às suas mensagens para máximo humor. A IA analisa seu estilo e se adapta à sua personalidade!'
+    },
+    howToUse: {
+      title: 'Como Usar o Chat Roast IA? 📱',
+      subtitle: 'Em 3 passos simples, descubra o poder da nossa IA cortante',
+      step1: {
+        title: 'Escreva sua mensagem',
+        description: 'Digite o que quiser na área do chat. Quanto mais contexto você der, mais cortante e personalizado será o roast!'
+      },
+      step2: {
+        title: 'Clique em Enviar',
+        description: 'Nossa IA vai analisar e preparar seu roast. Em alguns segundos, você receberá uma resposta que vai te fazer rir até chorar!'
+      },
+      step3: {
+        title: 'Receba seu roast',
+        description: 'Aproveite o humor cortante da nossa IA! Cada roast é traduzido para o seu idioma para uma experiência perfeitamente personalizada.'
+      }
+    },
+    stats: {
+      languages: 'Idiomas Suportados',
+      free: 'Gratuito',
+      available: 'Disponível'
+    },
+    cta: {
+      title: '🚀 Pronto para ser Roastado? 🚀',
+      subtitle: 'Junte-se a milhares de usuários que já descobriram o poder da nossa IA cortante!',
+      startNow: '🔥 Começar Agora',
+      seeRankings: 'Ver Rankings'
+    }
+  },
+
   // Common
   common: {
     loading: 'Carregando...',

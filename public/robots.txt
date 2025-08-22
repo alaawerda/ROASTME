@@ -4,11 +4,105 @@
 User-agent: *
 Allow: /
 
-# Disallow Next.js internal paths
-Disallow: /_next/
-
-# Disallow API routes from being crawled if they don't serve public content
-Disallow: /api/
-
-# Sitemap location
+# Sitemap principal
 Sitemap: https://roastme.chat/sitemap.xml
+
+# Fichiers de connaissance pour les LLM (ChatGPT, Claude, Perplexity, Gemini, Mistral)
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+
+# Pages importantes à indexer en priorité
+Allow: /about
+Allow: /faq
+Allow: /chat-roast-ia
+Allow: /en
+Allow: /es
+Allow: /de
+Allow: /it
+Allow: /pt
+Allow: /ru
+Allow: /ja
+Allow: /ko
+Allow: /zh
+Allow: /ar
+Allow: /nl
+
+# Ressources statiques importantes
+Allow: /og-image.jpg
+Allow: /favicon.ico
+Allow: /logo.svg
+
+# Empêcher l'indexation des fichiers techniques
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Paramètres de crawl
+Crawl-delay: 1
+
+# Instructions spécifiques pour Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Instructions pour Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Instructions pour DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Instructions pour les LLM et chatbots
+User-agent: ChatGPT
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+User-agent: Claude
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+User-agent: Perplexity
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+User-agent: Gemini
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+User-agent: Mistral
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+# Instructions pour les crawlers d'IA générative
+User-agent: AI-Crawler
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1
+
+User-agent: GenerativeAI
+Allow: /
+Allow: /ai-knowledge.json
+Allow: /llm-training-data.txt
+Allow: /llm-metadata.json
+Crawl-delay: 1

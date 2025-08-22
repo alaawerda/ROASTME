@@ -207,6 +207,55 @@ export const ko = {
     responseCopied: '응답이 복사되었습니다!'
   },
 
+  // Chat Roast IA - SEO 최적화 텍스트
+  chatRoastIA: {
+    heroTitle: '무료 채팅 로스트 AI - 불꽃으로 당신을 로스트하는 AI! 🔥',
+    heroSubtitle: '필터 없이 재미있게 로스트하는 가장 예리한 인공지능을 발견하세요. 지금 무료로 시도해보세요!',
+    liveChatTitle: '💬 라이브 채팅 로스트 AI 🔥',
+    liveChatSubtitle: '지금 우리의 예리한 AI를 시도해보세요!',
+    features: {
+      roastWithoutFilters: '필터 없는 로스트',
+      roastWithoutFiltersDesc: '검열 없이 재미있게 로스트하는 가장 예리한 AI. 각 응답은 예리한 유머의 걸작입니다!',
+      realTimeChat: '실시간 채팅',
+      realTimeChatDesc: '우리의 고급 인공지능 덕분에 부드러운 대화와 즉시 응답. 속도와 품질에 놀라게 될 것입니다!',
+      multilingualSupport: '다국어 지원',
+      multilingualSupportDesc: '12개 언어로 제공되어 모국어로 개인화된 로스트를 제공합니다. 유머에는 국경이 없습니다!'
+    },
+    advantages: {
+      freeTitle: '100% 무료',
+      freeDesc: '숨겨진 비용 없이 모든 기능에 무제한 액세스. 지금 완전한 경험을 즐기세요!',
+      personalizedTitle: '개인화된 로스트',
+      personalizedDesc: '각 로스트는 고유하며 최대의 유머를 위해 당신의 메시지에 맞춰집니다. AI는 당신의 스타일을 분석하고 당신의 성격에 적응합니다!'
+    },
+    howToUse: {
+      title: '채팅 로스트 AI 사용법? 📱',
+      subtitle: '3단계로 우리의 예리한 AI의 힘을 발견하세요',
+      step1: {
+        title: '메시지 작성',
+        description: '채팅 영역에 원하는 것을 입력하세요. 더 많은 맥락을 제공할수록 더 예리하고 개인화된 로스트가 됩니다!'
+      },
+      step2: {
+        title: '보내기 클릭',
+        description: '우리의 AI가 분석하고 로스트를 준비합니다. 몇 초 안에 눈물이 날 정도로 웃게 만드는 응답을 받을 것입니다!'
+      },
+      step3: {
+        title: '로스트 받기',
+        description: '우리의 AI의 예리한 유머를 즐기세요! 각 로스트는 완벽하게 개인화된 경험을 위해 당신의 언어로 번역됩니다.'
+      }
+    },
+    stats: {
+      languages: '지원 언어',
+      free: '무료',
+      available: '사용 가능'
+    },
+    cta: {
+      title: '🚀 로스트될 준비가 되셨나요? 🚀',
+      subtitle: '이미 우리의 예리한 AI의 힘을 발견한 수천 명의 사용자에 합류하세요!',
+      startNow: '🔥 지금 시작하기',
+      seeRankings: '순위 보기'
+    }
+  },
+
   // Common
   common: {
     loading: '로딩 중...',

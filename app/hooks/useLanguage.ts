@@ -31,6 +31,7 @@ export function useLanguage(): UseLanguageReturn {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedLocale = localStorage.getItem('locale');
+      
       if (savedLocale && isSupportedLocale(savedLocale)) {
         setLocaleState(savedLocale);
       } else {
@@ -128,6 +129,7 @@ export function useLanguageApp() {
   // Retourner les propriétés attendues par le composant
   return {
     currentLanguage: locale,
+    setLanguage: setLocale,
     translations: localeData,
     changeLanguage: setLocale,
     t,

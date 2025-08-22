@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
+import dynamic from 'next/dynamic';
 import { Zap, Sparkles, Coffee, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import Navigation from './Navigation';
 import type { LocaleKey } from '../locales';
+
+// Charger la navigation de manière dynamique pour le chargement paresseux
+const DynamicNavigation = dynamic(
+  () => import('./Navigation'), 
+  { 
+    ssr: false,
+    loading: () => <div className="w-6 h-6" />
+  }
+);
 
 interface HeaderProps {
   title: string;
@@ -21,56 +30,78 @@ const Header: React.FC<HeaderProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Gestion du scroll pour l'effet de transparence
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Mémoriser la fonction de gestion du scroll
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 10);
   }, []);
 
-  // Fermer le menu mobile lors du changement de route
+  // Gestion du scroll pour l'effet de transparence avec debounce
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, []);
-
-  // Traductions basées sur la langue actuelle
-  const getStatusText = (key: string) => {
-    const translations: Record<string, Record<string, string>> = {
-      fr: {
-        aiAdvanced: 'IA Avancée',
-        buyMeCoffee: 'M\'offrir un ☕',
-        menu: 'Menu',
-        close: 'Fermer'
-      },
-      en: {
-        aiAdvanced: 'Advanced AI',
-        buyMeCoffee: 'Buy me a ☕',
-        menu: 'Menu',
-        close: 'Close'
-      },
-      es: {
-        aiAdvanced: 'IA Avanzada',
-        buyMeCoffee: 'Cómprame un ☕',
-        menu: 'Menú',
-        close: 'Cerrar'
-      },
-      de: {
-        aiAdvanced: 'Fortgeschrittene KI',
-        buyMeCoffee: 'Kauf mir einen ☕',
-        menu: 'Menü',
-        close: 'Schließen'
-      }
-    };
+    let timeoutId: NodeJS.Timeout;
     
-    return translations[currentLanguage]?.[key] || translations.fr?.[key] || key;
-  };
+    const debouncedScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 10);
+    };
 
-  const navItems = [
+    window.addEventListener('scroll', debouncedScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', debouncedScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [handleScroll]);
+
+  // Gestion du menu mobile
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Mémoriser les traductions pour éviter les recalculs
+  const translations = React.useMemo(() => ({
+    fr: {
+      aiAdvanced: 'IA Avancée',
+      buyMeCoffee: 'M\'offrir un ☕',
+      menu: 'Menu',
+      close: 'Fermer'
+    },
+    en: {
+      aiAdvanced: 'Advanced AI',
+      buyMeCoffee: 'Buy me a ☕',
+      menu: 'Menu',
+      close: 'Close'
+    },
+    es: {
+      aiAdvanced: 'IA Avanzada',
+      buyMeCoffee: 'Cómprame un ☕',
+      menu: 'Menú',
+      close: 'Cerrar'
+    },
+    de: {
+      aiAdvanced: 'Fortgeschrittene KI',
+      buyMeCoffee: 'Kauf mir einen ☕',
+      menu: 'Menü',
+      close: 'Schließen'
+    }
+  }), []);
+
+  // Mémoriser la fonction de traduction
+  const getStatusText = useCallback((key: 'aiAdvanced' | 'buyMeCoffee' | 'menu' | 'close') => {
+    const lang = currentLanguage as keyof typeof translations;
+    return (translations[lang]?.[key] || translations.fr[key] || key) as string;
+  }, [currentLanguage, translations]);
+
+  // Mémoriser les éléments de navigation
+  const navItems = React.useMemo(() => [
     { href: '/', label: currentLanguage === 'fr' ? 'Accueil' : 'Home', icon: '🏠' },
     { href: '/blog', label: 'Blog', icon: '📚' }
-  ];
+  ], [currentLanguage]);
 
   return (
     <header 
@@ -120,9 +151,9 @@ const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
           
-          {/* Navigation Desktop - Centrée et responsive */}
+          {/* Navigation Desktop - Chargée de manière dynamique */}
           <div className="hidden lg:flex flex-1 justify-center">
-            <Navigation />
+            <DynamicNavigation />
           </div>
           
           {/* Actions de droite - Alignées à droite */}
@@ -168,17 +199,28 @@ const Header: React.FC<HeaderProps> = ({
         <div className="h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-20 animate-pulse"></div>
       </div>
 
-      {/* Menu mobile overlay amélioré */}
+      {/* Menu mobile overlay optimisé */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-[9999]">
-          {/* Backdrop avec animation */}
+        <div className="lg:hidden fixed inset-0 z-[9999] opacity-100 visible transition-opacity duration-200">
+          {/* Backdrop avec animation simplifiée */}
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}
+            role="button"
+            aria-label="Fermer le menu"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && setIsMobileMenuOpen(false)}
           />
           
-          {/* Menu mobile avec animation d'entrée ultra-rapide */}
-          <div className="absolute top-0 left-0 right-0 mt-0 mx-0 bg-gradient-to-br from-gray-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-b border-white/20 shadow-xl overflow-hidden animate-slideInFromTopFast">
+          {/* Menu mobile avec animation CSS optimisée */}
+          <div 
+            className="absolute top-0 left-0 right-0 mt-0 mx-0 bg-gradient-to-br from-gray-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-b border-white/20 shadow-xl overflow-hidden"
+            style={{
+              animation: 'slideInFromTopFast 0.2s ease-out forwards',
+              transform: 'translateY(0)',
+              transition: 'transform 0.2s ease-out, opacity 0.2s ease-out'
+            }}
+          >
             {/* Header du menu mobile - Design amélioré */}
             <div className="p-5 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-red-500/30 border-b border-white/30 shadow-lg">
               <div className="flex items-center justify-between">
@@ -253,4 +295,4 @@ const Header: React.FC<HeaderProps> = ({
   );
 };
 
-export default Header;
+export default memo(Header);

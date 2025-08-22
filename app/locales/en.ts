@@ -1,4 +1,7 @@
 export const en = {
+  // Language information
+  languageName: 'English',
+  
   // Navigation
   nav: {
     home: 'Home',
@@ -205,6 +208,64 @@ export const en = {
     clearChat: 'Clear Conversation',
     copyResponse: 'Copy Response',
     responseCopied: 'Response copied!'
+  },
+
+  // Chat Roast IA - SEO optimized texts
+  chatRoastIA: {
+    heroTitle: 'Free Chat Roast AI',
+    heroFlames: '',
+    heroSubtitle: 'Discover the most cutting artificial intelligence that will roast you hilariously without filters. Test it now for free!',
+    liveChatTitle: '💬 Live Chat Roast AI 🔥',
+    liveChatSubtitle: 'Test our cutting AI now!',
+    status: {
+      aiConnected: 'AI Connected',
+      aiReady: 'AI Connected & Ready'
+    },
+    features: {
+      title: 'Why Choose Our Chat Roast AI? 🤖',
+      subtitle: 'Discover the most advanced and hilarious roast experience ever created',
+      roastWithoutFilters: 'Roast Without Filters',
+      roastWithoutFiltersDesc: 'The most cutting AI that will roast you hilariously without any censorship. Every response is a masterpiece of cutting humor!',
+      realTimeChat: 'Real-Time Chat',
+      realTimeChatDesc: 'Smooth conversations and instant responses thanks to our advanced artificial intelligence. Be surprised by the speed and quality!',
+      multilingualSupport: 'Multilingual Support',
+      multilingualSupportDesc: 'Available in 12 languages for a personalized roast in your native language. Humor has no borders!'
+    },
+    advantages: {
+      title: 'Advantages of Free Chat Roast AI ✨',
+      subtitle: 'Everything you need for hilarious roasts, at no cost',
+      freeTitle: '100% Free',
+      freeDesc: 'Unlimited access to all features without any hidden costs. Enjoy the complete experience right now!',
+      personalizedTitle: 'Personalized Roast',
+      personalizedDesc: 'Every roast is unique and adapted to your messages for maximum humor. The AI analyzes your style and adapts to your personality!'
+    },
+    howToUse: {
+      title: 'How to Use Chat Roast AI? 📱',
+      subtitle: 'In 3 simple steps, discover the power of our cutting AI',
+      step1: {
+        title: 'Write your message',
+        description: 'Type what you want in the chat area. The more context you give, the more cutting and personalized the roast will be!'
+      },
+      step2: {
+        title: 'Click Send',
+        description: 'Our AI will analyze and prepare your roast. In a few seconds, you\'ll receive a response that will make you laugh to tears!'
+      },
+      step3: {
+        title: 'Receive your roast',
+        description: 'Enjoy the cutting humor of our AI! Every roast is translated into your language for a perfectly personalized experience.'
+      }
+    },
+    stats: {
+      languages: 'Supported Languages',
+      free: 'Free',
+      available: 'Available'
+    },
+    cta: {
+      title: '🚀 Ready to Get Roasted? 🚀',
+      subtitle: 'Join thousands of users who have already discovered the power of our cutting AI!',
+      startNow: '🔥 Start Now',
+      seeRankings: 'See Rankings'
+    }
   },
 
 

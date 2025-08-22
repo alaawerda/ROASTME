@@ -39,6 +39,15 @@
     @apply bg-gradient-to-br from-gray-50 via-orange-50/20 to-yellow-50/20 text-gray-800 antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial', sans-serif;
     line-height: 1.5;
+    /* Empêcher le scroll automatique de la page */
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
+  }
+  
+  html {
+    /* Empêcher le scroll automatique de la page */
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
   }
 
   /* Scrollbar moderne et élégante */
@@ -97,6 +106,78 @@
     @apply border-2 border-flame-orange text-flame-orange hover:bg-flame-orange hover:text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 ease-out hover:shadow-md;
   }
 
+  /* Animations pour la page de présentation */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-flame-flicker {
+    animation: flameFlicker 2s ease-in-out infinite alternate;
+  }
+
+  /* Chat intégré avec input - Version mobile-friendly */
+  .chat-messages-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--flame-orange) transparent;
+    /* Empêcher le scroll automatique de la page */
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
+  }
+  
+  .chat-messages-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-messages-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .chat-messages-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--flame-orange), var(--accent-red));
+    border-radius: 3px;
+  }
+  
+  .chat-input-section {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Optimisations mobile pour le chat intégré */
+  @media (max-width: 768px) {
+    .chat-messages-container {
+      max-height: 60vh !important;
+      padding: 1rem !important;
+    }
+    
+    .chat-input-section {
+      padding: 1rem !important;
+    }
+    
+    .chat-input-section h3 {
+      font-size: 1rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .chat-input-section .flex-wrap {
+      gap: 0.5rem !important;
+    }
+    
+    .chat-input-section .text-xs {
+      font-size: 0.75rem !important;
+    }
+    
+    /* Empêcher le scroll automatique sur mobile */
+    .input-styled:focus {
+      transform: none !important;
+      scroll-behavior: auto !important;
+    }
+    
+    /* Empêcher le zoom automatique sur iOS */
+    .input-styled {
+      font-size: 16px !important;
+    }
+  }
+  
   /* Bulles de chat modernisées - Version compacte */
   .chat-bubble {
     @apply rounded-xl p-3 break-words shadow-sm border backdrop-blur-sm transition-all duration-200 ease-out;
@@ -178,8 +259,8 @@
 
   /* Amélioration de la zone de scroll mobile */
   .mobile-scroll-optimized {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: auto;
+    scroll-behavior: auto;
   }
 
   /* Optimisation des animations pour mobile */
@@ -218,11 +299,17 @@
     /* Assurer que le bouton reste fixe */
     position: relative;
     overflow: visible;
+    /* Empêcher le scroll automatique de la page */
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
   }
   
   .input-styled:focus {
     box-shadow: 0 4px 16px rgba(255, 107, 53, 0.15);
-    transform: translateY(-1px);
+    /* Empêcher le scroll automatique de la page */
+    transform: none;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
   }
 
   .input-styled::placeholder {
@@ -351,6 +438,43 @@
     z-index: 99999;
   }
 
+  /* Améliorations pour le sélecteur de langue */
+  .language-selector-container button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .language-selector-container button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .language-selector-container button:active {
+    transform: translateY(0);
+  }
+
+  /* Animation du dropdown */
+  .language-dropdown-enter {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+
+  .language-dropdown-enter-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .language-dropdown-exit {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .language-dropdown-exit-active {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .dropdown-item {
     @apply w-full flex items-center space-x-2 px-3 py-2 text-left hover:bg-gray-50/80 transition-all duration-200 ease-out;
   }
@@ -392,6 +516,9 @@
   .chat-container {
     @apply flex-1 overflow-y-auto;
     min-height: 0;
+    /* Empêcher le scroll automatique de la page */
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
   }
 
   .input-container {
@@ -689,11 +816,17 @@
   }
 }
 
-/* Optimisations mobiles avancées - Version compacte */
-@media (max-width: 640px) {
-  .chat-bubble {
-    @apply p-2.5 rounded-lg;
-  }
+  /* Optimisations mobiles avancées - Version compacte */
+  @media (max-width: 640px) {
+    /* Empêcher le scroll automatique sur mobile */
+    html, body {
+      scroll-behavior: auto !important;
+      -webkit-overflow-scrolling: auto !important;
+    }
+    
+    .chat-bubble {
+      @apply p-2.5 rounded-lg;
+    }
 
   .btn-primary {
     @apply py-2 px-3 text-sm;
@@ -732,12 +865,18 @@
   }
 }
 
-/* Optimisations ultra-compactes pour très petits écrans */
-@media (max-width: 480px) {
-  .chat-bubble {
-    @apply p-2 rounded-md;
-    max-width: calc(100vw - 3rem);
-  }
+  /* Optimisations ultra-compactes pour très petits écrans */
+  @media (max-width: 480px) {
+    /* Empêcher le scroll automatique sur très petits écrans */
+    html, body {
+      scroll-behavior: auto !important;
+      -webkit-overflow-scrolling: auto !important;
+    }
+    
+    .chat-bubble {
+      @apply p-2 rounded-md;
+      max-width: calc(100vw - 3rem);
+    }
 
   .user-bubble {
     max-width: calc(100vw - 4rem);
@@ -798,12 +937,18 @@
   }
 }
 
-/* Optimisations pour écrans ultra-petits (smartphones compacts) */
-@media (max-width: 360px) {
-  .chat-bubble {
-    @apply p-1.5 rounded-md;
-    max-width: calc(100vw - 2.5rem);
-  }
+  /* Optimisations pour écrans ultra-petits (smartphones compacts) */
+  @media (max-width: 360px) {
+    /* Empêcher le scroll automatique sur écrans ultra-petits */
+    html, body {
+      scroll-behavior: auto !important;
+      -webkit-overflow-scrolling: auto !important;
+    }
+    
+    .chat-bubble {
+      @apply p-1.5 rounded-md;
+      max-width: calc(100vw - 2.5rem);
+    }
 
   .mobile-avatar {
     @apply w-6 h-6 rounded-md;

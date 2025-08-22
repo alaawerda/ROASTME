@@ -15,245 +15,448 @@ export interface SEOMetadata {
   }
 }
 
-export const seoMetadata: Record<string, SEOMetadata> = {
+export const seoMetadata = {
+  // FRANÇAIS - Langue principale
   fr: {
-    title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥 Chat IA Humoristique Gratuit',
-    description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante ! Chatbot IA gratuit pour rire, humour noir, insultes créatives et blagues. Prêt à être descendu en flammes ? 🔥 Divertissement en ligne gratuit.',
+    title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
+    description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
     keywords: [
-      'roast', 'humour', 'IA', 'chat', 'divertissement', 'comédie', 'insultes créatives', 'roaster', 'blagues',
-      'chatbot', 'intelligence artificielle', 'humour noir', 'satire', 'moquerie', 'troll', 'meme', 'funny',
-      'gratuit', 'en ligne', 'web', 'application', 'site', 'plateforme', 'divertissement', 'amusement',
-      'roast me', 'roast moi', 'descendre en flammes', 'brûler', 'critique humoristique', 'parodie',
-      'chat IA français', 'bot conversationnel', 'humour français', 'comédie française', 'blagues françaises'
+      'chat roast',
+      'roast IA',
+      'IA roast gratuit',
+      'chat humour',
+      'roast sans filtres',
+      'intelligence artificielle humour',
+      'chat comédie',
+      'roast créatif',
+      'blagues IA',
+      'divertissement chat',
+      'chat roast gratuit',
+      'IA roast sans censure',
+      'humour intelligence artificielle',
+      'roast personnalisé',
+      'chat humour gratuit',
+      'roast moi',
+      'descendre en flammes',
+      'humour cinglant',
+      'blagues sans filtres',
+      'IA humoriste'
     ],
+    twitter: {
+      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
+      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante.'
+    },
     openGraph: {
-      title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥 Chat IA Humoristique Gratuit',
-      description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante ! Chatbot IA gratuit pour rire, humour noir, insultes créatives et blagues. Prêt à être descendu en flammes ? 🔥',
+      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
+      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
       locale: 'fr_FR'
-    },
-    twitter: {
-      title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥 Chat IA Humoristique Gratuit',
-      description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante ! Chatbot IA gratuit pour rire et s\'amuser.'
     }
   },
+
+  // ANGLAIS
   en: {
-    title: 'RoastMe Chat - The AI that Roasts You! 🔥 Free AI Humor Chat',
-    description: 'Discover RoastMe Chat, the most savage AI that will roast you hilariously! Free AI chatbot for laughs, dark humor, creative insults and jokes. Ready to get burned to the ground? 🔥 Free online entertainment.',
+    title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
+    description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
     keywords: [
-      'roast', 'humor', 'AI', 'chat', 'entertainment', 'comedy', 'creative insults', 'roaster', 'jokes',
-      'chatbot', 'artificial intelligence', 'dark humor', 'satire', 'mockery', 'troll', 'meme', 'funny',
-      'free', 'online', 'web', 'application', 'site', 'platform', 'amusement', 'fun',
-      'roast me', 'burn me', 'get roasted', 'criticism', 'humorous critique', 'parody',
-      'AI chat english', 'conversational bot', 'english humor', 'english comedy', 'english jokes'
+      'ai roast chat',
+      'roast ai',
+      'free ai roast',
+      'humor chat',
+      'roast without filters',
+      'artificial intelligence humor',
+      'comedy chat',
+      'creative roast',
+      'ai jokes',
+      'entertainment chat',
+      'free roast chat',
+      'ai roast no censorship',
+      'ai humor',
+      'personalized roast',
+      'free humor chat',
+      'roast me',
+      'get roasted',
+      'savage ai',
+      'unfiltered humor',
+      'ai comedian'
     ],
+    twitter: {
+      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
+      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously.'
+    },
     openGraph: {
-      title: 'RoastMe Chat - The AI that Roasts You! 🔥 Free AI Humor Chat',
-      description: 'Discover RoastMe Chat, the most savage AI that will roast you hilariously! Free AI chatbot for laughs, dark humor, creative insults and jokes. Ready to get burned to the ground? 🔥',
+      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
+      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
       locale: 'en_US'
-    },
-    twitter: {
-      title: 'RoastMe Chat - The AI that Roasts You! 🔥 Free AI Humor Chat',
-      description: 'Discover RoastMe Chat, the most savage AI that will roast you hilariously! Free AI chatbot for laughs and fun.'
     }
   },
+
+  // ESPAGNOL
   es: {
-    title: 'RoastMe Chat - ¡La IA que te Asa! 🔥 Chat de IA Humorístico Gratis',
-    description: '¡Descubre RoastMe Chat, la IA más salvaje que te asará de manera hilarante! Chatbot de IA gratis para reír, humor negro, insultos creativos y chistes. ¿Listo para ser quemado hasta los huesos? 🔥 Entretenimiento en línea gratis.',
+    title: 'Chat de Roast IA Gratis - ¡La IA que te Roaste en Llamas! 🔥',
+    description: '¡Chat de roast IA gratis sin filtros! La inteligencia artificial más mordaz que te va a roaster de manera hilarante. ¡Pruébalo ahora! 🔥',
     keywords: [
-      'roast', 'humor', 'IA', 'chat', 'entretenimiento', 'comedia', 'insultos creativos', 'roaster', 'chistes',
-      'chatbot', 'inteligencia artificial', 'humor negro', 'sátira', 'burla', 'troll', 'meme', 'divertido',
-      'gratis', 'en línea', 'web', 'aplicación', 'sitio', 'plataforma', 'diversión', 'entretenimiento',
-      'roast me', 'ásame', 'quemar', 'crítica humorística', 'parodia',
-      'chat IA español', 'bot conversacional', 'humor español', 'comedia española', 'chistes españoles'
+      'chat roast ia',
+      'roast ia',
+      'ia roast gratis',
+      'chat humor',
+      'roast sin filtros',
+      'inteligencia artificial humor',
+      'chat comedia',
+      'roast creativo',
+      'chistes ia',
+      'entretenimiento chat',
+      'chat roast gratis',
+      'ia roast sin censura',
+      'humor ia',
+      'roast personalizado',
+      'chat humor gratis',
+      'roast me',
+      'quemar en llamas',
+      'humor mordaz',
+      'chistes sin filtros',
+      'ia cómica'
     ],
+    twitter: {
+      title: 'Chat de Roast IA Gratis - ¡La IA que te Roaste en Llamas! 🔥',
+      description: '¡Chat de roast IA gratis sin filtros! La inteligencia artificial más mordaz que te va a roaster de manera hilarante.'
+    },
     openGraph: {
-      title: 'RoastMe Chat - ¡La IA que te Asa! 🔥 Chat de IA Humorístico Gratis',
-      description: '¡Descubre RoastMe Chat, la IA más salvaje que te asará de manera hilarante! Chatbot de IA gratis para reír, humor negro, insultos creativos y chistes. ¿Listo para ser quemado hasta los huesos? 🔥',
+      title: 'Chat de Roast IA Gratis - ¡La IA que te Roaste en Llamas! 🔥',
+      description: '¡Chat de roast IA gratis sin filtros! La inteligencia artificial más mordaz que te va a roaster de manera hilarante. ¡Pruébalo ahora! 🔥',
       locale: 'es_ES'
-    },
-    twitter: {
-      title: 'RoastMe Chat - ¡La IA que te Asa! 🔥 Chat de IA Humorístico Gratis',
-      description: '¡Descubre RoastMe Chat, la IA más salvaje que te asará de manera hilarante! Chatbot de IA gratis para reír y divertirse.'
     }
   },
-  de: {
-    title: 'RoastMe Chat - Die KI, die dich Roastet! 🔥 Kostenloser KI-Humor-Chat',
-    description: 'Entdecke RoastMe Chat, die brutalste KI, die dich auf humorvolle Weise roastet! Kostenloser KI-Chatbot für Lacher, schwarzen Humor, kreative Beleidigungen und Witze. Bereit, bis auf die Knochen verbrannt zu werden? 🔥 Kostenlose Online-Unterhaltung.',
-    keywords: [
-      'roast', 'humor', 'KI', 'chat', 'unterhaltung', 'komödie', 'kreative beleidigungen', 'roaster', 'witze',
-      'chatbot', 'künstliche intelligenz', 'schwarzer humor', 'satire', 'spott', 'troll', 'meme', 'lustig',
-      'kostenlos', 'online', 'web', 'anwendung', 'seite', 'plattform', 'unterhaltung', 'spaß',
-      'roast me', 'roaste mich', 'verbrennen', 'humorvolle kritik', 'parodie',
-      'KI chat deutsch', 'konversationsbot', 'deutscher humor', 'deutsche komödie', 'deutsche witze'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - Die KI, die dich Roastet! 🔥 Kostenloser KI-Humor-Chat',
-      description: 'Entdecke RoastMe Chat, die brutalste KI, die dich auf humorvolle Weise roastet! Kostenloser KI-Chatbot für Lacher, schwarzen Humor, kreative Beleidigungen und Witze. Bereit, bis auf die Knochen verbrannt zu werden? 🔥',
-      locale: 'de_DE'
-    },
-    twitter: {
-      title: 'RoastMe Chat - Die KI, die dich Roastet! 🔥 Kostenloser KI-Humor-Chat',
-      description: 'Entdecke RoastMe Chat, die brutalste KI, die dich auf humorvolle Weise roastet! Kostenloser KI-Chatbot für Lacher und Spaß.'
-    }
-  },
-  it: {
-    title: 'RoastMe Chat - L\'IA che ti Arrostisce! 🔥 Chat IA Umoristico Gratuito',
-    description: 'Scopri RoastMe Chat, l\'IA più spietata che ti arrostirà in modo esilarante! Chatbot IA gratuito per risate, umorismo nero, insulti creativi e battute. Pronto a essere bruciato vivo? 🔥 Intrattenimento online gratuito.',
-    keywords: [
-      'roast', 'umorismo', 'IA', 'chat', 'intrattenimento', 'commedia', 'insulti creativi', 'roaster', 'battute',
-      'chatbot', 'intelligenza artificiale', 'umorismo nero', 'satira', 'derisione', 'troll', 'meme', 'divertente',
-      'gratuito', 'online', 'web', 'applicazione', 'sito', 'piattaforma', 'divertimento', 'intrattenimento',
-      'roast me', 'arrostiscimi', 'brucia', 'critica umoristica', 'parodia',
-      'chat IA italiano', 'bot conversazionale', 'umorismo italiano', 'commedia italiana', 'battute italiane'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - L\'IA che ti Arrostisce! 🔥 Chat IA Umoristico Gratuito',
-      description: 'Scopri RoastMe Chat, l\'IA più spietata che ti arrostirà in modo esilarante! Chatbot IA gratuito per risate, umorismo nero, insulti creativi e battute. Pronto a essere bruciato vivo? 🔥',
-      locale: 'it_IT'
-    },
-    twitter: {
-      title: 'RoastMe Chat - L\'IA che ti Arrostisce! 🔥 Chat IA Umoristico Gratuito',
-      description: 'Scopri RoastMe Chat, l\'IA più spietata che ti arrostirà in modo esilarante! Chatbot IA gratuito per risate e divertimento.'
-    }
-  },
-  pt: {
-    title: 'RoastMe Chat - A IA que te Assa! 🔥 Chat de IA Humorístico Grátis',
-    description: 'Descobre RoastMe Chat, a IA mais selvagem que vai te assar de forma hilariante! Chatbot de IA grátis para rir, humor negro, insultos criativos e piadas. Pronto para ser queimado até os ossos? 🔥 Entretenimento online grátis.',
-    keywords: [
-      'roast', 'humor', 'IA', 'chat', 'entretenimento', 'comédia', 'insultos criativos', 'roaster', 'piadas',
-      'chatbot', 'inteligência artificial', 'humor negro', 'sátira', 'zombaria', 'troll', 'meme', 'engraçado',
-      'grátis', 'online', 'web', 'aplicação', 'site', 'plataforma', 'diversão', 'entretenimento',
-      'roast me', 'asse-me', 'queimar', 'crítica humorística', 'paródia',
-      'chat IA português', 'bot conversacional', 'humor português', 'comédia portuguesa', 'piadas portuguesas'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - A IA que te Assa! 🔥 Chat de IA Humorístico Grátis',
-      description: 'Descobre RoastMe Chat, a IA mais selvagem que vai te assar de forma hilariante! Chatbot de IA grátis para rir, humor negro, insultos criativos e piadas. Pronto para ser queimado até os ossos? 🔥',
-      locale: 'pt_BR'
-    },
-    twitter: {
-      title: 'RoastMe Chat - A IA que te Assa! 🔥 Chat de IA Humorístico Grátis',
-      description: 'Descobre RoastMe Chat, a IA mais selvagem que vai te assar de forma hilariante! Chatbot de IA grátis para rir e se divertir.'
-    }
-  },
-  ru: {
-    title: 'RoastMe Chat - ИИ, который тебя Прожарит! 🔥 Бесплатный ИИ-юмор чат',
-    description: 'Открой RoastMe Chat, самого жестокого ИИ, который прожарит тебя до хруста! Бесплатный ИИ-чатбот для смеха, черного юмора, творческих оскорблений и шуток. Готов быть сожжённым дотла? 🔥 Бесплатное онлайн-развлечение.',
-    keywords: [
-      'roast', 'юмор', 'ИИ', 'чат', 'развлечения', 'комедия', 'творческие оскорбления', 'roaster', 'шутки',
-      'чатбот', 'искусственный интеллект', 'черный юмор', 'сатира', 'насмешка', 'тролль', 'мем', 'смешно',
-      'бесплатно', 'онлайн', 'веб', 'приложение', 'сайт', 'платформа', 'развлечение', 'веселье',
-      'roast me', 'прожарь меня', 'сжечь', 'юмористическая критика', 'пародия',
-      'ИИ чат русский', 'разговорный бот', 'русский юмор', 'русская комедия', 'русские шутки'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - ИИ, который тебя Прожарит! 🔥 Бесплатный ИИ-юмор чат',
-      description: 'Открой RoastMe Chat, самого жестокого ИИ, который прожарит тебя до хруста! Бесплатный ИИ-чатбот для смеха, черного юмора, творческих оскорблений и шуток. Готов быть сожжённым дотла? 🔥',
-      locale: 'ru_RU'
-    },
-    twitter: {
-      title: 'RoastMe Chat - ИИ, который тебя Прожарит! 🔥 Бесплатный ИИ-юмор чат',
-      description: 'Открой RoastMe Chat, самого жестокого ИИ, который прожарит тебя до хруста! Бесплатный ИИ-чатбот для смеха и веселья.'
-    }
-  },
-  ja: {
-    title: 'RoastMe Chat - あなたをローストするAI！🔥 無料AIユーモアチャット',
-    description: 'RoastMe Chatを発見しよう、あなたを面白おかしくローストする最も残酷なAI！笑い、ブラックユーモア、創造的な侮辱、ジョークのための無料AIチャットボット。骨まで燃やされる準備はできてる？🔥 無料オンラインエンターテイメント。',
-    keywords: [
-      'roast', 'ユーモア', 'AI', 'チャット', 'エンターテイメント', 'コメディ', '創造的な侮辱', 'roaster', 'ジョーク',
-      'チャットボット', '人工知能', 'ブラックユーモア', '風刺', '嘲笑', 'トロール', 'ミーム', '面白い',
-      '無料', 'オンライン', 'ウェブ', 'アプリケーション', 'サイト', 'プラットフォーム', '楽しみ', 'エンターテイメント',
-      'roast me', '私をロースト', '燃やす', 'ユーモラスな批評', 'パロディ',
-      'AIチャット日本語', '会話ボット', '日本語ユーモア', '日本語コメディ', '日本語ジョーク'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - あなたをローストするAI！🔥 無料AIユーモアチャット',
-      description: 'RoastMe Chatを発見しよう、あなたを面白おかしくローストする最も残酷なAI！笑い、ブラックユーモア、創造的な侮辱、ジョークのための無料AIチャットボット。骨まで燃やされる準備はできてる？🔥',
-      locale: 'ja_JP'
-    },
-    twitter: {
-      title: 'RoastMe Chat - あなたをローストするAI！🔥 無料AIユーモアチャット',
-      description: 'RoastMe Chatを発見しよう、あなたを面白おかしくローストする最も残酷なAI！無料AIチャットボットで笑いと楽しみを。'
-    }
-  },
-  ko: {
-    title: 'RoastMe Chat - 당신을 로스트하는 AI! 🔥 무료AI 유머 채팅',
-    description: 'RoastMe Chat을 발견하세요, 당신을 재미있게 로스트할 가장 잔인한 AI! 웃음, 블랙 유머, 창의적인 모욕, 농담을 위한 무료AI 챗봇. 뼈까지 타들어갈 준비가 되었나요? 🔥 무료 온라인 엔터테인먼트.',
-    keywords: [
-      'roast', '유머', 'AI', '채팅', '엔터테인먼트', '코미디', '창의적인 모욕', 'roaster', '농담',
-      '챗봇', '인공지능', '블랙 유머', '풍자', '조롱', '트롤', '밈', '재미있는',
-      '무료', '온라인', '웹', '애플리케이션', '사이트', '플랫폼', '재미', '엔터테인먼트',
-      'roast me', '나를 로스트', '태우다', '유머러스한 비평', '패러디',
-      'AI 채팅 한국어', '대화 봇', '한국어 유머', '한국어 코미디', '한국어 농담'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - 당신을 로스트하는 AI! 🔥 무료AI 유머 채팅',
-      description: 'RoastMe Chat을 발견하세요, 당신을 재미있게 로스트할 가장 잔인한 AI! 웃음, 블랙 유머, 창의적인 모욕, 농담을 위한 무료AI 챗봇. 뼈까지 타들어갈 준비가 되었나요? 🔥',
-      locale: 'ko_KR'
-    },
-    twitter: {
-      title: 'RoastMe Chat - 당신을 로스트하는 AI! 🔥 무료AI 유머 채팅',
-      description: 'RoastMe Chat을 발견하세요, 당신을 재미있게 로스트할 가장 잔인한 AI! 무료AI 챗봇으로 웃음과 재미를.'
-    }
-  },
-  zh: {
-    title: 'RoastMe Chat - 烤你的AI！🔥 免费AI幽默聊天',
-    description: '发现RoastMe Chat，最残忍的AI，会以滑稽的方式烤你！免费AI聊天机器人，用于笑声、黑色幽默、创意侮辱和笑话。准备好被烤到骨头了吗？🔥 免费在线娱乐。',
-    keywords: [
-      'roast', '幽默', 'AI', '聊天', '娱乐', '喜剧', '创意侮辱', 'roaster', '笑话',
-      '聊天机器人', '人工智能', '黑色幽默', '讽刺', '嘲笑', '巨魔', '梗', '有趣的',
-      '免费', '在线', '网络', '应用程序', '网站', '平台', '娱乐', '乐趣',
-      'roast me', '烤我', '燃烧', '幽默批评', '模仿',
-      'AI聊天中文', '对话机器人', '中文幽默', '中文喜剧', '中文笑话'
-    ],
-    openGraph: {
-      title: 'RoastMe Chat - 烤你的AI！🔥 免费AI幽默聊天',
-      description: '发现RoastMe Chat，最残忍的AI，会以滑稽的方式烤你！免费AI聊天机器人，用于笑声、黑色幽默、创意侮辱和笑话。准备好被烤到骨头了吗？🔥',
-      locale: 'zh_CN'
-    },
-    twitter: {
-      title: 'RoastMe Chat - 烤你的AI！🔥 免费AI幽默聊天',
-      description: '发现RoastMe Chat，最残忍的AI，会以滑稽的方式烤你！免费AI聊天机器人，带来笑声和乐趣。'
-    }
-  },
+
+  // ARABE
   ar: {
-    title: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! 🔥 دردشة ذكاء اصطناعي فكاهية مجانية',
-    description: 'اكتشف RoastMe Chat، أكثر ذكاء اصطناعي وحشية سيشوي لك بطريقة مضحكة! روبوت دردشة ذكاء اصطناعي مجاني للضحك والفكاهة السوداء والإهانات الإبداعية والنكات. مستعد لأن تحترق حتى العظم؟ 🔥 ترفيه مجاني عبر الإنترنت.',
+    title: 'دردشة AI روست مجانية - الذكاء الاصطناعي الذي يروستك بالنار! 🔥',
+    description: 'دردشة AI روست مجانية بدون فلاتر! الذكاء الاصطناعي الأكثر حدة الذي سيروستك بطريقة مضحكة. جرب الآن! 🔥',
     keywords: [
-      'roast', 'فكاهة', 'ذكاء اصطناعي', 'دردشة', 'ترفيه', 'كوميديا', 'إهانات إبداعية', 'roaster', 'نكات',
-      'روبوت دردشة', 'ذكاء اصطناعي', 'فكاهة سوداء', 'سخرية', 'سخرية', 'ترول', 'ميم', 'مضحك',
-      'مجاني', 'عبر الإنترنت', 'ويب', 'تطبيق', 'موقع', 'منصة', 'ترفيه', 'مرح',
-      'roast me', 'اشويني', 'حرق', 'نقد فكاهي', 'محاكاة ساخرة',
-      'دردشة ذكاء اصطناعي عربية', 'روبوت محادثة', 'فكاهة عربية', 'كوميديا عربية', 'نكات عربية'
+      'دردشة روست ai',
+      'روست ai',
+      'ai روست مجاني',
+      'دردشة فكاهة',
+      'روست بدون فلاتر',
+      'ذكاء اصطناعي فكاهة',
+      'دردشة كوميديا',
+      'روست إبداعي',
+      'نكات ai',
+      'ترفيه دردشة',
+      'دردشة روست مجانية',
+      'ai روست بدون رقابة',
+      'فكاهة ai',
+      'روست مخصص',
+      'دردشة فكاهة مجانية',
+      'روست مي',
+      'حرق بالنار',
+      'فكاهة حادة',
+      'نكات بدون فلاتر',
+      'ai كوميدي'
     ],
-    openGraph: {
-      title: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! 🔥 دردشة ذكاء اصطناعي فكاهية مجانية',
-      description: 'اكتشف RoastMe Chat، أكثر ذكاء اصطناعي وحشية سيشوي لك بطريقة مضحكة! روبوت دردشة ذكاء اصطناعي مجاني للضحك والفكاهة السوداء والإهانات الإبداعية والنكات. مستعد لأن تحترق حتى العظم؟ 🔥',
-      locale: 'ar_SA'
-    },
     twitter: {
-      title: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! 🔥 دردشة ذكاء اصطناعي فكاهية مجانية',
-      description: 'اكتشف RoastMe Chat، أكثر ذكاء اصطناعي وحشية سيشوي لك بطريقة مضحكة! روبوت دردشة ذكاء اصطناعي مجاني للضحك والمرح.'
+      title: 'دردشة AI روست مجانية - الذكاء الاصطناعي الذي يروستك بالنار! 🔥',
+      description: 'دردشة AI روست مجانية بدون فلاتر! الذكاء الاصطناعي الأكثر حدة الذي سيروستك بطريقة مضحكة.'
+    },
+    openGraph: {
+      title: 'دردشة AI روست مجانية - الذكاء الاصطناعي الذي يروستك بالنار! 🔥',
+      description: 'دردشة AI روست مجانية بدون فلاتر! الذكاء الاصطناعي الأكثر حدة الذي سيروستك بطريقة مضحكة. جرب الآن! 🔥',
+      locale: 'ar_SA'
     }
   },
-  nl: {
-    title: 'RoastMe Chat - De AI die je Roast! 🔥 Gratis AI Humor Chat',
-    description: 'Ontdek RoastMe Chat, de meest wrede AI die je op hilarische wijze gaat roasten! Gratis AI chatbot voor lach, zwarte humor, creatieve beledigingen en grappen. Klaar om tot op het bot verbrand te worden? 🔥 Gratis online entertainment.',
+
+  // ALLEMAND
+  de: {
+    title: 'Kostenloser AI Roast Chat - Die KI, die dich in Flammen röstet! 🔥',
+    description: 'Kostenloser AI Roast Chat ohne Filter! Die schärfste KI, die dich auf humorvolle Weise rösten wird. Jetzt testen! 🔥',
     keywords: [
-      'roast', 'humor', 'AI', 'chat', 'entertainment', 'komedie', 'creatieve beledigingen', 'roaster', 'grappen',
-      'chatbot', 'kunstmatige intelligentie', 'zwarte humor', 'satire', 'spot', 'troll', 'meme', 'grappig',
-      'gratis', 'online', 'web', 'applicatie', 'site', 'platform', 'vermaak', 'plezier',
-      'roast me', 'roast mij', 'verbranden', 'humoristische kritiek', 'parodie',
-      'AI chat nederlands', 'conversatiebot', 'nederlandse humor', 'nederlandse komedie', 'nederlandse grappen'
+      'ai roast chat',
+      'roast ai',
+      'kostenloser ai roast',
+      'humor chat',
+      'roast ohne filter',
+      'künstliche intelligenz humor',
+      'komödie chat',
+      'kreativer roast',
+      'ai witze',
+      'unterhaltung chat',
+      'kostenloser roast chat',
+      'ai roast ohne zensur',
+      'ai humor',
+      'personalisierter roast',
+      'kostenloser humor chat',
+      'roast mich',
+      'in flammen rösten',
+      'scharfer humor',
+      'witze ohne filter',
+      'ai komiker'
     ],
-    openGraph: {
-      title: 'RoastMe Chat - De AI die je Roast! 🔥 Gratis AI Humor Chat',
-      description: 'Ontdek RoastMe Chat, de meest wrede AI die je op hilarische wijze gaat roasten! Gratis AI chatbot voor lach, zwarte humor, creatieve beledigingen en grappen. Klaar om tot op het bot verbrand te worden? 🔥',
-      locale: 'nl_NL'
-    },
     twitter: {
-      title: 'RoastMe Chat - De AI die je Roast! 🔥 Gratis AI Humor Chat',
-      description: 'Ontdek RoastMe Chat, de meest wrede AI die je op hilarische wijze gaat roasten! Gratis AI chatbot voor lach en plezier.'
+      title: 'Kostenloser AI Roast Chat - Die KI, die dich in Flammen röstet! 🔥',
+      description: 'Kostenloser AI Roast Chat ohne Filter! Die schärfste KI, die dich auf humorvolle Weise rösten wird.'
+    },
+    openGraph: {
+      title: 'Kostenloser AI Roast Chat - Die KI, die dich in Flammen röstet! 🔥',
+      description: 'Kostenloser AI Roast Chat ohne Filter! Die schärfste KI, die dich auf humorvolle Weise rösten wird. Jetzt testen! 🔥',
+      locale: 'de_DE'
+    }
+  },
+
+  // ITALIEN
+  it: {
+    title: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
+    description: 'Chat roast IA gratuito senza filtri! L\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante. Provalo ora! 🔥',
+    keywords: [
+      'chat roast ia',
+      'roast ia',
+      'ia roast gratuito',
+      'chat umorismo',
+      'roast senza filtri',
+      'intelligenza artificiale umorismo',
+      'chat commedia',
+      'roast creativo',
+      'battute ia',
+      'intrattenimento chat',
+      'chat roast gratuito',
+      'ia roast senza censura',
+      'umorismo ia',
+      'roast personalizzato',
+      'chat umorismo gratuito',
+      'roast mi',
+      'bruciare in fiamme',
+      'umorismo tagliente',
+      'battute senza filtri',
+      'ia comica'
+    ],
+    twitter: {
+      title: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
+      description: 'Chat roast IA gratuito senza filtri! L\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante.'
+    },
+    openGraph: {
+      title: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
+      description: 'Chat roast IA gratuito senza filtri! L\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante. Provalo ora! 🔥',
+      locale: 'it_IT'
+    }
+  },
+
+  // PORTUGAIS
+  pt: {
+    title: 'Chat de Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
+    description: 'Chat de roast IA gratuito sem filtros! A inteligência artificial mais cortante que vai te roaster de forma hilariante. Experimente agora! 🔥',
+    keywords: [
+      'chat roast ia',
+      'roast ia',
+      'ia roast gratuito',
+      'chat humor',
+      'roast sem filtros',
+      'inteligência artificial humor',
+      'chat comédia',
+      'roast criativo',
+      'piadas ia',
+      'entretenimento chat',
+      'chat roast gratuito',
+      'ia roast sem censura',
+      'humor ia',
+      'roast personalizado',
+      'chat humor gratuito',
+      'roast me',
+      'queimar em chamas',
+      'humor cortante',
+      'piadas sem filtros',
+      'ia cômica'
+    ],
+    twitter: {
+      title: 'Chat de Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
+      description: 'Chat de roast IA gratuito sem filtros! A inteligência artificial mais cortante que vai te roaster de forma hilariante.'
+    },
+    openGraph: {
+      title: 'Chat de Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
+      description: 'Chat de roast IA gratuito sem filtros! A inteligência artificial mais cortante que vai te roaster de forma hilariante. Experimente agora! 🔥',
+      locale: 'pt_BR'
+    }
+  },
+
+  // RUSSE
+  ru: {
+    title: 'Бесплатный Чат Роаст ИИ - ИИ, который Роастит тебя в Пламени! 🔥',
+    description: 'Бесплатный чат роаст ИИ без фильтров! Самый острый ИИ, который будет роастить тебя забавно. Попробуй сейчас! 🔥',
+    keywords: [
+      'чат роаст ии',
+      'роаст ии',
+      'ии роаст бесплатно',
+      'чат юмор',
+      'роаст без фильтров',
+      'искусственный интеллект юмор',
+      'чат комедия',
+      'креативный роаст',
+      'шутки ии',
+      'развлечения чат',
+      'чат роаст бесплатно',
+      'ии роаст без цензуры',
+      'юмор ии',
+      'персонализированный роаст',
+      'чат юмор бесплатно',
+      'роаст ми',
+      'сжечь в пламени',
+      'острый юмор',
+      'шутки без фильтров',
+      'ии комик'
+    ],
+    twitter: {
+      title: 'Бесплатный Чат Роаст ИИ - ИИ, который Роастит тебя в Пламени! 🔥',
+      description: 'Бесплатный чат роаст ИИ без фильтров! Самый острый ИИ, который будет роастить тебя забавно.'
+    },
+    openGraph: {
+      title: 'Бесплатный Чат Роаст ИИ - ИИ, который Роастит тебя в Пламени! 🔥',
+      description: 'Бесплатный чат роаст ИИ без фильтров! Самый острый ИИ, который будет роастить тебя забавно. Попробуй сейчас! 🔥',
+      locale: 'ru_RU'
+    }
+  },
+
+  // JAPONAIS
+  ja: {
+    title: '無料AIローストチャット - 炎でローストするAI！🔥',
+    description: 'フィルターなしの無料AIローストチャット！あなたを面白おかしくローストする最も辛辣なAI。今すぐ試してみて！🔥',
+    keywords: [
+      'aiローストチャット',
+      'ローストai',
+      '無料aiロースト',
+      'ユーモアチャット',
+      'フィルターなしロースト',
+      '人工知能ユーモア',
+      'コメディチャット',
+      'クリエイティブロースト',
+      'aiジョーク',
+      'エンターテイメントチャット',
+      '無料ローストチャット',
+      '検閲なしaiロースト',
+      'aiユーモア',
+      'パーソナライズドロースト',
+      '無料ユーモアチャット',
+      'ローストミー',
+      '炎で燃やす',
+      '辛辣なユーモア',
+      'フィルターなしジョーク',
+      'aiコメディアン'
+    ],
+    twitter: {
+      title: '無料AIローストチャット - 炎でローストするAI！🔥',
+      description: 'フィルターなしの無料AIローストチャット！あなたを面白おかしくローストする最も辛辣なAI。'
+    },
+    openGraph: {
+      title: '無料AIローストチャット - 炎でローストするAI！🔥',
+      description: 'フィルターなしの無料AIローストチャット！あなたを面白おかしくローストする最も辛辣なAI。今すぐ試してみて！🔥',
+      locale: 'ja_JP'
+    }
+  },
+
+  // CORÉEN
+  ko: {
+    title: '무료 AI 로스트 채팅 - 불꽃으로 로스트하는 AI! 🔥',
+    description: '필터 없는 무료 AI 로스트 채팅! 당신을 재미있게 로스트할 가장 예리한 AI. 지금 시도해보세요! 🔥',
+    keywords: [
+      'ai로스트채팅',
+      '로스트ai',
+      '무료ai로스트',
+      '유머채팅',
+      '필터없는로스트',
+      '인공지능유머',
+      '코미디채팅',
+      '창의적로스트',
+      'ai농담',
+      '엔터테인먼트채팅',
+      '무료로스트채팅',
+      '검열없는ai로스트',
+      'ai유머',
+      '개인화된로스트',
+      '무료유머채팅',
+      '로스트미',
+      '불꽃으로태우다',
+      '예리한유머',
+      '필터없는농담',
+      'ai코미디언'
+    ],
+    twitter: {
+      title: '무료 AI 로스트 채팅 - 불꽃으로 로스트하는 AI! 🔥',
+      description: '필터 없는 무료 AI 로스트 채팅! 당신을 재미있게 로스트할 가장 예리한 AI.'
+    },
+    openGraph: {
+      title: '무료 AI 로스트 채팅 - 불꽃으로 로스트하는 AI! 🔥',
+      description: '필터 없는 무료 AI 로스트 채팅! 당신을 재미있게 로스트할 가장 예리한 AI. 지금 시도해보세요! 🔥',
+      locale: 'ko_KR'
+    }
+  },
+
+  // CHINOIS
+  zh: {
+    title: '免费AI烤制聊天 - 用火焰烤制你的AI！🔥',
+    description: '无过滤器的免费AI烤制聊天！最犀利的AI将以滑稽的方式烤制你。立即尝试！🔥',
+    keywords: [
+      'ai烤制聊天',
+      '烤制ai',
+      '免费ai烤制',
+      '幽默聊天',
+      '无过滤器烤制',
+      '人工智能幽默',
+      '喜剧聊天',
+      '创意烤制',
+      'ai笑话',
+      '娱乐聊天',
+      '免费烤制聊天',
+      '无审查ai烤制',
+      'ai幽默',
+      '个性化烤制',
+      '免费幽默聊天',
+      '烤制我',
+      '用火焰烤制',
+      '犀利幽默',
+      '无过滤器笑话',
+      'ai喜剧演员'
+    ],
+    twitter: {
+      title: '免费AI烤制聊天 - 用火焰烤制你的AI！🔥',
+      description: '无过滤器的免费AI烤制聊天！最犀利的AI将以滑稽的方式烤制你。'
+    },
+    openGraph: {
+      title: '免费AI烤制聊天 - 用火焰烤制你的AI！🔥',
+      description: '无过滤器的免费AI烤制聊天！最犀利的AI将以滑稽的方式烤制你。立即尝试！🔥',
+      locale: 'zh_CN'
+    }
+  },
+
+  // NÉERLANDAIS
+  nl: {
+    title: 'Gratis AI Roast Chat - De AI die je in Vlammen Roast! 🔥',
+    description: 'Gratis AI roast chat zonder filters! De meest bijtende AI die je op hilarante wijze gaat roasten. Probeer het nu! 🔥',
+    keywords: [
+      'ai roast chat',
+      'roast ai',
+      'gratis ai roast',
+      'humor chat',
+      'roast zonder filters',
+      'kunstmatige intelligentie humor',
+      'komedie chat',
+      'creatieve roast',
+      'ai grappen',
+      'entertainment chat',
+      'gratis roast chat',
+      'ai roast zonder censuur',
+      'ai humor',
+      'gepersonaliseerde roast',
+      'gratis humor chat',
+      'roast mij',
+      'in vlammen roasten',
+      'bijtende humor',
+      'grappen zonder filters',
+      'ai komiek'
+    ],
+    twitter: {
+      title: 'Gratis AI Roast Chat - De AI die je in Vlammen Roast! 🔥',
+      description: 'Gratis AI roast chat zonder filters! De meest bijtende AI die je op hilarante wijze gaat roasten.'
+    },
+    openGraph: {
+      title: 'Gratis AI Roast Chat - De AI die je in Vlammen Roast! 🔥',
+      description: 'Gratis AI roast chat zonder filters! De meest bijtende AI die je op hilarante wijze gaat roasten. Probeer het nu! 🔥',
+      locale: 'nl_NL'
     }
   }
 }

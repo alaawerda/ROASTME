@@ -207,6 +207,55 @@ export const it = {
     responseCopied: 'Risposta copiata!'
   },
 
+  // Chat Roast IA - Testi ottimizzati per SEO
+  chatRoastIA: {
+    heroTitle: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
+    heroSubtitle: 'Scopri l\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante senza filtri. Provala ora gratuitamente!',
+    liveChatTitle: '💬 Chat Roast IA in Diretta 🔥',
+    liveChatSubtitle: 'Prova ora la nostra IA tagliente!',
+    features: {
+      roastWithoutFilters: 'Roast Senza Filtri',
+      roastWithoutFiltersDesc: 'L\'IA più tagliente che ti roasterà in modo esilarante senza alcuna censura. Ogni risposta è un capolavoro di umorismo tagliente!',
+      realTimeChat: 'Chat in Tempo Reale',
+      realTimeChatDesc: 'Conversazioni fluide e risposte istantanee grazie alla nostra intelligenza artificiale avanzata. Lascia che ti sorprenda la velocità e la qualità!',
+      multilingualSupport: 'Supporto Multilingue',
+      multilingualSupportDesc: 'Disponibile in 12 lingue per un roast personalizzato nella tua lingua madre. L\'umorismo non ha confini!'
+    },
+    advantages: {
+      freeTitle: '100% Gratuito',
+      freeDesc: 'Accesso illimitato a tutte le funzionalità senza costi nascosti. Goditi l\'esperienza completa ora!',
+      personalizedTitle: 'Roast Personalizzato',
+      personalizedDesc: 'Ogni roast è unico e adattato ai tuoi messaggi per un massimo di umorismo. L\'IA analizza il tuo stile e si adatta alla tua personalità!'
+    },
+    howToUse: {
+      title: 'Come Usare Chat Roast IA? 📱',
+      subtitle: 'In 3 semplici passaggi, scopri il potere della nostra IA tagliente',
+      step1: {
+        title: 'Scrivi il tuo messaggio',
+        description: 'Scrivi quello che vuoi nell\'area chat. Più contesto dai, più tagliente e personalizzato sarà il roast!'
+      },
+      step2: {
+        title: 'Clicca su Invia',
+        description: 'La nostra IA analizzerà e preparerà il tuo roast. In pochi secondi riceverai una risposta che ti farà ridere fino alle lacrime!'
+      },
+      step3: {
+        title: 'Ricevi il tuo roast',
+        description: 'Goditi l\'umorismo tagliente della nostra IA! Ogni roast viene tradotto nella tua lingua per un\'esperienza perfettamente personalizzata.'
+      }
+    },
+    stats: {
+      languages: 'Lingue Supportate',
+      free: 'Gratuito',
+      available: 'Disponibile'
+    },
+    cta: {
+      title: '🚀 Pronto a Essere Roastato? 🚀',
+      subtitle: 'Unisciti a migliaia di utenti che hanno già scoperto il potere della nostra IA tagliente!',
+      startNow: '🔥 Inizia Ora',
+      seeRankings: 'Vedi Classifiche'
+    }
+  },
+
   // Common
   common: {
     loading: 'Caricamento...',

@@ -35,20 +35,74 @@ export type Locale = typeof fr & {
   timeFormat?: string;
   preparingRoast?: string;
   networkError?: string;
+  chatRoastIA?: {
+    heroTitle: string;
+    heroFlames?: string;
+    heroSubtitle: string;
+    liveChatTitle: string;
+    liveChatSubtitle: string;
+    status?: {
+      aiConnected: string;
+      aiReady?: string;
+    };
+    features: {
+      roastWithoutFilters: string;
+      roastWithoutFiltersDesc: string;
+      realTimeChat: string;
+      realTimeChatDesc: string;
+      multilingualSupport: string;
+      multilingualSupportDesc: string;
+    };
+    advantages: {
+      freeTitle: string;
+      freeDesc: string;
+      personalizedTitle: string;
+      personalizedDesc: string;
+    };
+    howToUse: {
+      title: string;
+      subtitle: string;
+      step1: {
+        title: string;
+        description: string;
+      };
+      step2: {
+        title: string;
+        description: string;
+      };
+      step3: {
+        title: string;
+        description: string;
+      };
+    };
+    stats: {
+      languages: string;
+      free: string;
+      available: string;
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      startNow: string;
+      seeRankings: string;
+    };
+  };
 };
 
 // Fonction utilitaire pour obtenir les traductions
 export function getLocale(locale: LocaleKey): Locale {
   const localeData = locales[locale];
+  
   if (localeData && hasRequiredProperties(localeData)) {
     return localeData;
   }
+  
   return locales.fr;
 }
 
 // Fonction pour vérifier si une locale a toutes les propriétés requises
 function hasRequiredProperties(locale: any): locale is Locale {
-  const requiredProps = ['title', 'welcomeMessage', 'inputPlaceholder', 'poweredBy', 'timeFormat', 'preparingRoast', 'networkError'];
+  const requiredProps = ['title', 'welcomeMessage', 'inputPlaceholder', 'poweredBy', 'timeFormat', 'preparingRoast', 'networkError', 'chatRoastIA'];
   return requiredProps.every(prop => prop in locale);
 }
 

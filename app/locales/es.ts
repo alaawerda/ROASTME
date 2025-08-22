@@ -1,4 +1,7 @@
 export const es = {
+  // Información del idioma
+  languageName: 'Español',
+  
   // Navigation
   nav: {
     home: 'Inicio',
@@ -205,6 +208,58 @@ export const es = {
     clearChat: 'Limpiar Conversación',
     copyResponse: 'Copiar Respuesta',
     responseCopied: '¡Respuesta copiada!'
+  },
+
+  // Chat Roast IA - Textos optimizados para SEO
+  chatRoastIA: {
+    heroTitle: 'Chat Roast IA Gratis - ¡La IA que te Roastea en Llamas! 🔥',
+    heroSubtitle: '¡Descubre la inteligencia artificial más mordaz que te roasteará de manera hilarante sin filtros! ¡Pruébala ahora gratis!',
+    liveChatTitle: '💬 Chat Roast IA en Vivo 🔥',
+    liveChatSubtitle: '¡Pruéba nuestra IA mordaz ahora!',
+    features: {
+      title: '¿Por Qué Elegir Nuestro Chat Roast IA? 🤖',
+      subtitle: 'Descubre la experiencia de roast más avanzada e hilarante jamás creada',
+      roastWithoutFilters: 'Roast Sin Filtros',
+      roastWithoutFiltersDesc: '¡La IA más mordaz que te roasteará de manière hilarante sin ninguna censura! ¡Cada respuesta es una obra maestra del humor mordaz!',
+      realTimeChat: 'Chat en Tiempo Real',
+      realTimeChatDesc: 'Conversaciones fluidas y respuestas instantáneas gracias a nuestra inteligencia artificial avanzada. ¡Déjate sorprender por la velocidad y calidad!',
+      multilingualSupport: 'Soporte Multilingüe',
+      multilingualSupportDesc: 'Disponible en 12 idiomas para un roast personalizado en tu lengua materna. ¡El humor no tiene fronteras!'
+    },
+    advantages: {
+      title: 'Ventajas del Chat Roast IA Gratis ✨',
+      subtitle: 'Todo lo que necesitas para roasts hilarantes, sin ningún costo',
+      freeTitle: '100% Gratis',
+      freeDesc: 'Acceso ilimitado a todas las funciones sin ningún costo oculto. ¡Disfruta de la experiencia completa ahora!',
+      personalizedTitle: 'Roast Personalizado',
+      personalizedDesc: 'Cada roast es único y adaptado a tus mensajes para un máximo de humor. ¡La IA analiza tu estilo y se adapta a tu personalidad!'
+    },
+    howToUse: {
+      title: '¿Cómo Usar el Chat Roast IA? 📱',
+      subtitle: 'En 3 pasos simples, descubre el poder de nuestra IA mordaz',
+      step1: {
+        title: 'Escribe tu mensaje',
+        description: 'Escribe lo que quieras en el área de chat. ¡Cuanto más contexto des, más mordaz y personalizado será el roast!'
+      },
+      step2: {
+        title: 'Haz clic en Enviar',
+        description: 'Nuestra IA analizará y preparará tu roast. ¡En unos segundos recibirás una respuesta que te hará reír hasta las lágrimas!'
+      },
+      step3: {
+        title: 'Recibe tu roast',
+        description: '¡Disfruta del humor mordaz de nuestra IA! Cada roast se traduce a tu idioma para una experiencia perfectamente personalizada.'
+      }
+    },
+    stats: {
+      languages: 'Idiomas Soportados',
+      free: 'Gratis',
+    },
+    cta: {
+      title: '🚀 ¿Listo para ser Roasteado? 🚀',
+      subtitle: '¡Únete a miles de usuarios que ya han descubierto el poder de nuestra IA mordaz!',
+      startNow: '🔥 Comenzar Ahora',
+      seeRankings: 'Ver Clasificaciones'
+    }
   },
 
   // Propiedades principales de la aplicación

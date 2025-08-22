@@ -14,194 +14,107 @@ export interface OGConfig {
   twitterCreator: string
 }
 
-export function getOGConfig(lang: string = 'fr'): OGConfig {
-  const baseUrl = 'https://roastme.chat'
-  const currentUrl = lang === 'fr' ? baseUrl : `${baseUrl}/${lang}`
-  
-  const configs: Record<string, OGConfig> = {
+export const getOGConfig = (language: string) => {
+  const configs = {
     fr: {
-      title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥 Chat IA Humoristique Gratuit',
-      description: 'Découvre RoastMe Chat, l\'IA la plus cinglante qui va te roaster de manière hilarante ! Chatbot IA gratuit pour rire, humour noir, insultes créatives et blagues. Prêt à être descendu en flammes ? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
+      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
+      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
       locale: 'fr_FR',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - L\'IA qui te Roaste ! Chat IA Humoristique Gratuit',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
+      url: 'https://roastme.chat',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Chat Roast IA Gratuit'
     },
     en: {
-      title: 'RoastMe Chat - The AI that Roasts You! 🔥 Free AI Humor Chat',
-      description: 'Discover RoastMe Chat, the most savage AI that will roast you hilariously! Free AI chatbot for laughs, dark humor, creative insults and jokes. Ready to get burned to the ground? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
+      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
+      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
       locale: 'en_US',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - The AI that Roasts You! Free AI Humor Chat',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
+      url: 'https://roastme.chat/en',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Free AI Roast Chat'
     },
     es: {
-      title: 'RoastMe Chat - ¡La IA que te Asa! 🔥 Chat de IA Humorístico Gratis',
-      description: '¡Descubre RoastMe Chat, la IA más salvaje que te asará de manera hilarante! Chatbot de IA gratis para reír, humor negro, insultos creativos y chistes. ¿Listo para ser quemado hasta los huesos? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
+      title: 'Chat de Roast IA Gratis - ¡La IA que te Roaste en Llamas! 🔥',
+      description: '¡Chat de roast IA gratis sin filtros! La inteligencia artificial más mordaz que te va a roaster de manera hilarante. ¡Pruébalo ahora! 🔥',
       locale: 'es_ES',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - ¡La IA que te Asa! Chat de IA Humorístico Gratis',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    de: {
-      title: 'RoastMe Chat - Die KI, die dich Roastet! 🔥 Kostenloser KI-Humor-Chat',
-      description: 'Entdecke RoastMe Chat, die brutalste KI, die dich auf humorvolle Weise roastet! Kostenloser KI-Chatbot für Lacher, schwarzen Humor, kreative Beleidigungen und Witze. Bereit, bis auf die Knochen verbrannt zu werden? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'de_DE',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - Die KI, die dich Roastet! Kostenloser KI-Humor-Chat',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    it: {
-      title: 'RoastMe Chat - L\'IA che ti Arrostisce! 🔥 Chat IA Umoristico Gratuito',
-      description: 'Scopri RoastMe Chat, l\'IA più spietata che ti arrostirà in modo esilarante! Chatbot IA gratuito per risate, umorismo nero, insulti creativi e battute. Pronto a essere bruciato vivo? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'it_IT',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - L\'IA che ti Arrostisce! Chat IA Umoristico Gratuito',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    pt: {
-      title: 'RoastMe Chat - A IA que te Assa! 🔥 Chat de IA Humorístico Grátis',
-      description: 'Descobre RoastMe Chat, a IA mais selvagem que vai te assar de forma hilariante! Chatbot de IA grátis para rir, humor negro, insultos criativos e piadas. Pronto para ser queimado até os ossos? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'pt_BR',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - A IA que te Assa! Chat de IA Humorístico Grátis',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    ru: {
-      title: 'RoastMe Chat - ИИ, который тебя Прожарит! 🔥 Бесплатный ИИ-юмор чат',
-      description: 'Открой RoastMe Chat, самого жестокого ИИ, который прожарит тебя до хруста! Бесплатный ИИ-чатбот для смеха, черного юмора, творческих оскорблений и шуток. Готов быть сожжённым дотла? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'ru_RU',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - ИИ, который тебя Прожарит! Бесплатный ИИ-юмор чат',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    ja: {
-      title: 'RoastMe Chat - あなたをローストするAI！🔥 無料AIユーモアチャット',
-      description: 'RoastMe Chatを発見しよう、あなたを面白おかしくローストする最も残酷なAI！笑い、ブラックユーモア、創造的な侮辱、ジョークのための無料AIチャットボット。骨まで燃やされる準備はできてる？🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'ja_JP',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - あなたをローストするAI！無料AIユーモアチャット',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    ko: {
-      title: 'RoastMe Chat - 당신을 로스트하는 AI! 🔥 무료AI 유머 채팅',
-      description: 'RoastMe Chat을 발견하세요, 당신을 재미있게 로스트할 가장 잔인한 AI! 웃음, 블랙 유머, 창의적인 모욕, 농담을 위한 무료AI 챗봇. 뼈까지 타들어갈 준비가 되었나요? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'ko_KR',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - 당신을 로스트하는 AI! 무료AI 유머 채팅',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
-    },
-    zh: {
-      title: 'RoastMe Chat - 烤你的AI！🔥 免费AI幽默聊天',
-      description: '发现RoastMe Chat，最残忍的AI，会以滑稽的方式烤你！免费AI聊天机器人，用于笑声、黑色幽默、创意侮辱和笑话。准备好被烤到骨头了吗？🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
-      locale: 'zh_CN',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - 烤你的AI！免费AI幽默聊天',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
+      url: 'https://roastme.chat/es',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Chat de Roast IA Gratis'
     },
     ar: {
-      title: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! 🔥 دردشة ذكاء اصطناعي فكاهية مجانية',
-      description: 'اكتشف RoastMe Chat، أكثر ذكاء اصطناعي وحشية سيشوي لك بطريقة مضحكة! روبوت دردشة ذكاء اصطناعي مجاني للضحك والفكاهة السوداء والإهانات الإبداعية والنكات. مستعد لأن تحترق حتى العظم؟ 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
+      title: 'دردشة AI روست مجانية - الذكاء الاصطناعي الذي يروستك بالنار! 🔥',
+      description: 'دردشة AI روست مجانية بدون فلاتر! الذكاء الاصطناعي الأكثر حدة الذي سيروستك بطريقة مضحكة. جرب الآن! 🔥',
       locale: 'ar_SA',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - الذكاء الاصطناعي الذي يشوي لك! دردشة ذكاء اصطناعي فكاهية مجانية',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
+      url: 'https://roastme.chat/ar',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'دردشة AI روست مجانية'
+    },
+    de: {
+      title: 'Kostenloser AI Roast Chat - Die KI, die dich in Flammen röstet! 🔥',
+      description: 'Kostenloser AI Roast Chat ohne Filter! Die schärfste KI, die dich auf humorvolle Weise rösten wird. Jetzt testen! 🔥',
+      locale: 'de_DE',
+      url: 'https://roastme.chat/de',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Kostenloser AI Roast Chat'
+    },
+    it: {
+      title: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
+      description: 'Chat roast IA gratuito senza filtri! L\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante. Provalo ora! 🔥',
+      locale: 'it_IT',
+      url: 'https://roastme.chat/it',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Chat Roast IA Gratuito'
+    },
+    pt: {
+      title: 'Chat de Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
+      description: 'Chat de roast IA gratuito sem filtros! A inteligência artificial mais cortante que vai te roaster de forma hilariante. Experimente agora! 🔥',
+      locale: 'pt_BR',
+      url: 'https://roastme.chat/pt',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Chat de Roast IA Gratuito'
+    },
+    ru: {
+      title: 'Бесплатный Чат Роаст ИИ - ИИ, который Роастит тебя в Пламени! 🔥',
+      description: 'Бесплатный чат роаст ИИ без фильтров! Самый острый ИИ, который будет роастить тебя забавно. Попробуй сейчас! 🔥',
+      locale: 'ru_RU',
+      url: 'https://roastme.chat/ru',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Бесплатный Чат Роаст ИИ'
+    },
+    ja: {
+      title: '無料AIローストチャット - 炎でローストするAI！🔥',
+      description: 'フィルターなしの無料AIローストチャット！あなたを面白おかしくローストする最も辛辣なAI。今すぐ試してみて！🔥',
+      locale: 'ja_JP',
+      url: 'https://roastme.chat/ja',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: '無料AIローストチャット'
+    },
+    ko: {
+      title: '무료 AI 로스트 채팅 - 불꽃으로 로스트하는 AI! 🔥',
+      description: '필터 없는 무료 AI 로스트 채팅! 당신을 재미있게 로스트할 가장 예리한 AI. 지금 시도해보세요! 🔥',
+      locale: 'ko_KR',
+      url: 'https://roastme.chat/ko',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: '무료 AI 로스트 채팅'
+    },
+    zh: {
+      title: '免费AI烤制聊天 - 用火焰烤制你的AI！🔥',
+      description: '无过滤器的免费AI烤制聊天！最犀利的AI将以滑稽的方式烤制你。立即尝试！🔥',
+      locale: 'zh_CN',
+      url: 'https://roastme.chat/zh',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: '免费AI烤制聊天'
     },
     nl: {
-      title: 'RoastMe Chat - De AI die je Roast! 🔥 Gratis AI Humor Chat',
-      description: 'Ontdek RoastMe Chat, de meest wrede AI die je op hilarische wijze gaat roasten! Gratis AI chatbot voor lach, zwarte humor, creatieve beledigingen en grappen. Klaar om tot op het bot verbrand te worden? 🔥',
-      url: currentUrl,
-      siteName: 'RoastMe Chat',
+      title: 'Gratis AI Roast Chat - De AI die je in Vlammen Roast! 🔥',
+      description: 'Gratis AI roast chat zonder filters! De meest bijtende AI die je op hilarante wijze gaat roasten. Probeer het nu! 🔥',
       locale: 'nl_NL',
-      type: 'website',
-      image: `${baseUrl}/og-image.jpg`,
-      imageWidth: 1200,
-      imageHeight: 630,
-      imageAlt: 'RoastMe Chat - De AI die je Roast! Gratis AI Humor Chat',
-      twitterCard: 'summary_large_image',
-      twitterSite: '@roastmechat',
-      twitterCreator: '@roastmechat'
+      url: 'https://roastme.chat/nl',
+      image: 'https://roastme.chat/og-image.jpg',
+      siteName: 'Gratis AI Roast Chat'
     }
   }
 
-  return configs[lang] || configs.fr!
+  return configs[language as keyof typeof configs] || configs.fr
 }
 
 // Fonction pour générer toutes les balises Open Graph
@@ -215,16 +128,16 @@ export function generateOGTags(lang: string = 'fr'): string {
     `<meta property="og:url" content="${config.url}" />`,
     `<meta property="og:site_name" content="${config.siteName}" />`,
     `<meta property="og:locale" content="${config.locale}" />`,
-    `<meta property="og:type" content="${config.type}" />`,
+    `<meta property="og:type" content="website" />`, // Assuming type is always website for chat
     `<meta property="og:image" content="${config.image}" />`,
-    `<meta property="og:image:width" content="${config.imageWidth}" />`,
-    `<meta property="og:image:height" content="${config.imageHeight}" />`,
-    `<meta property="og:image:alt" content="${config.imageAlt}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="${config.title}" />`,
     
     // Balises Twitter Card
-    `<meta name="twitter:card" content="${config.twitterCard}" />`,
-    `<meta name="twitter:site" content="${config.twitterSite}" />`,
-    `<meta name="twitter:creator" content="${config.twitterCreator}" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:site" content="@roastmechat" />`,
+    `<meta name="twitter:creator" content="@roastmechat" />`,
     `<meta name="twitter:title" content="${config.title}" />`,
     `<meta name="twitter:description" content="${config.description}" />`,
     `<meta name="twitter:image" content="${config.image}" />`,
@@ -240,16 +153,16 @@ export function generateOGTags(lang: string = 'fr'): string {
     `<meta name="instagram:site" content="@roastmechat" />`,
     
     // Balises pour LinkedIn
-    `<meta property="og:image:width" content="${config.imageWidth}" />`,
-    `<meta property="og:image:height" content="${config.imageHeight}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
     
     // Balises pour Pinterest
     `<meta name="pinterest:description" content="${config.description}" />`,
     `<meta name="pinterest:image" content="${config.image}" />`,
     
     // Balises pour WhatsApp
-    `<meta property="og:image:width" content="${config.imageWidth}" />`,
-    `<meta property="og:image:height" content="${config.imageHeight}" />`
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`
   ]
   
   return tags.join('\n  ')

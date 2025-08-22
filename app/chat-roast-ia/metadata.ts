@@ -1,0 +1,91 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
+  description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue. 100% gratuit !',
+  keywords: [
+    'chat roast IA',
+    'roast sans filtres', 
+    'IA cinglante',
+    'chat humour gratuit',
+    'roast personnalisé',
+    'support multilingue',
+    'intelligence artificielle humour',
+    'roast créatif',
+    'blagues IA',
+    'divertissement chat',
+    'humour cinglant',
+    'roast en temps réel'
+  ],
+  authors: [{ name: 'RoastMe Team' }],
+  creator: 'RoastMe Team',
+  publisher: 'RoastMe',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://roastme.chat/chat-roast-ia',
+    siteName: 'Chat Roast IA Gratuit',
+    title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
+    description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue. 100% gratuit !',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Chat Roast IA - L\'IA qui te Roaste en Flammes !',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
+    description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue.',
+    images: ['/og-image.jpg'],
+    creator: '@roastmechat',
+    site: '@roastmechat',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://roastme.chat/chat-roast-ia',
+    languages: {
+      'fr': 'https://roastme.chat/chat-roast-ia',
+      'en': 'https://roastme.chat/en/chat-roast-ia',
+      'es': 'https://roastme.chat/es/chat-roast-ia',
+      'de': 'https://roastme.chat/de/chat-roast-ia',
+      'it': 'https://roastme.chat/it/chat-roast-ia',
+      'pt': 'https://roastme.chat/pt/chat-roast-ia',
+      'ru': 'https://roastme.chat/ru/chat-roast-ia',
+      'ja': 'https://roastme.chat/ja/chat-roast-ia',
+      'ko': 'https://roastme.chat/ko/chat-roast-ia',
+      'zh': 'https://roastme.chat/zh/chat-roast-ia',
+      'ar': 'https://roastme.chat/ar/chat-roast-ia',
+      'nl': 'https://roastme.chat/nl/chat-roast-ia',
+    },
+  },
+  other: {
+    'theme-color': '#ff6b35',
+    'msapplication-TileColor': '#ff6b35',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'RoastMe Chat IA',
+    'mobile-web-app-capable': 'yes',
+    'application-name': 'RoastMe Chat IA',
+    'format-detection': 'telephone=no',
+    'viewport-fit': 'cover',
+  }
+}

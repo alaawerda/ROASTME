@@ -1,200 +1,155 @@
 // Configuration de performance pour optimiser les Core Web Vitals
 export const performanceConfig = {
-  // Configuration des images
-  images: {
-    formats: ['image/webp', 'image/avif'],
-    sizes: {
-      thumbnail: '150x150',
-      small: '300x300',
-      medium: '600x600',
-      large: '1200x1200',
-      og: '1200x630'
+  // Configuration des métadonnées de performance pour chaque langue
+  metadata: {
+    fr: {
+      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
+      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
+      keywords: 'chat roast, roast IA, IA roast gratuit, chat humour, roast sans filtres, intelligence artificielle humour, chat comédie, roast créatif, blagues IA, divertissement chat',
+      language: 'fr',
+      locale: 'fr_FR',
+      geoRegion: 'FR',
+      geoPosition: '48.8566;2.3522'
     },
-    quality: 85,
-    loading: 'lazy' as const,
-    placeholder: 'blur' as const
-  },
-
-  // Configuration des polices
-  fonts: {
-    preload: [
-      {
-        family: 'Inter',
-        weight: [400, 500, 600, 700],
-        display: 'swap' as const
-      }
-    ],
-    fallback: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
-      mono: ['monospace']
+    en: {
+      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
+      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
+      keywords: 'ai roast chat, roast ai, free ai roast, humor chat, roast without filters, artificial intelligence humor, comedy chat, creative roast, ai jokes, entertainment chat',
+      language: 'en',
+      locale: 'en_US',
+      geoRegion: 'US',
+      geoPosition: '38.9072;-77.0369'
+    },
+    es: {
+      title: 'Chat de Roast IA Gratis - ¡La IA que te Roaste en Llamas! 🔥',
+      description: '¡Chat de roast IA gratis sin filtros! La inteligencia artificial más mordaz que te va a roaster de manera hilarante. ¡Pruébalo ahora! 🔥',
+      keywords: 'chat roast ia, roast ia, ia roast gratis, chat humor, roast sin filtros, inteligencia artificial humor, chat comedia, roast creativo, chistes ia, entretenimiento chat',
+      language: 'es',
+      locale: 'es_ES',
+      geoRegion: 'ES',
+      geoPosition: '40.4168;-3.7038'
+    },
+    ar: {
+      title: 'دردشة AI روست مجانية - الذكاء الاصطناعي الذي يروستك بالنار! 🔥',
+      description: 'دردشة AI روست مجانية بدون فلاتر! الذكاء الاصطناعي الأكثر حدة الذي سيروستك بطريقة مضحكة. جرب الآن! 🔥',
+      keywords: 'دردشة روست ai, روست ai, ai روست مجاني, دردشة فكاهة, روست بدون فلاتر, ذكاء اصطناعي فكاهة, دردشة كوميديا, روست إبداعي, نكات ai, ترفيه دردشة',
+      language: 'ar',
+      locale: 'ar_SA',
+      geoRegion: 'SA',
+      geoPosition: '24.7136;46.6753'
     }
   },
 
-  // Configuration du cache
-  cache: {
-    static: {
-      maxAge: 31536000, // 1 an
-      immutable: true
-    },
-    dynamic: {
-      maxAge: 86400, // 1 jour
-      staleWhileRevalidate: 604800 // 1 semaine
-    }
-  },
-
-  // Configuration de la compression
-  compression: {
-    gzip: true,
-    brotli: true,
-    threshold: 1024 // Compresser à partir de 1KB
-  },
-
-  // Configuration des ressources critiques
-  critical: {
-    css: [
-      '/globals.css',
-      '/components.css'
-    ],
-    js: [
-      '/app.js'
-    ]
-  },
-
-  // Configuration du preload
+  // Configuration des ressources à précharger
   preload: {
-    links: [
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com'
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous'
-      },
-      {
-        rel: 'dns-prefetch',
-        href: '//fonts.googleapis.com'
-      },
-      {
-        rel: 'dns-prefetch',
-        href: '//fonts.gstatic.com'
-      }
+    fonts: [
+      'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
     ],
-    resources: [
-      {
-        as: 'font',
-        href: '/fonts/inter-var.woff2',
-        type: 'font/woff2',
-        crossOrigin: 'anonymous'
-      },
-      {
-        as: 'image',
-        href: '/og-image-fr.jpg'
-      }
-    ]
+    images: [
+      '/og-image.jpg',
+      '/logo.svg',
+      '/favicon.ico'
+    ],
+    scripts: [],
+    styles: []
   },
+
+  // Configuration des ressources à préconnecter
+  preconnect: [
+    'https://fonts.googleapis.com',
+    'https://fonts.gstatic.com',
+    'https://roastme.chat'
+  ],
+
+  // Configuration DNS prefetch
+  dnsPrefetch: [
+    '//fonts.googleapis.com',
+    '//fonts.gstatic.com',
+    '//roastme.chat'
+  ],
 
   // Configuration des métadonnées de performance
-  meta: {
+  performance: {
     viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover',
     themeColor: '#dc2626',
-    msapplicationTileColor: '#dc2626',
+    msTileColor: '#dc2626',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'default',
-    appleMobileWebAppTitle: 'RoastMe Chat',
+    appleMobileWebAppTitle: 'Chat Roast IA',
     mobileWebAppCapable: 'yes',
-    applicationName: 'RoastMe Chat',
+    applicationName: 'Chat Roast IA',
     formatDetection: 'telephone=no',
     viewportFit: 'cover'
   },
 
-  // Configuration des headers de performance
-  headers: {
-    'X-Content-Type-Options': 'nosniff',
-    'X-Frame-Options': 'DENY',
-    'X-XSS-Protection': '1; mode=block',
-    'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-    'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
-    'Cache-Control': 'public, max-age=31536000, immutable',
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://generativelanguage.googleapis.com https://www.google-analytics.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+  // Configuration des métadonnées de sécurité
+  security: {
+    xFrameOptions: 'DENY',
+    xContentTypeOptions: 'nosniff',
+    referrerPolicy: 'strict-origin-when-cross-origin',
+    permissionsPolicy: 'camera=(), microphone=(), geolocation=()'
   },
 
-  // Configuration des Core Web Vitals
-  webVitals: {
-    // LCP (Largest Contentful Paint) - Objectif: < 2.5s
-    lcp: {
-      target: 2500,
-      warning: 4000
+  // Configuration des métadonnées de contenu
+  content: {
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    googlebot: 'index, follow',
+    bingbot: 'index, follow',
+    revisitAfter: '1 days',
+    rating: 'General',
+    distribution: 'Global',
+    coverage: 'Worldwide',
+    target: 'all',
+    handheldFriendly: 'True',
+    mobileOptimized: '320'
+  },
+
+  // Configuration des métadonnées sociales
+  social: {
+    twitter: {
+      card: 'summary_large_image',
+      site: '@roastmechat',
+      creator: '@roastmechat',
+      appCountry: 'FR',
+      appNameIphone: 'Chat Roast IA',
+      appNameIpad: 'Chat Roast IA',
+      appNameGoogleplay: 'Chat Roast IA'
     },
-    // FID (First Input Delay) - Objectif: < 100ms
-    fid: {
-      target: 100,
-      warning: 300
-    },
-    // CLS (Cumulative Layout Shift) - Objectif: < 0.1
-    cls: {
-      target: 0.1,
-      warning: 0.25
-    },
-    // TTFB (Time to First Byte) - Objectif: < 800ms
-    ttfb: {
-      target: 800,
-      warning: 1800
+    facebook: {
+      appId: 'your-facebook-app-id',
+      admins: 'your-facebook-admin-id'
     }
   },
 
-  // Configuration de l'optimisation des images
-  imageOptimization: {
-    formats: ['webp', 'avif'],
-    quality: 85,
-    sizes: [
-      { width: 640, height: 480 },
-      { width: 750, height: 563 },
-      { width: 828, height: 621 },
-      { width: 1080, height: 810 },
-      { width: 1200, height: 900 },
-      { width: 1920, height: 1440 },
-      { width: 2048, height: 1536 }
-    ],
-    placeholder: 'blur',
-    loading: 'lazy'
-  },
-
-  // Configuration de la compression des ressources
-  resourceOptimization: {
-    minify: {
-      css: true,
-      js: true,
-      html: true
-    },
-    compress: {
-      gzip: true,
-      brotli: true
-    },
-    bundle: {
-      splitChunks: true,
-      treeShaking: true
+  // Configuration des métadonnées de localisation
+  localization: {
+    defaultLanguage: 'fr',
+    supportedLanguages: ['fr', 'en', 'es', 'ar', 'de', 'it', 'pt', 'ru', 'ja', 'ko', 'zh', 'nl'],
+    hreflang: {
+      'fr': 'https://roastme.chat',
+      'en': 'https://roastme.chat/en',
+      'es': 'https://roastme.chat/es',
+      'ar': 'https://roastme.chat/ar',
+      'de': 'https://roastme.chat/de',
+      'it': 'https://roastme.chat/it',
+      'pt': 'https://roastme.chat/pt',
+      'ru': 'https://roastme.chat/ru',
+      'ja': 'https://roastme.chat/ja',
+      'ko': 'https://roastme.chat/ko',
+      'zh': 'https://roastme.chat/zh',
+      'nl': 'https://roastme.chat/nl'
     }
-  },
-
-  // Configuration du service worker
-  serviceWorker: {
-    enabled: true,
-    scope: '/',
-    updateViaCache: 'none',
-    skipWaiting: true,
-    clientsClaim: true
-  },
-
-  // Configuration de l'analyse des performances
-  analytics: {
-    webVitals: true,
-    performance: true,
-    errors: true,
-    userTiming: true
   }
+}
+
+// Fonction pour obtenir la configuration d'une langue spécifique
+export const getPerformanceConfig = (language: string) => {
+  return performanceConfig.metadata[language as keyof typeof performanceConfig.metadata] || performanceConfig.metadata.fr
+}
+
+// Fonction pour obtenir toutes les configurations de performance
+export const getAllPerformanceConfigs = () => {
+  return performanceConfig
 }
 
 // Fonction pour générer les headers de performance
