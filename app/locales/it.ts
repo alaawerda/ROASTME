@@ -1,4 +1,16 @@
 export const it = {
+  // Proprietà base richieste
+  title: 'RoastMe - Piattaforma di Umorismo IA',
+  welcomeMessage: 'Benvenuto su RoastMe, la piattaforma di umorismo IA definitiva!',
+  inputPlaceholder: 'Scrivi il tuo messaggio per iniziare...',
+  poweredBy: 'Alimentato da IA',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Preparazione del tuo roast personalizzato...',
+  networkError: 'Errore di rete. Riprova.',
+  
+  // Informazioni sulla lingua
+  languageName: 'Italiano',
+
   // Navigation
   nav: {
     home: 'Home',

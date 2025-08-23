@@ -3,50 +3,70 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
+  // Image optimization
   images: {
-    domains: ['roastme.chat', 'localhost'],
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    domains: [
+      'roastme.chat',
+      'localhost',
+      'res.cloudinary.com', // Add if using Cloudinary
+      'images.unsplash.com' // Add if using Unsplash
+    ],
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [
+      16, 32, 48, 64, 96, 128, 256, 384, 512, 640, 750, 828, 1080, 1200, 1920, 2048, 3840
+    ],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000,
+    minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
+  // Environment variables
+  env: {
+    SITE_URL: process.env.SITE_URL || 'https://roastme.chat',
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID || 'G-V3NEK593B5', // Replace with your GA4 Measurement ID
+  },
+
+  // Webpack configuration
+  webpack: (config, { isServer, dev }) => {
+    // Custom webpack configuration can be added here
+    return config;
+  },
+
+  // Security headers (some are also handled in middleware)
   async headers() {
-    // CSP conditionnelle : unsafe-eval seulement en développement
-    const isDev = process.env.NODE_ENV === 'development'
-    const scriptSrc = isDev 
-      ? "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com"
-      : "'self' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com"
-    
     return [
       {
         source: '/(.*)',
         headers: [
+          // Security Headers
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
           },
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
+            value: 'strict-origin-when-cross-origin',
           },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains; preload'
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
+            value: 'camera=(), microphone=(), geolocation=(), geolocation=()',
           },
+          // Cache control for static assets
           {
-            key: 'Content-Security-Policy',
-            value: `default-src 'self'; img-src 'self' https: data:; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com https://vitals.vercel-insights.com https://www.google-analytics.com https://va.vercel-scripts.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';`
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           }
         ]
       }

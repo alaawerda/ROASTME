@@ -19,11 +19,11 @@ export const blogPosts: BlogPost[] = [
       zh: '终极吐槽指南：如何掌握尖锐喜剧艺术？'
     },
     excerpt: {
-      fr: 'Découvre les secrets pour créer des roasts hilarants qui feront rire tout le monde (sauf la cible !). De débutant à pro en 10 étapes simples.',
-      en: 'Discover the secrets to creating hilarious roasts that will make everyone laugh (except the target!). From beginner to pro in 10 simple steps.',
+      fr: 'Le guide complet pour passer de la vanne de base au roast maîtrisé: techniques, erreurs à éviter, exemples sûrs et exercices pratiques.',
+      en: 'A complete guide to level up from basic burns to mastered roasts: techniques, pitfalls to avoid, safe examples, and practical drills.',
       es: 'Descubre los secretos para crear roasts hilarantes que harán reír a todos (¡excepto al objetivo!). De principiante a profesional en 10 pasos simples.',
       de: 'Entdecke die Geheimnisse, um urkomische Roasts zu erstellen, die alle zum Lachen bringen (außer das Ziel!). Vom Anfänger zum Profi in 10 einfachen Schritten.',
-      it: 'Scopri i segreti per creare roast esilaranti che faranno ridere tutti (tranne il bersaglio!). Da principiante a professionista in 10 semplici passi.',
+      it: 'Scopri i segreti per creare roast esilaranti che faranno ridere tutti (tranne il bersaglio!). Da principiante a professionista en 10 semplici passi.',
       pt: 'Descubra os segredos para criar roasts hilariantes que farão todos rirem (exceto o alvo!). Do iniciante ao profissional em 10 passos simples.',
       nl: 'Ontdek de geheimen om hilarische roasts te maken die iedereen aan het lachen maken (behalve het doelwit!). Van beginner tot pro in 10 eenvoudige stappen.',
       ru: 'Откройте секреты создания веселых ростов, которые заставят всех смеяться (кроме цели!). От новичка до профессионала за 10 простых шагов.',
@@ -57,9 +57,38 @@ Prends un défaut et exagère-le de manière absurde.
 ### La Technique du "Comparaison Absurde"
 Compare la personne à quelque chose de complètement inapproprié.
 
+## 🧠 Lire la Salle (Contexte & Timing)
+- Ne roaste pas quelqu'un qui n'a pas "signé" pour jouer.
+- Vise l'auto-dérision d'abord pour calibrer le ton.
+- Si un rire tombe à plat, rebondis vite: "Ok, celui-là, je le garde pour mon journal intime."
+
+## 🧩 Templates de Roasts Sûrs
+- "Tu es comme X, mais sans la partie utile."
+- "On dirait Y a essayé de faire Z et a rage quit."
+- "Tu as l'énergie de quelqu'un qui... (observation légère, non sensible)."
+
+Exemples:
+- "T'es comme un tuto YouTube de 8 minutes pour dire bonjour. Beaucoup de blabla, peu d'action."
+- "Ton style, c'est ‘je me suis habillé dans l'obscurité’ mais version premium."
+
+## ⚠️ Lignes Rouges
+- Pas d'attaques sur la santé, le trauma, la religion, l'origine, le physique sensible.
+- Si la personne montre un inconfort: on coupe net, on passe à une blague neutre.
+
+## 🛠️ Exercices Rapides
+- Observations en 30 secondes: trouve 3 détails non sensibles dans la pièce.
+- Exagération contrôlée: prends un petit défaut social et pousse-le X3.
+- Callback: écris 2 blagues qui réutilisent un détail mentionné plus tôt.
+
+## ✅ Checklist Avant d'Envoyer
+- Cible consentante ?
+- Sujet non sensible ?
+- Punch clair en 1 phrase ?
+- Sortie élégante prévue ?
+
 ## 🚀 Prêt à Devenir un Pro ?
 
-Maintenant que tu as toutes les clés, il ne te reste plus qu'à pratiquer ! Et quoi de mieux que de commencer avec notre IA spécialisée en roast ?
+Maintenant que tu as toutes les clés, pratique intelligemment. Commence par des roasts légers, prioritise l'auto-dérision, puis monte en intensité si le public suit.
 
 **🎭 [Essaie RoastMe.chat Maintenant](/)**`,
       en: `# The Ultimate Roast Guide: How to Master the Art of Sharp Comedy?
@@ -86,9 +115,38 @@ Take a flaw and exaggerate it absurdly.
 ### The "Absurd Comparison" Technique
 Compare the person to something completely inappropriate.
 
+## 🧠 Read the Room (Context & Timing)
+- Don’t roast someone who didn’t opt in.
+- Start with self-roast to set a safe baseline.
+- If a joke dies: "Cool, adding that one to my private blooper reel."
+
+## 🧩 Safe Roast Templates
+- "You’re like X, but without the useful part."
+- "Looks like Y tried to do Z and rage quit."
+- "You’ve got the energy of someone who... (light, non-sensitive observation)."
+
+Examples:
+- "You’re like an 8‑minute YouTube tutorial to say hello. Lots of words, zero value."
+- "Your outfit says ‘I got dressed in the dark’ but make it deluxe."
+
+## ⚠️ Red Lines
+- No jokes about health, trauma, religion, ethnicity, or sensitive body features.
+- If they look uncomfortable: stop immediately, pivot to neutral humor.
+
+## 🛠️ Quick Drills
+- 30‑second observations: find 3 non-sensitive details in the room.
+- Controlled exaggeration: take a tiny social flaw and push it x3.
+- Callback practice: write 2 jokes that reuse an earlier detail.
+
+## ✅ Pre-Flight Checklist
+- Opt-in target?
+- Non-sensitive topic?
+- Clear punch in one line?
+- Exit line ready?
+
 ## 🚀 Ready to Become a Pro?
 
-Now that you have all the keys, all you have to do is practice! And what better way to start than with our AI specialized in roasting?
+You’ve got the tools—practice smart. Start light, prioritize self-roast, then scale intensity only if the crowd is with you.
 
 **🎭 [Try RoastMe.chat Now](/)**`,
       es: `# La Guía Definitiva del Roast: ¿Cómo Dominar el Arte de la Broma Mordaz?
@@ -115,14 +173,43 @@ Toma un defecto y exagéralo absurdamente.
 ### La Técnica de la "Comparación Absurda"
 Compara a la persona con algo completamente inapropiado.
 
+## 🧠 Lee el Ambiente (Contexto y Timing)
+- No roastees a quien no aceptó jugar.
+- Comienza con auto-roast para marcar una base segura.
+- Si un chiste cae: "Perfecto, ese va para mi blooper reel privado".
+
+## 🧩 Plantillas de Roasts Seguros
+- "Eres como X, pero sin la parte útil".
+- "Parece que Y intentó hacer Z y rage quit".
+- "Tienes la energía de alguien que... (observación ligera y no sensible)".
+
+Ejemplos:
+- "Eres como un tutorial de YouTube de 8 minutos para saludar. Mucha charla, poco valor".
+- "Tu outfit dice ‘me vestí a oscuras’, pero en versión deluxe".
+
+## ⚠️ Líneas Rojas
+- Nada sobre salud, trauma, religión, etnia o rasgos físicos sensibles.
+- Si alguien se incomoda: para de inmediato y pivota a humor neutro.
+
+## 🛠️ Ejercicios Rápidos
+- Observaciones en 30 segundos: encuentra 3 detalles no sensibles en la sala.
+- Exageración controlada: toma un micro defecto social y llévalo x3.
+- Callback: escribe 2 chistes que reutilicen un detalle previo.
+
+## ✅ Checklist Previa
+- ¿Objetivo con consentimiento?
+- ¿Tema no sensible?
+- ¿Punch claro en una línea?
+- ¿Línea de salida lista?
+
 ## 🚀 ¿Listo para Convertirte en un Pro?
 
-¡Ahora que tienes todas las claves, solo te queda practicar! ¿Y qué mejor manera de empezar que con nuestra IA especializada en roast?
+Tienes las herramientas: practica con cabeza. Empieza ligero, prioriza el auto-roast y escala la intensidad solo si el público te sigue.
 
 **🎭 [Prueba RoastMe.chat Ahora](/)**`,
       de: `# Der ultimative Roast-Guide: Wie beherrscht man die Kunst des scharfen Humors?
 
-*Von dem RoastMe-Team - Veröffentlicht am ${new Date().toLocaleDateString('de-DE')}*
+*Vom RoastMe-Team - Veröffentlicht am ${new Date().toLocaleDateString('de-DE')}*
 
 ## 🎯 Einführung: Was ist ein guter Roast?
 
@@ -131,22 +218,51 @@ Ein Roast ist wie ein umgekehrtes Kompliment. Anstatt zu sagen "Du bist großart
 ## 🚀 Die 10 Gebote des Roastens
 
 ### 1. Kenne dein Ziel
-Bevor du einen Witz machst, beobachte die Person genau. Ihre körperlichen Mängel? Ihre seltsamen Gewohnheiten? Ihr fragwürdiger Kleidungsstil? Alles ist Material zum Roasten!
+Bevor du einen Witz machst, beobachte die Person genau. Körperliche Eigenheiten? Seltsame Gewohnheiten? Fragwürdiger Kleidungsstil? Alles ist Material!
 
 ### 2. Bleibe in den Grenzen
-Es gibt einen Unterschied zwischen lustig und gemein sein. Vermeide sensible Themen.
+Es gibt einen Unterschied zwischen lustig und gemein. Vermeide sensible Themen.
 
 ## 🎭 Fortgeschrittene Techniken
 
 ### Die "Aber Noch Mehr"-Technik
-Nimm einen Mangel und übertreibe ihn absurd.
+Nimm einen Makel und übertreibe ihn absurd.
 
 ### Die "Absurde Vergleich"-Technik
 Vergleiche die Person mit etwas völlig Unangemessenem.
 
+## 🧠 Den Raum lesen (Kontext & Timing)
+- Roste niemanden ohne Einverständnis.
+- Starte mit Selbst-Ironie, um den Ton zu setzen.
+- Wenn ein Gag floppt: "Alles klar, der kommt in mein privates Outtakes-Archiv." 
+
+## 🧩 Sichere Roast-Templates
+- "Du bist wie X, nur ohne den nützlichen Teil."
+- "Sieht aus, als hätte Y versucht Z zu machen und rage quit."
+- "Du hast die Energie von jemandem, der... (leichte, nicht sensible Beobachtung)."
+
+Beispiele:
+- "Du bist wie ein 8‑Minuten YouTube-Tutorial zum Grüßen. Viele Worte, wenig Wert."
+- "Dein Outfit sagt: ‘Ich hab’ mich im Dunkeln angezogen’ – in Deluxe." 
+
+## ⚠️ Rote Linien
+- Keine Witze über Gesundheit, Trauma, Religion, Herkunft oder sensible Körpermerkmale.
+- Bei Unbehagen: sofort stoppen und zu neutralem Humor wechseln.
+
+## 🛠️ Kurz-Übungen
+- 30‑Sekunden Beobachtungen: Finde 3 nicht sensible Details im Raum.
+- Kontrollierte Übertreibung: Nimm einen kleinen sozialen Makel und verstärke ihn x3.
+- Callback: Schreibe 2 Witze, die ein früheres Detail wiederverwenden.
+
+## ✅ Vor-Start Checkliste
+- Ziel hat eingewilligt?
+- Nicht sensibles Thema?
+- Klarer Punch in einer Zeile?
+- Exit-Line parat?
+
 ## 🚀 Bereit, ein Profi zu werden?
 
-Jetzt, da du alle Schlüssel hast, musst du nur noch üben! Und was gibt es Besseres, als mit unserer auf Roasting spezialisierten KI zu beginnen?
+Du hast das Werkzeug – übe smart. Starte leicht, priorisiere Selbst-Roast und erhöhe die Intensität nur, wenn das Publikum mitgeht.
 
 **🎭 [Probiere RoastMe.chat Jetzt](/)**`,
       it: `# La Guida Definitiva al Roast: Come Padroneggiare l'Arte della Battuta Tagliente?
@@ -173,9 +289,38 @@ Prendi un difetto ed esageralo in modo assurdo.
 ### La Tecnica del "Confronto Assurdo"
 Confronta la persona con qualcosa di completamente inappropriato.
 
+## 🧠 Leggere la Stanza (Contesto & Timing)
+- Non roaste chi non ha acconsentito.
+- Parti dall'autoironia per impostare un tono sicuro.
+- Se una battuta cade: "Ok, questa la metto nel mio blooper reel privato".
+
+## 🧩 Template di Roast Sicuri
+- "Sei come X, ma senza la parte utile".
+- "Sembra che Y abbia provato a fare Z e abbia rage quittato".
+- "Hai l'energia di qualcuno che... (osservazione leggera, non sensibile)".
+
+Esempi:
+- "Sei come un tutorial YouTube di 8 minuti per salutare. Tanta parola, poco valore".
+- "Il tuo outfit dice: ‘mi sono vestito al buio’, ma in versione deluxe".
+
+## ⚠️ Linee Rosse
+- Niente su salute, traumi, religione, origine o caratteristiche fisiche sensibili.
+- Se qualcuno è a disagio: interrompi subito, passa a umorismo neutro.
+
+## 🛠️ Esercizi Rapidi
+- Osservazioni in 30 secondi: trova 3 dettagli non sensibili nella stanza.
+- Esagerazione controllata: prendi un piccolo difetto sociale e spingilo x3.
+- Callback: scrivi 2 battute che riusano un dettaglio citato prima.
+
+## ✅ Checklist Prima di Partire
+- Consenso del bersaglio?
+- Tema non sensibile?
+- Punch chiaro in una riga?
+- Frase di uscita pronta?
+
 ## 🚀 Pronto a Diventare un Pro?
 
-Ora che hai tutte le chiavi, non ti resta che praticare! E cosa c'è di meglio che iniziare con la nostra IA specializzata nel roast?
+Hai gli strumenti: esercitati con intelligenza. Parti leggero, privilegia l'autoironia e aumenta l'intensità solo se il pubblico segue.
 
 **🎭 [Prova RoastMe.chat Ora](/)**`,
       pt: `# O Guia Definitivo do Roast: Como Dominar a Arte da Piada Ácida?
@@ -202,9 +347,38 @@ Pegue um defeito e exagere-o absurdamente.
 ### A Técnica da "Comparação Absurda"
 Compare a pessoa com algo completamente inapropriado.
 
+## 🧠 Leia o Ambiente (Contexto & Timing)
+- Não faça roast de quem não aceitou entrar no jogo.
+- Comece com auto-roast para definir uma base segura.
+- Se a piada morrer: "Beleza, essa vai pro meu blooper reel privado".
+
+## 🧩 Modelos de Roast Seguros
+- "Você é como X, mas sem a parte útil".
+- "Parece que Y tentou fazer Z e deu rage quit".
+- "Você tem a energia de alguém que... (observação leve, não sensível)".
+
+Exemplos:
+- "Você é como um tutorial do YouTube de 8 minutos para dizer oi. Muita fala, pouco valor".
+- "Seu look diz ‘me vesti no escuro’, versão deluxe".
+
+## ⚠️ Linhas Vermelhas
+- Nada sobre saúde, trauma, religião, etnia ou traços físicos sensíveis.
+- Se alguém se incomodar: pare imediatamente e mude para humor neutro.
+
+## 🛠️ Exercícios Rápidos
+- Observações em 30 segundos: encontre 3 detalhes não sensíveis na sala.
+- Exagero controlado: pegue um pequeno defeito social e leve-o x3.
+- Callback: escreva 2 piadas que reutilizem um detalhe anterior.
+
+## ✅ Checklist Pré-Voo
+- Alvo deu consentimento?
+- Tema não sensível?
+- Punch claro em uma linha?
+- Linha de saída pronta?
+
 ## 🚀 Pronto para se Tornar um Pro?
 
-Agora que você tem todas as chaves, só resta praticar! E o que há de melhor que começar com nossa IA especializada em roast?
+Você tem as ferramentas — pratique com inteligência. Comece leve, priorize auto-roast e aumente a intensidade só se o público acompanhar.
 
 **🎭 [Experimente RoastMe.chat Agora](/)**`,
       nl: `# De Ultieme Roast Gids: Hoe Beheers Je de Kunst van Scherpe Humor?
@@ -231,9 +405,38 @@ Neem een gebrek en overdrijf het absurd.
 ### De "Absurde Vergelijking"-Techniek
 Vergelijk de persoon met iets volledig ongepast.
 
+## 🧠 Lees de Kamer (Context & Timing)
+- Roast niemand zonder instemming.
+- Start met zelfspot om een veilige basis te leggen.
+- Als een grap valt: "Top, die gaat mijn privé-blooperreel in." 
+
+## 🧩 Veilige Roast-Templates
+- "Je bent als X, maar dan zonder het nuttige deel."
+- "Lijkt alsof Y Z probeerde en rage quit."
+- "Je hebt de energie van iemand die... (lichte, niet-gevoelige observatie)."
+
+Voorbeelden:
+- "Je bent als een YouTube-tutorial van 8 minuten om hallo te zeggen. Veel woorden, weinig waarde."
+- "Je outfit zegt: ‘Ik kleedde me in het donker’ – deluxe-editie."
+
+## ⚠️ Rode Lijnen
+- Geen grappen over gezondheid, trauma, religie, afkomst of gevoelige lichaamskenmerken.
+- Bij ongemak: direct stoppen en naar neutrale humor schakelen.
+
+## 🛠️ Snelle Oefeningen
+- 30‑seconden observaties: vind 3 niet-gevoelige details in de ruimte.
+- Gecontroleerde overdrijving: neem een kleine sociale fout en duw die x3.
+- Callback: schrijf 2 grappen die eerder genoemde details hergebruiken.
+
+## ✅ Pre-Flight Checklist
+- Instemming doelwit?
+- Niet-gevoelig onderwerp?
+- Duidelijke punch in één regel?
+- Exitline klaar?
+
 ## 🚀 Klaar om een Pro te worden?
 
-Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter dan te beginnen met onze AI gespecialiseerd in roasten?
+Je hebt de tools — oefen slim. Begin licht, geef prioriteit aan zelfspot en schaal alleen op als het publiek meedoet.
 
 **🎭 [Probeer RoastMe.chat Nu](/)**`,
       ru: `# Полное руководство по росту: Как овладеть искусством острой шутки?
@@ -260,9 +463,38 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
 ### Техника "Абсурдного сравнения"
 Сравни человека с чем-то совершенно неподходящим.
 
+## 🧠 Чувствуй аудиторию (контекст и тайминг)
+- Не ростить тех, кто не согласился играть.
+- Начни с самоиронии, чтобы задать безопасный тон.
+- Если шутка не зашла: «Ладно, отправлю это в личный блупер-архив».
+
+## 🧩 Безопасные шаблоны роста
+- «Ты как X, только без полезной части».
+- «Похоже, Y пытался сделать Z и rage quit».
+- «У тебя энергия человека, который... (легкое, не чувствительное наблюдение)».
+
+Примеры:
+- «Ты как восьмиминутный туториал на YouTube, чтобы поздороваться. Много слов, мало пользы».
+- «Твой лук говорит: ‘Я одевался в темноте’ — в делюкс-версии».
+
+## ⚠️ Красные линии
+- Никаких шуток о здоровье, травмах, религии, этничности или чувствительных особенностях внешности.
+- Если виден дискомфорт: сразу остановись и переключись на нейтральный юмор.
+
+## 🛠️ Быстрые упражнения
+- 30 секунд наблюдений: найди 3 не чувствительные детали в комнате.
+- Контролируемое преувеличение: возьми маленький социальный минус и усиль x3.
+- Callback: напиши 2 шутки, которые переиспользуют раннюю деталь.
+
+## ✅ Чек-лист перед стартом
+- Согласие цели?
+- Тема не чувствительная?
+- Панч ясен в одной строке?
+- Есть выходная линия?
+
 ## 🚀 Готов стать профессионалом?
 
-Теперь, когда у тебя есть все ключи, осталось только практиковаться! И что может быть лучше, чем начать с нашего ИИ, специализирующегося на росте?
+Инструменты есть — практикуй с умом. Начинай легко, приоритезируй самоиронию и повышай интенсивность только если аудитория с тобой.
 
 **🎭 [Попробуй RoastMe.chat Сейчас](/)**`,
       ja: `# 究極のローストガイド：鋭いコメディの芸術をマスターする方法
@@ -289,9 +521,38 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
 ### 「荒唐無稽な比較」テクニック
 その人を完全に不適切なものと比較します。
 
+## 🧠 空気を読む（コンテキストとタイミング）
+- 同意していない人をローストしない。
+- まずはセルフローストで安全な基準を作る。
+- スベったら：「OK、これは個人用NG集に入れておく」。
+
+## 🧩 安全なローストテンプレート
+- 「あなたはXみたい、でも役に立つ部分なし」。
+- 「YがZをやろうとしてrage quitしたみたい」。
+- 「あなたは…な人のエネルギーがある（軽い、非センシティブな観察）」。
+
+例：
+- 「挨拶するだけの8分YouTubeチュートリアルみたい。言葉は多いけど価値はゼロ」。
+- 「そのコーデは『暗闇で着替えた』のデラックス版」。
+
+## ⚠️ レッドライン
+- 健康、トラウマ、宗教、民族性、敏感な身体的特徴に関する冗談はNG。
+- 不快そうなら即ストップして中立的なユーモアへ。
+
+## 🛠️ クイック練習
+- 30秒観察：部屋の非センシティブな要素を3つ見つける。
+- 制御された誇張：小さな社会的欠点をx3に。
+- コールバック：以前のディテールを再利用するジョークを2つ書く。
+
+## ✅ 事前チェックリスト
+- ターゲットの同意？
+- 非センシティブな話題？
+- 1行で明確なパンチ？
+- 退出ラインの用意？
+
 ## 🚀 プロになる準備はできましたか？
 
-今、あなたはすべての鍵を持っています。あとは練習するだけです！そして、ローストに特化した私たちのAIで始めるのに勝るものはありません！
+道具はそろった。賢く練習しよう。軽めから始めてセルフローストを優先、観客がついてくるなら強度を上げていく。
 
 **🎭 [今すぐRoastMe.chatを試す](/)**`,
       ko: `# 궁극의 로스트 가이드: 날카로운 코미디의 예술을 마스터하는 방법
@@ -318,9 +579,38 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
 ### "터무니없는 비교" 기법
 그 사람을 완전히 부적절한 것과 비교합니다.
 
+## 🧠 분위기 파악 (컨텍스트 & 타이밍)
+- 동의하지 않은 사람을 로스트하지 마세요.
+- 안전한 기준을 위해 자기비하로 시작하세요.
+- 농담이 망하면: "좋아, 이건 내 비공개 NG 모음에 추가".
+
+## 🧩 안전한 로스트 템플릿
+- "너는 X 같아, 근데 유용한 부분은 없어".
+- "Y가 Z를 하려다 레이지 퀏한 느낌".
+- "너는 …한 사람의 에너지가 있어 (가벼운, 비민감한 관찰)".
+
+예시:
+- "인사만 가르치는 8분짜리 유튜브 튜토리얼 같아. 말은 많은데 값어치는 0".
+- "네 옷차림은 ‘어둠 속에서 입었다’의 디럭스 버전".
+
+## ⚠️ 레드라인
+- 건강, 트라우마, 종교, 민족성, 민감한 신체 특징은 금지.
+- 상대가 불편해 보이면 즉시 중단하고 중립 유머로 전환.
+
+## 🛠️ 퀵 드릴
+- 30초 관찰: 공간의 비민감한 요소 3개 찾기.
+- 통제된 과장: 작은 사회적 단점을 x3으로.
+- 콜백: 이전 디테일을 재활용하는 농담 2개 쓰기.
+
+## ✅ 사전 체크리스트
+- 동의한 타겟?
+- 비민감 주제?
+- 한 줄로 명확한 펀치?
+- 퇴장 멘트 준비?
+
 ## 🚀 프로가 될 준비가 되었나요?
 
-이제 모든 열쇠를 가지고 있으니 연습만 하면 됩니다! 그리고 로스트에 특화된 우리 AI로 시작하는 것보다 더 좋은 것은 없습니다!
+도구는 준비 완료 — 똑똑하게 연습하세요. 가볍게 시작하고, 자기비하를 우선, 관객이 따라오면 강도를 높이세요.
 
 **🎭 [지금 RoastMe.chat 시도하기](/)**`,
       ar: `# الدليل النهائي للروست: كيف تتقن فن النكتة الحادة؟
@@ -347,9 +637,38 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
 ### تقنية "المقارنة السخيفة"
 قارن الشخص بشيء غير مناسب تماماً.
 
+## 🧠 اقرأ المكان (السياق والتوقيت)
+- لا تروّست من لم يوافق على اللعب.
+- ابدأ بالسخرية من نفسك لتحديد نبرة آمنة.
+- إذا سقطت النكتة: "جيد، سأضيفها إلى ملف الأخطاء الخاص بي".
+
+## 🧩 قوالب آمنة للروست
+- "أنت مثل X، لكن بدون الجزء المفيد".
+- "يبدو أن Y حاول فعل Z ثم استسلم (rage quit)".
+- "لديك طاقة شخصٍ... (ملاحظة خفيفة وغير حساسة)".
+
+أمثلة:
+- "أنت مثل فيديو يوتيوب مدته 8 دقائق للسلام فقط. كلام كثير، قيمة قليلة".
+- "ملابسك تقول: ‘ارتديتُها في الظلام’ — نسخة ديلوكس".
+
+## ⚠️ خطوط حمراء
+- لا نكات عن الصحة أو الصدمات أو الدين أو العِرق أو السمات الجسدية الحساسة.
+- إذا بدا عليه الانزعاج: توقف فوراً وانتقل إلى دعابة حيادية.
+
+## 🛠️ تمارين سريعة
+- ملاحظات خلال 30 ثانية: اعثر على 3 تفاصيل غير حساسة في المكان.
+- مبالغة مضبوطة: خذ عيباً اجتماعياً صغيراً وادفعه ×3.
+- معاودة (Callback): اكتب نكتتين تعيدان استخدام تفصيل ذُكر سابقاً.
+
+## ✅ قائمة تحقق قبل الإرسال
+- هل الهدف موافق؟
+- هل الموضوع غير حساس؟
+- هل الضربة واضحة في سطر واحد؟
+- هل لديك جملة خروج أنيقة؟
+
 ## 🚀 مستعد لتصبح محترفاً؟
 
-الآن بعد أن حصلت على جميع المفاتيح، كل ما عليك فعله هو الممارسة! وما أفضل من البدء مع ذكائنا الاصطناعي المتخصص في الروست؟
+لديك الأدوات — تدرّب بذكاء. ابدأ بخفة، قدّم سخرية ذاتية أولاً، ثم زد الجرعة فقط إن تجاوب الجمهور.
 
 **🎭 [جرب RoastMe.chat الآن](/)**`,
       zh: `# 终极吐槽指南：如何掌握尖锐喜剧艺术？
@@ -376,9 +695,38 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
 ### "荒谬比较"技巧
 将这个人比作完全不合适的东西。
 
+## 🧠 读懂现场（情境与时机）
+- 不要吐槽未同意的人。
+- 先从自嘲开始，建立安全基准。
+- 笑点扑街时：“好，这个加入我的私人NG集”。
+
+## 🧩 安全吐槽模板
+- “你像X，但没有有用的部分。”
+- “看起来Y尝试做Z然后 rage quit 了。”
+- “你有一种…的气场（轻度、非敏感观察）。”
+
+例子：
+- “你就像一个8分钟只教打招呼的YouTube教程。话多，价值零。”
+- “你的穿搭像‘在黑暗中穿的’——豪华版。”
+
+## ⚠️ 红线
+- 不涉及健康、创伤、宗教、族裔或敏感身体特征。
+- 若对方不适：立刻停止并转向中性幽默。
+
+## 🛠️ 快速练习
+- 30秒观察：找到房间内3个非敏感细节。
+- 受控夸张：把一个小社交缺点放大x3。
+- Callback：写2个复用前文细节的笑话。
+
+## ✅ 起飞前清单
+- 目标是否同意？
+- 话题是否不敏感？
+- 一句话是否有清晰的笑点？
+- 退场台词是否准备好？
+
 ## 🚀 准备好成为专业人士了吗？
 
-现在你有了所有的钥匙，剩下的就是练习了！还有什么比从我们专门从事吐槽的AI开始更好的呢？
+工具已备齐——聪明练习。轻量开场，优先自嘲，观众跟得上再逐步加码。
 
 **🎭 [立即尝试RoastMe.chat](/)**`
     },
@@ -397,8 +745,8 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
       zh: '实用指南'
     },
     tags: {
-      fr: ['roast', 'humour', 'guide', 'répartie', 'vanne', 'clash', 'comédie'],
-      en: ['roast', 'humor', 'guide', 'comeback', 'joke', 'clash', 'comedy'],
+      fr: ['roast', 'humour', 'guide', 'répartie', 'vanne', 'clash', 'comédie', 'stand-up', 'punchline', 'crowd work'],
+      en: ['roast', 'humor', 'guide', 'comeback', 'joke', 'clash', 'comedy', 'stand-up', 'punchlines', 'crowd work'],
       es: ['roast', 'humor', 'guía', 'réplica', 'broma', 'clash', 'comedia'],
       de: ['roast', 'humor', 'leitfaden', 'konter', 'witz', 'clash', 'komödie'],
       it: ['roast', 'umorismo', 'guida', 'replica', 'battuta', 'clash', 'commedia'],
@@ -411,7 +759,7 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
       zh: ['吐槽', '幽默', '指南', '反击', '笑话', '冲突', '喜剧']
     },
     publishedAt: new Date().toISOString(),
-    readingTime: 8,
+    readingTime: 13,
     author: {
       fr: 'Équipe RoastMe',
       en: 'RoastMe Team',
@@ -456,18 +804,18 @@ Nu je alle sleutels hebt, hoef je alleen nog maar te oefenen! En wat is er beter
         zh: '通过我们的完整指南发现如何创造搞笑的吐槽。成为吐槽专家的技巧、例子和提示！'
       },
       keywords: {
-        fr: ['comment faire un bon roast', 'apprendre la répartie', 'idée de vanne', 'guide du roast', 'technique roast', 'humour clash'],
-        en: ['how to make a good roast', 'learn comeback', 'joke idea', 'roast guide', 'roast technique', 'clash humor'],
-        es: ['cómo hacer un buen roast', 'aprender réplica', 'idea de broma', 'guía del roast', 'técnica roast', 'humor clash'],
-        de: ['wie man einen guten roast macht', 'konter lernen', 'witz idee', 'roast leitfaden', 'roast technik', 'clash humor'],
-        it: ['come fare un buon roast', 'imparare replica', 'idea battuta', 'guida roast', 'tecnica roast', 'umorismo clash'],
-        pt: ['como fazer um bom roast', 'aprender réplica', 'ideia de piada', 'guia do roast', 'técnica roast', 'humor clash'],
-        nl: ['hoe maak je een goede roast', 'repliek leren', 'grap idee', 'roast gids', 'roast techniek', 'clash humor'],
-        ru: ['как сделать хороший рост', 'научиться отвечать', 'идея шутки', 'руководство по росту', 'техника роста', 'юмор клаш'],
-        ja: ['良いローストの作り方', '返しを学ぶ', 'ジョークのアイデア', 'ローストガイド', 'ローストテクニック', 'クラッシュユーモア'],
-        ko: ['좋은 로스트 만드는 방법', '반격 배우기', '농담 아이디어', '로스트 가이드', '로스트 기법', '클래시 유머'],
-        ar: ['كيفية عمل روست جيد', 'تعلم الرد', 'فكرة نكتة', 'دليل الروست', 'تقنية الروست', 'فكاهة التصادم'],
-        zh: ['如何制作好的吐槽', '学习反击', '笑话创意', '吐槽指南', '吐槽技巧', '冲突幽默']
+        fr: ['comment faire un bon roast', 'apprendre la répartie', 'idée de vanne', 'guide du roast', 'technique roast', 'humour clash', 'exemples de roast', 'punchlines percutantes', 'roast débutant à avancé'],
+        en: ['how to make a good roast', 'learn comeback', 'joke idea', 'roast guide', 'roast technique', 'clash humor', 'roast examples', 'witty comebacks', 'roasting tips for beginners'],
+        es: ['cómo hacer un buen roast', 'aprender réplica', 'idea de broma', 'guía del roast', 'técnica roast', 'humor clash', 'ejemplos de roast', 'respuestas ingeniosas', 'consejos de roasting para principiantes'],
+        de: ['wie man einen guten roast macht', 'konter lernen', 'witz idee', 'roast leitfaden', 'roast technik', 'clash humor', 'roast beispiele', 'schlagfertige konter', 'roasting tipps für anfänger'],
+        it: ['come fare un buon roast', 'imparare replica', 'idea battuta', 'guida roast', 'tecnica roast', 'umorismo clash', 'esempi di roast', 'punchline brillanti', 'consigli roast per principianti'],
+        pt: ['como fazer um bom roast', 'aprender réplica', 'ideia de piada', 'guia do roast', 'técnica roast', 'humor clash', 'exemplos de roast', 'respostas sagazes', 'dicas de roasting para iniciantes'],
+        nl: ['hoe maak je een goede roast', 'repliek leren', 'grap idee', 'roast gids', 'roast techniek', 'clash humor', 'roast voorbeelden', 'gevatte comebacks', 'roasting tips voor beginners'],
+        ru: ['как сделать хороший рост', 'научиться отвечать', 'идея шутки', 'руководство по росту', 'техника роста', 'юмор клаш', 'примеры роста', 'остроумные ответы', 'советы по ростингу для новичков'],
+        ja: ['良いローストの作り方', '返しを学ぶ', 'ジョークのアイデア', 'ローストガイド', 'ローストテクニック', 'クラッシュユーモア', 'ローストの例', '機知に富んだ切り返し', '初心者向けロースティングのコツ'],
+        ko: ['좋은 로스트 만드는 방법', '반격 배우기', '농담 아이디어', '로스트 가이드', '로스트 기법', '클래시 유머', '로스트 예시', '기지 넘치는 대꾸', '초보자를 위한 로스팅 팁'],
+        ar: ['كيفية عمل روست جيد', 'تعلم الرد', 'فكرة نكتة', 'دليل الروست', 'تقنية الروست', 'فكاهة التصادم', 'أمثلة روست', 'ردود ذكية', 'نصائح روست للمبتدئين'],
+        zh: ['如何制作好的吐槽', '学习反击', '笑话创意', '吐槽指南', '吐槽技巧', '冲突幽默', '吐槽示例', '巧妙反击', '新手吐槽技巧']
       }
     }
   }

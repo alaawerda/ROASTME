@@ -1,4 +1,13 @@
 export const es = {
+  // Propiedades base requeridas
+  title: 'RoastMe - Plataforma de Humor IA',
+  welcomeMessage: '¡Bienvenido a RoastMe, la plataforma de humor IA definitiva!',
+  inputPlaceholder: 'Escribe tu mensaje para comenzar...',
+  poweredBy: 'Impulsado por IA',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Preparando tu roast personalizado...',
+  networkError: 'Error de red. Por favor, inténtalo de nuevo.',
+  
   // Información del idioma
   languageName: 'Español',
   
@@ -263,14 +272,7 @@ export const es = {
     }
   },
 
-  // Propiedades principales de la aplicación
-  title: 'RoastMe Chat - ¡La IA que te Roastea! 🔥',
-  welcomeMessage: '¡Escúchame bien, especie de bribón! 🔥 Soy tu IA roaster y no tengo tiempo que perder con gente que se toma en serio. ¿Quieres que te baje en llamas? ¡Entonces dame algo concreto, no tonterías!\n\nNecesito detalles reales: edad, altura, peso, tus defectos obvios, tus fracasos diarios. Sin eso, no eres más que un vacío ambulante que ni siquiera merece ser roasteado. ¡Así que habla, y rápido!',
-  inputPlaceholder: 'Escribe tu mensaje para comenzar...',
-  poweredBy: 'Powered by AI',
-  timeFormat: 'es-ES',
-  preparingRoast: 'Preparando tu roast...',
-  networkError: 'Error de red. Verifica tu conexión a internet.',
+
 
   // Common
   common: {

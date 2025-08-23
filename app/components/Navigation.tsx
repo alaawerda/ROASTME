@@ -9,6 +9,7 @@ const Navigation: React.FC = () => {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
+    if (!pathname) return false;
     if (path === '/') return pathname === '/';
     return pathname.startsWith(path);
   };

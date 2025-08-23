@@ -1,4 +1,16 @@
 export const nl = {
+  // Vereiste basis eigenschappen
+  title: 'RoastMe - AI Humor Platform',
+  welcomeMessage: 'Welkom bij RoastMe, het ultieme AI humor platform!',
+  inputPlaceholder: 'Typ je bericht om te beginnen...',
+  poweredBy: 'Aangedreven door AI',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Je gepersonaliseerde roast voorbereiden...',
+  networkError: 'Netwerkfout. Probeer het opnieuw.',
+  
+  // Taal informatie
+  languageName: 'Nederlands',
+
   // Navigation
   nav: {
     home: 'Home',

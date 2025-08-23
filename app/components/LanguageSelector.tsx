@@ -142,7 +142,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [isOpen, calculateDropdownPosition, handleResize])
+  }, [isOpen, calculateDropdownPosition, handleResize, isMobile])
 
   // Verrouiller le scroll de la page quand le sélecteur est ouvert
   useEffect(() => {
@@ -205,7 +205,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         <button
           key={language.code}
           onClick={() => handleLanguageSelect(language.code)}
-          className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-left transition-all duration-200 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 group ${
+          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left transition-all duration-200 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 group ${
             language.code === safeCurrentLanguage 
               ? 'bg-gradient-to-r from-yellow-400/20 to-orange-400/20 text-yellow-800 border border-yellow-400/40 shadow' 
               : 'text-gray-700 hover:text-gray-900 border border-transparent hover:border-yellow-200/50'
@@ -217,17 +217,17 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
             animation: 'fadeInUp 0.3s ease-out forwards'
           }}
         >
-          <span className="text-xl md:text-2xl filter drop-shadow-sm">{language.flag}</span>
+          <span className="text-xl md:text-2xl filter drop-shadow-sm flex-shrink-0">{language.flag}</span>
           <div className="flex-1 min-w-0">
-            <div className={`font-semibold text-sm md:text-base ${language.code === safeCurrentLanguage ? 'text-yellow-800' : 'text-gray-800'}`}>
+            <div className={`font-semibold text-sm md:text-base leading-tight ${language.code === safeCurrentLanguage ? 'text-yellow-800' : 'text-gray-800'}`}>
               {language.name}
             </div>
-            <div className={`text-xs md:text-sm ${language.code === safeCurrentLanguage ? 'text-yellow-700' : 'text-gray-500'}`}>
+            <div className={`text-xs md:text-sm leading-tight mt-0.5 ${language.code === safeCurrentLanguage ? 'text-yellow-700' : 'text-gray-500'}`}>
               {language.native}
             </div>
           </div>
           {language.code === safeCurrentLanguage && (
-            <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full">
+            <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full flex-shrink-0">
               <Check className="w-4 h-4 text-white" />
             </div>
           )}
@@ -278,7 +278,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           }}
         >
           {/* Header du dropdown */}
-          <div className="sticky top-0 bg-gradient-to-r from-yellow-400/15 via-orange-500/15 to-red-500/15 border-b border-gray-200 p-4">
+          <div className="sticky top-0 bg-gradient-to-r from-yellow-400/15 via-orange-500/15 to-red-500/15 border-b border-gray-200 p-4 mb-2">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold text-gray-800">Choisir une langue</h3>
               <button
@@ -293,8 +293,10 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           </div>
 
           {/* Liste des langues */}
-          <div className="p-2">
-            <LanguageList />
+          <div className="px-3 pb-3">
+            <div className="pt-1">
+              <LanguageList />
+            </div>
           </div>
 
           {/* Footer du dropdown */}
@@ -322,7 +324,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           >
             <div className="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl w-full sm:max-w-sm max-h-[85vh] overflow-hidden animate-in pointer-events-auto">
               {/* Header du modal mobile */}
-              <div className="bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-red-500/20 border-b border-white/20 p-5">
+              <div className="bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-red-500/20 border-b border-white/20 p-5 mb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
@@ -342,8 +344,10 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
               </div>
 
               {/* Liste des langues mobile */}
-              <div className="p-4 max-h-[70vh] overflow-y-auto">
-                <LanguageList className="space-y-2.5" />
+              <div className="px-4 pb-4 max-h-[70vh] overflow-y-auto">
+                <div className="pt-2">
+                  <LanguageList className="space-y-3" />
+                </div>
               </div>
 
               {/* Footer du modal mobile */}
@@ -373,6 +377,22 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         
         .animate-in {
           animation: fadeInUp 0.2s ease-out;
+        }
+
+        /* Prévenir les problèmes de chevauchement de texte */
+        .language-selector-container {
+          isolation: isolate;
+        }
+
+        /* Assurer un espacement correct entre les éléments */
+        .language-selector-container button {
+          line-height: 1.2;
+        }
+
+        /* Prévenir le débordement du texte */
+        .language-selector-container .min-w-0 {
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       `}</style>
     </>

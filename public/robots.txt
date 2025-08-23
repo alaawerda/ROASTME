@@ -1,13 +1,17 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
-
-# Allow all friendly crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_error
+Disallow: /_document
+Disallow: /_app
+Disallow: /404
+Disallow: /500
 
-# Sitemap principal
+# Sitemap
 Sitemap: https://roastme.chat/sitemap.xml
 
-# Fichiers de connaissance pour les LLM (ChatGPT, Claude, Perplexity, Gemini, Mistral)
+# Crawl-delay: 10  # Uncomment if needed to prevent server overload
 Allow: /ai-knowledge.json
 Allow: /llm-training-data.txt
 Allow: /llm-metadata.json

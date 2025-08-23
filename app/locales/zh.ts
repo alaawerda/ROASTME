@@ -1,4 +1,16 @@
 export const zh = {
+  // 必需的基本属性
+  title: 'RoastMe - AI幽默平台',
+  welcomeMessage: '欢迎来到RoastMe，终极AI幽默平台！',
+  inputPlaceholder: '输入您的消息开始...',
+  poweredBy: 'AI驱动',
+  timeFormat: 'HH:mm',
+  preparingRoast: '准备您的个性化吐槽...',
+  networkError: '网络错误。请重试。',
+  
+  // 语言信息
+  languageName: '中文',
+  
   // Navigation
   nav: {
     home: '首页',

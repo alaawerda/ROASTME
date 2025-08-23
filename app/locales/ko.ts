@@ -1,4 +1,16 @@
 export const ko = {
+  // 필요한 기본 속성
+  title: 'RoastMe - AI 유머 플랫폼',
+  welcomeMessage: 'RoastMe에 오신 것을 환영합니다, 궁극의 AI 유머 플랫폼!',
+  inputPlaceholder: '메시지를 입력하여 시작하세요...',
+  poweredBy: 'AI 구동',
+  timeFormat: 'HH:mm',
+  preparingRoast: '개인화된 로스트 준비 중...',
+  networkError: '네트워크 오류. 다시 시도해 주세요.',
+  
+  // 언어 정보
+  languageName: '한국어',
+  
   // Navigation
   nav: {
     home: '홈',

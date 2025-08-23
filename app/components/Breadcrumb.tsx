@@ -15,6 +15,7 @@ const Breadcrumb: React.FC = () => {
   const pathname = usePathname();
 
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
+    if (!pathname) return [{ name: 'Accueil', href: '/', icon: Home }];
     const segments = pathname.split('/').filter(Boolean);
     const breadcrumbs: BreadcrumbItem[] = [
       { name: 'Accueil', href: '/', icon: Home }

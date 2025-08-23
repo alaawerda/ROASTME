@@ -64,9 +64,15 @@ export default function Home() {
 
   // Le chat est visible par défaut pour une meilleure UX (pas de délai)
   useEffect(() => {
-    if (mounted && isInitialized) {
-      setShowChat(true)
+    if (mounted) {
+      // Toujours montrer le chat après un court délai, même si l'initialisation échoue
+      const timer = setTimeout(() => {
+        setShowChat(true);
+      }, isInitialized ? 0 : 1000); // Délai plus court si déjà initialisé
+      
+      return () => clearTimeout(timer);
     }
+    return undefined; // Return undefined when mounted is false
   }, [mounted, isInitialized])
 
   // Mettre le focus sur l'input au chargement initial, sans causer de scroll
@@ -79,14 +85,17 @@ export default function Home() {
     return () => clearTimeout(focusTimeout);
   }, []); // Le tableau vide assure que cet effet ne s'exécute qu'une seule fois
 
-  // Afficher le bouton d'urgence après 8 secondes si les traductions ne sont pas chargées
+  // Afficher le bouton d'urgence après 5 secondes si les traductions ne sont pas chargées
   useEffect(() => {
     if (!isInitialized) {
       const emergencyTimer = setTimeout(() => {
         setShowEmergencyReload(true)
-      }, 8000)
+      }, 5000) // Réduit de 8 à 5 secondes
       
       return () => clearTimeout(emergencyTimer)
+    } else {
+      // Réinitialiser l'état d'urgence si l'initialisation réussit
+      setShowEmergencyReload(false)
     }
     return undefined
   }, [isInitialized])
@@ -300,10 +309,29 @@ export default function Home() {
 
   // Vérifier que toutes les propriétés nécessaires sont disponibles
   if (!translations.title || !translations.welcomeMessage || !translations.inputPlaceholder) {
+    // Si les traductions ne sont pas complètes, afficher un loader avec fallback
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-orange-50/30 to-yellow-50/30">
         <div className="card text-center animate-in">
-          <LoadingSpinner message={translations?.loading?.title || "Vérification des traductions..."} size="lg" />
+          <LoadingSpinner message="Vérification des traductions..." size="lg" />
+          
+          {/* Bouton de rechargement de sécurité */}
+          <div className="mt-6 space-y-3">
+            <button
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+              className="btn-secondary text-sm"
+            >
+              🔄 Recharger la page
+            </button>
+            
+            {/* Message d'aide */}
+            <p className="text-xs text-gray-500">
+              Si le chargement prend trop de temps, cliquez sur le bouton ci-dessus
+            </p>
+          </div>
         </div>
       </div>
     )

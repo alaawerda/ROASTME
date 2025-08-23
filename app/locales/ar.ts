@@ -1,4 +1,16 @@
 export const ar = {
+  // الخصائص الأساسية المطلوبة
+  title: 'RoastMe - منصة الفكاهة بالذكاء الاصطناعي',
+  welcomeMessage: 'مرحباً بك في RoastMe، منصة الفكاهة بالذكاء الاصطناعي النهائية!',
+  inputPlaceholder: 'اكتب رسالتك للبدء...',
+  poweredBy: 'مدعوم بالذكاء الاصطناعي',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'إعداد النقد الشخصي الخاص بك...',
+  networkError: 'خطأ في الشبكة. يرجى المحاولة مرة أخرى.',
+  
+  // معلومات اللغة
+  languageName: 'العربية',
+  
   // Navigation
   nav: {
     home: 'الرئيسية',

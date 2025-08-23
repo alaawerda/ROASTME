@@ -1,4 +1,16 @@
 export const ja = {
+  // 必要な基本プロパティ
+  title: 'RoastMe - AIユーモアプラットフォーム',
+  welcomeMessage: 'RoastMeへようこそ、究極のAIユーモアプラットフォーム！',
+  inputPlaceholder: 'メッセージを入力して開始...',
+  poweredBy: 'AI搭載',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'パーソナライズされたローストを準備中...',
+  networkError: 'ネットワークエラー。もう一度お試しください。',
+  
+  // 言語情報
+  languageName: '日本語',
+  
   // Navigation
   nav: {
     home: 'ホーム',

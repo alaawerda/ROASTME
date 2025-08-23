@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -305,6 +306,7 @@ export default function RootLayout({
                 <SpeedInsights />
 
         <Analytics />
+        <Script src="https://analytics.ahrefs.com/analytics.js" data-key="4kcft/YT0le+VhybTqHcAg" strategy="afterInteractive" />
 
       </body>
     </html>

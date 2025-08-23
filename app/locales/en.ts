@@ -1,4 +1,13 @@
 export const en = {
+  // Required base properties
+  title: 'RoastMe - AI Humor Platform',
+  welcomeMessage: 'Welcome to RoastMe, the ultimate AI humor platform!',
+  inputPlaceholder: 'Type your message to get started...',
+  poweredBy: 'Powered by AI',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Preparing your personalized roast...',
+  networkError: 'Network error. Please try again.',
+  
   // Language information
   languageName: 'English',
   
@@ -271,13 +280,13 @@ export const en = {
 
 
   // Main application properties
-  title: 'RoastMe Chat - The AI that Roasts You! 🔥',
-  welcomeMessage: 'Listen to me carefully, you scoundrel! 🔥 I am your AI roaster and I don\'t have time to waste with people who take themselves seriously. Do you want me to roast you? Then give me concrete details, no nonsense!\n\nI need real details: age, height, weight, your obvious flaws, your daily failures. Without that, you\'re just a walking void that doesn\'t even deserve to be roasted. So speak, and quickly!',
-  inputPlaceholder: 'Type your message to start...',
-  poweredBy: 'Powered by AI',
-  timeFormat: 'en-US',
-  preparingRoast: 'Preparing your roast...',
-  networkError: 'Network error. Please check your internet connection.',
+  // title: 'RoastMe Chat - The AI that Roasts You! 🔥', // Moved to top
+  // welcomeMessage: 'Listen to me carefully, you scoundrel! 🔥 I am your AI roaster and I don\'t have time to waste with people who take themselves seriously. Do you want me to roast you? Then give me concrete details, no nonsense!\n\nI need real details: age, height, weight, your obvious flaws, your daily failures. Without that, you\'re just a walking void that doesn\'t even deserve to be roasted. So speak, and quickly!', // Moved to top
+  // inputPlaceholder: 'Type your message to start...', // Moved to top
+  // poweredBy: 'Powered by AI', // Moved to top
+  // timeFormat: 'en-US', // Moved to top
+  // preparingRoast: 'Preparing your roast...', // Moved to top
+  // networkError: 'Network error. Please check your internet connection.', // Moved to top
 
   // Common
   common: {

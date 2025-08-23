@@ -118,13 +118,57 @@ export function useRTL(): boolean {
 export function useLanguageApp() {
   const { locale, setLocale, localeData, t } = useLanguage();
   const [isInitialized, setIsInitialized] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   // Initialiser l'état une fois que la langue est chargée
   useEffect(() => {
-    if (locale && localeData) {
-      setIsInitialized(true);
+    if (locale && localeData && Object.keys(localeData).length > 0) {
+      // Vérifier que les propriétés requises sont présentes
+      const hasRequiredProps = localeData.title && 
+                              localeData.welcomeMessage && 
+                              localeData.inputPlaceholder &&
+                              localeData.poweredBy &&
+                              localeData.timeFormat &&
+                              localeData.preparingRoast &&
+                              localeData.networkError;
+      
+      if (hasRequiredProps) {
+        setIsInitialized(true);
+        setRetryCount(0);
+        return undefined; // Explicit return for this path
+      } else {
+        console.warn('Missing required properties in locale data:', localeData);
+        // Fallback to French if current locale is missing properties
+        if (locale !== 'fr') {
+          setLocale('fr');
+          return undefined; // Explicit return for this path
+        } else {
+          // If French also fails, force initialization after a delay
+
+
+
+          const timer = setTimeout(() => {
+            setIsInitialized(true);
+          }, 2000);
+          
+          return () => clearTimeout(timer);
+        }
+      }
+    } else if (!isInitialized && retryCount < 3) {
+      // Retry logic
+      const timer = setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+        if (retryCount >= 2) {
+          // Force initialization after 3 retries
+          setIsInitialized(true);
+        }
+      }, 1000);
+      
+      return () => clearTimeout(timer);
     }
-  }, [locale, localeData]);
+    
+    return undefined; // Default return for all other paths
+  }, [locale, localeData, isInitialized, setLocale, retryCount]);
 
   // Retourner les propriétés attendues par le composant
   return {

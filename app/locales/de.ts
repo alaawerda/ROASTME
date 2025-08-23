@@ -1,4 +1,13 @@
 export const de = {
+  // Erforderliche Basiseigenschaften
+  title: 'RoastMe - KI-Humor-Plattform',
+  welcomeMessage: 'Willkommen bei RoastMe, der ultimativen KI-Humor-Plattform!',
+  inputPlaceholder: 'Geben Sie Ihre Nachricht ein, um zu beginnen...',
+  poweredBy: 'Unterstützt von KI',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Bereite Ihren personalisierten Roast vor...',
+  networkError: 'Netzwerkfehler. Bitte versuchen Sie es erneut.',
+  
   // Sprachinformationen
   languageName: 'Deutsch',
   
@@ -263,14 +272,7 @@ export const de = {
     }
   },
 
-  // Hauptanwendungseigenschaften
-  title: 'RoastMe Chat - Die KI, die dich roastet! 🔥',
-  welcomeMessage: 'Hör mir gut zu, du Schurke! 🔥 Ich bin dein KI-Roaster und ich habe keine Zeit, sie mit Leuten zu verschwenden, die sich ernst nehmen. Willst du, dass ich dich in Flammen roaste? Dann gib mir Konkretes, keinen Unsinn!\n\nIch brauche echte Details: Alter, Größe, Gewicht, deine offensichtlichen Fehler, deine täglichen Misserfolge. Ohne das bist du nur ein wandelndes Nichts, das es nicht einmal verdient, geroastet zu werden. Also sprich, und zwar schnell!',
-  inputPlaceholder: 'Tippe deine Nachricht, um zu beginnen...',
-  poweredBy: 'Powered by AI',
-  timeFormat: 'de-DE',
-  preparingRoast: 'Bereite deinen Roast vor...',
-  networkError: 'Netzwerkfehler. Bitte überprüfe deine Internetverbindung.',
+
 
   // Common
   common: {

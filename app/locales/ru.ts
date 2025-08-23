@@ -1,4 +1,16 @@
 export const ru = {
+  // Требуемые базовые свойства
+  title: 'RoastMe - Платформа ИИ юмора',
+  welcomeMessage: 'Добро пожаловать в RoastMe, лучшую платформу ИИ юмора!',
+  inputPlaceholder: 'Введите ваше сообщение, чтобы начать...',
+  poweredBy: 'Работает на ИИ',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Подготовка вашего персонализированного роста...',
+  networkError: 'Ошибка сети. Попробуйте снова.',
+  
+  // Информация о языке
+  languageName: 'Русский',
+
   // Navigation
   nav: {
     home: 'Главная',

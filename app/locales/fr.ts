@@ -1,4 +1,13 @@
 export const fr = {
+  // Propriétés de base requises
+  title: 'RoastMe - Plateforme d\'humour IA',
+  welcomeMessage: 'Écoute-moi bien, espèce de vaurien ! 🔥 Je suis ton IA roasteuse et je n’ai pas de temps à perdre avec ceux qui se prennent trop au sérieux. Tu veux que je te réduise en cendres ? Alors donne-moi du concret, pas des balivernes !\n\nJ’ai besoin de vrais détails : âge, taille, poids, tes défauts évidents, tes échecs du quotidien. Sans ça, tu n’es qu’un vide ambulant qui ne mérite même pas d’être roasté. Alors parle, et vite !',
+  inputPlaceholder: 'Tapez votre message pour commencer...',
+  poweredBy: 'Propulsé par l\'IA',
+  timeFormat: 'HH:mm',
+  preparingRoast: 'Préparation de votre roast personnalisé...',
+  networkError: 'Erreur de réseau. Veuillez réessayer.',
+  
   // Informations de langue
   languageName: 'Français',
   
@@ -270,15 +279,6 @@ export const fr = {
       seeRankings: 'Voir les Classements'
     }
   },
-
-  // Propriétés principales de l'application
-  title: 'RoastMe Chat - L\'IA qui te Roaste ! 🔥',
-  welcomeMessage: 'Écoute-moi bien, espèce de bougre ! 🔥 Je suis ton AI roaster et je n\'ai pas de temps à perdre avec des gens qui se prennent au sérieux. Tu veux que je te descende en flammes ? Alors donne-moi du concret, pas des bêtises !\n\nJ\'ai besoin de détails vrais : âge, taille, poids, tes défauts évidents, tes échecs quotidiens. Sans ça, tu n\'es qu\'un vide ambulant qui mérite même pas d\'être roaster. Alors parle, et vite !',
-  inputPlaceholder: 'Tapez votre message pour commencer...',
-  poweredBy: 'Propulsé par IA',
-  timeFormat: 'fr-FR',
-  preparingRoast: 'Préparation de votre roast...',
-  networkError: 'Erreur de réseau. Vérifiez votre connexion internet.',
 
   // Statuts et indicateurs
   status: {
