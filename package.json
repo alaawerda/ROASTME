@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "ts-node scripts/submit-to-indexnow.ts"
+    "test-import": "node scripts/test-import.js",
+    "postbuild": "node scripts/submit-to-indexnow.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
