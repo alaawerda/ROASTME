@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-
 // Configuration CSP pour différents environnements
 export const getCSPConfig = (isDev: boolean = false) => {
   if (isDev) {
