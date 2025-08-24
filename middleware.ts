@@ -7,14 +7,15 @@ export function middleware(request: NextRequest) {
   
   // Handle www redirect
   if (request.headers.get('host')?.startsWith('www.')) {
-    const url = new URL(origin + pathname + search)
+    const url = new URL(request.url)
     url.hostname = url.hostname.replace('www.', '')
     return NextResponse.redirect(url, 308) // Permanent redirect
   }
 
   // Handle trailing slashes (remove them)
   if (pathname !== '/' && pathname.endsWith('/')) {
-    const url = new URL(origin + pathname.slice(0, -1) + search)
+    const url = new URL(request.url)
+    url.pathname = pathname.slice(0, -1)
     return NextResponse.redirect(url, 308)
   }
 
