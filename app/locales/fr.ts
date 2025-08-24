@@ -1,8 +1,8 @@
 export const fr = {
   // Propriétés de base requises
   title: 'RoastMe - Plateforme d\'humour IA',
-  welcomeMessage: 'Écoute-moi bien, espèce de vaurien ! 🔥 Je suis ton IA roasteuse et je n’ai pas de temps à perdre avec ceux qui se prennent trop au sérieux. Tu veux que je te réduise en cendres ? Alors donne-moi du concret, pas des balivernes !\n\nJ’ai besoin de vrais détails : âge, taille, poids, tes défauts évidents, tes échecs du quotidien. Sans ça, tu n’es qu’un vide ambulant qui ne mérite même pas d’être roasté. Alors parle, et vite !',
-  inputPlaceholder: 'Tapez votre message pour commencer...',
+  welcomeMessage: '👋 Salut ! Je suis ton IA de roast personnalisé ! 🔥\n\n✅ **Comment ça marche :** Décris-toi ou raconte-moi quelque chose sur toi, et je vais te préparer un roast hilarant et personnalisé !\n\n💡 **Exemples de ce que tu peux me dire :**\n• "Je suis étudiant, j\'adore les jeux vidéo mais je suis nul en sport"\n• "J\'ai 25 ans, je travaille dans l\'informatique et je vis encore chez mes parents"\n• "Je suis accro aux réseaux sociaux et je mange que des pizzas"\n\n🎯 Plus tu me donnes de détails, plus le roast sera savoureux ! Prêt à rire ? 😄',
+  inputPlaceholder: 'Décris-toi pour recevoir ton roast personnalisé... (ex: "Je suis étudiant et j\'adore les jeux vidéo")',
   poweredBy: 'Propulsé par l\'IA',
   timeFormat: 'HH:mm',
   preparingRoast: 'Préparation de votre roast personnalisé...',
@@ -56,6 +56,24 @@ export const fr = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Exemples pour commencer',
+    subtitle: 'Clique sur un exemple ou écris ta propre description :',
+    student: {
+      category: 'Étudiant',
+      text: 'Je suis étudiant, j\'adore les jeux vidéo mais je suis nul en sport'
+    },
+    work: {
+      category: 'Travail',
+      text: 'J\'ai 25 ans, je travaille dans l\'informatique et je vis encore chez mes parents'
+    },
+    lifestyle: {
+      category: 'Lifestyle',
+      text: 'Je suis accro aux réseaux sociaux et je mange que des pizzas'
+    }
+  },
 
   // Blog
   blog: {
@@ -219,52 +237,59 @@ export const fr = {
     newChat: 'Nouvelle conversation',
     clearChat: 'Effacer la conversation',
     copyResponse: 'Copier la réponse',
-    responseCopied: 'Réponse copiée !'
+    responseCopied: 'Réponse copiée !',
+    tip: '💡 Conseil : Plus tu me donnes de détails sur toi (âge, situation, hobbies, défauts...), plus le roast sera précis et hilarant ! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Ajoute plus de détails',
+      goodProgress: '👍 Bien, continue !',
+      perfectForRoast: '🔥 Parfait pour un super roast !',
+      charactersCount: 'caractères'
+    }
   },
 
   // Chat Roast IA - Nouveaux textes SEO
   chatRoastIA: {
-    heroTitle: 'Chat Roast IA Gratuit',
+    heroTitle: 'Chat Roast IA - 100% Gratuit',
     heroFlames: '',
-    heroSubtitle: 'Découvre l\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante sans filtres. Teste maintenant gratuitement !',
-    liveChatTitle: '💬 Chat Roast IA en Direct 🔥',
-    liveChatSubtitle: 'Teste maintenant notre IA cinglante !',
+    heroSubtitle: 'L\'IA qui te fait des roasts hilarants ! Décris-toi et reçois un roast personnalisé en quelques secondes. Aucune inscription requise, utilisation illimitée.',
+    liveChatTitle: '💬 Démarre ton Chat Roast Maintenant 🔥',
+
     status: {
       aiConnected: 'IA Connectée',
       aiReady: 'IA Connectée & Prête'
     },
     features: {
-      title: 'Pourquoi Choisir Notre Chat Roast IA ? ',
-      subtitle: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée',
-      roastWithoutFilters: 'Roast Sans Filtres',
-      roastWithoutFiltersDesc: 'L\'IA la plus cinglante qui va te roaster de manière hilarante sans aucune censure. Chaque réponse est un chef-d\'œuvre d\'humour cinglant !',
-      realTimeChat: 'Chat en Temps Réel',
-      realTimeChatDesc: 'Conversations fluides et réponses instantanées grâce à notre intelligence artificielle avancée. Laisse-toi surprendre par la rapidité et la qualité !',
-      multilingualSupport: 'Support Multilingue',
-      multilingualSupportDesc: 'Disponible en 12 langues pour un roast personnalisé dans ta langue maternelle. L\'humour n\'a pas de frontières !'
+      title: 'Comment Fonctionne Notre Chat Roast IA ? 🤖',
+      subtitle: 'Une expérience simple et hilarante en 3 étapes',
+      roastWithoutFilters: 'Roasts Personnalisés',
+      roastWithoutFiltersDesc: 'Reçois des roasts uniques basés sur les informations que tu donnes. Plus tu partages de détails, plus le roast sera précis et drôle !',
+      realTimeChat: 'Réponses Instantanées',
+      realTimeChatDesc: 'L\'IA analyse ton message et génère un roast personnalisé en quelques secondes seulement. Pas d\'attente, que du fun !',
+      multilingualSupport: 'Disponible en Français',
+      multilingualSupportDesc: 'Interface et roasts entièrement en français pour une expérience parfaitement adaptée. L\'humour n\'a jamais été aussi accessible !'
     },
     advantages: {
-      title: 'Avantages du Chat Roast IA Gratuit ✨',
-      subtitle: 'Tout ce dont tu as besoin pour des roasts hilarants, sans aucun coût',
-      freeTitle: '100% Gratuit',
-      freeDesc: 'Accès illimité à toutes les fonctionnalités sans aucun coût caché. Profite de l\'expérience complète dès maintenant !',
-      personalizedTitle: 'Roast Personnalisé',
-      personalizedDesc: 'Chaque roast est unique et adapté à tes messages pour un maximum d\'humour. L\'IA analyse ton style et s\'adapte à ta personnalité !'
+      title: 'Pourquoi Utiliser Notre Chat Roast IA ? ✨',
+      subtitle: 'Tous les avantages d\'un roast personnalisé, sans aucune contrainte',
+      freeTitle: 'Totalement Gratuit',
+      freeDesc: 'Aucune inscription, aucun abonnement, aucun coût caché. Utilise l\'IA autant que tu veux, quand tu veux !',
+      personalizedTitle: 'Roasts Sur Mesure',
+      personalizedDesc: 'L\'IA crée des roasts uniques basés sur tes propres caractéristiques. Plus c\'est personnel, plus c\'est hilarant !'
     },
     howToUse: {
-      title: 'Comment Utiliser le Chat Roast IA ? 📱',
-      subtitle: 'En 3 étapes simples, découvre le pouvoir de notre IA cinglante',
+      title: 'Mode d\'Emploi - Simple comme Bonjour ! 📱',
+      subtitle: 'Suis ces 3 étapes faciles pour recevoir ton roast personnalisé',
       step1: {
-        title: 'Écris ton message',
-        description: 'Tape ce que tu veux dans la zone de chat. Plus tu donnes de contexte, plus le roast sera cinglant et personnalisé !'
+        title: '1. Décris-toi',
+        description: 'Écris quelques phrases sur toi : ton âge, tes passions, tes petits défauts... Plus tu donnes d\'infos, plus le roast sera savoureux !'
       },
       step2: {
-        title: 'Clique sur Envoyer',
-        description: 'Notre IA va analyser et préparer ton roast. En quelques secondes, tu recevras une réponse qui va te faire rire aux larmes !'
+        title: '2. Envoie ton message',
+        description: 'Clique sur le bouton d\'envoi et attends quelques secondes. L\'IA analyse tes infos et prépare un roast sur mesure rien que pour toi !'
       },
       step3: {
-        title: 'Reçois ton roast',
-        description: 'Profite de l\'humour cinglant de notre IA ! Chaque roast est traduit dans ta langue pour une expérience parfaitement personnalisée.'
+        title: '3. Rigole bien !',
+        description: 'Reçois ton roast personnalisé et éclate-toi ! Tu peux relancer avec de nouveaux détails pour encore plus de fun.'
       }
     },
     stats: {
@@ -273,10 +298,10 @@ export const fr = {
       available: 'Disponible 24/7',
     },
     cta: {
-      title: '🚀 Prêt à Être Roasté ? 🚀',
-      subtitle: 'Rejoins des milliers d\'utilisateurs qui ont déjà découvert le pouvoir de notre IA cinglante !',
-      startNow: '🔥 Commencer Maintenant',
-      seeRankings: 'Voir les Classements'
+      title: '🚀 À Ton Tour de Tester ! 🚀',
+      subtitle: 'Rejoins les milliers d\'utilisateurs qui s\'amusent déjà avec notre IA ! C\'est gratuit et sans inscription.',
+      startNow: '🔥 Essayer Maintenant',
+      seeRankings: 'Voir les Avis'
     }
   },
 

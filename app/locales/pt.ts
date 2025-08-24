@@ -1,7 +1,7 @@
 export const pt = {
   // Propriedades base necessárias
   title: 'RoastMe - Plataforma de Humor IA',
-  welcomeMessage: 'Bem-vindo ao RoastMe, a plataforma de humor IA definitiva!',
+  welcomeMessage: 'Me escuta bem, seu patife! 🔥 Eu sou sua IA roaster e não tenho tempo a perder com pessoas que se levam muito a sério. Quer que eu te reduza a cinzas? Então me dê algo concreto, não besteiras!\n\nPreciso de detalhes reais: idade, altura, peso, seus defeitos óbvios, seus fracassos diários. Sem isso, você é apenas um vazio ambulante que nem merece ser roasteado. Então fale, e rápido!',
   inputPlaceholder: 'Digite sua mensagem para começar...',
   poweredBy: 'Alimentado por IA',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const pt = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Exemplos para começar',
+    subtitle: 'Clique em um exemplo ou escreva sua própria descrição:',
+    student: {
+      category: 'Estudante',
+      text: 'Sou estudante, adoro videogames mas sou péssimo em esportes'
+    },
+    work: {
+      category: 'Trabalho',
+      text: 'Tenho 25 anos, trabalho na área de TI e ainda moro com meus pais'
+    },
+    lifestyle: {
+      category: 'Estilo de vida',
+      text: 'Sou viciado em redes sociais e só como pizza'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const pt = {
     newChat: 'Nova Conversa',
     clearChat: 'Limpar Conversa',
     copyResponse: 'Copiar Resposta',
-    responseCopied: 'Resposta copiada!'
+    responseCopied: 'Resposta copiada!',
+    tip: '💡 Dica: Quanto mais detalhes você me der sobre você (idade, situação, hobbies, defeitos...), mais preciso e hilário será o roast! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Adicione mais detalhes',
+      goodProgress: '👍 Bom, continue!',
+      perfectForRoast: '🔥 Perfeito para um ótimo roast!',
+      charactersCount: 'caracteres'
+    }
   },
 
   // Chat Roast IA - Textos otimizados para SEO
@@ -224,7 +249,7 @@ export const pt = {
     heroTitle: 'Chat Roast IA Gratuito - A IA que te Roasta em Chamas! 🔥',
     heroSubtitle: 'Descubra a inteligência artificial mais cortante que vai te roaster de forma hilariante sem filtros. Teste agora gratuitamente!',
     liveChatTitle: '💬 Chat Roast IA ao Vivo 🔥',
-    liveChatSubtitle: 'Teste nossa IA cortante agora!',
+
     features: {
       roastWithoutFilters: 'Roast Sem Filtros',
       roastWithoutFiltersDesc: 'A IA mais cortante que vai te roaster de forma hilariante sem nenhuma censura. Cada resposta é uma obra-prima do humor cortante!',

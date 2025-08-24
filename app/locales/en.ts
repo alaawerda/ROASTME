@@ -1,7 +1,7 @@
 export const en = {
   // Required base properties
   title: 'RoastMe - AI Humor Platform',
-  welcomeMessage: 'Welcome to RoastMe, the ultimate AI humor platform!',
+  welcomeMessage: 'Listen up, you rascal! 🔥 I\'m your AI roaster and I don\'t have time to waste on people who take themselves too seriously. Want me to roast you to ashes? Then give me something concrete, not nonsense!\n\nI need real details: age, height, weight, your obvious flaws, your daily failures. Without that, you\'re just a walking void that doesn\'t even deserve to be roasted. So speak up, and fast!',
   inputPlaceholder: 'Type your message to get started...',
   poweredBy: 'Powered by AI',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const en = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Examples to get started',
+    subtitle: 'Click on an example or write your own description:',
+    student: {
+      category: 'Student',
+      text: 'I am a student, I love video games but I suck at sports'
+    },
+    work: {
+      category: 'Work',
+      text: 'I am 25 years old, I work in IT and I still live with my parents'
+    },
+    lifestyle: {
+      category: 'Lifestyle',
+      text: 'I am addicted to social media and I only eat pizza'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const en = {
     newChat: 'New Conversation',
     clearChat: 'Clear Conversation',
     copyResponse: 'Copy Response',
-    responseCopied: 'Response copied!'
+    responseCopied: 'Response copied!',
+    tip: '💡 Tip: The more details you give me about yourself (age, situation, hobbies, flaws...), the more precise and hilarious the roast will be! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Add more details',
+      goodProgress: '👍 Good, keep going!',
+      perfectForRoast: '🔥 Perfect for a great roast!',
+      charactersCount: 'characters'
+    }
   },
 
   // Chat Roast IA - SEO optimized texts
@@ -225,7 +250,7 @@ export const en = {
     heroFlames: '',
     heroSubtitle: 'Discover the most cutting artificial intelligence that will roast you hilariously without filters. Test it now for free!',
     liveChatTitle: '💬 Live Chat Roast AI 🔥',
-    liveChatSubtitle: 'Test our cutting AI now!',
+
     status: {
       aiConnected: 'AI Connected',
       aiReady: 'AI Connected & Ready'

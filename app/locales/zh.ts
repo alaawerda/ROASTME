@@ -1,7 +1,7 @@
 export const zh = {
   // 必需的基本属性
   title: 'RoastMe - AI幽默平台',
-  welcomeMessage: '欢迎来到RoastMe，终极AI幽默平台！',
+  welcomeMessage: '听好了，你这个坏蛋！🔥 我是你的AI吐槽机器，没时间浪费在那些太把自己当回事的人身上。想让我把你烤成灰？那就给我点具体的东西，别胡扯！\n\n我需要真实的细节：年龄、身高、体重、你明显的缺点、你日常的失败。没有这些，你就是个行走的空虚，甚至不值得被吐槽。所以说话，快点！',
   inputPlaceholder: '输入您的消息开始...',
   poweredBy: 'AI驱动',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const zh = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: '开始示例',
+    subtitle: '点击示例或写下你自己的描述：',
+    student: {
+      category: '学生',
+      text: '我是学生，我喜欢电子游戏但体育很差'
+    },
+    work: {
+      category: '工作',
+      text: '我今年25岁，做 IT工作但还和父母住在一起'
+    },
+    lifestyle: {
+      category: '生活方式',
+      text: '我沉迷于社交媒体，只吃披萨'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const zh = {
     newChat: '新对话',
     clearChat: '清除对话',
     copyResponse: '复制回复',
-    responseCopied: '回复已复制！'
+    responseCopied: '回复已复制！',
+    tip: '💡 小贴士：你告诉我的关于自己的细节越多（年龄、情况、爱好、缺点...），吐槽就会越精准越搞笑！😄',
+    progressIndicators: {
+      needMoreDetails: '📝 添加更多细节',
+      goodProgress: '👍 很好，继续！',
+      perfectForRoast: '🔥 完美的吐槽素材！',
+      charactersCount: '字符'
+    }
   },
 
   // Chat Roast IA - SEO优化文本
@@ -224,7 +249,7 @@ export const zh = {
     heroTitle: '免费聊天吐槽AI - 用火焰吐槽你的AI！🔥',
     heroSubtitle: '发现最犀利的AI，无需过滤就能让你笑翻天的吐槽。现在免费试用！',
     liveChatTitle: '💬 实时聊天吐槽AI 🔥',
-    liveChatSubtitle: '现在试用我们犀利的AI！',
+
     features: {
       roastWithoutFilters: '无过滤吐槽',
       roastWithoutFiltersDesc: '最犀利的AI，无需任何审查就能让你笑翻天的吐槽。每个回复都是犀利幽默的杰作！',

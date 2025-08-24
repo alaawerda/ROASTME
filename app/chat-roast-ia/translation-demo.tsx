@@ -91,10 +91,7 @@ export default function TranslationDemo() {
                 <h4 className="font-semibold text-gray-700">Titre:</h4>
                 <p className="text-gray-900">{t('chatRoastIA.liveChatTitle')}</p>
               </div>
-              <div>
-                <h4 className="font-semibold text-gray-700">Description:</h4>
-                <p className="text-gray-900">{t('chatRoastIA.liveChatSubtitle')}</p>
-              </div>
+
             </div>
           </div>
 

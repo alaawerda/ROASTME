@@ -1,7 +1,7 @@
 export const ko = {
   // 필요한 기본 속성
   title: 'RoastMe - AI 유머 플랫폼',
-  welcomeMessage: 'RoastMe에 오신 것을 환영합니다, 궁극의 AI 유머 플랫폼!',
+  welcomeMessage: '잘 들어라, 이 악동아! 🔥 나는 너의 AI 로스터이고 자신을 너무 진지하게 받아들이는 사람들에게 시간을 낭비할 생각이 없다. 내가 너를 재로 만들기를 원한다면, 구체적인 것을 달라, 헛소리 말고!\n\n나에게는 진짜 세부사항이 필요하다: 나이, 키, 몸무게, 너의 명백한 결점들, 너의 일상적인 실패들. 그것 없이는 너는 로스팅될 가치도 없는 걸어다니는 공허일 뿐이다. 그러니 말해라, 그리고 빨리!',
   inputPlaceholder: '메시지를 입력하여 시작하세요...',
   poweredBy: 'AI 구동',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const ko = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: '시작하기 위한 예시',
+    subtitle: '예시를 클릭하거나 당신만의 설명을 작성해주세요:',
+    student: {
+      category: '학생',
+      text: '저는 학생이고, 비디오게임을 좋아하지만 운동은 못해요'
+    },
+    work: {
+      category: '직장',
+      text: '25살이고 IT업계에서 일하지만 아직 부모님과 살고 있어요'
+    },
+    lifestyle: {
+      category: '라이프스타일',
+      text: 'SNS에 중독되어 있고 피자만 먹어요'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const ko = {
     newChat: '새로운 대화',
     clearChat: '대화 지우기',
     copyResponse: '응답 복사',
-    responseCopied: '응답이 복사되었습니다!'
+    responseCopied: '응답이 복사되었습니다!',
+    tip: '💡 팁: 자신에 대한 세부 정보(나이, 상황, 취미, 단점...)를 더 많이 알려주시면 더 정확하고 재미있는 로스트를 만들 수 있습니다! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 더 많은 세부사항 추가',
+      goodProgress: '👍 좋습니다, 계속하세요!',
+      perfectForRoast: '🔥 멋진 로스트에 완벽합니다!',
+      charactersCount: '글자'
+    }
   },
 
   // Chat Roast IA - SEO 최적화 텍스트
@@ -224,7 +249,7 @@ export const ko = {
     heroTitle: '무료 채팅 로스트 AI - 불꽃으로 당신을 로스트하는 AI! 🔥',
     heroSubtitle: '필터 없이 재미있게 로스트하는 가장 예리한 인공지능을 발견하세요. 지금 무료로 시도해보세요!',
     liveChatTitle: '💬 라이브 채팅 로스트 AI 🔥',
-    liveChatSubtitle: '지금 우리의 예리한 AI를 시도해보세요!',
+
     features: {
       roastWithoutFilters: '필터 없는 로스트',
       roastWithoutFiltersDesc: '검열 없이 재미있게 로스트하는 가장 예리한 AI. 각 응답은 예리한 유머의 걸작입니다!',

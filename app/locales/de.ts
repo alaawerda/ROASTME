@@ -1,7 +1,7 @@
 export const de = {
   // Erforderliche Basiseigenschaften
   title: 'RoastMe - KI-Humor-Plattform',
-  welcomeMessage: 'Willkommen bei RoastMe, der ultimativen KI-Humor-Plattform!',
+  welcomeMessage: 'Hör mir gut zu, du Schurke! 🔥 Ich bin deine KI-Roasterin und ich habe keine Zeit zu verschwenden mit Leuten, die sich zu ernst nehmen. Willst du, dass ich dich zu Asche mache? Dann gib mir etwas Konkretes, keinen Unsinn!\n\nIch brauche echte Details: Alter, Größe, Gewicht, deine offensichtlichen Fehler, deine täglichen Niederlagen. Ohne das bist du nur eine wandelnde Leere, die es nicht einmal verdient, geröstet zu werden. Also sprich, und zwar schnell!',
   inputPlaceholder: 'Geben Sie Ihre Nachricht ein, um zu beginnen...',
   poweredBy: 'Unterstützt von KI',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const de = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Beispiele zum Einstieg',
+    subtitle: 'Klicke auf ein Beispiel oder schreibe deine eigene Beschreibung:',
+    student: {
+      category: 'Student',
+      text: 'Ich bin Student, ich liebe Videospiele, aber ich bin schlecht im Sport'
+    },
+    work: {
+      category: 'Arbeit',
+      text: 'Ich bin 25 Jahre alt, arbeite in der IT und wohne noch bei meinen Eltern'
+    },
+    lifestyle: {
+      category: 'Lebensstil',
+      text: 'Ich bin süchtig nach sozialen Medien und esse nur Pizza'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const de = {
     newChat: 'Neue Unterhaltung',
     clearChat: 'Unterhaltung löschen',
     copyResponse: 'Antwort kopieren',
-    responseCopied: 'Antwort kopiert!'
+    responseCopied: 'Antwort kopiert!',
+    tip: '💡 Tipp: Je mehr Details du mir über dich gibst (Alter, Situation, Hobbys, Schwächen...), desto präziser und lustiger wird der Roast! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Mehr Details hinzufügen',
+      goodProgress: '👍 Gut, mach weiter!',
+      perfectForRoast: '🔥 Perfekt für einen tollen Roast!',
+      charactersCount: 'Zeichen'
+    }
   },
 
   // Chat Roast IA - SEO-optimierte Texte
@@ -224,7 +249,7 @@ export const de = {
     heroTitle: 'Kostenloser Chat Roast KI - Die KI, die dich in Flammen roastet! 🔥',
     heroSubtitle: 'Entdecke die schärfste künstliche Intelligenz, die dich auf humorvolle Weise ohne Filter roastet. Teste sie jetzt kostenlos!',
     liveChatTitle: '💬 Live Chat Roast KI 🔥',
-    liveChatSubtitle: 'Teste jetzt unsere scharfe KI!',
+
     features: {
       title: 'Warum unseren Chat Roast KI wählen? 🤖',
       subtitle: 'Entdecke die fortschrittlichste und lustigste Roast-Erfahrung, die je geschaffen wurde',

@@ -35,12 +35,28 @@ export type Locale = typeof fr & {
   timeFormat?: string;
   preparingRoast?: string;
   networkError?: string;
+  examples?: {
+    title: string;
+    subtitle: string;
+    student: {
+      category: string;
+      text: string;
+    };
+    work: {
+      category: string;
+      text: string;
+    };
+    lifestyle: {
+      category: string;
+      text: string;
+    };
+  };
   chatRoastIA?: {
     heroTitle: string;
     heroFlames?: string;
     heroSubtitle: string;
     liveChatTitle: string;
-    liveChatSubtitle: string;
+
     status?: {
       aiConnected: string;
       aiReady?: string;
@@ -102,7 +118,7 @@ export function getLocale(locale: LocaleKey): Locale {
 
 // Fonction pour vérifier si une locale a toutes les propriétés requises
 function hasRequiredProperties(locale: any): locale is Locale {
-  const requiredProps = ['title', 'welcomeMessage', 'inputPlaceholder', 'poweredBy', 'timeFormat', 'preparingRoast', 'networkError', 'chatRoastIA'];
+  const requiredProps = ['title', 'welcomeMessage', 'inputPlaceholder', 'poweredBy', 'timeFormat', 'preparingRoast', 'networkError', 'examples', 'chatRoastIA'];
   return requiredProps.every(prop => prop in locale);
 }
 

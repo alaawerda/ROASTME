@@ -1,7 +1,7 @@
 export const ja = {
   // 必要な基本プロパティ
   title: 'RoastMe - AIユーモアプラットフォーム',
-  welcomeMessage: 'RoastMeへようこそ、究極のAIユーモアプラットフォーム！',
+  welcomeMessage: 'よく聞け、この悪党め！🔥 私はあなたのAIローストマシンで、自分を真剣に取りすぎる人々に時間を無駄にするつもりはない。私にあなたを灰にしてほしいなら、具体的なものをよこせ、でたらめはダメだ！\n\n私には本当の詳細が必要だ：年齢、身長、体重、あなたの明らかな欠点、あなたの日常の失敗。それなしでは、あなたはローストされる価値もない歩く空虚だ。だから話せ、そして早く！',
   inputPlaceholder: 'メッセージを入力して開始...',
   poweredBy: 'AI搭載',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const ja = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: '始めるための例',
+    subtitle: '例をクリックするか、あなた自身の説明を書いてください：',
+    student: {
+      category: '学生',
+      text: '私は学生で、ビデオゲームが大好きですが、スポーツは苦手です'
+    },
+    work: {
+      category: '仕事',
+      text: '25歳でIT業界で働いていますが、まだ実家暮らしです'
+    },
+    lifestyle: {
+      category: 'ライフスタイル',
+      text: 'SNS中毒で、ピザしか食べません'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const ja = {
     newChat: '新しい会話',
     clearChat: '会話をクリア',
     copyResponse: '応答をコピー',
-    responseCopied: '応答がコピーされました！'
+    responseCopied: '応答がコピーされました！',
+    tip: '💡 ヒント：あなた自身について詳しく教えてくれる（年齢、状況、趣味、欠点など）ほど、より正確で面白いローストになります！😄',
+    progressIndicators: {
+      needMoreDetails: '📝 詳細を追加してください',
+      goodProgress: '👍 良いですね、続けてください！',
+      perfectForRoast: '🔥 素晴らしいローストに最適です！',
+      charactersCount: '文字'
+    }
   },
 
   // Chat Roast IA - SEO最適化テキスト
@@ -224,7 +249,7 @@ export const ja = {
     heroTitle: '無料チャットローストAI - 炎でローストするAI！🔥',
     heroSubtitle: 'フィルターなしで面白おかしくローストする最も辛辣な人工知能を発見しましょう。今すぐ無料で試してみてください！',
     liveChatTitle: '💬 ライブチャットローストAI 🔥',
-    liveChatSubtitle: '今すぐ私たちの辛辣なAIを試してみてください！',
+
     features: {
       roastWithoutFilters: 'フィルターなしロースト',
       roastWithoutFiltersDesc: '検閲なしで面白おかしくローストする最も辛辣なAI。各応答は辛辣なユーモアの傑作です！',

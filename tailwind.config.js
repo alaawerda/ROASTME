@@ -74,6 +74,9 @@ module.exports = {
         'purple-glow': 'purpleGlow 3s ease-in-out infinite',
         'flame-glow': 'flameGlow 3s ease-in-out infinite alternate',
         'shimmer': 'shimmer 3s ease-in-out infinite',
+        'smooth-pulse': 'smoothPulse 2s ease-in-out infinite',
+        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
       },
       
       keyframes: {
@@ -141,6 +144,37 @@ module.exports = {
           },
           '100%': {
             transform: 'translateX(100%)',
+          },
+        },
+        smoothPulse: {
+          '0%, 100%': {
+            opacity: '1',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            opacity: '0.8',
+            transform: 'scale(1.02)',
+          },
+        },
+        gentleFloat: {
+          '0%, 100%': {
+            transform: 'translateY(0px) rotate(0deg)',
+          },
+          '33%': {
+            transform: 'translateY(-3px) rotate(1deg)',
+          },
+          '66%': {
+            transform: 'translateY(3px) rotate(-1deg)',
+          },
+        },
+        fadeInUp: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
           },
         },
       },

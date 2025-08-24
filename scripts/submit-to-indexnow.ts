@@ -8,6 +8,8 @@ try {
   console.log('Attempting to require: ../app/lib/blog-data');
   
   const blogDataModule = require('../app/lib/blog-data');
+
+  
   console.log('Blog data module loaded:', Object.keys(blogDataModule));
   blogPosts = blogDataModule.blogPosts || [];
   console.log(`Found ${blogPosts.length} blog posts`);

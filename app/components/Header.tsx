@@ -121,13 +121,13 @@ const Header: React.FC<HeaderProps> = ({
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between gap-4">
-          {/* Logo et titre - Version améliorée et responsive */}
+          {/* Logo et titre - Version UX Excellence */}
           <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
-            <div className="flame-glow hover:scale-105 transition-transform duration-200">
+            <div className="flame-glow hover:scale-105 transition-transform duration-300 interactive-element gentle-float">
               <Logo size="sm" showText={false} animated={true} />
             </div>
             <div className="flex flex-col space-y-1">
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white drop-shadow-md tracking-tight leading-tight">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white drop-shadow-md tracking-tight leading-tight transition-all duration-300 hover:text-yellow-200">
                 {title}
               </h1>
               {/* Indicateur de statut amélioré et responsive */}
@@ -158,14 +158,14 @@ const Header: React.FC<HeaderProps> = ({
           
           {/* Actions de droite - Alignées à droite */}
           <div className="flex items-center space-x-2 md:space-x-4 relative z-[9998] flex-shrink-0">
-            {/* Lien Buy Me a Coffee - Amélioré et responsive */}
+            {/* Lien Buy Me a Coffee - UX Excellence */}
             <a 
               href="https://buymeacoffee.com/roastme" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center space-x-1.5 bg-orange-500 hover:bg-orange-600 text-white px-2.5 py-1.5 md:px-3 md:py-2 rounded-full transition-all duration-200 hover:scale-105 group shadow-lg hover:shadow-xl"
+              className="hidden sm:flex items-center space-x-1.5 enhanced-button group bg-orange-500 hover:bg-orange-600 text-white px-2.5 py-1.5 md:px-3 md:py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl optimized-focus"
             >
-              <Coffee className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
+              <Coffee className="w-3.5 h-3.5 md:w-4 md:h-4 text-white smooth-pulse" />
               <span className="text-xs font-medium">{getStatusText('buyMeCoffee')}</span>
             </a>
             

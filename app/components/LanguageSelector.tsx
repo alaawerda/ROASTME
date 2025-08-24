@@ -205,11 +205,11 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         <button
           key={language.code}
           onClick={() => handleLanguageSelect(language.code)}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left transition-all duration-200 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 group ${
+          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left list-item-interactive ${
             language.code === safeCurrentLanguage 
-              ? 'bg-gradient-to-r from-yellow-400/20 to-orange-400/20 text-yellow-800 border border-yellow-400/40 shadow' 
-              : 'text-gray-700 hover:text-gray-900 border border-transparent hover:border-yellow-200/50'
-          }`}
+              ? 'selected bg-gradient-to-r from-blue-500/15 to-purple-500/15 text-blue-100 border-blue-400/50 shadow-lg' 
+              : 'text-gray-300 hover:text-gray-100'
+          } group hover-glow-modern`}
           role="option"
           aria-selected={language.code === safeCurrentLanguage}
           style={{ 
@@ -219,16 +219,16 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         >
           <span className="text-xl md:text-2xl filter drop-shadow-sm flex-shrink-0">{language.flag}</span>
           <div className="flex-1 min-w-0">
-            <div className={`font-semibold text-sm md:text-base leading-tight ${language.code === safeCurrentLanguage ? 'text-yellow-800' : 'text-gray-800'}`}>
+            <div className={`font-semibold text-sm md:text-base leading-tight ${language.code === safeCurrentLanguage ? 'text-blue-100' : 'text-gray-200'}`}>
               {language.name}
             </div>
-            <div className={`text-xs md:text-sm leading-tight mt-0.5 ${language.code === safeCurrentLanguage ? 'text-yellow-700' : 'text-gray-500'}`}>
+            <div className={`text-xs md:text-sm leading-tight mt-0.5 ${language.code === safeCurrentLanguage ? 'text-blue-200' : 'text-gray-400'}`}>
               {language.native}
             </div>
           </div>
           {language.code === safeCurrentLanguage && (
-            <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full flex-shrink-0">
-              <Check className="w-4 h-4 text-white" />
+            <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-blue-500 rounded-full flex-shrink-0 animate-bounce-gentle">
+              <Check className="w-3 h-3 text-white" />
             </div>
           )}
         </button>
@@ -268,7 +268,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           ref={dropdownRef}
           id="language-menu" 
           role="listbox" 
-          className="fixed bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-[999999] animate-in focus:outline-none pointer-events-auto"
+          className="fixed glass-morphism rounded-2xl shadow-2xl border border-gray-600/30 overflow-hidden z-[999999] animate-in focus:outline-none pointer-events-auto"
           style={{
             top: dropdownPosition.top,
             left: dropdownPosition.left,
@@ -278,16 +278,16 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           }}
         >
           {/* Header du dropdown */}
-          <div className="sticky top-0 bg-gradient-to-r from-yellow-400/15 via-orange-500/15 to-red-500/15 border-b border-gray-200 p-4 mb-2">
+          <div className="sticky top-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-600/10 border-b border-gray-600/30 p-4 mb-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-800">Choisir une langue</h3>
+              <h3 className="text-lg font-bold text-gray-100">Choisir une langue</h3>
               <button
                 onClick={closeDropdown}
-                className="p-2 rounded-lg hover:bg-white/60 transition-all duration-200"
+                className="button-interactive p-2 rounded-lg hover-glow-modern"
                 aria-label="Fermer le sélecteur de langue"
                 type="button"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-5 h-5 text-gray-300" />
               </button>
             </div>
           </div>
@@ -300,8 +300,8 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           </div>
 
           {/* Footer du dropdown */}
-          <div className="sticky bottom-0 bg-gradient-to-r from-gray-50/80 to-white/80 border-t border-gray-200/50 p-3">
-            <div className="text-center text-xs text-gray-500">
+          <div className="sticky bottom-0 bg-gradient-to-r from-gray-800/80 to-gray-700/80 border-t border-gray-600/30 p-3">
+            <div className="text-center text-xs text-gray-400">
               {supportedLanguages.length} langues disponibles
             </div>
           </div>

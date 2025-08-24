@@ -22,17 +22,11 @@ export default function DonationModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center animate-in">
-      {/* Backdrop avec effet de flou */}
-      <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-md"
-        onClick={onClose}
-      />
-      
-      {/* Modal avec design moderne */}
-      <div className="relative w-full max-w-md mx-4 bg-white/95 backdrop-blur-md rounded-t-3xl sm:rounded-3xl shadow-2xl border border-white/20 transform transition-all duration-300 ease-out animate-in">
+    <div className="w-full max-w-md mx-auto mb-4 animate-in">
+      {/* Modal avec design moderne intégré dans le chat */}
+      <div className="relative w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-300/50 transform transition-all duration-300 ease-out animate-in">
         {/* Header moderne avec design amélioré */}
-        <div className="relative overflow-hidden rounded-t-3xl sm:rounded-t-3xl">
+        <div className="relative overflow-hidden rounded-t-2xl">
           {/* Fond avec gradient et motif */}
           <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-red-500 to-orange-600"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20"></div>
@@ -42,20 +36,20 @@ export default function DonationModal({
           <div className="absolute top-3 left-6 text-white/20 text-xl animate-pulse">🔥</div>
           
           {/* Contenu du header */}
-          <div className="relative flex items-center justify-between p-4">
-            <div className="flex items-center space-x-3">
+          <div className="relative flex items-center justify-between p-3">
+            <div className="flex items-center space-x-2">
               {/* Icône animée avec effet de lueur */}
               <div className="relative">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-white/30">
-                  <Coffee className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-white/30">
+                  <Coffee className="w-4 h-4 text-white" />
                 </div>
                 {/* Effet de lueur */}
-                <div className="absolute inset-0 w-10 h-10 bg-white/30 rounded-full blur-lg animate-pulse"></div>
+                <div className="absolute inset-0 w-8 h-8 bg-white/30 rounded-full blur-lg animate-pulse"></div>
               </div>
               
               {/* Titre avec ombre portée */}
               <div className="space-y-1">
-                <h3 className="text-lg font-bold text-white drop-shadow-lg">
+                <h3 className="text-base font-bold text-white drop-shadow-lg">
                   Enjoying the roast? ☕
                 </h3>
                 <div className="w-12 h-0.5 bg-white/60 rounded-full"></div>
@@ -65,23 +59,23 @@ export default function DonationModal({
             {/* Bouton de fermeture stylisé */}
             <button
               onClick={onClose}
-              className="relative p-2 text-white/80 hover:text-white transition-all duration-300 ease-out rounded-full hover:bg-white/20 hover:scale-110 hover:rotate-90 backdrop-blur-sm border border-white/30"
+              className="button-interactive relative p-1.5 text-white/80 hover:text-white rounded-full backdrop-blur-sm border border-white/30 hover-glow-modern"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
               {/* Effet de lueur au survol */}
               <div className="absolute inset-0 rounded-full bg-white/20 blur-md opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         </div>
         
-        {/* Indicateur de glissement pour mobile */}
-        <div className="sm:hidden flex justify-center py-2">
-          <div className="w-12 h-1 bg-gray-300 rounded-full"></div>
+        {/* Séparateur léger */}
+        <div className="flex justify-center py-1">
+          <div className="w-12 h-0.5 bg-gray-300 rounded-full"></div>
         </div>
         
         {/* Contenu du modal */}
-        <div className="p-4">
-          <div className="space-y-4">
+        <div className="p-3">
+          <div className="space-y-3">
                           {/* Icon et message principal */}
               <div className="text-center space-y-3">
                 <div className="mx-auto w-20 h-20 bg-gradient-to-br from-orange-400 via-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-xl animate-pulse relative">
@@ -104,7 +98,7 @@ export default function DonationModal({
               {/* Bouton principal Buy Me a Coffee */}
               <button
                 onClick={() => handleDonationClick(getDonationUrl(5, currentLanguage))}
-                className="group relative w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out"
+                className="button-interactive group relative w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl shadow-lg hover-glow-modern"
               >
                 <Coffee className="w-4 h-4 mr-2" />
                                   <span className="text-base">Buy me a coffee</span>
@@ -114,7 +108,7 @@ export default function DonationModal({
               {/* Bouton Ko-fi unique */}
               <button
                 onClick={() => handleDonationClick('https://ko-fi.com/roastme')}
-                className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out group"
+                className="button-interactive w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover-glow-modern group"
               >
                 <Heart className="w-4 h-4 mr-2" />
                 <span className="text-base">Support on Ko-fi</span>
@@ -124,7 +118,7 @@ export default function DonationModal({
               {/* Bouton de fermeture */}
               <button
                 onClick={onClose}
-                className="w-full py-2.5 px-4 text-gray-500 hover:text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-all duration-200 ease-out"
+                className="button-interactive w-full py-2.5 px-4 text-gray-400 hover:text-gray-200 font-medium rounded-lg"
               >
                 Close
               </button>
@@ -140,10 +134,10 @@ export default function DonationModal({
         </div>
         
         {/* Footer avec bouton de fermeture alternatif */}
-        <div className="border-t border-gray-200/50 p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-b-3xl sm:rounded-b-3xl">
+        <div className="border-t border-gray-600/30 p-3 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-b-3xl sm:rounded-b-3xl">
           <button
             onClick={onClose}
-            className="w-full py-2.5 px-4 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-medium rounded-xl hover:from-gray-200 hover:to-gray-300 transition-all duration-200 ease-out hover:scale-[1.02] flex items-center justify-center space-x-2 group"
+            className="button-interactive w-full py-2.5 px-4 bg-gradient-to-r from-gray-700 to-gray-600 text-gray-200 font-medium rounded-xl hover-glow-modern flex items-center justify-center space-x-2 group"
           >
                               <span className="text-sm">Close</span>
           </button>

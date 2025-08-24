@@ -36,12 +36,18 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-gray-50 via-orange-50/20 to-yellow-50/20 text-gray-800 antialiased;
+    @apply bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-gray-100 antialiased;
+    background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
+                linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial', sans-serif;
     line-height: 1.5;
     /* Empêcher le scroll automatique de la page */
     scroll-behavior: auto;
     -webkit-overflow-scrolling: auto;
+    /* Amélioration de la performance */
+    contain: layout style paint;
+    will-change: auto;
   }
   
   html {
@@ -115,13 +121,19 @@
     animation: flameFlicker 2s ease-in-out infinite alternate;
   }
 
-  /* Chat intégré avec input - Version mobile-friendly */
+  /* Chat intégré avec input - Version mobile-friendly et input fixe */
   .chat-messages-container {
     scrollbar-width: thin;
     scrollbar-color: var(--flame-orange) transparent;
-    /* Empêcher le scroll automatique de la page */
-    scroll-behavior: auto;
-    -webkit-overflow-scrolling: auto;
+    /* Scroll fluide et naturel */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* Padding pour éviter que les messages soient cachés par l'input */
+    scroll-padding-bottom: 80px;
+    /* Améliorer le centrage des messages */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   
   .chat-messages-container::-webkit-scrollbar {
@@ -140,6 +152,29 @@
   .chat-input-section {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    /* Input fixe avec flexbox - pas de sticky */
+    position: relative;
+    z-index: 10;
+    /* Assurer que l'input reste en bas */
+    flex-shrink: 0;
+    /* Améliorer l'ancrage visuel */
+    border-top: 1px solid rgba(249, 115, 22, 0.2);
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Améliorer l'expérience de centrage des messages */
+  .chat-centered-content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  
+  /* Empêcher le scroll excessif et garder l'input visible */
+  .chat-scroll-optimization {
+    scroll-snap-type: y proximity;
+    scroll-snap-align: end;
   }
   
   /* Optimisations mobile pour le chat intégré */
@@ -166,15 +201,25 @@
       font-size: 0.75rem !important;
     }
     
-    /* Empêcher le scroll automatique sur mobile */
+    /* Empêcher le scroll automatique et le zoom sur mobile */
     .input-styled:focus {
       transform: none !important;
       scroll-behavior: auto !important;
+      /* Empêcher le zoom automatique sur iOS avec une taille de police appropriée */
+      font-size: 16px !important;
     }
     
-    /* Empêcher le zoom automatique sur iOS */
+    /* Assurer que l'input reste visible sur mobile */
     .input-styled {
       font-size: 16px !important;
+      /* Empêcher le zoom et le scroll automatique */
+      scroll-margin-bottom: 20px;
+    }
+    
+    /* Optimisation du conteneur de chat sur mobile */
+    .chat-messages-container {
+      /* Réduire la hauteur pour laisser plus d'espace à l'input */
+      max-height: 55vh !important;
     }
   }
   
@@ -192,13 +237,56 @@
   }
   
   .ai-bubble {
-    @apply bg-white/90 border-gray-200/50 text-gray-800 shadow-md hover:shadow-lg backdrop-blur-sm transform hover:scale-[1.01];
+    @apply bg-white/[0.98] border-gray-300/50 text-gray-900 shadow-md hover:shadow-lg backdrop-blur-sm transform hover:scale-[1.01];
     max-width: 28rem;
+    color: #1f2937 !important;
+  }
+
+  .ai-bubble-solid {
+    @apply bg-white border-gray-300/60 text-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.01];
+    max-width: 28rem;
+    color: #000000 !important;
   }
 
   /* Styles ultra-compacts pour mobile */
   .mobile-text {
     @apply text-sm leading-relaxed;
+  }
+  
+  /* Amélioration de la lisibilité sur mobile */
+  @media (max-width: 768px) {
+    .ai-bubble {
+      @apply bg-white/[0.99] border-gray-300/60 text-gray-900 shadow-lg;
+      color: #1f2937 !important;
+    }
+
+    .ai-bubble-solid {
+      @apply bg-white border-gray-300/70 text-gray-900 shadow-xl;
+      color: #000000 !important;
+    }
+    
+    .ai-bubble .mobile-optimized-text {
+      @apply text-gray-900 font-medium leading-6;
+      line-height: 1.5;
+      color: #1f2937 !important;
+    }
+
+    .ai-bubble-solid .mobile-optimized-text {
+      @apply text-gray-900 font-semibold leading-6;
+      line-height: 1.5;
+      color: #000000 !important;
+    }
+    
+    /* Amélioration du contraste pour les écrans sombres */
+    @media (prefers-color-scheme: dark) {
+      .ai-bubble {
+        @apply bg-gray-100/[0.95] border-gray-300/70 text-gray-800 shadow-xl;
+      }
+      
+      .ai-bubble .mobile-optimized-text {
+        @apply text-gray-800;
+      }
+    }
   }
 
   .mobile-bubble {
@@ -233,6 +321,129 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* === STYLES POUR LES MESSAGES SYSTÈME === */
+  
+  /* Conteneur principal du message système */
+  .system-message-container {
+    @apply relative;
+    filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));
+  }
+  
+  /* Bulle du message système avec animations */
+  .system-message-bubble {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 0.25) 0%,
+      rgba(99, 102, 241, 0.25) 25%,
+      rgba(139, 92, 246, 0.25) 50%,
+      rgba(168, 85, 247, 0.25) 75%,
+      rgba(139, 92, 246, 0.25) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(59, 130, 246, 0.5);
+    box-shadow: 
+      0 0 30px rgba(59, 130, 246, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.12);
+    animation: systemPulse 3s ease-in-out infinite;
+  }
+  
+  /* Texte du message système avec effet de lueur */
+  .system-message-text {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(59, 130, 246, 0.6),
+      0 0 30px rgba(59, 130, 246, 0.4);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Effet de brillance qui traverse le message */
+  .system-message-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: systemShimmer 4s ease-in-out infinite;
+    z-index: 1;
+  }
+  
+  /* Particules flottantes autour du message système */
+  .system-message-container::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    border-radius: inherit;
+    animation: systemFloat 6s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Effet de survol intensifié */
+  .system-message-container:hover .system-message-bubble {
+    border-color: rgba(59, 130, 246, 0.8);
+    box-shadow: 
+      0 0 40px rgba(59, 130, 246, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  .system-message-container:hover .system-message-text {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 1),
+      0 0 25px rgba(59, 130, 246, 0.8),
+      0 0 35px rgba(59, 130, 246, 0.6);
+  }
+  
+  /* Optimisations mobile pour les messages système */
+  @media (max-width: 768px) {
+    .system-message-bubble {
+      @apply p-3 rounded-lg;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+    
+    .system-message-text {
+      @apply text-sm;
+      text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 15px rgba(59, 130, 246, 0.7);
+    }
+    
+    .system-message-container {
+      filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.4));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .system-message-bubble {
+      @apply p-2.5 rounded-md;
+    }
+    
+    .system-message-text {
+      @apply text-xs;
+      text-shadow: 
+        0 0 6px rgba(255, 255, 255, 0.8),
+        0 0 12px rgba(59, 130, 246, 0.6);
+    }
+  }
+
   .mobile-bubble-optimized {
     @apply rounded-lg p-2.5 shadow-sm;
     max-width: calc(100vw - 4rem);
@@ -250,7 +461,9 @@
 
   /* Optimisation des contrastes pour mobile */
   .mobile-contrast {
-    @apply bg-white/95 text-gray-800;
+    @apply bg-white text-gray-900 border-gray-200/50;
+    color: #000000 !important;
+    font-weight: 600 !important;
   }
 
   .mobile-contrast-user {
@@ -278,19 +491,19 @@
     animation: flameGlow 3s ease-in-out infinite alternate;
   }
 
-  /* Cartes et conteneurs modernisés - Version compacte */
+  /* Cartes et conteneurs modernisés - Version compacte avec thème sombre */
   .card {
-    @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-4 transition-all duration-200 ease-out hover:shadow-xl hover:scale-[1.005];
+    @apply bg-gray-800/[0.95] backdrop-blur-md rounded-2xl shadow-lg border border-gray-700/30 p-4 transition-all duration-200 ease-out hover:shadow-xl hover:scale-[1.005];
   }
 
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
+    @apply bg-gray-800/[0.80] backdrop-blur-md border border-gray-700/30 shadow-lg;
   }
 
-  /* Input stylisé moderne - Version compacte */
+  /* Input stylisé moderne - Version UX optimisée avec thème sombre */
   .input-styled {
-    @apply w-full px-12 py-4 border-2 border-gray-200/60 rounded-xl focus:border-flame-orange focus:ring-2 focus:ring-flame-orange/20 focus:outline-none transition-all duration-200 ease-out bg-white/90 backdrop-blur-sm hover:border-gray-300/70 hover:shadow-sm placeholder-gray-400;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    @apply w-full px-12 py-4 border-2 border-gray-600/60 rounded-xl focus:border-flame-orange focus:ring-2 focus:ring-flame-orange/20 focus:outline-none transition-all duration-200 ease-out bg-gray-800/[0.90] backdrop-blur-sm hover:border-gray-500/70 hover:shadow-sm placeholder-gray-400 text-gray-100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(6px);
     line-height: 1.5;
     font-size: 1rem;
@@ -302,6 +515,12 @@
     /* Empêcher le scroll automatique de la page */
     scroll-behavior: auto;
     -webkit-overflow-scrolling: auto;
+    /* Amélioration UX mobile */
+    resize: none;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .input-styled:focus {
@@ -409,7 +628,7 @@
   }
 
   .status-indicator-compact {
-    @apply flex items-center space-x-1 px-1.5 py-0.5 bg-white/15 backdrop-blur-sm rounded-md border border-white/25;
+    @apply flex items-center space-x-1 px-1.5 py-0.5 bg-white/[0.15] backdrop-blur-sm rounded-md border border-white/25;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -427,7 +646,7 @@
   }
 
   .dropdown-menu {
-    @apply absolute right-0 mt-2 w-48 md:w-56 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-white/20 overflow-hidden;
+    @apply absolute right-0 mt-2 w-48 md:w-56 bg-gray-800/[0.95] backdrop-blur-md rounded-xl shadow-xl border border-gray-700/30 overflow-hidden;
     position: absolute;
     z-index: 99999;
     pointer-events: auto;
@@ -476,7 +695,7 @@
   }
 
   .dropdown-item {
-    @apply w-full flex items-center space-x-2 px-3 py-2 text-left hover:bg-gray-50/80 transition-all duration-200 ease-out;
+    @apply w-full flex items-center space-x-2 px-3 py-2 text-left hover:bg-gray-700/[0.80] transition-all duration-200 ease-out text-gray-100;
   }
 
   /* Nouvelles classes compactes */
@@ -522,7 +741,7 @@
   }
 
   .input-container {
-    @apply border-t border-gray-200/50 bg-white/95 backdrop-blur-md shadow-lg sticky bottom-0 z-30;
+    @apply border-t border-gray-200/50 bg-white/[0.95] backdrop-blur-md shadow-lg sticky bottom-0 z-30;
     flex-shrink: 0;
     padding-bottom: env(safe-area-inset-bottom);
     /* Assurer que le bouton d'envoi reste fixe */
@@ -530,14 +749,14 @@
     overflow: visible;
   }
 
-  /* Bouton d'envoi amélioré avec excellent UX/UI - Parfaitement intégré et fixe */
+  /* Bouton d'envoi amélioré avec excellent UX/UI - Parfaitement intégré et fixe avec thème sombre */
   .send-button-enhanced {
-    @apply absolute right-2.5 top-1/2 -translate-y-1/2 p-3 text-flame-orange disabled:text-gray-400 disabled:cursor-not-allowed transition-all duration-300 ease-out bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg hover:shadow-xl active:scale-95 border border-gray-200/50 backdrop-blur-sm;
+    @apply absolute right-2.5 top-1/2 p-3 text-flame-orange disabled:text-gray-500 disabled:cursor-not-allowed transition-all duration-300 ease-out bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl shadow-lg hover:shadow-xl border border-gray-600/50 backdrop-blur-sm;
     width: 44px;
     height: 44px;
     position: absolute;
-    overflow: hidden;
-    z-index: 20;
+    overflow: visible;
+    z-index: 30;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -556,7 +775,7 @@
   }
 
   .send-button-enhanced:not(:disabled):active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(-50%) scale(0.98);
     box-shadow: 0 3px 12px rgba(255, 107, 53, 0.2);
   }
 
@@ -566,7 +785,7 @@
 
   .send-button-enhanced:disabled {
     @apply opacity-50 cursor-not-allowed;
-    transform: none;
+    transform: translateY(-50%);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -595,8 +814,8 @@
   /* Tooltip informatif */
   .send-tooltip {
     @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 pointer-events-none transition-all duration-200 ease-out whitespace-nowrap;
-    transform: translateY(5px);
-    z-index: 50;
+    transform: translateX(-50%) translateY(5px);
+    z-index: 100;
   }
 
   .send-tooltip::after {
@@ -606,13 +825,20 @@
 
   .send-button-enhanced:hover .send-tooltip {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 
   /* États spéciaux pour le bouton */
   .send-button-enhanced.sending {
     @apply from-purple-500 to-purple-600 text-white;
     animation: sendingPulse 2s ease-in-out infinite;
+  }
+
+  /* Assurer la visibilité de l'icône */
+  .send-button-enhanced svg {
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
   }
 
   /* Variantes compactes pour la barre d'input */
@@ -697,7 +923,7 @@
     @apply transition-all duration-100 ease-out;
   }
 
-  /* Nouvelles utilitaires compactes */
+  /* Nouvelles utilitaires UX Excellence */
   .compact-gap {
     @apply gap-3;
   }
@@ -709,17 +935,350 @@
   .compact-shadow {
     @apply shadow-md;
   }
+
+  /* Classes UX améliorées */
+  .interactive-element {
+    @apply transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] cursor-pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .smooth-pulse {
+    animation: smoothPulse 2s ease-in-out infinite;
+  }
+
+  .gentle-float {
+    animation: gentleFloat 4s ease-in-out infinite;
+  }
+
+  .optimized-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-flame-orange/30 focus:ring-offset-2 focus:ring-offset-white/50;
+    transition: all 0.2s ease-out;
+  }
+
+  .enhanced-button {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .enhanced-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .enhanced-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .glass-morphism {
+    @apply bg-gray-800/[0.30] backdrop-blur-lg border border-gray-600/20 shadow-lg;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .dark-glass-morphism {
+    @apply bg-gray-900/[0.10] backdrop-blur-lg border border-gray-800/20 shadow-lg;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* === SYSTÈME D'INTERACTIONS AVANCÉES POUR SÉLECTION/DÉSÉLECTION === */
+  
+  /* États de base pour les éléments interactifs */
+  .interactive-element-modern {
+    @apply relative overflow-hidden;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .interactive-element-modern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--hover-bg);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: -1;
+  }
+
+  /* États hover avec feedback visuel immédiat */
+  .interactive-element-modern:hover {
+    border-color: var(--hover-border);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .interactive-element-modern:hover::before {
+    opacity: 1;
+  }
+
+  /* États actifs/pressed avec retour tactile */
+  .interactive-element-modern:active {
+    transform: translateY(0) scale(0.98);
+    border-color: var(--active-border);
+    background: var(--active-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* États de focus pour l'accessibilité */
+  .interactive-element-modern:focus-visible {
+    outline: none;
+    border-color: var(--selection-border);
+    box-shadow: 0 0 0 2px var(--selection-bg), 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* États sélectionnés avec animation fluide */
+  .interactive-element-modern.selected {
+    background: var(--selection-bg);
+    border-color: var(--selection-border);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px var(--selection-primary), 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+
+  .interactive-element-modern.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--selection-primary);
+    opacity: 1;
+    animation: slideInFromLeft 0.3s var(--transition-spring);
+  }
+
+  /* Animation de sélection avec effet ripple */
+  .interactive-element-modern.selecting {
+    animation: selectionPulse 0.6s ease-out;
+  }
+
+  /* Animation de désélection */
+  .interactive-element-modern.deselecting {
+    animation: deselectionFade 0.4s ease-out;
+  }
+
+  /* Variantes pour différents types d'éléments */
+  .card-interactive {
+    @apply interactive-element-modern rounded-xl p-4;
+  }
+
+  .button-interactive {
+    @apply interactive-element-modern rounded-lg px-4 py-2 font-medium;
+  }
+
+  .list-item-interactive {
+    @apply interactive-element-modern rounded-lg px-3 py-2;
+  }
+
+  .nav-item-interactive {
+    @apply interactive-element-modern rounded-lg px-3 py-2;
+  }
+
+  /* Boutons avec états multiples */
+  .toggle-button {
+    @apply interactive-element-modern rounded-lg px-4 py-2 font-medium;
+    transition: all var(--transition-normal);
+  }
+
+  .toggle-button.active {
+    background: linear-gradient(135deg, var(--selection-primary), var(--selection-secondary));
+    border-color: var(--selection-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25), 0 0 0 1px var(--selection-primary);
+  }
+
+  .toggle-button.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3), 0 0 0 1px var(--selection-primary);
+  }
+
+  /* Checkbox et radio personnalisés */
+  .checkbox-modern {
+    @apply relative w-5 h-5 cursor-pointer;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-secondary);
+    border-radius: 4px;
+    transition: all var(--transition-normal);
+  }
+
+  .checkbox-modern:hover {
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+  }
+
+  .checkbox-modern.checked {
+    background: var(--selection-primary);
+    border-color: var(--selection-primary);
+    animation: checkboxPop 0.3s var(--transition-spring);
+  }
+
+  .checkbox-modern.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    animation: checkmarkAppear 0.2s ease-out 0.1s both;
+  }
+
+  .radio-modern {
+    @apply relative w-5 h-5 cursor-pointer rounded-full;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-secondary);
+    transition: all var(--transition-normal);
+  }
+
+  .radio-modern:hover {
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+  }
+
+  .radio-modern.checked {
+    border-color: var(--selection-primary);
+    animation: radioPop 0.3s var(--transition-spring);
+  }
+
+  .radio-modern.checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    background: var(--selection-primary);
+    border-radius: 50%;
+    animation: radioAppear 0.2s ease-out 0.1s both;
+  }
+
+  /* Effets de survol spéciaux */
+  .hover-glow-modern {
+    transition: all var(--transition-normal);
+  }
+
+  .hover-glow-modern:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Groupes d'éléments sélectionnables */
+  .selection-group {
+    @apply space-y-2;
+  }
+
+  .selection-group .interactive-element-modern:first-child {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .selection-group .interactive-element-modern:last-child {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .selection-group .interactive-element-modern:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+
+  /* Feedback haptique visuel */
+  .haptic-feedback {
+    animation: hapticBounce 0.15s ease-out;
+  }
+
+  /* Indicateurs de chargement pour les sélections */
+  .selection-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .selection-loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--selection-primary);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: loadingSpin 1s linear infinite;
+  }
+
+  /* États désactivés */
+  .interactive-element-modern:disabled,
+  .interactive-element-modern.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Transitions personnalisées pour les listes */
+  .list-enter {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+
+  .list-enter-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all var(--transition-normal);
+  }
+
+  .list-exit {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .list-exit-active {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: all var(--transition-fast);
+  }
 }
 
-/* Animations personnalisées modernes - Optimisées */
+/* Animations personnalisées modernes - UX Excellence */
 @keyframes flameFlicker {
   0%, 100% {
     transform: scale(1) rotate(0deg);
     filter: brightness(1) saturate(1);
   }
   50% {
-    transform: scale(1.03) rotate(0.5deg);
-    filter: brightness(1.2) saturate(1.1);
+    transform: scale(1.05) rotate(1deg);
+    filter: brightness(1.3) saturate(1.2);
+  }
+}
+
+@keyframes smoothPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-3px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(3px) rotate(-1deg);
   }
 }
 
@@ -797,6 +1356,251 @@
   }
 }
 
+/* === ANIMATIONS POUR LE SYSTÈME D'INTERACTIONS MODERNES === */
+
+@keyframes selectionPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--selection-primary);
+  }
+  30% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  60% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 12px rgba(59, 130, 246, 0.1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes deselectionFade {
+  0% {
+    background: var(--selection-bg);
+    border-color: var(--selection-border);
+    box-shadow: 0 0 0 1px var(--selection-primary);
+  }
+  50% {
+    transform: scale(0.98);
+    opacity: 0.7;
+  }
+  100% {
+    background: var(--bg-tertiary);
+    border-color: var(--border-primary);
+    box-shadow: none;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 3px;
+    opacity: 1;
+  }
+}
+
+@keyframes checkboxPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmarkAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes radioPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes radioAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hapticBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes loadingSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* === ANIMATIONS POUR LES MESSAGES SYSTÈME === */
+
+@keyframes systemPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 30px rgba(59, 130, 246, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+  50% {
+    transform: scale(1.005);
+    box-shadow: 
+      0 0 40px rgba(59, 130, 246, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes systemShimmer {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes systemFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateY(-2px) rotate(1deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(2px) rotate(-1deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes systemGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 12px 24px rgba(59, 130, 246, 0.5));
+  }
+}
+
 /* Animations personnalisées pour le LoadingSpinner */
 @keyframes bounce-gentle {
   0%, 100% {
@@ -816,12 +1620,22 @@
   }
 }
 
-  /* Optimisations mobiles avancées - Version compacte */
+  /* Optimisations mobiles avancées - Version améliorée UX */
   @media (max-width: 640px) {
     /* Empêcher le scroll automatique sur mobile */
     html, body {
       scroll-behavior: auto !important;
-      -webkit-overflow-scrolling: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      /* Amélioration de la performance tactile */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Optimisation des zones tactiles */
+    button, a, input {
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
     }
     
     .chat-bubble {
@@ -1033,45 +1847,58 @@
   .stat-card:nth-child(4) { animation: slideInUp 0.6s ease-out 0.4s both; }
 }
 
-/* Support du mode sombre moderne */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --gray-50: #0f172a;
-    --gray-100: #1e293b;
-    --gray-200: #334155;
-    --gray-300: #475569;
-    --gray-400: #64748b;
-    --gray-500: #94a3b8;
-    --gray-600: #cbd5e1;
-    --gray-700: #e2e8f0;
-    --gray-800: #f1f5f9;
-    --gray-900: #f8fafc;
-  }
+/* Support du mode sombre moderne avec système d'interactions avancé */
+:root {
+  /* Variables CSS pour le thème sombre moderne */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --bg-quaternary: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-tertiary: #d1d5db;
+  --text-quaternary: #9ca3af;
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --border-tertiary: #6b7280;
+  
+  /* Variables pour les interactions et sélections */
+  --selection-primary: #3b82f6;
+  --selection-secondary: #1d4ed8;
+  --selection-bg: rgba(59, 130, 246, 0.15);
+  --selection-border: rgba(59, 130, 246, 0.4);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --hover-border: rgba(255, 255, 255, 0.15);
+  --active-bg: rgba(255, 255, 255, 0.08);
+  --active-border: rgba(255, 255, 255, 0.2);
+  
+  /* Variables pour les transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-  body {
-    @apply bg-gradient-to-br from-gray-900 via-purple-900/15 to-gray-900 text-gray-100;
-  }
+/* Style par défaut sombre appliqué à tous les éléments */
+.dark-mode-elements {
+  @apply bg-gray-800/[0.95] border-gray-700/50 text-gray-100;
+}
 
-  .card {
-    @apply bg-gray-800/95 border-gray-700/50;
-  }
+/* Amélioration des contrastes pour le mode sombre */
+.dark-mode-text {
+  @apply text-gray-100;
+}
 
-  .ai-bubble {
-    @apply bg-gray-800/90 border-gray-600/50 text-gray-100;
-  }
+.dark-mode-text-secondary {
+  @apply text-gray-300;
+}
 
-  .input-styled {
-    @apply bg-gray-800/90 border-gray-600/50 text-gray-100 focus:border-flame-orange focus:ring-flame-orange/20;
-  }
+.dark-mode-bg {
+  @apply bg-gray-800/[0.90];
+}
 
-  .dropdown-menu {
-    @apply bg-gray-800/95 border-gray-700/50;
-    z-index: 99999;
-  }
-
-  .dropdown-item {
-    @apply hover:bg-gray-700/80 text-gray-100;
-  }
+.dark-mode-border {
+  @apply border-gray-600/50;
 }
 
 /* Animations d'entrée pour les composants - Optimisées */

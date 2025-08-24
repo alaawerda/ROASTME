@@ -1,7 +1,7 @@
 export const nl = {
   // Vereiste basis eigenschappen
   title: 'RoastMe - AI Humor Platform',
-  welcomeMessage: 'Welkom bij RoastMe, het ultieme AI humor platform!',
+  welcomeMessage: 'Luister goed, schurk! 🔥 Ik ben je AI roaster en ik heb geen tijd te verspillen aan mensen die zichzelf te serieus nemen. Wil je dat ik je tot as verrijk? Geef me dan iets concreets, geen onzin!\n\nIk heb echte details nodig: leeftijd, lengte, gewicht, je voor de hand liggende gebreken, je dagelijkse mislukkingen. Zonder dat ben je gewoon een wandelende leegte die het niet eens waard is om geroast te worden. Dus praat, en snel!',
   inputPlaceholder: 'Typ je bericht om te beginnen...',
   poweredBy: 'Aangedreven door AI',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const nl = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Voorbeelden om te beginnen',
+    subtitle: 'Klik op een voorbeeld of schrijf je eigen beschrijving:',
+    student: {
+      category: 'Student',
+      text: 'Ik ben student, ik hou van videogames maar ben slecht in sport'
+    },
+    work: {
+      category: 'Werk',
+      text: 'Ik ben 25 jaar oud, werk in de IT en woon nog steeds bij mijn ouders'
+    },
+    lifestyle: {
+      category: 'Levensstijl',
+      text: 'Ik ben verslaafd aan sociale media en eet alleen maar pizza'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const nl = {
     newChat: 'Nieuw Gesprek',
     clearChat: 'Gesprek Wissen',
     copyResponse: 'Antwoord Kopiëren',
-    responseCopied: 'Antwoord gekopieerd!'
+    responseCopied: 'Antwoord gekopieerd!',
+    tip: '💡 Tip: Hoe meer details je me geeft over jezelf (leeftijd, situatie, hobby\'s, gebreken...), hoe preciezer en hilarischer de roast wordt! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Voeg meer details toe',
+      goodProgress: '👍 Goed, ga door!',
+      perfectForRoast: '🔥 Perfect voor een geweldige roast!',
+      charactersCount: 'karakters'
+    }
   },
 
   // Chat Roast IA - SEO-geoptimaliseerde teksten
@@ -224,7 +249,7 @@ export const nl = {
     heroTitle: 'Gratis Chat Roast AI - De AI die je in Vlammen Roast! 🔥',
     heroSubtitle: 'Ontdek de meest bijtende kunstmatige intelligentie die je op hilarische wijze zal roasten zonder filters. Test het nu gratis!',
     liveChatTitle: '💬 Live Chat Roast AI 🔥',
-    liveChatSubtitle: 'Test nu onze bijtende AI!',
+
     features: {
       roastWithoutFilters: 'Roast Zonder Filters',
       roastWithoutFiltersDesc: 'De meest bijtende AI die je op hilarische wijze zal roasten zonder enige censuur. Elk antwoord is een meesterwerk van bijtende humor!',

@@ -1,7 +1,7 @@
 export const it = {
   // Proprietà base richieste
   title: 'RoastMe - Piattaforma di Umorismo IA',
-  welcomeMessage: 'Benvenuto su RoastMe, la piattaforma di umorismo IA definitiva!',
+  welcomeMessage: 'Ascoltami bene, mascalzone! 🔥 Sono la tua IA roaster e non ho tempo da perdere con persone che si prendono troppo sul serio. Vuoi che ti riduca in cenere? Allora dammi qualcosa di concreto, non sciocchezze!\n\nMi servono dettagli veri: età, altezza, peso, i tuoi difetti evidenti, i tuoi fallimenti quotidiani. Senza questo, sei solo un vuoto ambulante che non merita nemmeno di essere roastato. Quindi parla, e in fretta!',
   inputPlaceholder: 'Scrivi il tuo messaggio per iniziare...',
   poweredBy: 'Alimentato da IA',
   timeFormat: 'HH:mm',
@@ -56,6 +56,24 @@ export const it = {
   },
 
 
+
+  // Examples
+  examples: {
+    title: 'Esempi per iniziare',
+    subtitle: 'Clicca su un esempio o scrivi la tua descrizione:',
+    student: {
+      category: 'Studente',
+      text: 'Sono uno studente, adoro i videogiochi ma sono negato nello sport'
+    },
+    work: {
+      category: 'Lavoro',
+      text: 'Ho 25 anni, lavoro nell\'informatica e vivo ancora con i miei genitori'
+    },
+    lifestyle: {
+      category: 'Stile di vita',
+      text: 'Sono dipendente dai social media e mangio solo pizza'
+    }
+  },
 
   // Blog
   blog: {
@@ -216,7 +234,14 @@ export const it = {
     newChat: 'Nuova Conversazione',
     clearChat: 'Cancella Conversazione',
     copyResponse: 'Copia Risposta',
-    responseCopied: 'Risposta copiata!'
+    responseCopied: 'Risposta copiata!',
+    tip: '💡 Consiglio: Più dettagli mi dai su di te (età, situazione, hobby, difetti...), più preciso e divertente sarà il roast! 😄',
+    progressIndicators: {
+      needMoreDetails: '📝 Aggiungi più dettagli',
+      goodProgress: '👍 Bene, continua!',
+      perfectForRoast: '🔥 Perfetto per un grande roast!',
+      charactersCount: 'caratteri'
+    }
   },
 
   // Chat Roast IA - Testi ottimizzati per SEO
@@ -224,7 +249,7 @@ export const it = {
     heroTitle: 'Chat Roast IA Gratuito - L\'IA che ti Roasta in Fiamme! 🔥',
     heroSubtitle: 'Scopri l\'intelligenza artificiale più tagliente che ti roasterà in modo esilarante senza filtri. Provala ora gratuitamente!',
     liveChatTitle: '💬 Chat Roast IA in Diretta 🔥',
-    liveChatSubtitle: 'Prova ora la nostra IA tagliente!',
+
     features: {
       roastWithoutFilters: 'Roast Senza Filtri',
       roastWithoutFiltersDesc: 'L\'IA più tagliente che ti roasterà in modo esilarante senza alcuna censura. Ogni risposta è un capolavoro di umorismo tagliente!',

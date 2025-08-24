@@ -145,7 +145,7 @@ export default function ChatRoastIAPage() {
                   <div><strong>Hero Title:</strong> {t('chatRoastIA.heroTitle')}</div>
                   <div><strong>Hero Subtitle:</strong> {t('chatRoastIA.heroSubtitle')}</div>
                   <div><strong>Live Chat Title:</strong> {t('chatRoastIA.liveChatTitle')}</div>
-                  <div><strong>Live Chat Subtitle:</strong> {t('chatRoastIA.liveChatSubtitle')}</div>
+
                 </div>
               </div>
             </div>
@@ -190,9 +190,7 @@ export default function ChatRoastIAPage() {
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   {t('chatRoastIA.liveChatTitle')}
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  {t('chatRoastIA.liveChatSubtitle')}
-                </p>
+
               </div>
               
               <div className="grid md:grid-cols-3 gap-8">

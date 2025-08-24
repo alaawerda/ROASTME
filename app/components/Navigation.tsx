@@ -72,17 +72,17 @@ const Navigation: React.FC = () => {
           <div key={item.href} className="nav-item group">
             <Link
               href={item.href}
-              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-300 ${
+              className={`nav-item-interactive flex items-center space-x-2 px-4 py-2.5 rounded-xl ${
                 active 
-                  ? 'bg-gradient-to-r from-yellow-400/20 to-red-500/20 text-yellow-300 border border-yellow-400/30 shadow-lg' 
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
-              }`}
+                  ? 'selected bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-400/30 shadow-lg' 
+                  : 'text-white/80 hover:text-white'
+              } hover-glow-modern`}
             >
               <Icon className={`w-4 h-4 transition-transform duration-200 ${
-                active ? 'text-yellow-400' : 'group-hover:scale-110'
+                active ? 'text-blue-400' : 'group-hover:scale-110'
               }`} />
               <span className="font-medium text-sm">{item.label}</span>
-              {active && <div className="nav-indicator" />}
+              {active && <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse" />}
             </Link>
             
             {/* Tooltip amélioré */}

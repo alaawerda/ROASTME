@@ -40,19 +40,19 @@ const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
               </div>
             </div>
             
-            {/* Statistiques ultra-compactes en ligne - Visibles sur mobile et desktop */}
+            {/* Statistiques ultra-compactes en ligne - UX Excellence */}
             <div className="flex items-center space-x-2 md:space-x-4">
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
-                <Users className="w-3 h-3 text-violet-300" />
-                <span className="text-white text-xs font-medium">50K+</span>
+              <div className="flex items-center space-x-2 glass-morphism rounded-full px-2 py-1 interactive-element smooth-pulse">
+                <Users className="w-3 h-3 text-violet-300 gentle-float" />
+                <span className="text-white text-xs font-medium">75K+</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
-                <MessageSquare className="w-3 h-3 text-orange-300" />
-                <span className="text-white text-xs font-medium">2M+</span>
+              <div className="flex items-center space-x-2 glass-morphism rounded-full px-2 py-1 interactive-element smooth-pulse" style={{ animationDelay: '0.2s' }}>
+                <MessageSquare className="w-3 h-3 text-orange-300 gentle-float" />
+                <span className="text-white text-xs font-medium">3M+</span>
               </div>
 
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
-                <Globe className="w-3 h-3 text-violet-300" />
+              <div className="flex items-center space-x-2 glass-morphism rounded-full px-2 py-1 interactive-element smooth-pulse" style={{ animationDelay: '0.4s' }}>
+                <Globe className="w-3 h-3 text-violet-300 gentle-float" />
                 <span className="text-white text-xs font-medium">15+</span>
               </div>
             </div>

@@ -93,40 +93,64 @@ IMPORTANT:
 
     console.log('Envoi à Gemini avec prompt:', fullPrompt)
     
-    // Appel à l'API Gemini
-    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-goog-api-key": GEMINI_API_KEY
-      },
-      body: JSON.stringify({
-        "contents": [
-          {
-            "parts": [
-              {
-                "text": fullPrompt
-              }
-            ]
+    // Appel à l'API Gemini avec timeout et gestion d'erreur robuste
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 15000) // Timeout de 15 secondes
+
+    try {
+      const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-goog-api-key": GEMINI_API_KEY
+        },
+        body: JSON.stringify({
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": fullPrompt
+                }
+              ]
+            }
+          ],
+          "generationConfig": {
+            "maxOutputTokens": 300,
+            "temperature": 0.8
           }
-        ],
-        "generationConfig": {
-          "maxOutputTokens": 300,
-          "temperature": 0.8
-        }
+        }),
+        signal: controller.signal
       })
-    })
 
-    console.log('Réponse Gemini status:', response.status)
+      clearTimeout(timeoutId)
+      console.log('Réponse Gemini status:', response.status)
 
-    if (!response.ok) {
-      throw new Error(`Erreur API Gemini: ${response.status}`)
+      if (!response.ok) {
+        console.error(`Erreur API Gemini: ${response.status} - ${response.statusText}`)
+        throw new Error(`Erreur API Gemini: ${response.status}`)
+      }
+
+      const completion = await response.json()
+      console.log('Réponse Gemini complète:', completion)
+      
+      const aiResponse = completion.candidates?.[0]?.content?.parts?.[0]?.text || 
+                        "Désolé, je n'ai pas pu préparer ton roast ! 😅 Réessaie dans quelques secondes."
+
+      return NextResponse.json({ message: aiResponse })
+
+    } catch (fetchError) {
+      clearTimeout(timeoutId)
+      
+      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
+        console.error('Timeout de la requête à l\'API Gemini')
+        return NextResponse.json({ 
+          message: "Oups ! L'IA prend plus de temps que prévu... 🤔 Réessaie, elle va se réveiller ! 😴" 
+        })
+      }
+      
+      console.error('Erreur lors de l\'appel à l\'API Gemini:', fetchError)
+      throw fetchError
     }
-
-    const completion = await response.json()
-    const aiResponse = completion.candidates?.[0]?.content?.parts?.[0]?.text || "Désolé, je n'ai pas pu préparer ton roast ! 😅"
-
-    return NextResponse.json({ message: aiResponse })
 
   } catch (error) {
     console.error('Erreur API:', error)
