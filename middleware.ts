@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 import { getCSPConfig } from './app/lib/csp-config'
 
 export function middleware(request: NextRequest) {
-  const { pathname, search, origin } = request.nextUrl
+  const { pathname } = request.nextUrl
   
   // Handle www redirect
   if (request.headers.get('host')?.startsWith('www.')) {
