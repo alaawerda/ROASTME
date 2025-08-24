@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 // Configuration CSP pour différents environnements
 export const getCSPConfig = (isDev: boolean = false) => {
   if (isDev) {
@@ -20,15 +22,15 @@ export const getCSPConfig = (isDev: boolean = false) => {
   }
 
   // Configuration stricte pour la production
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  // Générer un nonce sécurisé (mais pour Next.js, on va simplifier)
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`,
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://vitals.vercel-analytics.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    `script-src-elem 'self' 'nonce-${nonce}' https://www.googletagmanager.com`,
+    "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://analytics.ahrefs.com",
     "img-src 'self' data: https: blob:",
     "font-src 'self' https://fonts.gstatic.com data:",
-    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com",
+    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.ahrefs.com",
     "frame-src 'self' https://www.youtube.com",
     "media-src 'self' data:",
     "object-src 'none'",
