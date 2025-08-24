@@ -32,6 +32,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
   const [isMobile, setIsMobile] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
 
   // Utiliser des valeurs par défaut si les props ne sont pas fournies
   const safeCurrentLanguage = currentLanguage || 'fr'
@@ -42,7 +43,9 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
   // Détecter si on est sur mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      const mobile = window.innerWidth < 768
+      setIsMobile(mobile)
+      console.log('LanguageSelector - Mobile detection:', mobile, 'Width:', window.innerWidth)
     }
     
     checkMobile()
@@ -57,13 +60,14 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
     const buttonRect = buttonRef.current.getBoundingClientRect()
     const viewportWidth = window.innerWidth
     const viewportHeight = window.innerHeight
+    const scrollY = window.scrollY || document.documentElement.scrollTop
     
     // Largeur adaptative pour s'aligner mieux avec le header et éviter les débordements
     const idealWidth = Math.max(240, Math.min(320, Math.ceil(buttonRect.width) + 120))
     const dropdownWidth = Math.min(idealWidth, viewportWidth - 32)
     const dropdownHeight = Math.min(400, viewportHeight - 32)
 
-    // Calculer la position optimale
+    // Calculer la position optimale en tenant compte du scroll
     let left = buttonRect.right - dropdownWidth
     let top = buttonRect.bottom + 8
 
@@ -77,7 +81,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
       left = viewportWidth - dropdownWidth - 16
     }
 
-    // Ajuster si le dropdown dépasse en bas
+    // Ajuster si le dropdown dépasse en bas (tenir compte du scroll)
     if (top + dropdownHeight > viewportHeight - 16) {
       top = buttonRect.top - dropdownHeight - 8
     }
@@ -87,11 +91,18 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
       top = 16
     }
 
+    // S'assurer que le dropdown reste visible même lors du scroll
+    if (top < scrollY + 16) {
+      top = scrollY + 16
+    }
+
     setDropdownPosition({
-      top: top,
-      left: left,
+      top: Math.max(16, top),
+      left: Math.max(16, left),
       width: dropdownWidth
     })
+
+
   }, [])
 
   // Gérer le redimensionnement de la fenêtre
@@ -144,17 +155,27 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
     }
   }, [isOpen, calculateDropdownPosition, handleResize, isMobile])
 
-  // Verrouiller le scroll de la page quand le sélecteur est ouvert
+  // Gestion du modal mobile - scroll et focus
   useEffect(() => {
-    if (isOpen) {
-      const originalOverflow = document.body.style.overflow
-      document.body.style.overflow = 'hidden'
-      return () => {
-        document.body.style.overflow = originalOverflow
-      }
+    if (isOpen && isMobile) {
+      // Ajouter classe pour verrouiller le scroll
+      document.body.classList.add('modal-open')
+      
+      // Scroll vers le haut pour centrer le modal
+      window.scrollTo(0, 0)
+      
+      // Focus sur le modal après un court délai pour l'animation
+      setTimeout(() => {
+        if (modalRef.current) {
+          modalRef.current.focus()
+        }
+      }, 150)
     }
-    return () => {}
-  }, [isOpen])
+    
+    return () => {
+      document.body.classList.remove('modal-open')
+    }
+  }, [isOpen, isMobile])
 
   // Calculer la position quand le dropdown s'ouvre
   useEffect(() => {
@@ -167,6 +188,13 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
   }, [isOpen, isMobile, calculateDropdownPosition])
 
   const openDropdown = () => {
+    console.log('LanguageSelector - Opening dropdown. isMobile:', isMobile, 'windowWidth:', window.innerWidth)
+    console.log('LanguageSelector - supportedLanguages:', supportedLanguages.map(lang => ({
+      code: lang.code,
+      name: lang.name,
+      flag: lang.flag,
+      native: lang.native
+    })))
     setIsOpen(true)
   }
 
@@ -198,43 +226,7 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
     closeDropdown()
   }
 
-  // Composant pour la liste des langues (réutilisable)
-  const LanguageList = ({ className = "" }: { className?: string }) => (
-    <div className={className}>
-      {supportedLanguages.map((language, index) => (
-        <button
-          key={language.code}
-          onClick={() => handleLanguageSelect(language.code)}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left list-item-interactive ${
-            language.code === safeCurrentLanguage 
-              ? 'selected bg-gradient-to-r from-blue-500/15 to-purple-500/15 text-blue-100 border-blue-400/50 shadow-lg' 
-              : 'text-gray-300 hover:text-gray-100'
-          } group hover-glow-modern`}
-          role="option"
-          aria-selected={language.code === safeCurrentLanguage}
-          style={{ 
-            animationDelay: `${index * 50}ms`,
-            animation: 'fadeInUp 0.3s ease-out forwards'
-          }}
-        >
-          <span className="text-xl md:text-2xl filter drop-shadow-sm flex-shrink-0">{language.flag}</span>
-          <div className="flex-1 min-w-0">
-            <div className={`font-semibold text-sm md:text-base leading-tight ${language.code === safeCurrentLanguage ? 'text-blue-100' : 'text-gray-200'}`}>
-              {language.name}
-            </div>
-            <div className={`text-xs md:text-sm leading-tight mt-0.5 ${language.code === safeCurrentLanguage ? 'text-blue-200' : 'text-gray-400'}`}>
-              {language.native}
-            </div>
-          </div>
-          {language.code === safeCurrentLanguage && (
-            <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-blue-500 rounded-full flex-shrink-0 animate-bounce-gentle">
-              <Check className="w-3 h-3 text-white" />
-            </div>
-          )}
-        </button>
-      ))}
-    </div>
-  )
+
 
   return (
     <>
@@ -262,13 +254,15 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         </button>
       </div>
 
+
+
       {/* Version desktop - Dropdown classique */}
-      {isOpen && !isMobile && createPortal(
+      {isOpen && !isMobile && typeof window !== 'undefined' && window.innerWidth >= 768 && createPortal(
         <div 
           ref={dropdownRef}
           id="language-menu" 
           role="listbox" 
-          className="fixed glass-morphism rounded-2xl shadow-2xl border border-gray-600/30 overflow-hidden z-[999999] animate-in focus:outline-none pointer-events-auto"
+          className="language-dropdown-portal glass-morphism rounded-2xl shadow-2xl border border-gray-600/30 overflow-hidden animate-in focus:outline-none pointer-events-auto"
           style={{
             top: dropdownPosition.top,
             left: dropdownPosition.left,
@@ -277,83 +271,219 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
             overflowY: 'auto'
           }}
         >
-          {/* Header du dropdown */}
-          <div className="sticky top-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-600/10 border-b border-gray-600/30 p-4 mb-2">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-100">Choisir une langue</h3>
+          {/* Header épuré et élégant - SANS bouton croix au milieu */}
+          <div className="relative overflow-hidden">
+            {/* Arrière-plan avec gradient subtil */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-indigo-600/20" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/3 to-transparent" />
+            
+            <div className="relative px-6 py-5 border-b border-white/10">
+              {/* Header centré et épuré */}
+              <div className="text-center">
+                <div className="inline-flex items-center gap-3 mb-3">
+                  <div className="relative">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Globe className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white tracking-wide">
+                    Sélectionner la langue
+                  </h3>
+                </div>
+                
+                <p className="text-sm text-gray-300/80 font-medium">
+                  {supportedLanguages.length} langues disponibles
+                </p>
+              </div>
+              
+              {/* Bouton fermer discret en haut à droite */}
               <button
                 onClick={closeDropdown}
-                className="button-interactive p-2 rounded-lg hover-glow-modern"
-                aria-label="Fermer le sélecteur de langue"
+                className="absolute top-3 right-3 w-8 h-8 rounded-full hover:bg-white/10 transition-all duration-200 flex items-center justify-center group"
+                aria-label="Fermer"
                 type="button"
               >
-                <X className="w-5 h-5 text-gray-300" />
+                <X className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-200" />
               </button>
             </div>
           </div>
 
-          {/* Liste des langues */}
-          <div className="px-3 pb-3">
-            <div className="pt-1">
-              <LanguageList />
+          {/* Liste des langues - UX/UI EXCELLENTE pour desktop */}
+          <div className="px-6 py-4">
+            <div className="space-y-3">
+              {supportedLanguages.map((language, index) => (
+                <div
+                  key={language.code}
+                  className={`group relative overflow-hidden rounded-2xl transition-all duration-300 ${
+                    language.code === safeCurrentLanguage 
+                      ? 'bg-gradient-to-r from-blue-600/20 via-purple-600/15 to-indigo-600/20 ring-2 ring-blue-400/50 shadow-xl shadow-blue-500/25' 
+                      : 'bg-gray-800/20 hover:bg-gradient-to-r hover:from-white/5 hover:to-white/10 hover:shadow-lg'
+                  }`}
+                >
+                  <button
+                    onClick={() => handleLanguageSelect(language.code)}
+                    className="w-full p-4 text-left transition-all duration-200 hover:scale-[1.02] active:scale-[0.99]"
+                    role="option"
+                    aria-selected={language.code === safeCurrentLanguage}
+                  >
+                    <div className="flex items-center gap-4 language-item-clean">
+                      
+                      {/* DRAPEAU SEUL - AUCUN CODE */}
+                      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                        <span className={`text-4xl transition-transform duration-300 filter ${
+                          language.code === safeCurrentLanguage 
+                            ? 'scale-110 drop-shadow-xl brightness-110' 
+                            : 'scale-100 group-hover:scale-105 drop-shadow-lg'
+                        }`}>
+                          {language.flag}
+                        </span>
+                      </div>
+
+                      {/* TEXTE SEULEMENT - NOM ET NOM NATIF */}
+                      <div className="flex-1 min-w-0">
+                        <div className={`font-bold leading-tight transition-all duration-200 ${
+                          language.code === safeCurrentLanguage 
+                            ? 'text-white text-lg tracking-wide' 
+                            : 'text-gray-100 text-base group-hover:text-white'
+                        }`}>
+                          {language.name}
+                        </div>
+                        <div className={`text-sm font-medium mt-1 transition-all duration-200 ${
+                          language.code === safeCurrentLanguage 
+                            ? 'text-blue-200' 
+                            : 'text-gray-300 group-hover:text-blue-200'
+                        }`}>
+                          {language.native}
+                        </div>
+                      </div>
+
+                      {/* INDICATEUR DE SÉLECTION ÉLÉGANT */}
+                      {language.code === safeCurrentLanguage && (
+                        <div className="flex-shrink-0">
+                          <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                            <Check className="w-4 h-4 text-white font-bold" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </button>
+                  
+                  {/* Ligne de séparation subtile */}
+                  {index < supportedLanguages.length - 1 && (
+                    <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-gray-600/30 to-transparent" />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Footer du dropdown */}
-          <div className="sticky bottom-0 bg-gradient-to-r from-gray-800/80 to-gray-700/80 border-t border-gray-600/30 p-3">
-            <div className="text-center text-xs text-gray-400">
-              {supportedLanguages.length} langues disponibles
+          {/* Footer moderne */}
+          <div className="relative overflow-hidden border-t border-white/10">
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 via-gray-700/30 to-gray-800/50" />
+            <div className="relative p-4">
+              <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse" />
+                <span>Cliquez en dehors pour fermer</span>
+                <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+              </div>
             </div>
           </div>
         </div>,
         document.body
       )}
 
-      {/* Version mobile - Modal plein écran */}
-      {isOpen && isMobile && createPortal(
+      {/* Version mobile - Modal plein écran optimisé et centré */}
+      {isOpen && isMobile && typeof window !== 'undefined' && window.innerWidth < 768 && createPortal(
         <div 
-          ref={dropdownRef}
-          className="fixed inset-0 z-[999999] bg-black/50 backdrop-blur-sm pointer-events-auto"
+          className="language-dropdown-portal fixed inset-0 flex items-center justify-center"
+          style={{ 
+            background: 'rgba(0, 0, 0, 0.85)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)'
+          }}
           onClick={closeDropdown}
-          role="dialog"
-          aria-modal="true"
         >
           <div 
-            className="absolute inset-0 flex items-end sm:items-center justify-center p-0 sm:p-4"
+            ref={modalRef}
+            className="bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white rounded-3xl shadow-2xl border border-white/30 animate-scale-in"
+            style={{
+              width: 'min(90vw, 400px)',
+              maxHeight: '85vh',
+              margin: '0 20px',
+              transform: 'translateZ(0)', // Force hardware acceleration
+              willChange: 'transform'
+            }}
             onClick={(e) => e.stopPropagation()}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="language-modal-title"
           >
-            <div className="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl w-full sm:max-w-sm max-h-[85vh] overflow-hidden animate-in pointer-events-auto">
-              {/* Header du modal mobile */}
-              <div className="bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-red-500/20 border-b border-white/20 p-5 mb-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                      <Globe className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800">Choisir une langue</h3>
+            {/* Header avec padding optimisé */}
+            <div className="p-6 pb-4">
+              <div className="flex items-center justify-between mb-2">
+                <h3 id="language-modal-title" className="text-xl font-bold text-white flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center">
+                    <Globe className="w-6 h-6 text-white" />
                   </div>
+                  Choisir une langue
+                </h3>
+                <button
+                  onClick={closeDropdown}
+                  className="p-3 rounded-2xl hover:bg-white/20 transition-all duration-200 hover:scale-110 active:scale-95"
+                  aria-label="Fermer le sélecteur de langue"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+              <p className="text-sm text-gray-300 opacity-80">
+                Sélectionnez votre langue préférée
+              </p>
+            </div>
+            
+            {/* Liste des langues avec scroll optimisé */}
+            <div className="px-6 pb-6">
+              <div 
+                className="space-y-3 overflow-y-auto mobile-scroll"
+                style={{ maxHeight: 'min(60vh, 400px)' }}
+              >
+                {supportedLanguages.map((language, index) => (
                   <button
-                    onClick={closeDropdown}
-                    className="p-3 rounded-2xl hover:bg-white/60 transition-all duration-200"
-                    aria-label="Fermer le sélecteur de langue"
-                    type="button"
+                    key={language.code}
+                    onClick={() => handleLanguageSelect(language.code)}
+                    className={`w-full flex items-center space-x-4 p-4 rounded-2xl text-left transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] ${
+                      language.code === safeCurrentLanguage 
+                        ? 'bg-gradient-to-r from-blue-500/30 to-purple-500/30 border-2 border-blue-400/60 shadow-xl shadow-blue-500/20' 
+                        : 'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20'
+                    }`}
+                    style={{ 
+                      animationDelay: `${index * 50}ms`,
+                    }}
                   >
-                    <X className="w-6 h-6 text-gray-600" />
+                    <div className="text-3xl drop-shadow-lg flex-shrink-0 w-12 text-center">{language.flag}</div>
+                    <div className="flex-1 min-w-0 ml-1">
+                      <div className="font-bold text-white text-lg leading-tight">{language.name}</div>
+                      <div className="text-sm text-gray-300 opacity-90 mt-1">{language.native}</div>
+                    </div>
+                    {language.code === safeCurrentLanguage && (
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                        <Check className="w-5 h-5 text-white font-bold" />
+                      </div>
+                    )}
                   </button>
-                </div>
+                ))}
               </div>
-
-              {/* Liste des langues mobile */}
-              <div className="px-4 pb-4 max-h-[70vh] overflow-y-auto">
-                <div className="pt-2">
-                  <LanguageList className="space-y-3" />
-                </div>
-              </div>
-
-              {/* Footer du modal mobile */}
-              <div className="bg-gray-50 border-t border-gray-200 p-3">
-                <div className="text-center text-sm text-gray-500">
-                  {supportedLanguages.length} langues disponibles
+              
+              {/* Footer avec info */}
+              <div className="px-6 pb-6 pt-4 border-t border-white/10">
+                <div className="text-center">
+                  <p className="text-sm text-gray-400 mb-2">
+                    {supportedLanguages.length} langues disponibles
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Touchez en dehors pour fermer
+                  </p>
                 </div>
               </div>
             </div>
@@ -374,9 +504,24 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
             transform: translateY(0);
           }
         }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
         
         .animate-in {
           animation: fadeInUp 0.2s ease-out;
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Prévenir les problèmes de chevauchement de texte */
@@ -393,6 +538,49 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
         .language-selector-container .min-w-0 {
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+
+        /* Améliorer le scroll sur mobile */
+        .mobile-scroll {
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Animation d'entrée pour le modal mobile */
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Animation d'entrée échelonnée pour les éléments de liste */
+        @keyframes fadeInStagger {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        /* Force le centrage sur tous les navigateurs mobiles */
+        .language-dropdown-portal {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          min-height: 100vh !important;
+          min-height: 100dvh !important; /* Support pour les nouveaux navigateurs */
         }
       `}</style>
     </>

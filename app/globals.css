@@ -657,6 +657,76 @@
     z-index: 99999;
   }
 
+  /* Z-index maximum pour le dropdown des langues */
+  .language-dropdown-portal {
+    z-index: 999999999 !important;
+    position: fixed !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important; /* Support pour les nouveaux navigateurs */
+  }
+
+  /* Empêcher le scroll sur mobile quand modal ouvert */
+  body.modal-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+  }
+
+  /* Optimisations pour les petits écrans */
+  @media screen and (max-height: 600px) {
+    .language-dropdown-portal {
+      align-items: flex-start !important;
+      padding-top: 40px !important;
+    }
+  }
+
+  /* Glass morphism effect moderne et premium */
+  .glass-morphism {
+    background: linear-gradient(135deg, 
+      rgba(15, 23, 42, 0.95) 0%, 
+      rgba(30, 41, 59, 0.9) 25%,
+      rgba(51, 65, 85, 0.95) 50%,
+      rgba(30, 41, 59, 0.9) 75%,
+      rgba(15, 23, 42, 0.95) 100%);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+      0 32px 64px -8px rgba(0, 0, 0, 0.6),
+      0 8px 32px -4px rgba(59, 130, 246, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  /* Effet de brillance subtile */
+  .glass-morphism::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(59, 130, 246, 0.4) 25%,
+      rgba(147, 51, 234, 0.4) 50%,
+      rgba(59, 130, 246, 0.4) 75%,
+      transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
   /* Améliorations pour le sélecteur de langue */
   .language-selector-container button {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -665,6 +735,73 @@
   .language-selector-container button:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* S'assurer que seuls les éléments de langue appropriés sont affichés */
+  .language-dropdown-portal .language-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Masquer TOUS les codes de débogage et éléments indésirables */
+  .language-dropdown-portal [data-language-code],
+  .language-dropdown-portal .language-code,
+  .language-dropdown-portal [data-code],
+  .language-dropdown-portal .country-code {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Force la suppression de tout texte ressemblant à des codes de pays */
+  .language-dropdown-portal button::before {
+    content: '' !important;
+  }
+
+  /* SUPPRESSION TOTALE des codes de pays - TOUTES les méthodes */
+  .language-dropdown-portal *[class*="FR"],
+  .language-dropdown-portal *[class*="US"],
+  .language-dropdown-portal *[class*="ES"],
+  .language-dropdown-portal *[class*="DE"],
+  .language-dropdown-portal *[class*="IT"],
+  .language-dropdown-portal *[class*="PT"],
+  .language-dropdown-portal *[class*="NL"],
+  .language-dropdown-portal *[class*="RU"],
+  .language-dropdown-portal *[class*="JP"],
+  .language-dropdown-portal *[class*="KR"],
+  .language-dropdown-portal *[class*="SA"],
+  .language-dropdown-portal *[class*="CN"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Suppression par contenu texte - très aggressif */
+  .language-dropdown-portal *:not(span):not(div):not(button) {
+    font-size: 0 !important;
+  }
+
+  /* Ne montrer QUE les drapeaux et noms de langues */
+  .language-dropdown-portal button > div > div:first-child {
+    /* Assurer que seul le drapeau est visible dans la première div */
+  }
+
+  /* Force l'affichage correct des éléments de langue */
+  .language-dropdown-portal .language-item-clean {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  /* Cacher tout texte qui ressemble à des codes */
+  .language-dropdown-portal *[data-testid*="code"],
+  .language-dropdown-portal *[id*="code"],
+  .language-dropdown-portal .code-* {
+    display: none !important;
   }
 
   .language-selector-container button:active {
