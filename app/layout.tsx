@@ -11,11 +11,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://roastme.chat'),
   title: {
-    default: 'Chat Roast IA Gratuit 🔥 | Meilleure IA de Roast Sans Filtres 2025',
-    template: '%s | Chat Roast IA Gratuit - #1 en France'
+    default: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
+    template: '%s | Roast Me - IA de Roast Gratuit'
   },
-  description: '🚀 Chat Roast IA #1 en France ! Intelligence artificielle ultra-cinglante qui te roaste sans filtres. ✅ Gratuit ✅ 12 langues ✅ Réponses instantanées. Teste maintenant !',
-  keywords: ['chat roast ia gratuit', 'meilleur roast ia 2025', 'intelligence artificielle roast', 'chat humour sans filtres', 'roast bot gratuit', 'ia comedy chat', 'roast generator ai', 'chatbot humour français', 'artificial intelligence roast', 'free ai roast chat'],
+  description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
+  keywords: ['roast me', 'roast', 'roast me chat', 'roast ia gratuit', 'roast me ai', 'chat roast', 'roast bot', 'se faire roaster', 'roast generator', 'roast machine', 'roast app', 'roast online', 'free roast ai', 'roast chatbot', 'roast sans pitié'],
   authors: [{ name: 'RoastMe Team' }],
   creator: 'RoastMe Team',
   publisher: 'RoastMe',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://roastme.chat',
     siteName: 'Chat Roast IA Gratuit - #1 en France',
-    title: 'Chat Roast IA Gratuit 🔥 | Meilleure IA de Roast Sans Filtres 2025',
-    description: '🚀 Chat Roast IA #1 en France ! Intelligence artificielle ultra-cinglante qui te roaste sans filtres. ✅ Gratuit ✅ 12 langues ✅ Réponses instantanées.',
+    title: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
+    description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané.',
     images: [
       {
         url: '/og-image.jpg',
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chat Roast IA Gratuit 🔥 | #1 IA de Roast Sans Filtres 2025',
-    description: '🚀 Chat Roast IA #1 ! Intelligence artificielle ultra-cinglante. ✅ Gratuit ✅ 12 langues ✅ Instantané. Teste maintenant !',
+    title: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
+    description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Chat roast gratuit #1. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
     images: ['/og-image.jpg'],
     creator: '@roastmechat',
     site: '@roastmechat',
@@ -72,6 +72,8 @@ export const metadata: Metadata = {
     languages: {
       'fr': 'https://roastme.chat',
       'en': 'https://roastme.chat/en',
+      'en-US': 'https://roastme.chat/en',
+      'en-GB': 'https://roastme.chat/en',
       'es': 'https://roastme.chat/es',
       'de': 'https://roastme.chat/de',
       'it': 'https://roastme.chat/it',
@@ -82,6 +84,7 @@ export const metadata: Metadata = {
       'zh': 'https://roastme.chat/zh',
       'ar': 'https://roastme.chat/ar',
       'nl': 'https://roastme.chat/nl',
+      'x-default': 'https://roastme.chat/en',
     },
   },
   // Métadonnées de performance et accessibilité
@@ -209,8 +212,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
         {/* Métadonnées de contenu et accessibilité */}
-        <meta name="description" content="Chat roast IA gratuit et sans filtres ! L'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥" />
-        <meta name="keywords" content="chat roast, roast IA, IA roast gratuit, chat humour, roast sans filtres, intelligence artificielle humour, chat comédie, roast créatif, blagues IA, divertissement chat" />
+        <meta name="description" content="🔥 ROAST ME - L'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. Roast personnalisé, sans filtres et instantané. Prêt à être roasté ?" />
+        <meta name="keywords" content="roast me, roast, roast me chat, roast ia gratuit, roast me ai, chat roast, roast bot, se faire roaster, roast generator, roast machine, roast app, roast online" />
         <meta name="author" content="RoastMe Team" />
         <meta name="copyright" content="RoastMe Team" />
         <meta name="coverage" content="Worldwide" />
@@ -219,8 +222,8 @@ export default function RootLayout({
         <meta name="revisit-after" content="1 days" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
-        {/* Mots-clés ciblés pour le chat roast */}
-        <meta name="keywords" content="chat roast gratuit, IA roast, roast sans filtres, humour IA, chat comédie, roast créatif, blagues intelligence artificielle, divertissement chat, roast en ligne, chat humour gratuit" />
+        {/* Mots-clés ciblés pour roast et roast me */}
+        <meta name="keywords" content="roast me, roast, roast me chat, roast gratuit, roast me ai, chat roast, roast bot, se faire roaster, roast sans pitié, roast personnalisé, roast machine, roast app" />
         
         {/* Métadonnées de localisation et ciblage */}
         <meta name="geo.region" content="FR" />
@@ -245,9 +248,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "Chat Roast IA Gratuit - #1 en France",
-              "alternateName": ["RoastMe Chat", "Meilleure IA Roast 2025", "Chat Humour IA", "Roast Bot Gratuit"],
-              "description": "🚀 Application web #1 de chat roast avec intelligence artificielle ultra-performante. L'IA la plus cinglante qui te roaste sans filtres avec des réponses instantanées en 12 langues.",
+              "name": "Roast Me - Chat IA de Roast Gratuit #1",
+              "alternateName": ["RoastMe", "Roast Me Chat", "Roast Me AI", "Chat Roast Gratuit", "Roast Bot"],
+              "description": "🔥 ROAST ME - L'application web #1 pour se faire roaster ! IA ultra-performante qui te roast sans pitié avec des réponses instantanées. Le meilleur roast generator gratuit en ligne.",
               "url": "https://roastme.chat",
               "applicationCategory": "EntertainmentApplication",
               "applicationSubCategory": "AI Chat Application",
@@ -282,31 +285,38 @@ export default function RootLayout({
                 "audienceType": "Adults interested in humor and entertainment",
                 "suggestedMinAge": "18"
               },
-              "keywords": "chat roast, roast IA, IA roast gratuit, chat humour, roast sans filtres, intelligence artificielle humour, chat comédie, roast créatif, blagues IA, divertissement chat",
+              "keywords": "roast me, roast, roast me chat, roast gratuit, roast me ai, chat roast, roast bot, se faire roaster, roast sans pitié, roast personnalisé, roast machine, roast generator",
               "datePublished": "2024-01-01",
               "dateModified": "2024-12-19",
               "softwareVersion": "2.0",
               "featureList": [
-                "Chat roast en temps réel",
-                "Intelligence artificielle avancée",
-                "Support multilingue",
-                "Interface responsive",
-                "Roast personnalisé",
-                "Humour sans filtres",
-                "Gratuit et accessible"
+                "Roast me en temps réel",
+                "Chat roast sans pitié",
+                "Roast personnalisé gratuit",
+                "Roast generator IA avancée",
+                "Se faire roaster instantanément",
+                "Roast machine multilingue",
+                "Roast bot accessible 24/7"
               ],
               "screenshot": "https://roastme.chat/og-image.jpg",
               "softwareRequirements": "Navigateur web moderne avec JavaScript activé",
               "permissions": "Aucune permission requise",
               "mainEntity": {
                 "@type": "Service",
-                "name": "Service de Chat Roast IA",
-                "description": "Service de chat en ligne utilisant l'intelligence artificielle pour créer des roasts humoristiques personnalisés",
+                "name": "Service Roast Me - Chat Roast IA",
+                "description": "Service de roast en ligne utilisant l'IA pour roaster sans pitié. Le meilleur chat roast gratuit pour se faire roaster instantanément",
                 "provider": {
                   "@type": "Organization",
-                  "name": "RoastMe Team"
+                  "name": "RoastMe Team",
+                  "url": "https://roastme.chat",
+                  "logo": "https://roastme.chat/logo.svg",
+                  "sameAs": [
+                    "https://twitter.com/roastmechat"
+                  ]
                 },
                 "areaServed": "Worldwide",
+                "serviceType": "AI Chat Service",
+                "category": "Entertainment",
                 "hasOfferCatalog": {
                   "@type": "OfferCatalog",
                   "name": "Services de Chat Roast",
@@ -315,12 +325,41 @@ export default function RootLayout({
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "Chat Roast Gratuit",
-                        "description": "Accès illimité au chat roast IA"
-                      }
+                        "name": "Roast Me Gratuit",
+                        "description": "Accès illimité pour se faire roaster par l'IA",
+                        "serviceType": "Free AI Roast Chat"
+                      },
+                      "price": "0",
+                      "priceCurrency": "EUR",
+                      "availability": "https://schema.org/InStock"
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Roast Personnalisé",
+                        "description": "Chat roast adapté à votre personnalité",
+                        "serviceType": "Personalized AI Roast"
+                      },
+                      "price": "0",
+                      "priceCurrency": "EUR",
+                      "availability": "https://schema.org/InStock"
                     }
                   ]
-                }
+                },
+                "potentialAction": [
+                  {
+                    "@type": "UseAction",
+                    "name": "Se faire roaster",
+                    "target": "https://roastme.chat"
+                  },
+                  {
+                    "@type": "SearchAction",
+                    "name": "Rechercher un type de roast",
+                    "target": "https://roastme.chat?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                ]
               }
             })
           }}

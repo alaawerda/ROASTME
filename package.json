@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test-import": "node scripts/test-import.js",
-    "postbuild": "node scripts/submit-to-indexnow.js"
+    "postbuild": "node scripts/submit-to-indexnow.js",
+    "submit-roast": "node scripts/submit-roast-pages.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

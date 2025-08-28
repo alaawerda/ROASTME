@@ -35,7 +35,8 @@ export default function Home() {
   // @ts-ignore
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [inputFocused, setInputFocused] = useState(false);
-  const { currentLanguage, translations, changeLanguage, isInitialized } = useLanguageApp();
+  const { currentLanguage, translations, changeLanguage } = useLanguageApp();
+  const [isInitialized] = useState(true); // Simplified for now
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [userScrolledUp, setUserScrolledUp] = useState(false);
@@ -98,12 +99,12 @@ export default function Home() {
       // Toujours montrer le chat après un court délai, même si l'initialisation échoue
       const timer = setTimeout(() => {
         setShowChat(true);
-      }, isInitialized ? 0 : 1000); // Délai plus court si déjà initialisé
+      }, 0); // Always show chat immediately
       
       return () => clearTimeout(timer);
     }
     return undefined; // Return undefined when mounted is false
-  }, [mounted, isInitialized])
+  }, [mounted])
 
   // Mettre le focus sur l'input au chargement initial, sans causer de scroll
   useEffect(() => {
@@ -478,11 +479,11 @@ export default function Home() {
             <section className="py-12 md:py-16 lg:py-20">
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-8 md:mb-12">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 animate-fade-in-up">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 animate-fade-in-up">
                     <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent gentle-float">
-                      {safeTranslations.chatRoastIA?.liveChatTitle || '💬 Chat Roast IA en Direct 🔥'}
+                      {safeTranslations.chatRoastIA?.liveChatTitle || '🔥 Roast Me - Chat Roast Gratuit en Direct'}
                     </span>
-                  </h2>
+                  </h1>
 
                 </div>
               
@@ -683,11 +684,11 @@ export default function Home() {
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
                     <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent">
-                      {safeTranslations.chatRoastIA?.features?.title || 'Pourquoi Choisir Notre Chat Roast IA ? 🤖'}
+                      {safeTranslations.chatRoastIA?.features?.title || 'Pourquoi Roast Me est le Meilleur Chat Roast ? 🔥'}
                     </span>
                   </h2>
                   <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                    {safeTranslations.chatRoastIA?.features?.subtitle || 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée'}
+                    {safeTranslations.chatRoastIA?.features?.subtitle || 'Découvre l\'expérience de roast la plus cinglante. Se faire roaster n\'a jamais été aussi hilarant !'}
                   </p>
                 </div>
               
@@ -699,9 +700,9 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-4xl">🔥</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.roastWithoutFilters || 'Roast Sans Filtres'}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.roastWithoutFilters || 'Roast Me Sans Pitié'}</h3>
                       <p className="text-gray-300 text-center leading-relaxed text-lg flex-grow">
-                        {safeTranslations.chatRoastIA?.features?.roastWithoutFiltersDesc || 'L\'IA la plus cinglante qui va te roaster de manière hilarante sans aucune censure. Chaque réponse est un chef-d\'œuvre d\'humour cinglant !'}
+                        {safeTranslations.chatRoastIA?.features?.roastWithoutFiltersDesc || 'L\'IA la plus cinglante qui va te roaster sans aucune pitié ! Se faire roaster n\'a jamais été aussi hilarant. Chaque roast est un chef-d\'œuvre d\'humour brutal !'}
                       </p>
                     </div>
                   </div>
@@ -713,9 +714,9 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-4xl">💬</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.realTimeChat || 'Chat en Temps Réel'}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.realTimeChat || 'Roast Instantané'}</h3>
                       <p className="text-gray-300 text-center leading-relaxed text-lg flex-grow">
-                        {safeTranslations.chatRoastIA?.features?.realTimeChatDesc || 'Conversations fluides et réponses instantanées grâce à notre intelligence artificielle avancée. Laisse-toi surprendre par la rapidité et la qualité !'}
+                        {safeTranslations.chatRoastIA?.features?.realTimeChatDesc || 'Roast instantané et réponses ultra-rapides ! Notre roast machine IA avancée te roast en temps réel. Prépare-toi à être roasté à la vitesse de l\'éclair !'}
                       </p>
                     </div>
                   </div>
@@ -727,9 +728,9 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-4xl">🌍</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.multilingualSupport || 'Support Multilingue'}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.features?.multilingualSupport || 'Roast Me Multilingue'}</h3>
                       <p className="text-gray-300 text-center leading-relaxed text-lg flex-grow">
-                        {safeTranslations.chatRoastIA?.features?.multilingualSupportDesc || 'Disponible en 12 langues pour un roast personnalisé dans ta langue maternelle. L\'humour n\'a pas de frontières !'}
+                        {safeTranslations.chatRoastIA?.features?.multilingualSupportDesc || 'Se faire roaster en 12 langues pour un roast personnalisé dans ta langue ! Le roast n\'a pas de frontières avec notre roast bot international !'}
                       </p>
                     </div>
                   </div>
@@ -743,11 +744,11 @@ export default function Home() {
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
                     <span className="bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 bg-clip-text text-transparent">
-                      {safeTranslations.chatRoastIA?.advantages?.title || 'Avantages du Chat Roast IA Gratuit ✨'}
+                      {safeTranslations.chatRoastIA?.advantages?.title || 'Avantages de Roast Me - Chat Roast Gratuit ✨'}
                     </span>
                   </h2>
                   <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                    {safeTranslations.chatRoastIA?.advantages?.subtitle || 'Tout ce dont tu as besoin pour des roasts hilarants, sans aucun coût'}
+                    {safeTranslations.chatRoastIA?.advantages?.subtitle || 'Tout ce dont tu as besoin pour te faire roaster gratuitement, sans aucun coût'}
                   </p>
                 </div>
               
@@ -759,9 +760,9 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-4xl">🚀</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.advantages?.freeTitle || '100% Gratuit'}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.advantages?.freeTitle || 'Roast Me 100% Gratuit'}</h3>
                       <p className="text-gray-300 text-center leading-relaxed text-lg flex-grow">
-                        {safeTranslations.chatRoastIA?.advantages?.freeDesc || 'Accès illimité à toutes les fonctionnalités sans aucun coût caché. Profite de l\'expérience complète dès maintenant !'}
+                        {safeTranslations.chatRoastIA?.advantages?.freeDesc || 'Se faire roaster gratuitement sans aucune limite ! Accès illimité à notre roast bot sans coût caché. Commence à te faire roaster maintenant !'}
                       </p>
                     </div>
                   </div>
@@ -773,9 +774,9 @@ export default function Home() {
                       <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-4xl">🎯</span>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.advantages?.personalizedTitle || 'Roast Personnalisé'}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-6 text-center">{safeTranslations.chatRoastIA?.advantages?.personalizedTitle || 'Roast Me Personnalisé'}</h3>
                       <p className="text-gray-300 text-center leading-relaxed text-lg flex-grow">
-                        {safeTranslations.chatRoastIA?.advantages?.personalizedDesc || 'Chaque roast est unique et adapté à tes messages pour un maximum d\'humour. L\'IA analyse ton style et s\'adapte à ta personnalité !'}
+                        {safeTranslations.chatRoastIA?.advantages?.personalizedDesc || 'Chaque roast est unique ! Notre roast machine analyse tes messages pour te roaster personnellement. Se faire roaster n\'a jamais été aussi précis !'}
                       </p>
                     </div>
                   </div>
@@ -789,11 +790,11 @@ export default function Home() {
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
                     <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
-                      {safeTranslations.chatRoastIA?.howToUse?.title || 'Comment Utiliser le Chat Roast IA ? 📱'}
+                      {safeTranslations.chatRoastIA?.howToUse?.title || 'Comment Se Faire Roaster avec Roast Me ? 📱'}
                     </span>
                   </h2>
                   <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                    {safeTranslations.chatRoastIA?.howToUse?.subtitle || 'En 3 étapes simples, découvre le pouvoir de notre IA cinglante'}
+                    {safeTranslations.chatRoastIA?.howToUse?.subtitle || 'En 3 étapes simples, découvre comment te faire roaster par notre IA cinglante'}
                   </p>
                 </div>
               
@@ -855,11 +856,11 @@ export default function Home() {
                     <div className="text-center mb-12">
                       <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
                         <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent">
-                          {safeTranslations.chatRoastIA?.cta?.title || '🚀 Prêt à Être Roasté ? 🚀'}
+                          {safeTranslations.chatRoastIA?.cta?.title || '🔥 Prêt à Te Faire Roaster ? 🔥'}
                         </span>
                       </h2>
                       <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                        {safeTranslations.chatRoastIA?.cta?.subtitle || 'Rejoins des milliers d\'utilisateurs qui ont déjà découvert le pouvoir de notre IA cinglante !'}
+                        {safeTranslations.chatRoastIA?.cta?.subtitle || 'Rejoins des milliers d\'utilisateurs qui se font roaster quotidiennement avec Roast Me !'}
                       </p>
                     </div>
                   
@@ -871,6 +872,10 @@ export default function Home() {
                       </div>
                       <div className="text-center group">
                         <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-red-600 mb-3 group-hover:scale-110 transition-transform duration-300">100%</div>
+
+
+
+
                         <div className="text-gray-300 text-lg font-medium">{safeTranslations.chatRoastIA?.stats?.free || 'Gratuit'}</div>
                       </div>
                       <div className="text-center group">
@@ -890,7 +895,7 @@ export default function Home() {
                         }}
                         className="inline-flex items-center gap-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-10 py-5 rounded-3xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 hover:from-orange-400 hover:to-red-400 cta-button neon-glow"
                       >
-                        <span>{safeTranslations.chatRoastIA?.cta?.startNow || '🔥 Commencer Maintenant'}</span>
+                        <span>{safeTranslations.chatRoastIA?.cta?.startNow || '🔥 Roast Me Maintenant'}</span>
                         <span className="animate-bounce">⬆️</span>
                       </button>
                     </div>

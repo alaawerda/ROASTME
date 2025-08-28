@@ -19,74 +19,74 @@ export interface SEOMetadata {
 export const seoMetadata = {
   // FRANÇAIS - Langue principale
   fr: {
-    title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
-    description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
+    title: 'Roast Me - IA de Roast Gratuit #1 🔥 | Se Faire Roaster Sans Pitié',
+    description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
     keywords: [
+      'roast me',
+      'roast',
+      'roast me chat',
+      'roast gratuit',
+      'roast me ai',
+      'roast me ia',
       'chat roast',
-      'roast IA',
-      'IA roast gratuit',
-      'chat humour',
-      'roast sans filtres',
-      'intelligence artificielle humour',
-      'chat comédie',
-      'roast créatif',
-      'blagues IA',
-      'divertissement chat',
-      'chat roast gratuit',
-      'IA roast sans censure',
-      'humour intelligence artificielle',
+      'roast bot',
+      'se faire roaster',
+      'roast generator',
+      'roast machine',
+      'roast app',
+      'roast online',
+      'roast sans pitié',
       'roast personnalisé',
-      'chat humour gratuit',
+      'roast instantané',
       'roast moi',
-      'descendre en flammes',
-      'humour cinglant',
-      'blagues sans filtres',
-      'IA humoriste'
+      'faire roaster',
+      'roast chatbot',
+      'meilleur roast'
     ],
     twitter: {
-      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
-      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante.'
+      title: 'Roast Me - IA de Roast Gratuit #1 🔥 | Se Faire Roaster Sans Pitié',
+      description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Chat roast gratuit #1 qui va te roaster sans pitié. Prêt à être roasté ?'
     },
     openGraph: {
-      title: 'Chat Roast IA Gratuit - L\'IA qui te Roaste en Flammes ! 🔥',
-      description: 'Chat roast IA gratuit et sans filtres ! L\'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante. Teste maintenant ! 🔥',
+      title: 'Roast Me - IA de Roast Gratuit #1 🔥 | Se Faire Roaster Sans Pitié',
+      description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
       locale: 'fr_FR'
     }
   },
 
   // ANGLAIS
   en: {
-    title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
-    description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
+    title: 'Roast Me - Free AI Roast Chat #1 🔥 | Best AI Roaster Online',
+    description: '🔥 ROAST ME - The AI that roasts you the best! Free roast chat #1 that will roast you mercilessly. ✅ Personalized roast ✅ No filter ✅ Instant. Ready to get roasted?',
     keywords: [
-      'ai roast chat',
-      'roast ai',
-      'free ai roast',
-      'humor chat',
-      'roast without filters',
-      'artificial intelligence humor',
-      'comedy chat',
-      'creative roast',
-      'ai jokes',
-      'entertainment chat',
-      'free roast chat',
-      'ai roast no censorship',
-      'ai humor',
-      'personalized roast',
-      'free humor chat',
       'roast me',
+      'roast',
+      'roast me chat',
+      'free roast ai',
+      'roast me ai',
+      'ai roast',
+      'roast bot',
       'get roasted',
-      'savage ai',
-      'unfiltered humor',
-      'ai comedian'
+      'roast generator',
+      'roast machine',
+      'roast app',
+      'roast online',
+      'savage roast',
+      'burn me',
+      'roast chat',
+      'best roast ai',
+      'funny roast',
+      'brutal roast',
+      'ai roaster',
+      'roast me now'
     ],
     twitter: {
-      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
-      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously.'
+      title: 'Roast Me - Free AI Roast Chat #1 🔥 | Best AI Roaster Online',
+      description: '🔥 ROAST ME - The AI that roasts you the best! Free roast chat #1. Ready to get roasted mercilessly?'
     },
     openGraph: {
-      title: 'Free AI Roast Chat - The AI that Roasts You in Flames! 🔥',
-      description: 'Free AI roast chat without filters! The most cutting AI that will roast you hilariously. Try now! 🔥',
+      title: 'Roast Me - Free AI Roast Chat #1 🔥 | Best AI Roaster Online',
+      description: '🔥 ROAST ME - The AI that roasts you the best! Free roast chat #1 that will roast you mercilessly. ✅ Personalized roast ✅ No filter ✅ Instant. Ready to get roasted?',
       locale: 'en_US'
     }
   },

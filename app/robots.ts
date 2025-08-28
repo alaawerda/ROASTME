@@ -8,7 +8,11 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: [
           '/',
+          '/roast',
+          '/roast-me',
           '/en',
+          '/en/roast',
+          '/en/roast-me',
           '/es',
           '/de',
           '/it',
