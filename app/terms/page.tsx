@@ -1,15 +1,7 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
-export const metadata: Metadata = {
-  title: 'Terms of Service | RoastMe Chat',
-  description: 'Terms of Service for RoastMe - Read our terms and conditions.',
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
 
 export default function TermsPage() {
   return (

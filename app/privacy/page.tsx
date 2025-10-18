@@ -1,15 +1,7 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
-export const metadata: Metadata = {
-  title: 'Privacy Policy | RoastMe Chat',
-  description: 'Privacy policy for RoastMe - Learn how we protect your data.',
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
 
 export default function PrivacyPage() {
   return (
