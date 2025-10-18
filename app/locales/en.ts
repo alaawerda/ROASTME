@@ -227,7 +227,6 @@ export const en = {
   // Chat
   chat: {
     title: 'RoastMe AI Chat',
-    subtitle: 'Chat with our AI to create roasts',
     placeholder: 'Type your message...',
     send: 'Send',
     thinking: 'AI is thinking...',

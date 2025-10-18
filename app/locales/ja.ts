@@ -227,8 +227,7 @@ export const ja = {
   // Chat
   chat: {
     title: 'RoastMe AIチャット',
-    subtitle: 'AIとチャットしてローストを作成',
-    placeholder: 'メッセージを入力...',
+        placeholder: 'メッセージを入力...',
     send: '送信',
     thinking: 'AIが考え中...',
     newChat: '新しい会話',
@@ -392,3 +391,4 @@ export const ja = {
     nextYear: '来年'
   }
 };
+

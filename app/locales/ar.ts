@@ -227,7 +227,6 @@ export const ar = {
   // Chat
   chat: {
     title: 'دردشة RoastMe الذكية',
-    subtitle: 'دردش مع الذكاء الاصطناعي لإنشاء تهكمات',
     placeholder: 'اكتب رسالتك...',
     send: 'إرسال',
     thinking: 'الذكاء الاصطناعي يفكر...',

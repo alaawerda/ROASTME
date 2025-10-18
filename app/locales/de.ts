@@ -227,7 +227,6 @@ export const de = {
   // Chat
   chat: {
     title: 'RoastMe KI-Chat',
-    subtitle: 'Chatte mit unserer KI, um Roasts zu erstellen',
     placeholder: 'Tippe deine Nachricht...',
     send: 'Senden',
     thinking: 'KI denkt nach...',

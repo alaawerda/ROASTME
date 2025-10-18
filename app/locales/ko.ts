@@ -227,7 +227,6 @@ export const ko = {
   // Chat
   chat: {
     title: 'RoastMe AI 채팅',
-    subtitle: 'AI와 채팅하여 로스트 만들기',
     placeholder: '메시지를 입력하세요...',
     send: '보내기',
     thinking: 'AI가 생각 중...',

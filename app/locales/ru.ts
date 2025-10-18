@@ -227,8 +227,7 @@ export const ru = {
   // Chat
   chat: {
     title: 'ИИ Чат RoastMe',
-    subtitle: 'Чат с нашим ИИ для создания ростов',
-    placeholder: 'Введите ваше сообщение...',
+        placeholder: 'Введите ваше сообщение...',
     send: 'Отправить',
     thinking: 'ИИ думает...',
     newChat: 'Новый Чат',
@@ -392,3 +391,4 @@ export const ru = {
     nextYear: 'В следующем году'
   }
 };
+

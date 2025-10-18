@@ -227,8 +227,7 @@ export const pt = {
   // Chat
   chat: {
     title: 'Chat IA RoastMe',
-    subtitle: 'Converse com nossa IA para criar roasts',
-    placeholder: 'Digite sua mensagem...',
+        placeholder: 'Digite sua mensagem...',
     send: 'Enviar',
     thinking: 'IA está pensando...',
     newChat: 'Nova Conversa',
@@ -392,3 +391,4 @@ export const pt = {
     nextYear: 'Próximo ano'
   }
 };
+

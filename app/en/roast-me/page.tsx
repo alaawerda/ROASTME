@@ -4,12 +4,10 @@ import { useLanguageApp } from '../../hooks/useLanguage'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RoastSEO from '../../components/RoastSEO'
-import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function EnglishRoastMePage() {
   const { currentLanguage, translations, changeLanguage } = useLanguageApp()
-  const router = useRouter()
 
   // Redirect to main domain after 3 seconds
   useEffect(() => {

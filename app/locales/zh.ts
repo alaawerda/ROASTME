@@ -227,7 +227,6 @@ export const zh = {
   // Chat
   chat: {
     title: 'RoastMe AI聊天',
-    subtitle: '与我们的AI聊天创建吐槽',
     placeholder: '输入您的消息...',
     send: '发送',
     thinking: 'AI正在思考...',

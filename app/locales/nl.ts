@@ -227,7 +227,6 @@ export const nl = {
   // Chat
   chat: {
     title: 'RoastMe AI Chat',
-    subtitle: 'Chat met onze AI om roasts te maken',
     placeholder: 'Typ je bericht...',
     send: 'Versturen',
     thinking: 'AI denkt na...',

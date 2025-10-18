@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Sparkles, Lightbulb, MessageSquare, Zap, Plus, Copy, Share2 } from 'lucide-react'
+import { Send, Sparkles, Lightbulb, MessageSquare, Zap } from 'lucide-react'
 import { Message } from '../types'
 import ChatMessage from './ChatMessage'
 import QuickSuggestions from './QuickSuggestions'
