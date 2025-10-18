@@ -235,7 +235,12 @@ export const it = {
     clearChat: 'Cancella Conversazione',
     copyResponse: 'Copia Risposta',
     responseCopied: 'Risposta copiata!',
-    tip: '💡 Consiglio: Più dettagli mi dai su di te (età, situazione, hobby, difetti...), più preciso e divertente sarà il roast! 😄',
+    tip: '💡 Suggerimento: Più dettagli mi dai su di te (età, situazione, hobby, difetti...), più preciso e esilarante sarà il roast! 😄',
+    welcome: 'L\'IA più piccante del web',
+    subtitle: 'Pronto a essere roastato? Dimmi chi sei!',
+    inputPlaceholder: 'Scrivi qui chi sei per essere roastato...',
+    hint: 'Premi Invio per inviare, Shift + Invio per nuova riga',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Aggiungi più dettagli',
       goodProgress: '👍 Bene, continua!',

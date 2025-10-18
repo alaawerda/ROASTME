@@ -235,7 +235,12 @@ export const de = {
     clearChat: 'Unterhaltung löschen',
     copyResponse: 'Antwort kopieren',
     responseCopied: 'Antwort kopiert!',
-    tip: '💡 Tipp: Je mehr Details du mir über dich gibst (Alter, Situation, Hobbys, Schwächen...), desto präziser und lustiger wird der Roast! 😄',
+    tip: '💡 Tipp: Je mehr Details du mir über dich gibst (Alter, Situation, Hobbys, Schwächen...), desto genauer und lustiger wird das Roast! 😄',
+    welcome: 'Die schärfste KI im Web',
+    subtitle: 'Bereit zu werden geröstet? Sag mir, wer du bist!',
+    inputPlaceholder: 'Schreib hier, wer du bist, um geröstet zu werden...',
+    hint: 'Drücke Enter zum Senden, Shift + Enter für neue Zeile',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Mehr Details hinzufügen',
       goodProgress: '👍 Gut, mach weiter!',

@@ -705,6 +705,248 @@
     position: relative;
   }
 
+  /* === UX/UI APP MOBILE NATIVE - DISCUSSION OPTIMISÉE === */
+  
+  /* Chat container - Style app mobile native */
+  @media (max-width: 640px) {
+    .mobile-app-chat-native {
+      /* Fond app mobile */
+      background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%) !important;
+      border-radius: 0 !important; /* Supprime les bords arrondis pour look natif */
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100vh !important; /* Pleine hauteur comme une app */
+      max-height: 100vh !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 100 !important;
+      box-shadow: none !important; /* Supprime l'ombre pour look natif */
+    }
+
+    /* Header chat app mobile native */
+    .mobile-app-header-native {
+      background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+      padding: 0.75rem 1rem !important;
+      border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 10 !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+    }
+
+    /* Messages zone app mobile native */
+    .mobile-app-messages-native {
+      background: #111827 !important;
+      padding: 1rem !important;
+      height: calc(100vh - 140px) !important; /* Hauteur calculée pour app */
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      scroll-behavior: smooth !important;
+    }
+
+    /* Input zone app mobile native */
+    .mobile-app-input-native {
+      background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+      border-top: 1px solid rgba(75, 85, 99, 0.3) !important;
+      padding: 1rem !important;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 20 !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+    }
+
+    /* Message bulle app mobile native */
+    .mobile-app-bubble-native {
+      border-radius: 1.5rem !important;
+      padding: 0.875rem 1.125rem !important;
+      margin-bottom: 0.75rem !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+    }
+
+    /* Message utilisateur app mobile native */
+    .mobile-app-bubble-user-native {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+      color: white !important;
+      margin-left: 2rem !important;
+      margin-right: 0.5rem !important;
+      align-self: flex-end !important;
+    }
+
+    /* Message IA app mobile native */
+    .mobile-app-bubble-ai-native {
+      background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+      color: #f3f4f6 !important;
+      margin-right: 2rem !important;
+      margin-left: 0.5rem !important;
+      align-self: flex-start !important;
+      border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    }
+
+    /* Status bar app mobile native - DESIGN ÉPURÉ */
+    .mobile-app-status-native {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.75rem !important;
+      padding: 0.5rem 1rem !important;
+      background: rgba(16, 185, 129, 0.08) !important;
+      border-radius: 1.5rem !important;
+      border: 1px solid rgba(16, 185, 129, 0.15) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    /* Input field app mobile native */
+    .mobile-app-input-field-native {
+      background: rgba(17, 24, 39, 0.8) !important;
+      border: 1px solid rgba(75, 85, 99, 0.4) !important;
+      border-radius: 1.5rem !important;
+      padding: 0.875rem 1rem !important;
+      color: white !important;
+      font-size: 1rem !important;
+      width: 100% !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .mobile-app-input-field-native:focus {
+      border-color: #3b82f6 !important;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+      outline: none !important;
+    }
+
+    /* Send button app mobile native */
+    .mobile-app-send-native {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+      border: none !important;
+      border-radius: 50% !important;
+      width: 3rem !important;
+      height: 3rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-left: 0.75rem !important;
+      transition: all 0.2s ease !important;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3) !important;
+    }
+
+    .mobile-app-send-native:active {
+      transform: scale(0.95) !important;
+    }
+
+    .mobile-app-send-native:disabled {
+      opacity: 0.5 !important;
+      transform: none !important;
+    }
+
+    /* Design épuré mobile - Suppression éléments superflus */
+    .mobile-clean-design {
+      /* Supprimer les effets de flou et dégradés complexes sur mobile */
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+      border: 1px solid rgba(75, 85, 99, 0.2) !important;
+    }
+
+    /* Simplification des animations sur mobile */
+    .mobile-simple-animation {
+      animation: none !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* Header simplifié mobile */
+    .mobile-simple-header {
+      background: #374151 !important;
+      border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+      padding: 0.75rem !important;
+    }
+  }
+
+  /* === CLASSES D'URGENCE POUR CORRECTIONS MOBILES === */
+  
+  /* Fix complet mobile - Solution universelle - LARGEUR CORRIGÉE */
+  .mobile-emergency-fix {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fix zone d'input mobile - Solution définitive - LARGEUR CORRIGÉE */
+  .mobile-input-emergency-fix {
+    position: sticky !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    z-index: 1000 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+    background: rgba(31, 41, 59, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+  }
+
+  /* Fix chat mobile - Solution définitive - LARGEUR CORRIGÉE */
+  .mobile-chat-emergency-fix {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    height: 70vh !important;
+    min-height: 500px !important;
+    max-height: 80vh !important;
+  }
+
+  /* Fix messages mobile - Solution définitive - LARGEUR CORRIGÉE */
+  .mobile-message-emergency-fix {
+    max-width: calc(100% - 2rem) !important;
+    width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 1rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Fix sections mobile - Solution définitive - LARGEUR CORRIGÉE */
+  .mobile-section-emergency-fix {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 2rem 1rem !important;
+    margin-bottom: 2rem !important;
+    overflow: visible !important;
+  }
+
+  /* Fix bouton flottant mobile */
+  .mobile-floating-button-fix {
+    position: fixed !important;
+    bottom: 120px !important;
+    right: 1rem !important;
+    z-index: 999 !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  }
+
   /* Effet de brillance subtile */
   .glass-morphism::before {
     content: '';
@@ -1007,9 +1249,373 @@
   .ultra-compact-margin {
     @apply m-1;
   }
+
+  /* ChatGPT-like Modern Chat Interface Styles */
+  .chat-interface-modern {
+    @apply flex flex-col h-full bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950;
+  }
+
+  .chat-messages-modern {
+    @apply flex-1 overflow-y-auto w-full;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 53, 0.4) transparent;
+  }
+
+  .chat-messages-modern::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chat-messages-modern::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .chat-messages-modern::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.4);
+    border-radius: 3px;
+  }
+
+  .chat-messages-modern::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 53, 0.6);
+  }
+
+  /* Empty state styling */
+  .chat-empty-state {
+    @apply flex flex-col items-center justify-center min-h-screen py-8 px-4;
+  }
+
+  .chat-empty-icon {
+    @apply mb-8 relative;
+  }
+
+  .chat-empty-icon-glow {
+    @apply absolute inset-0 bg-gradient-to-r from-flame-orange to-purple-dark rounded-full blur-3xl opacity-30 animate-pulse;
+  }
+
+  .chat-empty-icon-circle {
+    @apply relative w-24 h-24 bg-gradient-to-br from-flame-orange to-purple-dark rounded-full flex items-center justify-center shadow-2xl;
+  }
+
+  .chat-empty-icon-sparkle {
+    @apply w-12 h-12 text-white animate-spin;
+  }
+
+  .chat-empty-title {
+    @apply text-4xl md:text-5xl font-bold bg-gradient-to-r from-flame-orange via-purple-light to-flame-orange-light bg-clip-text text-transparent mb-4;
+  }
+
+  .chat-empty-subtitle {
+    @apply text-lg text-gray-400 mb-2;
+  }
+
+  .chat-empty-description {
+    @apply text-base text-gray-500;
+  }
+
+  /* Suggestion cards in empty state */
+  .chat-suggestion-card {
+    @apply group relative h-full p-4 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:shadow-flame-orange/20 text-left overflow-hidden cursor-pointer;
+  }
+
+  .chat-suggestion-card-gradient {
+    @apply absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300;
+  }
+
+  .chat-suggestion-card-icon {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 text-white;
+  }
+
+  .chat-suggestion-card-title {
+    @apply text-sm font-semibold text-white mb-2 group-hover:text-flame-orange transition-colors;
+  }
+
+  .chat-suggestion-card-description {
+    @apply text-xs text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-2;
+  }
+
+  /* Loading indicator */
+  .chat-loading-dots {
+    @apply flex items-center gap-2;
+  }
+
+  .chat-loading-dot {
+    @apply w-2 h-2 bg-flame-orange rounded-full animate-bounce;
+  }
+
+  /* Input section */
+  .chat-input-modern {
+    @apply w-full border-t border-gray-700/50 bg-gradient-to-b from-gray-900/50 to-gray-950 backdrop-blur-md relative;
+  }
+
+  .chat-input-container {
+    @apply w-full max-w-4xl mx-auto px-4 py-4;
+  }
+
+  .chat-input-wrapper {
+    @apply relative rounded-2xl transition-all duration-300;
+  }
+
+  .chat-input-wrapper.focused {
+    @apply bg-gray-800/80 ring-2 ring-flame-orange/50 shadow-lg shadow-flame-orange/20;
+  }
+
+  .chat-input-wrapper.unfocused {
+    @apply bg-gray-800/50 hover:bg-gray-800/60 ring-1 ring-gray-700/50;
+  }
+
+  .chat-input-field {
+    @apply w-full bg-transparent text-white placeholder-gray-500 outline-none resize-none px-4 py-3 text-base leading-relaxed;
+  }
+
+  .chat-send-button {
+    @apply absolute right-3 bottom-3 p-2.5 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center;
+  }
+
+  .chat-send-button.active {
+    @apply bg-gradient-to-r from-flame-orange to-flame-orange-light text-white hover:shadow-lg hover:shadow-flame-orange/40 transform hover:scale-105 active:scale-95;
+  }
+
+  .chat-send-button.disabled {
+    @apply bg-gray-700 text-gray-500 cursor-not-allowed;
+  }
+
+  .chat-input-hint {
+    @apply mt-2 px-1 text-xs text-gray-500 flex items-center justify-between;
+  }
+
+  /* Message container improvements */
+  .chat-message-wrapper {
+    @apply flex animate-in fade-in mb-6 w-full;
+  }
+
+  .chat-message-group {
+    @apply flex items-end gap-3 max-w-3xl group;
+  }
+
+  /* Avatar styles */
+  .chat-avatar {
+    @apply flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-lg transition-all duration-300;
+  }
+
+  .chat-avatar-user {
+    @apply bg-gradient-to-br from-flame-orange to-flame-orange-light ring-2 ring-flame-orange/30;
+  }
+
+  .chat-avatar-ai {
+    @apply bg-gradient-to-br from-purple-dark to-purple-medium ring-2 ring-purple-dark/30;
+  }
+
+  /* Message bubble styles */
+  .chat-bubble-modern {
+    @apply relative px-4 py-3 rounded-2xl max-w-2xl break-words transition-all duration-300 group-hover:shadow-xl;
+  }
+
+  .chat-bubble-user {
+    @apply bg-gradient-to-br from-flame-orange to-flame-orange-light text-white shadow-lg shadow-flame-orange/20 rounded-br-none;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-gray-800 text-gray-100 shadow-lg shadow-purple-dark/10 rounded-bl-none;
+  }
+
+  .chat-bubble-content {
+    @apply whitespace-pre-wrap text-base leading-relaxed font-medium;
+  }
+
+  .chat-bubble-timestamp {
+    @apply text-xs mt-2 opacity-70;
+  }
+
+  .chat-bubble-timestamp-user {
+    @apply text-white/80;
+  }
+
+  .chat-bubble-timestamp-ai {
+    @apply text-gray-400;
+  }
+
+  /* Copy button for AI messages */
+  .chat-copy-button {
+    @apply absolute -top-10 right-0 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-all duration-200 opacity-0 group-hover:opacity-100 shadow-lg;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  /* Responsive improvements for mobile */
+  @media (max-width: 768px) {
+    .chat-empty-state {
+      @apply min-h-auto py-4;
+    }
+
+    .chat-empty-icon-circle {
+      @apply w-20 h-20;
+    }
+
+    .chat-empty-icon-sparkle {
+      @apply w-10 h-10;
+    }
+
+    .chat-empty-title {
+      @apply text-2xl md:text-3xl;
+    }
+
+    .chat-suggestion-card {
+      @apply p-3 rounded-xl;
+    }
+
+    .chat-message-wrapper {
+      @apply mb-4;
+    }
+
+    .chat-bubble-modern {
+      @apply px-3 py-2;
+    }
+
+    .chat-input-container {
+      @apply px-3 py-3;
+    }
+  }
 }
 
 @layer utilities {
+  /* === CLASSES UTILITAIRES MOBILES PARFAITES === */
+  
+  /* Largeur mobile adaptative - CORRIGÉE */
+  .mobile-width-full {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Container mobile parfait - CORRIGÉ */
+  .mobile-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  /* Espacement mobile adaptatif */
+  .mobile-spacing-adaptive {
+    padding: clamp(0.5rem, 2vw, 1.5rem);
+    margin: clamp(0.25rem, 1vw, 1rem) 0;
+  }
+
+  /* Texte mobile adaptatif */
+  .mobile-text-adaptive {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    line-height: clamp(1.3, 1.5, 1.6);
+  }
+
+  /* Boutons mobiles parfaits */
+  .mobile-button-perfect {
+    min-height: 48px;
+    min-width: 48px;
+    padding: clamp(0.75rem, 3vw, 1rem);
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    border-radius: clamp(8px, 2vw, 16px);
+    width: 100%;
+    touch-action: manipulation;
+  }
+
+  /* Input mobile parfait */
+  .mobile-input-perfect {
+    width: 100% !important;
+    min-height: 52px;
+    padding: clamp(0.75rem, 3vw, 1rem);
+    font-size: 16px !important; /* Empêcher le zoom iOS */
+    border-radius: clamp(12px, 3vw, 16px);
+    touch-action: manipulation;
+  }
+
+  /* Chat mobile parfait - CORRIGÉ */
+  .mobile-chat-perfect {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 60vh;
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  /* Messages mobile parfaits - CORRIGÉS */
+  .mobile-message-perfect {
+    max-width: calc(100% - 2rem) !important;
+    width: 100%;
+    padding: clamp(0.75rem, 3vw, 1rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    border-radius: clamp(12px, 3vw, 16px);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Grid mobile adaptatif */
+  .mobile-grid-adaptive {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+    width: 100%;
+  }
+
+  /* Section mobile parfaite - CORRIGÉE */
+  .mobile-section-perfect {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1.5rem);
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Header mobile parfait - CORRIGÉ */
+  .mobile-header-perfect {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* Footer mobile parfait - CORRIGÉ */
+  .mobile-footer-perfect {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(0.75rem, 3vw, 1.5rem);
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   /* Text gradients modernes */
   .text-gradient-flame {
     background: linear-gradient(135deg, var(--flame-orange), var(--flame-yellow));
@@ -1757,197 +2363,574 @@
   }
 }
 
-  /* Optimisations mobiles avancées - Version améliorée UX */
+  /* === OPTIMISATIONS MOBILES AVANCÉES - AFFICHAGE MOBILE PARFAIT === */
   @media (max-width: 640px) {
-    /* Empêcher le scroll automatique sur mobile */
+    /* Empêcher le scroll automatique sur mobile + DÉBORDEMENT HORIZONTAL */
     html, body {
       scroll-behavior: auto !important;
       -webkit-overflow-scrolling: touch !important;
       /* Amélioration de la performance tactile */
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
+      /* Forcer l'affichage mobile optimal */
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      /* Assurer que tout l'espace est visible */
+      min-height: 100vh;
+      min-height: 100dvh;
+      /* EMPÊCHER DÉBORDEMENT HORIZONTAL */
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden !important;
+    }
+
+    /* Empêcher TOUS les débordements sur mobile */
+    * {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Container principal mobile - LARGEUR STRICTE */
+    .chat-layout {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 100vh;
+      min-height: 100dvh; /* Support pour les nouveaux navigateurs */
+      overflow-x: hidden !important;
     }
     
     /* Optimisation des zones tactiles */
     button, a, input {
-      min-height: 44px;
-      min-width: 44px;
+      min-height: 48px;
+      min-width: 48px;
       touch-action: manipulation;
+      /* Zones tactiles confortables */
+      padding: 12px !important;
     }
     
+    /* Chat container mobile optimisé - LARGEUR CORRIGÉE */
+    .chat-container {
+      width: 100%;
+      max-width: 100%;
+      min-height: 70vh;
+      padding: 0.75rem !important;
+      margin: 0 !important;
+    }
+    
+    /* Bulles de chat mobiles parfaites - LARGEUR CORRIGÉE */
     .chat-bubble {
-      @apply p-2.5 rounded-lg;
+      @apply p-3 rounded-xl;
+      max-width: calc(100% - 2rem) !important;
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
 
-  .btn-primary {
-    @apply py-2 px-3 text-sm;
+    /* Conteneur des messages mobile optimisé - LARGEUR CORRIGÉE */
+    .chat-messages-container {
+      width: 100%;
+      max-width: 100%;
+      height: 60vh !important;
+      min-height: 400px;
+      padding: 1rem !important;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Boutons et contrôles mobiles */
+    .btn-primary {
+      @apply py-3 px-4 text-base;
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+    }
+
+    /* Cartes mobiles */
+    .card {
+      @apply p-4 rounded-2xl;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    /* Header mobile compact */
+    .header-gradient {
+      @apply py-3;
+      width: 100vw;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    /* Input mobile parfait - CORRECTION BUG AFFICHAGE */
+    .input-styled {
+      @apply py-4 text-base px-12;
+      width: 100% !important;
+      min-height: 56px !important;
+      border-radius: 16px;
+      font-size: 16px !important; /* Empêcher le zoom sur iOS */
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Zone d'input container mobile PARFAIT - LARGEUR CORRIGÉE */
+    .input-container, .chat-input-section {
+      width: 100% !important;
+      max-width: 100% !important;
+      position: sticky !important;
+      bottom: 0 !important;
+      z-index: 100 !important;
+      /* Assurer la visibilité complète */
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      /* Safe area pour iPhone */
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Espacement mobile optimisé */
+    .compact-spacing {
+      @apply space-y-3;
+    }
+
+    .compact-padding {
+      @apply p-3;
+    }
+
+    /* Bouton d'envoi mobile PARFAIT */
+    .send-button-enhanced {
+      @apply p-3;
+      min-width: 52px !important;
+      min-height: 52px !important;
+      border-radius: 16px;
+      position: absolute !important;
+      right: 0.75rem !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      z-index: 10 !important;
+    }
+
+    /* Icônes et adornments mobiles */
+    .input-adornment {
+      @apply left-3;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Sections mobile - CORRECTION TEXTE COUPÉ + LARGEUR */
+    section {
+      padding: 2rem 1rem !important;
+      width: 100%;
+      max-width: 100%;
+      /* Assurer l'espacement en bas */
+      margin-bottom: 1rem !important;
+      /* Éviter que le contenu soit coupé */
+      overflow: visible !important;
+    }
+
+    /* Dernière section - espacement supplémentaire */
+    section:last-of-type {
+      padding-bottom: 3rem !important;
+      margin-bottom: 2rem !important;
+    }
+
+    /* Conteneurs mobile - LARGEUR CORRIGÉE */
+    .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* Grid mobile */
+    .grid {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+
+    /* Text mobile optimisé */
+    h1, h2, h3 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    p {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    /* Modal mobile */
+    .modal {
+      width: 100vw !important;
+      height: 100vh !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    /* Navigation mobile */
+    .nav-item {
+      width: 100%;
+      padding: 1rem !important;
+      font-size: 1.1rem !important;
+    }
   }
 
-  .card {
-    @apply p-3 rounded-xl;
-  }
-
-  .header-gradient {
-    @apply py-2;
-  }
-
-  .input-styled {
-    @apply py-2.5 text-sm px-10;
-  }
-
-  .compact-spacing {
-    @apply space-y-2;
-  }
-
-  .compact-padding {
-    @apply p-2;
-  }
-
-  .send-button-enhanced {
-    @apply p-2.5;
-    min-width: 44px;
-    min-height: 44px;
-  }
-
-  .input-adornment {
-    @apply left-2.5;
-    width: 18px;
-    height: 18px;
-  }
-}
-
-  /* Optimisations ultra-compactes pour très petits écrans */
+  /* === OPTIMISATIONS ULTRA-COMPACTES POUR TRÈS PETITS ÉCRANS === */
   @media (max-width: 480px) {
-    /* Empêcher le scroll automatique sur très petits écrans */
+    /* Configuration viewport optimale */
     html, body {
       scroll-behavior: auto !important;
-      -webkit-overflow-scrolling: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      width: 100vw;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
     
-    .chat-bubble {
-      @apply p-2 rounded-md;
-      max-width: calc(100vw - 3rem);
+    /* Chat container ultra-compact */
+    .chat-container {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      padding: 0.5rem !important;
+      margin: 0 !important;
+      min-height: 65vh;
     }
 
-  .user-bubble {
-    max-width: calc(100vw - 4rem);
+    /* Messages ultra-compacts */
+    .chat-messages-container {
+      height: 55vh !important;
+      min-height: 350px;
+      padding: 0.75rem !important;
+      width: 100vw;
+      max-width: 100vw;
+    }
+    
+    /* Bulles de chat ultra-compactes */
+    .chat-bubble {
+      @apply p-2.5 rounded-xl;
+      max-width: calc(100vw - 1.5rem) !important;
+      width: 100%;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .user-bubble {
+      max-width: calc(100vw - 2rem) !important;
+    }
+
+    .ai-bubble, .ai-bubble-solid {
+      max-width: calc(100vw - 1.5rem) !important;
+    }
+
+    /* Texte mobile optimisé */
+    .mobile-text, .mobile-optimized-text {
+      @apply text-sm leading-relaxed;
+      font-size: 0.9rem !important;
+    }
+
+    /* Avatars compacts */
+    .mobile-avatar, .mobile-avatar-optimized {
+      @apply w-8 h-8 rounded-xl;
+    }
+
+    /* Espacement ultra-compact */
+    .mobile-spacing, .mobile-spacing-optimized {
+      @apply space-y-2 mb-2;
+    }
+
+    .mobile-indicator {
+      @apply -top-1 left-1 px-1 py-0.5 text-xs;
+    }
+
+    .mobile-timestamp {
+      @apply mt-1 space-x-1;
+    }
+
+    .mobile-timestamp-item {
+      @apply px-1 py-0.5 text-xs;
+    }
+
+    /* Zone d'input ultra-compacte */
+    .input-container, .chat-input-section {
+      @apply p-3;
+      width: 100vw;
+      max-width: 100vw;
+    }
+
+    .input-styled {
+      @apply py-3 text-base px-10;
+      width: 100%;
+      min-height: 52px;
+      font-size: 16px !important;
+      border-radius: 14px;
+    }
+
+    .send-button-enhanced {
+      @apply p-2.5;
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 14px;
+    }
+
+    .input-adornment {
+      @apply left-2.5;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Sections ultra-compactes */
+    section {
+      padding: 1rem 0.75rem !important;
+      width: 100vw;
+      max-width: 100vw;
+    }
+
+    /* Titres ultra-compacts */
+    h1 {
+      font-size: clamp(1.25rem, 4vw, 2rem) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    h2 {
+      font-size: clamp(1.1rem, 3.5vw, 1.75rem) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    h3 {
+      font-size: clamp(1rem, 3vw, 1.5rem) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    /* Conteneurs ultra-compacts */
+    .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl {
+      max-width: 100vw !important;
+      width: 100vw !important;
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+
+    /* Feature cards ultra-compactes */
+    .feature-card {
+      padding: 1rem !important;
+      margin-bottom: 0.75rem !important;
+      border-radius: 16px !important;
+    }
+
+    /* Boutons ultra-compacts */
+    .btn-primary {
+      min-height: 48px;
+      padding: 0.75rem 1rem !important;
+      font-size: 0.95rem !important;
+      border-radius: 12px;
+      width: 100%;
+    }
+
+    /* Cartes ultra-compactes */
+    .card {
+      @apply p-3 rounded-xl;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
   }
 
-  .ai-bubble {
-    max-width: calc(100vw - 3rem);
-  }
-
-  .mobile-text {
-    @apply text-sm leading-tight;
-  }
-
-  .mobile-avatar {
-    @apply w-7 h-7 rounded-md;
-  }
-
-  .mobile-spacing {
-    @apply space-y-1.5 mb-1.5;
-  }
-
-  .mobile-indicator {
-    @apply -top-1.5 left-1.5 px-1 py-0.5 text-xs;
-  }
-
-  .mobile-timestamp {
-    @apply mt-1.5 space-x-1;
-  }
-
-  .mobile-timestamp-item {
-    @apply px-1 py-0.5 text-xs;
-  }
-
-  /* Optimisation de l'espacement des messages */
-  .chat-container {
-    @apply p-2;
-  }
-
-  /* Optimisation de la zone d'input */
-  .input-container {
-    @apply p-2;
-  }
-
-  .input-styled {
-    @apply py-2 text-sm px-9;
-  }
-
-  .send-button-enhanced {
-    @apply p-2;
-    min-width: 40px;
-    min-height: 40px;
-  }
-
-  .input-adornment {
-    @apply left-2;
-    width: 16px;
-    height: 16px;
-  }
-}
-
-  /* Optimisations pour écrans ultra-petits (smartphones compacts) */
+  /* === OPTIMISATIONS POUR ÉCRANS ULTRA-PETITS (SMARTPHONES COMPACTS) === */
   @media (max-width: 360px) {
-    /* Empêcher le scroll automatique sur écrans ultra-petits */
+    /* Configuration viewport ultra-compacte */
     html, body {
       scroll-behavior: auto !important;
-      -webkit-overflow-scrolling: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      width: 100vw;
+      max-width: 100vw;
+      overflow-x: hidden;
+      font-size: 14px !important;
     }
     
-    .chat-bubble {
-      @apply p-1.5 rounded-md;
-      max-width: calc(100vw - 2.5rem);
+    /* Chat container ultra-minimal */
+    .chat-container {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      padding: 0.25rem !important;
+      margin: 0 !important;
+      min-height: 60vh;
     }
 
-  .mobile-avatar {
-    @apply w-6 h-6 rounded-md;
-  }
+    /* Messages ultra-minimal */
+    .chat-messages-container {
+      height: 50vh !important;
+      min-height: 300px;
+      padding: 0.5rem !important;
+      width: 100vw;
+      max-width: 100vw;
+    }
+    
+    /* Bulles ultra-compactes */
+    .chat-bubble {
+      @apply p-2 rounded-lg;
+      max-width: calc(100vw - 1rem) !important;
+      width: 100%;
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
 
-  .mobile-text {
-    @apply text-xs leading-tight;
-  }
+    .user-bubble {
+      max-width: calc(100vw - 1.25rem) !important;
+    }
 
-  .mobile-spacing {
-    @apply space-y-1 mb-1;
-  }
+    .ai-bubble, .ai-bubble-solid {
+      max-width: calc(100vw - 1rem) !important;
+    }
 
-  .mobile-indicator {
-    @apply -top-1 left-1 px-1 py-0.5 text-xs;
-  }
+    /* Avatars ultra-compacts */
+    .mobile-avatar, .mobile-avatar-optimized {
+      @apply w-6 h-6 rounded-lg;
+    }
 
-  .mobile-timestamp {
-    @apply mt-1 space-x-1;
-  }
+    /* Texte ultra-compact */
+    .mobile-text, .mobile-optimized-text {
+      @apply text-xs leading-snug;
+      font-size: 0.8rem !important;
+    }
 
-  .mobile-timestamp-item {
-    @apply px-1 py-0.5 text-xs;
-  }
+    /* Espacement ultra-minimal */
+    .mobile-spacing, .mobile-spacing-optimized {
+      @apply space-y-1 mb-1;
+    }
 
-  /* Réduction de l'espacement général */
-  .chat-container {
-    @apply p-1.5;
-  }
+    .mobile-indicator {
+      @apply -top-0.5 left-0.5 px-0.5 py-0.5 text-xs;
+    }
 
-  .input-container {
-    @apply p-1.5;
-  }
+    .mobile-timestamp {
+      @apply mt-0.5 space-x-0.5;
+    }
 
-  .input-styled {
-    @apply py-1.5 text-xs px-8;
-  }
+    .mobile-timestamp-item {
+      @apply px-0.5 py-0.5 text-xs;
+    }
 
-  .send-button-enhanced {
-    @apply p-1.5;
-    min-width: 36px;
-    min-height: 36px;
-  }
+    /* Zone d'input ultra-minimale */
+    .input-container, .chat-input-section {
+      @apply p-2;
+      width: 100vw;
+      max-width: 100vw;
+    }
 
-  .input-adornment {
-    @apply left-1.5;
-    width: 14px;
-    height: 14px;
+    .input-styled {
+      @apply py-2.5 text-sm px-8;
+      width: 100%;
+      min-height: 44px;
+      font-size: 16px !important; /* Garder 16px pour éviter le zoom iOS */
+      border-radius: 12px;
+    }
+
+    .send-button-enhanced {
+      @apply p-2;
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 12px;
+    }
+
+    .input-adornment {
+      @apply left-2;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Sections ultra-minimales - CORRECTION BUGS AFFICHAGE */
+    section {
+      padding: 1.5rem 0.75rem !important;
+      width: 100vw;
+      max-width: 100vw;
+      /* Assurer espacement en bas */
+      margin-bottom: 1rem !important;
+      overflow: visible !important;
+    }
+
+    /* Dernière section ultra-minimale */
+    section:last-of-type {
+      padding-bottom: 2.5rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    /* Titres ultra-compacts */
+    h1 {
+      font-size: clamp(1rem, 3.5vw, 1.75rem) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    h2 {
+      font-size: clamp(0.9rem, 3vw, 1.5rem) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    h3 {
+      font-size: clamp(0.85rem, 2.5vw, 1.25rem) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.25rem !important;
+    }
+
+    /* Conteneurs ultra-minimaux */
+    .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl {
+      max-width: 100vw !important;
+      width: 100vw !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+
+    /* Feature cards ultra-minimales */
+    .feature-card {
+      padding: 0.75rem !important;
+      margin-bottom: 0.5rem !important;
+      border-radius: 12px !important;
+    }
+
+    /* Boutons ultra-minimaux */
+    .btn-primary {
+      min-height: 44px;
+      padding: 0.5rem 0.75rem !important;
+      font-size: 0.9rem !important;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    /* Cartes ultra-minimales */
+    .card {
+      @apply p-2 rounded-lg;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Header ultra-compact */
+    .header-gradient {
+      @apply py-2;
+      width: 100vw;
+    }
+
+    /* Navigation ultra-compacte */
+    .nav-item {
+      padding: 0.75rem !important;
+      font-size: 1rem !important;
+    }
+
+    /* Grid ultra-compact */
+    .grid {
+      gap: 0.5rem !important;
+    }
+
+    /* Text global ultra-compact */
+    p {
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.75rem !important;
+    }
   }
 
   /* Cartes de statistiques attrayantes */
@@ -1982,7 +2965,6 @@
   .stat-card:nth-child(2) { animation: slideInUp 0.6s ease-out 0.2s both; }
   .stat-card:nth-child(3) { animation: slideInUp 0.6s ease-out 0.3s both; }
   .stat-card:nth-child(4) { animation: slideInUp 0.6s ease-out 0.4s both; }
-}
 
 /* Support du mode sombre moderne avec système d'interactions avancé */
 :root {

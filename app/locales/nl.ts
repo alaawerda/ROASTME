@@ -235,7 +235,12 @@ export const nl = {
     clearChat: 'Gesprek Wissen',
     copyResponse: 'Antwoord Kopiëren',
     responseCopied: 'Antwoord gekopieerd!',
-    tip: '💡 Tip: Hoe meer details je me geeft over jezelf (leeftijd, situatie, hobby\'s, gebreken...), hoe preciezer en hilarischer de roast wordt! 😄',
+    tip: '💡 Tip: Hoe meer details je me over jezelf geeft (leeftijd, situatie, hobby\'s, gebreken...), hoe preciezer en grappiger de roast zal zijn! 😄',
+    welcome: 'De scherpste AI op het web',
+    subtitle: 'Klaar om geroast te worden? Vertel me wie je bent!',
+    inputPlaceholder: 'Schrijf hier wie je bent om geroast te worden...',
+    hint: 'Druk op Enter om te verzenden, Shift + Enter voor nieuwe regel',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Voeg meer details toe',
       goodProgress: '👍 Goed, ga door!',

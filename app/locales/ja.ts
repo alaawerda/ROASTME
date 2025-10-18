@@ -236,6 +236,11 @@ export const ja = {
     copyResponse: '応答をコピー',
     responseCopied: '応答がコピーされました！',
     tip: '💡 ヒント：あなた自身について詳しく教えてくれる（年齢、状況、趣味、欠点など）ほど、より正確で面白いローストになります！😄',
+    welcome: 'ウェブで最も辛いAI',
+    subtitle: 'ローストされる準備はできていますか？あなたが誰であるか教えてください！',
+    inputPlaceholder: 'ここにあなたが誰であるかを書いてローストされてください...',
+    hint: 'Enterキーを押して送信、Shift + Enterで改行',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 詳細を追加してください',
       goodProgress: '👍 良いですね、続けてください！',

@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  // Version temporaire désactivée pour debug - JUSTE PASSER TOUTES LES REQUÊTES
-  console.log('🔍 Middleware called for:', request.nextUrl.pathname)
+  // Middleware now primarily handles other routing logic
+  // Redirects for /en routes are handled in next.config.js for better SEO
   return NextResponse.next()
 }
 

@@ -49,6 +49,18 @@ export default function sitemap(): Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/privacy`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
+    },
+    {
       url: `${baseUrl}/llm-knowledge`,
       lastModified: now,
       changeFrequency: 'weekly' as const,
@@ -67,12 +79,17 @@ export default function sitemap(): Sitemap {
   
   // Generate language variants with special focus on English roast pages
   const languageVariants = languages.flatMap(lang => {
+    // Skip /en routes as they redirect to main domain
+    if (lang === 'en') {
+      return []
+    }
+
     const basePages = [
       {
         url: `${baseUrl}/${lang}`,
         lastModified: now,
         changeFrequency: 'daily' as const,
-        priority: lang === 'en' ? 0.9 : 0.8, // Higher priority for English
+        priority: 0.8,
       },
       {
         url: `${baseUrl}/${lang}/about`,
@@ -87,24 +104,6 @@ export default function sitemap(): Sitemap {
         priority: 0.7,
       },
     ]
-
-    // Add special roast pages for English
-    if (lang === 'en') {
-      basePages.push(
-        {
-          url: `${baseUrl}/${lang}/roast`,
-          lastModified: now,
-          changeFrequency: 'daily' as const,
-          priority: 0.95, // Very high priority for English roast pages
-        },
-        {
-          url: `${baseUrl}/${lang}/roast-me`,
-          lastModified: now,
-          changeFrequency: 'daily' as const,
-          priority: 0.95, // Very high priority for English roast-me pages
-        }
-      )
-    }
 
     return basePages
   })

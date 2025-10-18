@@ -50,6 +50,22 @@ const nextConfig = {
         source: '/chat',
         destination: '/',
         permanent: true
+      },
+      // Redirect /en routes to main domain (SEO-friendly 301 redirects)
+      {
+        source: '/en',
+        destination: '/',
+        permanent: true
+      },
+      {
+        source: '/en/roast',
+        destination: '/roast',
+        permanent: true
+      },
+      {
+        source: '/en/roast-me',
+        destination: '/roast-me',
+        permanent: true
       }
     ]
   },

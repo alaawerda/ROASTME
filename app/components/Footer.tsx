@@ -82,13 +82,33 @@ const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
                 <span className="text-xs font-medium hidden sm:inline">Buy me a ☕</span>
               </a>
               
+              {/* Social Media Links */}
+              <a 
+                href="https://twitter.com/roastmechat" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Follow us on Twitter"
+                className="text-violet-200 hover:text-white transition-colors duration-200 text-xs"
+              >
+                Twitter
+              </a>
+              <a 
+                href="https://github.com/roastme" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Check our GitHub"
+                className="text-violet-200 hover:text-white transition-colors duration-200 text-xs"
+              >
+                GitHub
+              </a>
+              
               {/* Liens rapides */}
               <div className="hidden sm:flex items-center space-x-2">
-                <a href="#" className="footer-link-compact group">
+                <a href="/" className="footer-link-compact group">
                   <span className="text-xs">Accueil</span>
                   <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
                 </a>
-                <a href="#" className="footer-link-compact group">
+                <a href="/about" className="footer-link-compact group">
                   <span className="text-xs">À propos</span>
                   <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
                 </a>
@@ -116,9 +136,9 @@ const Footer: React.FC<FooterProps> = ({ isInputFocused = false }) => {
             
             {/* Liens légaux compacts */}
             <div className="flex items-center space-x-3 text-xs">
-              <a href="#" className="text-violet-200 hover:text-white transition-colors duration-200">Privacy</a>
-              <a href="#" className="text-violet-200 hover:text-white transition-colors duration-200">Terms</a>
-              <a href="#" className="text-violet-200 hover:text-white transition-colors duration-200">Support</a>
+              <a href="/privacy" className="text-violet-200 hover:text-white transition-colors duration-200">Privacy</a>
+              <a href="/terms" className="text-violet-200 hover:text-white transition-colors duration-200">Terms</a>
+              <a href="/faq" className="text-violet-200 hover:text-white transition-colors duration-200">Support</a>
             </div>
           </div>
         </div>

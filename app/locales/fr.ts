@@ -239,6 +239,11 @@ export const fr = {
     copyResponse: 'Copier la réponse',
     responseCopied: 'Réponse copiée !',
     tip: '💡 Conseil : Plus tu me donnes de détails sur toi (âge, situation, hobbies, défauts...), plus le roast sera précis et hilarant ! 😄',
+    welcome: 'L\'IA la plus cinglante du web',
+    subtitle: 'Prêt à être roasté ? Dis-moi qui tu es!',
+    inputPlaceholder: 'Écris ici qui tu es pour être roasté...',
+    hint: 'Appuie sur Entrée pour envoyer, Shift + Entrée pour aller à la ligne',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Ajoute plus de détails',
       goodProgress: '👍 Bien, continue !',

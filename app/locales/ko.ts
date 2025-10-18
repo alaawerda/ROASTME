@@ -235,7 +235,12 @@ export const ko = {
     clearChat: '대화 지우기',
     copyResponse: '응답 복사',
     responseCopied: '응답이 복사되었습니다!',
-    tip: '💡 팁: 자신에 대한 세부 정보(나이, 상황, 취미, 단점...)를 더 많이 알려주시면 더 정확하고 재미있는 로스트를 만들 수 있습니다! 😄',
+    tip: '💡 팁: 자신에 대해 더 많은 세부 정보를 제공할수록 (나이, 상황, 취미, 단점...), 로스트가 더 정확하고 재미있을 것입니다! 😄',
+    welcome: '웹에서 가장 매운 AI',
+    subtitle: '로스트될 준비가 되셨습니까? 당신이 누구인지 말씀해주세요!',
+    inputPlaceholder: '로스트를 받기 위해 당신이 누구인지 여기에 쓰세요...',
+    hint: 'Enter를 눌러 보내기, Shift + Enter로 새 줄',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 더 많은 세부사항 추가',
       goodProgress: '👍 좋습니다, 계속하세요!',

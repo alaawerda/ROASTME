@@ -236,6 +236,11 @@ export const en = {
     copyResponse: 'Copy Response',
     responseCopied: 'Response copied!',
     tip: '💡 Tip: The more details you give me about yourself (age, situation, hobbies, flaws...), the more precise and hilarious the roast will be! 😄',
+    welcome: 'The spiciest AI on the web',
+    subtitle: 'Ready to get roasted? Tell me who you are!',
+    inputPlaceholder: 'Write here who you are to get roasted...',
+    hint: 'Press Enter to send, Shift + Enter for new line',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Add more details',
       goodProgress: '👍 Good, keep going!',

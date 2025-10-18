@@ -235,7 +235,12 @@ export const zh = {
     clearChat: '清除对话',
     copyResponse: '复制回复',
     responseCopied: '回复已复制！',
-    tip: '💡 小贴士：你告诉我的关于自己的细节越多（年龄、情况、爱好、缺点...），吐槽就会越精准越搞笑！😄',
+    tip: '💡 提示：您给我的关于自己的细节越多（年龄、情况、爱好、缺点...），烤肉就会越准确和有趣！😄',
+    welcome: '网络上最辛辣的人工智能',
+    subtitle: '准备好被烤了吗？告诉我你是谁！',
+    inputPlaceholder: '在这里写下你是谁以获得烤肉...',
+    hint: '按Enter发送，Shift + Enter换行',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 添加更多细节',
       goodProgress: '👍 很好，继续！',

@@ -11,14 +11,14 @@ export default function EnglishRoastMePage() {
   const { currentLanguage, translations, changeLanguage } = useLanguageApp()
   const router = useRouter()
 
-  // Redirect to English main page after 3 seconds
+  // Redirect to main domain after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push('/en')
+      window.location.href = 'https://www.roastme.chat'
     }, 3000)
 
     return () => clearTimeout(timer)
-  }, [router])
+  }, [])
 
   const safeTranslations = {
     ...translations,
@@ -66,7 +66,7 @@ export default function EnglishRoastMePage() {
               <h3 className="text-xl font-bold text-orange-500 mb-4">🚀 Redirecting to Roast Me Chat...</h3>
               <p className="text-gray-300">
                 You&apos;ll be redirected to our main <strong>roast me chat</strong> in a few seconds. 
-                If redirection doesn&apos;t work, <a href="/en" className="text-orange-500 hover:text-orange-400 font-bold">click here to start getting roasted</a>.
+                If redirection doesn&apos;t work, <a href="https://www.roastme.chat" className="text-orange-500 hover:text-orange-400 font-bold">click here to start getting roasted</a>.
               </p>
             </div>
           </section>
@@ -231,7 +231,7 @@ export default function EnglishRoastMePage() {
                 Your turn to say <strong>&quot;roast me&quot;</strong>!
               </p>
               <a 
-                href="/en"
+                href="https://www.roastme.chat"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 <span>🚀 Say &quot;Roast Me&quot;</span>

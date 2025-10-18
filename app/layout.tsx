@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     canonical: 'https://roastme.chat',
     languages: {
       'fr': 'https://roastme.chat',
-      'en': 'https://roastme.chat/en',
-      'en-US': 'https://roastme.chat/en',
-      'en-GB': 'https://roastme.chat/en',
+      'en': 'https://roastme.chat',
+      'en-US': 'https://roastme.chat',
+      'en-GB': 'https://roastme.chat',
       'es': 'https://roastme.chat/es',
       'de': 'https://roastme.chat/de',
       'it': 'https://roastme.chat/it',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
       'zh': 'https://roastme.chat/zh',
       'ar': 'https://roastme.chat/ar',
       'nl': 'https://roastme.chat/nl',
-      'x-default': 'https://roastme.chat/en',
+      'x-default': 'https://roastme.chat',
     },
   },
   // Métadonnées de performance et accessibilité
@@ -107,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" dir="ltr">
+    <html lang="fr" dir="ltr" style={{ scrollBehavior: 'auto', WebkitOverflowScrolling: 'touch' }}>
       <head>
         
         {/* Favicons et icônes */}
@@ -115,17 +115,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Métadonnées de performance */}
-        <meta name="theme-color" content="#dc2626" />
-        <meta name="msapplication-TileColor" content="#dc2626" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="RoastMe Chat" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="RoastMe Chat" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport-fit" content="cover" />
         
         {/* Optimisation Performance & Core Web Vitals */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -142,13 +131,6 @@ export default function RootLayout({
         {/* Preload des ressources critiques */}
         <link rel="preload" href="/og-image.jpg" as="image" />
         <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
-        
-        {/* Optimisation mobile et PWA */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="RoastMe IA" />
-        <meta name="application-name" content="RoastMe IA" />
         
         {/* Optimisation pour Core Web Vitals */}
         <meta name="resource-type" content="document" />
@@ -205,11 +187,12 @@ export default function RootLayout({
         <meta name="twitter:app:name:ipad" content="RoastMe Chat" />
         <meta name="twitter:app:name:googleplay" content="RoastMe Chat" />
         
-        {/* Métadonnées de performance mobile */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        {/* Métadonnées de performance mobile optimisées */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="theme-color" content="#dc2626" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         
         {/* Métadonnées de contenu et accessibilité */}
         <meta name="description" content="🔥 ROAST ME - L'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. Roast personnalisé, sans filtres et instantané. Prêt à être roasté ?" />
@@ -222,9 +205,6 @@ export default function RootLayout({
         <meta name="revisit-after" content="1 days" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
-        {/* Mots-clés ciblés pour roast et roast me */}
-        <meta name="keywords" content="roast me, roast, roast me chat, roast gratuit, roast me ai, chat roast, roast bot, se faire roaster, roast sans pitié, roast personnalisé, roast machine, roast app" />
-        
         {/* Métadonnées de localisation et ciblage */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
@@ -236,8 +216,8 @@ export default function RootLayout({
         <meta name="category" content="Divertissement et Humour" />
         <meta name="classification" content="Application Web de Chat Humoristique" />
       </head>
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
+      <body className={inter.className} style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}>
+        <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50" style={{ width: '100vw', maxWidth: '100vw', overflowX: 'hidden' }}>
           {children}
         </div>
         

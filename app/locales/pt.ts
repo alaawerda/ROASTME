@@ -236,6 +236,11 @@ export const pt = {
     copyResponse: 'Copiar Resposta',
     responseCopied: 'Resposta copiada!',
     tip: '💡 Dica: Quanto mais detalhes você me der sobre você (idade, situação, hobbies, defeitos...), mais preciso e hilário será o roast! 😄',
+    welcome: 'A IA mais picante da web',
+    subtitle: 'Pronto para ser roastado? Me diga quem você é!',
+    inputPlaceholder: 'Escreva aqui quem você é para ser roastado...',
+    hint: 'Pressione Enter para enviar, Shift + Enter para nova linha',
+    maxChars: '5000',
     progressIndicators: {
       needMoreDetails: '📝 Adicione mais detalhes',
       goodProgress: '👍 Bom, continue!',
