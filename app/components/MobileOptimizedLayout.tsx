@@ -76,8 +76,8 @@ export default function MobileOptimizedLayout({ children, className = '' }: Mobi
             max-width: 100vw !important;
             overflow-x: hidden !important;
             
-            /* Gérer le safe area sur iPhone */
-            padding-top: env(safe-area-inset-top);
+            /* Gérer le safe area sur iPhone - SANS padding-top pour la header */
+            padding-top: 0 !important;
             padding-bottom: env(safe-area-inset-bottom);
             padding-left: env(safe-area-inset-left);
             padding-right: env(safe-area-inset-right);

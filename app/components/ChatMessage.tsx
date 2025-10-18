@@ -68,7 +68,7 @@ export default function ChatMessage({ message, timeFormat }: ChatMessageProps) {
       <div className={`flex items-end gap-3 max-w-3xl group ${isUser ? 'flex-row-reverse' : ''}`}>
         
         {/* Avatar */}
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
+        <div className={`mobile-avatar-optimized flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
           isUser 
             ? 'bg-gradient-to-br from-flame-orange to-flame-orange-light ring-2 ring-flame-orange/30' 
             : 'bg-gradient-to-br from-purple-dark to-purple-medium ring-2 ring-purple-dark/30'
@@ -81,7 +81,7 @@ export default function ChatMessage({ message, timeFormat }: ChatMessageProps) {
         </div>
 
         {/* Message bubble */}
-        <div className={`relative px-4 py-3 rounded-2xl max-w-2xl break-words transition-all duration-300 ${
+        <div className={`mobile-app-bubble-native relative px-4 py-3 rounded-2xl max-w-2xl break-words transition-all duration-300 ${
           isUser 
             ? 'bg-gradient-to-br from-flame-orange to-flame-orange-light text-white shadow-lg shadow-flame-orange/20 rounded-br-none' 
             : 'bg-gray-800 text-gray-100 shadow-lg shadow-purple-dark/10 rounded-bl-none'

@@ -3112,6 +3112,19 @@
   -webkit-backface-visibility: hidden;
 }
 
+  /* Correctifs explicites pour la barre d'envoi afin d'ancrer le bouton à droite */
+  .mobile-app-input-native .send-button-enhanced {
+    position: absolute !important;
+    left: auto !important;
+    right: 0.75rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-left: 0 !important;
+  }
+  .mobile-app-input-native .input-styled {
+    padding-right: 56px !important; /* espace réservé pour le bouton d'envoi */
+  }
+
 /* Assurer que le bouton reste visible sur tous les appareils */
 @media (max-width: 640px) {
   .input-group .send-button-enhanced {
@@ -3181,6 +3194,15 @@
 @media (max-width: 1024px) {
   .header-gradient {
     background: linear-gradient(135deg, var(--flame-orange) 0%, var(--flame-orange-light) 50%, var(--purple-medium) 100%);
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    overflow: visible !important;
+    z-index: 9998 !important;
+    box-sizing: border-box !important;
   }
   
   /* Optimisation de l'espace sur mobile */
@@ -3208,6 +3230,15 @@
   /* Header ultra-compact sur mobile */
   .header-gradient {
     @apply py-2;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    overflow: visible !important;
+    z-index: 9998 !important;
+    box-sizing: border-box !important;
   }
   
   .header-gradient .max-w-7xl {
@@ -3243,6 +3274,15 @@
   /* Header ultra-compact sur très petit écran */
   .header-gradient {
     @apply py-1.5;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    overflow: visible !important;
+    z-index: 9998 !important;
+    box-sizing: border-box !important;
   }
   
   .header-gradient .max-w-7xl {
@@ -3382,3 +3422,11 @@
     @apply hidden;
   }
 }
+
+/* === MASQUER HEADER SUR MOBILE === */
+@media (max-width: 768px) {
+  header.header-gradient {
+    display: none !important;
+  }
+}
+

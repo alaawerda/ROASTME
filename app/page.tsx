@@ -163,8 +163,9 @@ export default function Home() {
               messages={messages}
               isLoading={isLoading}
               onSendMessage={handleSendMessage}
-                              translations={safeTranslations}
+              translations={safeTranslations}
               onChatOpen={() => {}}
+              currentLanguage={currentLanguage}
             />
           </main>
           

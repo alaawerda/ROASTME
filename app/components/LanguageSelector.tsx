@@ -248,8 +248,8 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
           type="button"
         >
           <Globe className="w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform duration-300" />
-          <span className="hidden sm:inline text-lg">{currentLang.flag}</span>
-          <span className="hidden md:inline font-medium truncate max-w-[8ch]">{currentLang.name}</span>
+          <span className="text-lg">{currentLang.flag}</span>
+          <span className="hidden sm:inline font-medium truncate max-w-[8ch]">{currentLang.name}</span>
           <ChevronDown className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 ease-out ${isOpen ? 'rotate-180' : ''}`} />
         </button>
       </div>

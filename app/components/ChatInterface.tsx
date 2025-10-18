@@ -5,6 +5,7 @@ import { Send, Sparkles, Lightbulb, MessageSquare, Zap } from 'lucide-react'
 import { Message } from '../types'
 import ChatMessage from './ChatMessage'
 import QuickSuggestions from './QuickSuggestions'
+import BuyMeCoffeeModal from './BuyMeCoffeeModal'
 
 interface ChatInterfaceProps {
   messages: Message[]
@@ -12,6 +13,7 @@ interface ChatInterfaceProps {
   onSendMessage: (content: string) => void
   translations?: any
   onChatOpen?: () => void
+  currentLanguage?: string
 }
 
 export default function ChatInterface({
@@ -19,10 +21,12 @@ export default function ChatInterface({
   isLoading,
   onSendMessage,
   translations = {},
-  onChatOpen
+  onChatOpen,
+  currentLanguage = 'fr'
 }: ChatInterfaceProps) {
   const [inputValue, setInputValue] = useState('')
   const [isFocused, setIsFocused] = useState(false)
+  const [showCoffeeModal, setShowCoffeeModal] = useState(false)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const chatContainerRef = useRef<HTMLDivElement>(null)
@@ -31,6 +35,29 @@ export default function ChatInterface({
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  // Afficher le modal une seule fois après le 2ème message utilisateur
+  useEffect(() => {
+    // Vérifier si le modal a déjà été affiché
+    const hasShownModal = localStorage.getItem('buyMeCoffeeModalShown')
+    
+    if (!hasShownModal && !showCoffeeModal) {
+      // Compter les messages utilisateur
+      const userMessages = messages.filter(msg => msg.role === 'user')
+      
+      if (userMessages.length >= 2) {
+        // Délai pour laisser l'utilisateur lire la réponse
+        const timer = setTimeout(() => {
+          setShowCoffeeModal(true)
+          // Marquer comme affiché dans localStorage
+          localStorage.setItem('buyMeCoffeeModalShown', 'true')
+        }, 2000) // 2 secondes après le 2ème message utilisateur
+
+        return () => clearTimeout(timer)
+      }
+    }
+    return undefined
+  }, [messages, showCoffeeModal])
 
   // Auto-resize textarea
   useEffect(() => {
@@ -68,14 +95,14 @@ export default function ChatInterface({
   const isEmpty = messages.length === 0
 
   return (
-    <div className="flex flex-col h-full w-full bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden">
+    <div className="mobile-app-chat-native flex flex-col h-full w-full bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden">
       {/* Fond dégradé animé */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none" />
       
       {/* Messages container */}
       <div
         ref={chatContainerRef}
-        className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-flame-orange/40 scrollbar-track-transparent w-full"
+        className="mobile-app-messages-native flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-flame-orange/40 scrollbar-track-transparent w-full"
       >
         {/* Empty state avec design moderne */}
         {isEmpty ? (
@@ -167,7 +194,7 @@ export default function ChatInterface({
           </div>
         ) : (
           /* Messages list */
-          <div className="w-full max-w-4xl mx-auto px-4 py-8">
+          <div className="w-full max-w-4xl mx-auto px-4 py-8 chat-messages-container">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage
@@ -205,10 +232,10 @@ export default function ChatInterface({
       </div>
 
       {/* Input section with glassmorphism */}
-      <div className="w-full border-t border-gray-700/50 bg-gradient-to-b from-gray-900/50 to-gray-950 backdrop-blur-md relative sticky bottom-0 z-50">
-        <div className="w-full max-w-4xl mx-auto px-4 py-4">
+      <div className="mobile-app-input-native w-full border-t border-gray-700/50 bg-gradient-to-b from-gray-900/50 to-gray-950 backdrop-blur-md relative sticky bottom-0 z-50">
+        <div className="w-full max-w-none mx-0 md:max-w-4xl md:mx-auto px-3 md:px-4 py-3 input-group">
           <div className={`
-            relative rounded-2xl transition-all duration-300
+            relative w-full rounded-2xl transition-all duration-300
             ${isFocused 
               ? 'bg-gray-800/80 ring-2 ring-flame-orange/50 shadow-lg shadow-flame-orange/20' 
               : 'bg-gray-800/50 hover:bg-gray-800/60 ring-1 ring-gray-700/50'
@@ -235,26 +262,27 @@ export default function ChatInterface({
                 handleSend()
               }}
               disabled={!inputValue.trim() || isLoading}
-              className={`
-                absolute right-3 bottom-3 p-2.5 rounded-lg font-semibold transition-all duration-300
-                flex items-center justify-center
-                ${inputValue.trim() && !isLoading
-                  ? 'bg-gradient-to-r from-flame-orange to-flame-orange-light text-white hover:shadow-lg hover:shadow-flame-orange/40 transform hover:scale-105 active:scale-95'
-                  : 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                }
-              `}
+              className="send-button-enhanced"
+              aria-label="Send message"
             >
               <Send className="w-5 h-5" />
             </button>
           </div>
-
-          {/* Helper text */}
-          <div className="mt-2 px-1 text-xs text-gray-500 flex items-center justify-between">
-            <span>{translations?.chat?.hint || 'Appuie sur Entrée pour envoyer, Shift + Entrée pour aller à la ligne'}</span>
-            <span>0/{translations?.chat?.maxChars || '5000'}</span>
-          </div>
+        </div>
+        
+        {/* Helper text below the message bar - outside the input container */}
+        <div className="w-full md:max-w-4xl md:mx-auto px-3 md:px-4 pt-2 pb-1 text-xs text-gray-500 flex items-center justify-between">
+          <span>{translations?.chat?.hint || 'Appuie sur Entrée pour envoyer, Shift + Entrée pour aller à la ligne'}</span>
+          <span>0/{translations?.chat?.maxChars || '5000'}</span>
         </div>
       </div>
+
+      {/* Modal Buy Me a Coffee */}
+      <BuyMeCoffeeModal
+        isOpen={showCoffeeModal}
+        onClose={() => setShowCoffeeModal(false)}
+        currentLanguage={currentLanguage}
+      />
     </div>
   )
 }

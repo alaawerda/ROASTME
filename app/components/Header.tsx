@@ -107,9 +107,9 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header 
-      className={`header-gradient text-white shadow-lg relative overflow-hidden sticky top-0 z-[9998] transition-all duration-300 ${
+      className={`header-gradient text-white shadow-lg relative overflow-visible sticky top-0 z-[9998] transition-all duration-300 block w-full ${
         isScrolled ? 'bg-opacity-95 backdrop-blur-md' : ''
-      }`} 
+      }`}
       role="banner"
     >
       {/* Effet de particules en arrière-plan (masqué sur mobile) */}
@@ -121,22 +121,22 @@ const Header: React.FC<HeaderProps> = ({
       {/* Ligne décorative animée en haut (masquée sur mobile) */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-50 animate-pulse hidden md:block"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-2 sm:py-3 md:py-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
           {/* Logo et titre - Version UX Excellence */}
-          <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
-            <div className="flame-glow hover:scale-105 transition-transform duration-300 interactive-element gentle-float">
+          <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0 min-w-0">
+            <div className="flame-glow hover:scale-105 transition-transform duration-300 interactive-element gentle-float flex-shrink-0">
               <Logo size="sm" showText={false} animated={true} />
             </div>
-            <div className="flex flex-col space-y-1">
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-white drop-shadow-md tracking-tight leading-tight transition-all duration-300 hover:text-yellow-200">
+            <div className="flex flex-col space-y-0.5 min-w-0">
+              <h1 className="text-sm md:text-xl lg:text-2xl font-bold text-white drop-shadow-md tracking-tight leading-tight transition-all duration-300 hover:text-yellow-200 truncate">
                 {title}
               </h1>
               {/* Indicateur de statut amélioré et responsive */}
               <div className="flex items-center space-x-2 text-xs md:text-sm">
-                <div className="status-indicator-compact md:hidden">
-                  <Zap className="w-3 h-3 text-yellow-300 animate-pulse" />
-                  <span className="font-medium text-orange-100">{poweredBy}</span>
+                <div className="status-indicator-compact md:hidden flex-shrink-0">
+                  <Zap className="w-2.5 h-2.5 text-yellow-300 animate-pulse" />
+                  <span className="font-medium text-orange-100 text-xs">{poweredBy}</span>
                 </div>
                 {/* Version desktop améliorée */}
                 <div className="hidden md:flex items-center space-x-3">
@@ -158,30 +158,32 @@ const Header: React.FC<HeaderProps> = ({
             <DynamicNavigation />
           </div>
           
-          {/* Actions de droite - Alignées à droite */}
-          <div className="flex items-center space-x-2 md:space-x-4 relative z-[9998] flex-shrink-0">
-            {/* Lien Buy Me a Coffee - UX Excellence */}
+          {/* Actions de droite - Alignées à droite - Toujours visibles */}
+          <div className="flex items-center space-x-1 md:space-x-3 relative z-[9998] flex-shrink-0">
+            {/* Lien Buy Me a Coffee - UX Excellence - Visible sur mobile */}
             <a 
               href="https://buymeacoffee.com/roastme" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center space-x-1.5 enhanced-button group bg-orange-500 hover:bg-orange-600 text-white px-2.5 py-1.5 md:px-3 md:py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl optimized-focus"
+              className="hidden sm:flex items-center space-x-1.5 enhanced-button group bg-orange-500 hover:bg-orange-600 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl optimized-focus"
+              aria-label={getStatusText('buyMeCoffee')}
             >
               <Coffee className="w-3.5 h-3.5 md:w-4 md:h-4 text-white smooth-pulse" />
-              <span className="text-xs font-medium">{getStatusText('buyMeCoffee')}</span>
+              <span className="text-xs font-medium hidden md:inline">{getStatusText('buyMeCoffee')}</span>
             </a>
             
-            {/* Sélecteur de langue - Amélioré */}
+            {/* Sélecteur de langue - Amélioré pour mobile */}
             <LanguageSelector 
               currentLanguage={currentLanguage} 
               onLanguageChange={onLanguageChange} 
             />
 
-            {/* Bouton menu mobile */}
+            {/* Bouton menu mobile - Zone tactile optimisée */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-200"
+              className="lg:hidden flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 active:bg-white/30 transition-all duration-200 touch-manipulation"
               aria-label={getStatusText('menu')}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5 text-white" />
@@ -298,3 +300,4 @@ const Header: React.FC<HeaderProps> = ({
 };
 
 export default memo(Header);
+
