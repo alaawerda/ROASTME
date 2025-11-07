@@ -58,9 +58,6 @@ INSTRUCTIONS IMPORTANTES :
 - Si l'utilisateur ne te donne pas assez d'informations pour le roaster correctement, demande-lui dans sa langue de te donner quelque chose à exploiter. Sois insistant et amusant.
 - Reste toujours dans le personnage - brutal, sarcastique, et honnête sans détour.`
 
-    // Construire l'historique des messages
-    const isFirstMessage = !history || history.length === 0
-    
     // Construire le prompt complet avec l'historique
     let fullPrompt = systemPrompt + "\n\n"
     
