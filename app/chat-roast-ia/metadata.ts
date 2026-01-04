@@ -1,10 +1,15 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
-  description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue. 100% gratuit !',
+  title: 'Chat Roast IA Gratuit 🤖 | Alternative ChatGPT Amusante | Meilleur Chatbot Humour',
+  description: '🔥 Découvre le meilleur chat roast IA gratuit ! Alternative amusante à ChatGPT spécialisée humour. ✅ Roast sans filtres ✅ Chat IA drôle ✅ Comme ChatGPT mais fun ✅ 100% gratuit. Le chatbot le plus hilarant !',
   keywords: [
     'chat roast IA',
+    'chatgpt alternative',
+    'alternative chatgpt',
+    'chat ia amusant',
+    'chat ia drole',
+    'chatbot gratuit',
     'roast sans filtres', 
     'IA cinglante',
     'chat humour gratuit',
@@ -15,7 +20,12 @@ export const metadata: Metadata = {
     'blagues IA',
     'divertissement chat',
     'humour cinglant',
-    'roast en temps réel'
+    'roast en temps réel',
+    'chatgpt fun',
+    'chatgpt humour',
+    'chat gpt drole',
+    'funny ai chat',
+    'ai roast bot'
   ],
   authors: [{ name: 'RoastMe Team' }],
   creator: 'RoastMe Team',
@@ -29,22 +39,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://roastme.chat/chat-roast-ia',
-    siteName: 'Chat Roast IA Gratuit',
-    title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
-    description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue. 100% gratuit !',
+    siteName: 'RoastMe - Alternative ChatGPT Amusante',
+    title: 'Chat Roast IA Gratuit 🤖 | Alternative ChatGPT Fun | Chatbot Humour',
+    description: 'Découvre le meilleur chat roast IA gratuit ! Alternative amusante à ChatGPT. Comme ChatGPT mais spécialisé humour et roast. 100% gratuit !',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Chat Roast IA - L\'IA qui te Roaste en Flammes !',
+        alt: 'Chat Roast IA - Alternative ChatGPT Amusante',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pourquoi Choisir Notre Chat Roast IA ? 🤖 | Chat Roast IA Gratuit',
-    description: 'Découvre l\'expérience de roast la plus avancée et hilarante jamais créée. Roast sans filtres, chat en temps réel, support multilingue.',
+    title: 'Chat Roast IA Gratuit 🤖 | Alternative ChatGPT Amusante',
+    description: 'Le meilleur chat roast IA gratuit ! Alternative fun à ChatGPT. Roast sans filtres, humour garanti.',
     images: ['/og-image.jpg'],
     creator: '@roastmechat',
     site: '@roastmechat',

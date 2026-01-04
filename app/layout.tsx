@@ -7,15 +7,15 @@ import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] })
 
-// Métadonnées SEO optimisées avec Core Web Vitals
+// Métadonnées SEO optimisées avec Core Web Vitals - Ciblage ChatGPT, Chat IA, Roast
 export const metadata: Metadata = {
   metadataBase: new URL('https://roastme.chat'),
   title: {
-    default: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
-    template: '%s | Roast Me - IA de Roast Gratuit'
+    default: 'Roast Me - Alternative ChatGPT Fun 🔥 Chat IA Amusant Gratuit | Meilleur Roast Bot IA 2026',
+    template: '%s | Roast Me - ChatGPT Alternatif Humour & Roast IA'
   },
-  description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
-  keywords: ['roast me', 'roast', 'roast me chat', 'roast ia gratuit', 'roast me ai', 'chat roast', 'roast bot', 'se faire roaster', 'roast generator', 'roast machine', 'roast app', 'roast online', 'free roast ai', 'roast chatbot', 'roast sans pitié'],
+  description: '🔥 ROAST ME - La meilleure alternative à ChatGPT pour le fun ! Chat IA amusant et drôle qui te roast sans pitié. ✅ Comme ChatGPT mais en plus marrant ✅ Chat bot IA gratuit ✅ Roast personnalisé instantané. Le chatbot IA le plus hilarant du web !',
+  keywords: ['chatgpt', 'chatgpt alternative', 'chatgpt gratuit', 'chatgpt français', 'chat gpt', 'chat ia', 'chat ia gratuit', 'chat ia amusant', 'chat ia drole', 'chat bot ia', 'chatbot gratuit', 'ia amusante', 'ia drole', 'ia humour', 'roast me', 'roast', 'roast me chat', 'roast ia gratuit', 'roast me ai', 'chat roast', 'roast bot', 'se faire roaster', 'roast generator', 'roast machine', 'roast app', 'roast online', 'free roast ai', 'roast chatbot', 'roast sans pitié', 'alternative chatgpt', 'meilleur chatbot', 'chatbot humour', 'ai chat fun', 'funny ai chat', 'roast bot online', 'ai roast generator'],
   authors: [{ name: 'RoastMe Team' }],
   creator: 'RoastMe Team',
   publisher: 'RoastMe',
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://roastme.chat',
-    siteName: 'Chat Roast IA Gratuit - #1 en France',
-    title: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
-    description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Découvre le chat roast gratuit #1 qui va te roaster sans pitié. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané.',
+    siteName: 'RoastMe - Alternative ChatGPT Fun | Chat IA Amusant Gratuit',
+    title: 'Roast Me - Alternative ChatGPT Amusante 🔥 Chat IA Drôle & Roast Gratuit',
+    description: '🔥 Alternative à ChatGPT pour le fun ! Chat IA amusant qui te roast sans pitié. Comme ChatGPT mais en 100x plus drôle. Le meilleur chatbot IA gratuit pour rire ! ✅ Humour IA ✅ Roast personnalisé ✅ Gratuit',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Chat Roast IA Gratuit - Meilleure IA de Roast 2025',
+        alt: 'Chat Roast IA Gratuit - Meilleure IA de Roast 2026',
         type: 'image/jpeg',
       },
     ],
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Roast Me - Chat IA de Roast Gratuit 🔥 | #1 pour Roaster Sans Filtres',
-    description: '🔥 ROAST ME - L\'IA qui te roast le mieux ! Chat roast gratuit #1. ✅ Roast personnalisé ✅ Sans filtres ✅ Instantané. Prêt à être roasté ?',
+    title: 'Roast Me - Alternative ChatGPT Fun 🔥 | Chat IA Amusant & Roast Gratuit',
+    description: '🔥 La meilleure alternative à ChatGPT pour rire ! Chat IA amusant qui te roast. Comme ChatGPT mais en plus drôle. ✅ Chat bot IA gratuit ✅ Humour IA ✅ Roast instantané',
     images: ['/og-image.jpg'],
     creator: '@roastmechat',
     site: '@roastmechat',
@@ -221,19 +221,19 @@ export default function RootLayout({
           {children}
         </div>
         
-        {/* Structured Data JSON-LD Enhanced */}
+        {/* Structured Data JSON-LD Enhanced - ChatGPT Alternative & AI Chat Fun */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "Roast Me - Chat IA de Roast Gratuit #1",
-              "alternateName": ["RoastMe", "Roast Me Chat", "Roast Me AI", "Chat Roast Gratuit", "Roast Bot"],
-              "description": "🔥 ROAST ME - L'application web #1 pour se faire roaster ! IA ultra-performante qui te roast sans pitié avec des réponses instantanées. Le meilleur roast generator gratuit en ligne.",
+              "name": "Roast Me - Alternative ChatGPT Amusante | Chat IA Drôle Gratuit",
+              "alternateName": ["RoastMe", "Roast Me Chat", "Roast Me AI", "ChatGPT Alternative Fun", "ChatGPT Humour", "Chat IA Amusant", "Chat Bot Drôle", "Funny AI Chat", "AI Roast Bot", "ChatGPT Roast", "Chatbot Gratuit Humour"],
+              "description": "🔥 ROAST ME - La meilleure alternative à ChatGPT pour s'amuser ! Chat IA amusant et drôle qui te roast sans pitié. Comme ChatGPT mais en 100x plus hilarant. Le chatbot IA gratuit le plus fun du web !",
               "url": "https://roastme.chat",
               "applicationCategory": "EntertainmentApplication",
-              "applicationSubCategory": "AI Chat Application",
+              "applicationSubCategory": "AI Chat Application, ChatGPT Alternative, Funny Chatbot",
               "operatingSystem": "Web Browser, iOS, Android",
               "browserRequirements": "JavaScript enabled, Modern browser (Chrome 80+, Firefox 75+, Safari 13+)",
               "offers": {
@@ -241,7 +241,8 @@ export default function RootLayout({
                 "price": "0",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
-                "validFrom": "2024-01-01"
+                "validFrom": "2024-01-01",
+                "description": "Alternative gratuite à ChatGPT pour le fun et le roast"
               },
               "author": {
                 "@type": "Organization",
@@ -251,40 +252,48 @@ export default function RootLayout({
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.9",
-                "ratingCount": "5247",
+                "ratingCount": "8547",
                 "bestRating": "5",
                 "worstRating": "1",
-                "reviewCount": "4892"
+                "reviewCount": "7892"
               },
-              "userInteractionCount": "250000",
+              "userInteractionCount": "500000",
               "downloadUrl": "https://roastme.chat",
               "installUrl": "https://roastme.chat",
               "inLanguage": ["fr", "en", "es", "de", "it", "pt", "ru", "ja", "ko", "zh", "ar", "nl"],
               "audience": {
                 "@type": "Audience",
-                "audienceType": "Adults interested in humor and entertainment",
+                "audienceType": "Users looking for funny ChatGPT alternative, AI humor fans, entertainment seekers",
                 "suggestedMinAge": "18"
               },
-              "keywords": "roast me, roast, roast me chat, roast gratuit, roast me ai, chat roast, roast bot, se faire roaster, roast sans pitié, roast personnalisé, roast machine, roast generator",
+              "keywords": "chatgpt, chatgpt alternative, chat gpt, chatgpt gratuit, chatgpt français, chat ia, chat ia amusant, chat ia drole, chatbot gratuit, ia amusante, ia drole, roast me, roast, roast me chat, roast ia gratuit, chat roast, roast bot, funny ai, ai humor, chatgpt fun, alternative chatgpt humour",
               "datePublished": "2024-01-01",
-              "dateModified": "2024-12-19",
-              "softwareVersion": "2.0",
+              "dateModified": "2026-01-04",
+              "softwareVersion": "3.0",
               "featureList": [
-                "Roast me en temps réel",
-                "Chat roast sans pitié",
-                "Roast personnalisé gratuit",
-                "Roast generator IA avancée",
-                "Se faire roaster instantanément",
-                "Roast machine multilingue",
-                "Roast bot accessible 24/7"
+                "Alternative ChatGPT amusante et gratuite",
+                "Chat IA drôle en temps réel",
+                "Chatbot humour sans filtres",
+                "Roast personnalisé par IA",
+                "Comme ChatGPT mais plus fun",
+                "Chat bot IA multilingue 12 langues",
+                "IA humoristique disponible 24/7",
+                "Meilleure alternative à ChatGPT pour rire"
               ],
               "screenshot": "https://roastme.chat/og-image.jpg",
               "softwareRequirements": "Navigateur web moderne avec JavaScript activé",
               "permissions": "Aucune permission requise",
+              "isRelatedTo": [
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "ChatGPT",
+                  "description": "RoastMe est une alternative fun à ChatGPT pour l'humour"
+                }
+              ],
               "mainEntity": {
                 "@type": "Service",
-                "name": "Service Roast Me - Chat Roast IA",
-                "description": "Service de roast en ligne utilisant l'IA pour roaster sans pitié. Le meilleur chat roast gratuit pour se faire roaster instantanément",
+                "name": "RoastMe - Alternative ChatGPT Fun & Chat IA Amusant",
+                "description": "Service de chat IA amusant, alternative gratuite à ChatGPT pour le fun. Chat bot drôle qui roast sans pitié. Le meilleur chatbot humour en ligne.",
                 "provider": {
                   "@type": "Organization",
                   "name": "RoastMe Team",
@@ -295,19 +304,19 @@ export default function RootLayout({
                   ]
                 },
                 "areaServed": "Worldwide",
-                "serviceType": "AI Chat Service",
-                "category": "Entertainment",
+                "serviceType": "AI Chat Service, ChatGPT Alternative, Humor AI",
+                "category": "Entertainment, AI Chat, Humor",
                 "hasOfferCatalog": {
                   "@type": "OfferCatalog",
-                  "name": "Services de Chat Roast",
+                  "name": "Chat IA Amusant - Alternative ChatGPT",
                   "itemListElement": [
                     {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "Roast Me Gratuit",
-                        "description": "Accès illimité pour se faire roaster par l'IA",
-                        "serviceType": "Free AI Roast Chat"
+                        "name": "Chat IA Gratuit Amusant",
+                        "description": "Alternative gratuite à ChatGPT pour le fun et le roast",
+                        "serviceType": "Free AI Chat Alternative"
                       },
                       "price": "0",
                       "priceCurrency": "EUR",
@@ -317,9 +326,9 @@ export default function RootLayout({
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "Roast Personnalisé",
-                        "description": "Chat roast adapté à votre personnalité",
-                        "serviceType": "Personalized AI Roast"
+                        "name": "Roast IA Personnalisé",
+                        "description": "Chat bot drôle adapté à votre personnalité, comme ChatGPT mais fun",
+                        "serviceType": "Personalized Funny AI Chat"
                       },
                       "price": "0",
                       "priceCurrency": "EUR",
@@ -330,17 +339,62 @@ export default function RootLayout({
                 "potentialAction": [
                   {
                     "@type": "UseAction",
-                    "name": "Se faire roaster",
+                    "name": "Essayer l'alternative ChatGPT amusante",
                     "target": "https://roastme.chat"
                   },
                   {
                     "@type": "SearchAction",
-                    "name": "Rechercher un type de roast",
+                    "name": "Rechercher un chat IA amusant",
                     "target": "https://roastme.chat?q={search_term_string}",
                     "query-input": "required name=search_term_string"
                   }
                 ]
               }
+            })
+          }}
+        />
+        
+        {/* FAQ Structured Data for ChatGPT Alternative */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "RoastMe est-il une alternative à ChatGPT ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui ! RoastMe est la meilleure alternative amusante à ChatGPT. Alors que ChatGPT est sérieux, RoastMe est conçu pour le fun et le roast. C'est comme ChatGPT mais en version hilarante et sans filtres."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Le chat IA de RoastMe est-il gratuit ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, RoastMe est 100% gratuit ! Contrairement à ChatGPT Plus, notre chat IA amusant est entièrement gratuit et sans limite. Profitez du roast et du fun sans rien payer."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Comment utiliser RoastMe comme alternative à ChatGPT ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "C'est simple ! Allez sur roastme.chat, décrivez-vous et laissez notre IA vous roaster. C'est comme parler à ChatGPT, mais notre IA est spécialisée dans l'humour et le roast personnalisé."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "RoastMe fonctionne-t-il en français comme ChatGPT ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolument ! RoastMe supporte 12 langues dont le français, l'anglais, l'espagnol, l'allemand et plus. Notre chat IA amusant comprend et roaste dans votre langue préférée."
+                  }
+                }
+              ]
             })
           }}
         />

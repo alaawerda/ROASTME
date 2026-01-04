@@ -8,8 +8,8 @@ interface HomePageSEOProps {
 }
 
 const HomePageSEO: React.FC<HomePageSEOProps> = ({ 
-  title = "Chat Roast IA Gratuit",
-  description = "Découvre l'intelligence artificielle la plus cinglante qui va te roaster de manière hilarante sans filtres. Teste maintenant gratuitement notre IA de roast en 12 langues !",
+  title = "RoastMe - Alternative ChatGPT Amusante | Chat IA Drôle Gratuit",
+  description = "La meilleure alternative gratuite à ChatGPT pour le fun ! Chat IA amusant qui te roaste sans pitié. Comme ChatGPT mais en 100x plus drôle. Teste maintenant gratuitement notre IA de roast en 12 langues !",
   currentLanguage = "fr"
 }) => {
   const canonicalUrl = "https://roastme.chat";
@@ -17,12 +17,12 @@ const HomePageSEO: React.FC<HomePageSEOProps> = ({
   
   return (
     <Head>
-      {/* Métadonnées de base */}
+      {/* Métadonnées de base - Optimisées ChatGPT, Chat IA, Roast */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content="chat roast IA, intelligence artificielle, humour, roast, IA gratuite, chat en ligne, humour cinglant, traduction automatique" />
+      <meta name="keywords" content="chatgpt, chatgpt alternative, alternative chatgpt, chat gpt, chatgpt gratuit, chatgpt français, chat ia, chat ia amusant, chat ia drole, chat ia gratuit, chatbot gratuit, chatbot amusant, ia amusante, ia drole, roast me, roast, chat roast IA, intelligence artificielle, humour, IA gratuite, chat en ligne, humour cinglant, traduction automatique, funny ai chat, ai humor, chatgpt fun" />
       <meta name="author" content="RoastMe Chat" />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
       <meta name="language" content={currentLanguage} />
       
       {/* Canonical URL */}
@@ -52,34 +52,41 @@ const HomePageSEO: React.FC<HomePageSEOProps> = ({
       <meta name="theme-color" content="#ff6b35" />
       <meta name="msapplication-TileColor" content="#ff6b35" />
       
-      {/* Schema.org structured data */}
+      {/* Schema.org structured data - ChatGPT Alternative & Chat IA Amusant */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "RoastMe Chat",
+            "name": "RoastMe - Alternative ChatGPT Fun | Chat IA Amusant",
+            "alternateName": ["RoastMe Chat", "ChatGPT Alternative", "Chat IA Drôle", "Chatbot Amusant Gratuit"],
             "description": description,
             "url": canonicalUrl,
             "applicationCategory": "EntertainmentApplication",
+            "applicationSubCategory": "ChatGPT Alternative, AI Chat, Humor Bot",
             "operatingSystem": "Web Browser",
             "offers": {
               "@type": "Offer",
               "price": "0",
-              "priceCurrency": "EUR"
+              "priceCurrency": "EUR",
+              "description": "Alternative gratuite à ChatGPT pour le fun"
             },
             "author": {
               "@type": "Organization",
               "name": "RoastMe Chat"
             },
             "featureList": [
-              "Chat IA en temps réel",
-              "Roast personnalisé",
+              "Alternative gratuite à ChatGPT",
+              "Chat IA amusant en temps réel",
+              "Chatbot drôle et sans filtres",
+              "Roast personnalisé par IA",
               "Support multilingue (12 langues)",
-              "100% gratuit",
+              "100% gratuit - pas d'abonnement",
+              "Comme ChatGPT mais fun",
               "Disponible 24/7"
-            ]
+            ],
+            "keywords": "chatgpt, chatgpt alternative, chat ia amusant, chat ia drole, chatbot gratuit"
           })
         }}
       />

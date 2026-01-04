@@ -16,7 +16,7 @@ export default function sitemap(): Sitemap {
   const baseUrl = 'https://roastme.chat'
   const now = new Date()
   
-  // Common pages
+  // Common pages - Optimisées pour ChatGPT, Chat IA, Roast
   const pages = [
     {
       url: baseUrl,
@@ -35,6 +35,30 @@ export default function sitemap(): Sitemap {
       lastModified: now,
       changeFrequency: 'daily' as const,
       priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/chat-ia-amusant`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/chatgpt-alternative`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/chat-bot-gratuit`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/ia-humour`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.90,
     },
     {
       url: `${baseUrl}/about`,
@@ -70,7 +94,7 @@ export default function sitemap(): Sitemap {
       url: `${baseUrl}/chat-roast-ia`,
       lastModified: now,
       changeFrequency: 'daily' as const,
-      priority: 0.9,
+      priority: 0.95,
     },
   ]
 
