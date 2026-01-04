@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
     console.log('Detected language:', userLanguage)
 
     // Get the appropriate system prompt for the user's language (default to English)
-    const systemPrompt = systemPrompts[userLanguage] || systemPrompts['en']
+    const systemPrompt: string = systemPrompts[userLanguage] ?? systemPrompts['en'] ?? ''
 
     // Construire les messages pour OpenRouter (format chat)
     const messages: Array<{role: 'system' | 'user' | 'assistant', content: string}> = [
