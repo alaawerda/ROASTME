@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Configuration Gemini API
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY 
+// Configuration OpenRouter API
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY 
 const SITE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
+const SITE_NAME = 'RoastMe'
 
 // Language detection function
 function detectLanguage(text: string): 'en' | 'fr' | 'es' {
@@ -115,8 +116,8 @@ INSTRUCCIONES IMPORTANTES:
 export async function POST(request: NextRequest) {
   try {
     // Vérifier que la clé API est disponible
-    if (!GEMINI_API_KEY) {
-      console.error('GEMINI_API_KEY manquante')
+    if (!OPENROUTER_API_KEY) {
+      console.error('OPENROUTER_API_KEY manquante')
       return NextResponse.json(
         { error: 'Configuration API manquante' },
         { status: 500 }
@@ -126,7 +127,18 @@ export async function POST(request: NextRequest) {
     // Ne pas logger la clé API pour des raisons de sécurité
     console.log('API configurée. URL du site:', SITE_URL)
 
-    const { message, history } = await request.json()
+    let body
+    try {
+      body = await request.json()
+    } catch (parseError) {
+      console.error('Erreur de parsing JSON:', parseError)
+      return NextResponse.json(
+        { error: 'Format de requête invalide' },
+        { status: 400 }
+      )
+    }
+
+    const { message, history } = body
 
     if (!message) {
       return NextResponse.json(
@@ -145,64 +157,101 @@ export async function POST(request: NextRequest) {
     // Get the appropriate system prompt for the user's language
     const systemPrompt = systemPrompts[userLanguage]
 
-    // Construire le prompt complet avec l'historique
-    let fullPrompt = systemPrompt + "\n\n"
+    // Construire les messages pour OpenRouter (format chat)
+    const messages: Array<{role: 'system' | 'user' | 'assistant', content: string}> = [
+      { role: 'system', content: systemPrompt }
+    ]
     
     if (history && history.length > 0) {
       history.forEach((msg: any) => {
         if (msg.role === 'user') {
-          fullPrompt += `User: ${msg.content}\n`
+          messages.push({ role: 'user', content: msg.content })
         } else if (msg.role === 'assistant') {
-          fullPrompt += `Assistant: ${msg.content}\n`
+          messages.push({ role: 'assistant', content: msg.content })
         }
       })
     }
     
-    fullPrompt += `User: ${message}\n\nAssistant:`
+    messages.push({ role: 'user', content: message })
 
-    console.log('Envoi à Gemini avec prompt:', fullPrompt)
-    
-    // Appel à l'API Gemini avec timeout et gestion d'erreur robuste
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 15000) // Timeout de 15 secondes
+    console.log('Envoi à OpenRouter avec', messages.length, 'messages...')
+
+    // Fonction pour appeler OpenRouter avec retry (API REST directe)
+    const callOpenRouterWithRetry = async (maxRetries = 3): Promise<string> => {
+      const models = [
+        'xiaomi/mimo-v2-flash:free',
+        'meta-llama/llama-3.3-8b-instruct:free',
+        'mistralai/mistral-7b-instruct:free'
+      ]
+
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        const currentModel = models[Math.min(attempt - 1, models.length - 1)]
+
+        try {
+          console.log(`Tentative ${attempt}/${maxRetries} avec modèle ${currentModel}...`)
+
+          const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+              'HTTP-Referer': SITE_URL,
+              'X-Title': SITE_NAME,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: currentModel,
+              messages: messages,
+              max_tokens: 500,
+              temperature: 0.8,
+            }),
+          })
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}))
+            throw { status: response.status, message: JSON.stringify(errorData) }
+          }
+
+          const data = await response.json()
+          const responseText = data.choices?.[0]?.message?.content
+          
+          if (!responseText) {
+             throw new Error('Réponse vide de l\'IA')
+          }
+          
+          return responseText
+
+        } catch (error: any) {
+          console.error(`Erreur tentative ${attempt}/${maxRetries}:`, error.message || error)
+
+          // Vérifier si c'est une erreur 429 (Too Many Requests) ou 503 (Service Unavailable)
+          const isRateLimit = error.status === 429 || error.message?.includes('429')
+          const isServerError = error.status === 503 || error.message?.includes('503')
+          
+          if ((isRateLimit || isServerError) && attempt < maxRetries) {
+            const waitTime = Math.pow(2, attempt) * 1000 // Backoff exponentiel
+            console.log(`Erreur ${isRateLimit ? '429' : '503'} - Attente ${waitTime}ms...`)
+            await new Promise(resolve => setTimeout(resolve, waitTime))
+            continue
+          }
+          
+          // Si c'est une erreur réseau ou autre et qu'on peut réessayer
+          if (attempt < maxRetries) {
+             console.log(`Erreur autre - Attente 1000ms...`)
+             await new Promise(resolve => setTimeout(resolve, 1000))
+             continue
+          }
+
+          throw error
+        }
+      }
+      throw new Error('Max retries exceeded')
+    }
 
     try {
-      const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-goog-api-key": GEMINI_API_KEY
-        },
-        body: JSON.stringify({
-          "contents": [
-            {
-              "parts": [
-                {
-                  "text": fullPrompt
-                }
-              ]
-            }
-          ],
-          "generationConfig": {
-            "maxOutputTokens": 300,
-            "temperature": 0.8
-          }
-        }),
-        signal: controller.signal
-      })
-
-      clearTimeout(timeoutId)
-      console.log('Réponse Gemini status:', response.status)
-
-      if (!response.ok) {
-        console.error(`Erreur API Gemini: ${response.status} - ${response.statusText}`)
-        throw new Error(`Erreur API Gemini: ${response.status}`)
-      }
-
-      const completion = await response.json()
-      console.log('Réponse Gemini complète:', completion)
+      const aiResponseText = await callOpenRouterWithRetry(3)
+      console.log('Réponse OpenRouter OK')
       
-      const aiResponse = completion.candidates?.[0]?.content?.parts?.[0]?.text || 
+      const aiResponse = aiResponseText || 
                         (userLanguage === 'en' 
                           ? "Sorry, I couldn't prepare your roast! 😅 Try again in a few seconds."
                           : userLanguage === 'es'
@@ -211,28 +260,35 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({ message: aiResponse })
 
-    } catch (fetchError) {
-      clearTimeout(timeoutId)
+    } catch (fetchError: any) {
+      console.error('Erreur finale après retries:', fetchError)
       
-      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
-        console.error('Timeout de la requête à l\'API Gemini')
-        return NextResponse.json({ 
-          message: userLanguage === 'en'
-            ? "Oops! The AI is taking longer than expected... 🤔 Try again, it'll wake up! 😴"
-            : userLanguage === 'es'
-              ? "¡Oops! La IA está tardando más de lo esperado... 🤔 ¡Intenta de nuevo, se despertará! 😴"
-              : "Oups ! L'IA prend plus de temps que prévu... 🤔 Réessaie, elle va se réveiller ! 😴"
-        })
+      // Gestion spécifique de l'erreur 429 (rate limit)
+      if (fetchError.status === 429 || fetchError.message?.includes('429')) {
+          return NextResponse.json({ 
+            message: userLanguage === 'en'
+              ? "Whoa, slow down! 🔥 Too many roast requests! Wait a few seconds and try again..."
+              : userLanguage === 'es'
+                ? "¡Wow, más despacio! 🔥 ¡Demasiadas solicitudes de roast! Espera unos segundos e intenta de nuevo..."
+                : "Wow, doucement ! 🔥 Trop de demandes de roast ! Attends quelques secondes et réessaie..."
+          })
       }
-      
-      console.error('Erreur lors de l\'appel à l\'API Gemini:', fetchError)
-      throw fetchError
+
+      return NextResponse.json({ 
+        message: userLanguage === 'en'
+          ? "Oops! The AI is taking longer than expected... 🤔 Try again, it'll wake up! 😴"
+          : userLanguage === 'es'
+            ? "¡Oops! La IA está tardando más de lo esperado... 🤔 ¡Intenta de nuevo, se despertará! 😴"
+            : "Oups ! L'IA prend plus de temps que prévu... 🤔 Réessaie, elle va se réveiller ! 😴"
+      })
     }
 
   } catch (error) {
     console.error('Erreur API:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Détails de l\'erreur:', errorMessage)
     return NextResponse.json(
-      { error: 'Erreur interne du serveur' },
+      { error: 'Erreur interne du serveur', details: errorMessage },
       { status: 500 }
     )
   }
