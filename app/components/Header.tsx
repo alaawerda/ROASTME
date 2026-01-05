@@ -71,39 +71,147 @@ const Header: React.FC<HeaderProps> = ({
       aiAdvanced: 'IA Avancée',
       buyMeCoffee: 'M\'offrir un ☕',
       menu: 'Menu',
-      close: 'Fermer'
+      close: 'Fermer',
+      home: 'Accueil',
+      homePage: 'Page d\'accueil',
+      blog: 'Blog',
+      blogDesc: 'Articles et guides',
+      tapToClose: 'Appuyez en dehors pour fermer'
     },
     en: {
       aiAdvanced: 'Advanced AI',
       buyMeCoffee: 'Buy me a ☕',
       menu: 'Menu',
-      close: 'Close'
+      close: 'Close',
+      home: 'Home',
+      homePage: 'Home page',
+      blog: 'Blog',
+      blogDesc: 'Articles and guides',
+      tapToClose: 'Tap outside to close'
     },
     es: {
       aiAdvanced: 'IA Avanzada',
       buyMeCoffee: 'Cómprame un ☕',
       menu: 'Menú',
-      close: 'Cerrar'
+      close: 'Cerrar',
+      home: 'Inicio',
+      homePage: 'Página de inicio',
+      blog: 'Blog',
+      blogDesc: 'Artículos y guías',
+      tapToClose: 'Toca afuera para cerrar'
     },
     de: {
       aiAdvanced: 'Fortgeschrittene KI',
       buyMeCoffee: 'Kauf mir einen ☕',
       menu: 'Menü',
-      close: 'Schließen'
+      close: 'Schließen',
+      home: 'Startseite',
+      homePage: 'Startseite',
+      blog: 'Blog',
+      blogDesc: 'Artikel und Anleitungen',
+      tapToClose: 'Tippen Sie außen, um zu schließen'
+    },
+    it: {
+      aiAdvanced: 'IA Avanzata',
+      buyMeCoffee: 'Offrimi un ☕',
+      menu: 'Menu',
+      close: 'Chiudi',
+      home: 'Home',
+      homePage: 'Pagina iniziale',
+      blog: 'Blog',
+      blogDesc: 'Articoli e guide',
+      tapToClose: 'Tocca fuori per chiudere'
+    },
+    pt: {
+      aiAdvanced: 'IA Avançada',
+      buyMeCoffee: 'Me pague um ☕',
+      menu: 'Menu',
+      close: 'Fechar',
+      home: 'Início',
+      homePage: 'Página inicial',
+      blog: 'Blog',
+      blogDesc: 'Artigos e guias',
+      tapToClose: 'Toque fora para fechar'
+    },
+    nl: {
+      aiAdvanced: 'Geavanceerde AI',
+      buyMeCoffee: 'Koop me een ☕',
+      menu: 'Menu',
+      close: 'Sluiten',
+      home: 'Home',
+      homePage: 'Startpagina',
+      blog: 'Blog',
+      blogDesc: 'Artikelen en handleidingen',
+      tapToClose: 'Tik buiten om te sluiten'
+    },
+    ru: {
+      aiAdvanced: 'Продвинутый ИИ',
+      buyMeCoffee: 'Купи мне ☕',
+      menu: 'Меню',
+      close: 'Закрыть',
+      home: 'Главная',
+      homePage: 'Главная страница',
+      blog: 'Блог',
+      blogDesc: 'Статьи и руководства',
+      tapToClose: 'Нажмите снаружи, чтобы закрыть'
+    },
+    ja: {
+      aiAdvanced: '高度なAI',
+      buyMeCoffee: 'コーヒーをおごって ☕',
+      menu: 'メニュー',
+      close: '閉じる',
+      home: 'ホーム',
+      homePage: 'ホームページ',
+      blog: 'ブログ',
+      blogDesc: '記事とガイド',
+      tapToClose: '外側をタップして閉じる'
+    },
+    ko: {
+      aiAdvanced: '고급 AI',
+      buyMeCoffee: '커피 사주세요 ☕',
+      menu: '메뉴',
+      close: '닫기',
+      home: '홈',
+      homePage: '홈 페이지',
+      blog: '블로그',
+      blogDesc: '기사 및 가이드',
+      tapToClose: '닫으려면 외부를 탭하세요'
+    },
+    ar: {
+      aiAdvanced: 'ذكاء اصطناعي متقدم',
+      buyMeCoffee: 'اشتري لي ☕',
+      menu: 'القائمة',
+      close: 'إغلاق',
+      home: 'الرئيسية',
+      homePage: 'الصفحة الرئيسية',
+      blog: 'المدونة',
+      blogDesc: 'المقالات والأدلة',
+      tapToClose: 'انقر في الخارج للإغلاق'
+    },
+    zh: {
+      aiAdvanced: '高级AI',
+      buyMeCoffee: '请我喝杯 ☕',
+      menu: '菜单',
+      close: '关闭',
+      home: '首页',
+      homePage: '主页',
+      blog: '博客',
+      blogDesc: '文章和指南',
+      tapToClose: '点击外部关闭'
     }
   }), []);
 
   // Mémoriser la fonction de traduction
-  const getStatusText = useCallback((key: 'aiAdvanced' | 'buyMeCoffee' | 'menu' | 'close') => {
+  const getStatusText = useCallback((key: 'aiAdvanced' | 'buyMeCoffee' | 'menu' | 'close' | 'home' | 'homePage' | 'blog' | 'blogDesc' | 'tapToClose') => {
     const lang = currentLanguage as keyof typeof translations;
     return (translations[lang]?.[key] || translations.fr[key] || key) as string;
   }, [currentLanguage, translations]);
 
   // Mémoriser les éléments de navigation
   const navItems = React.useMemo(() => [
-    { href: '/', label: currentLanguage === 'fr' ? 'Accueil' : 'Home', icon: '🏠' },
-    { href: '/blog', label: 'Blog', icon: '📚' }
-  ], [currentLanguage]);
+    { href: '/', label: getStatusText('home'), icon: '🏠', desc: getStatusText('homePage') },
+    { href: '/blog', label: getStatusText('blog'), icon: '📚', desc: getStatusText('blogDesc') }
+  ], [getStatusText]);
 
   return (
     <header 
@@ -260,8 +368,7 @@ const Header: React.FC<HeaderProps> = ({
                   <div className="flex-1">
                     <div className="font-bold text-xl mb-1">{item.label}</div>
                     <div className="text-sm text-gray-300 opacity-80">
-                      {item.href === '/' && (currentLanguage === 'fr' ? 'Page d\'accueil' : 'Home page')}
-                      {item.href === '/blog' && (currentLanguage === 'fr' ? 'Articles et guides' : 'Articles and guides')}
+                      {item.desc}
                     </div>
                   </div>
                   <div className="text-gray-400 group-hover:text-white transition-all duration-200 transform group-hover:translate-x-1">
@@ -288,7 +395,7 @@ const Header: React.FC<HeaderProps> = ({
               {/* Indicateur de fermeture amélioré */}
               <div className="mt-4 text-center">
                 <p className="text-gray-400 text-sm font-medium">
-                  {currentLanguage === 'fr' ? 'Appuyez en dehors pour fermer' : 'Tap outside to close'}
+                  {getStatusText('tapToClose')}
                 </p>
               </div>
             </div>
